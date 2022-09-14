@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <title>TikTakToe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Signika+Negative&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-
-
-
-
-
-
-
+    <header class="headline">
+        <h1>TIK TAK TOE</h1>
+    </header>
+    <div class="board" id="board">
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+        <div class='cell' data-cell></div>
+    </div>
+    <div class="winning-message" id="winningMessage">
+        <div id="winningMessageText"></div>
+    </div>
+    <div class="restartButton">
+        <button id="restartButton">Restart</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
