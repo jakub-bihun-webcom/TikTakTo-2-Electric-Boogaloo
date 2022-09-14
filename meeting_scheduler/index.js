@@ -3,7 +3,6 @@ onload = function (event) {
   console.log('messageText', (msg))
   message = '';
 }
-
 let workStart;
 let workEnd;
 let meetingStart;
@@ -15,20 +14,16 @@ function onButtonSubmission() {
   meetingStart = document.getElementById('meetingStart').value;
   meetingDuration = document.getElementById('meetingDuration').value;
   
-
   try {
     timeToNumber (); 
     messageText.style.color = '#a2b9bc';
     messageText.innerText = 'Das Meeting kann stattfinden!';
   } catch (error) {
     messageText.style.color = 'red';
-    messageText.innerText = error.message;
-    
+    messageText.innerText = error.message;    
   }
 }
-// scheduleMeeting()
-// throw new error 
-// js data 
+
 function timeToNumber () {
   const workStartSplit = workStart.split(':');
   const workStartNumber = (+workStartSplit[0]) * 60 + (+workStartSplit[1]);
@@ -39,16 +34,11 @@ function timeToNumber () {
   const meetingDurationNumber = parseFloat(meetingDuration);
   validateMeeting(meetingDurationNumber, meetingStartNumber, workStartNumber, workEndNumber);
 }
-
 function validateMeeting(meetingDuration, meetingStart, workStart, workEnd) {
   console.log(meetingDuration, 'meetingDuration') 
   console.log(meetingStart, 'meetingStart')
   console.log(workEnd, 'workEnd')
   console.log(workStart, 'workStart');
-
-  //let a = workStart.a();
-
-  let valid = false;
 
   if (workStart > workEnd) {
     throw new Error('Hast du vielleicht die Startzeit mit der Endzeit verwechselt?');
@@ -62,9 +52,5 @@ function validateMeeting(meetingDuration, meetingStart, workStart, workEnd) {
     throw new Error('Das Meeting würde deine Arbeitszeit überschreiten.')
   } else if (meetingDuration < 5) {
     throw new Error('Das Meeting sollte mindestens fünf Minuten dauern')
-  } else {
-    message = ('Das Meeting kann stattfinden.');
-    valid = true;
   } 
-
 }
