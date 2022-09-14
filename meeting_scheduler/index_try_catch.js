@@ -16,7 +16,7 @@ function onButtonSubmission() {
 }
 // scheduleMeeting()
 // throw new error 
-// js data 
+// js date 
 function timeToNumber () {
   const workStartSplit = workStart.split(':');
   const workStartNumber = (+workStartSplit[0]) * 60 + (+workStartSplit[1]);
