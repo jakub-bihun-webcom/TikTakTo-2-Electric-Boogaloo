@@ -1,9 +1,13 @@
 onload = function (event) {
   messageText = document.getElementById('msg')
-  console.log('messageText', (msg));
-  valid = false;
+  console.log('messageText', (msg))
   message = '';
 }
+
+let workStart;
+let workEnd;
+let meetingStart;
+let meetingDuration;
 
 function onButtonSubmission() {
   workStart = document.getElementById('workStart').value;
@@ -11,7 +15,6 @@ function onButtonSubmission() {
   meetingStart = document.getElementById('meetingStart').value;
   meetingDuration = document.getElementById('meetingDuration').value;
   
-
   timeToNumber ();
 }
 // scheduleMeeting()
@@ -25,34 +28,29 @@ function timeToNumber () {
   const meetingStartSplit = meetingStart.split(':');
   const meetingStartNumber = (+meetingStartSplit[0]) * 60 + (+meetingStartSplit[1]);
   const meetingDurationNumber = parseFloat(meetingDuration);
-  meetingValidation(meetingDurationNumber, meetingStartNumber, workStartNumber, workEndNumber);
+  validateMeeting(meetingDurationNumber, meetingStartNumber, workStartNumber, workEndNumber);
 }
 
+function validateMeeting(meetingDuration, meetingStart, workStart, workEnd) {
+  console.log(meetingDuration, 'meetingDuration') 
+  console.log(meetingStart, 'meetingStart')
+  console.log(workEnd, 'workEnd')
+  console.log(workStart, 'workStart');
 
-function meetingValidation(meetingDurationNumber, meetingStartNumber, workStartNumber, workEndNumber) {
-  console.log(meetingDurationNumber, 'meetingDuration') 
-  console.log(meetingStartNumber, 'meetingStart')
-  console.log(workEndNumber, 'workEnd')
-  console.log(workStartNumber, 'workStart');
+  let valid = false;
 
-  if (workStartNumber > workEndNumber) {
+  if (workStart > workEnd) {
     message = ('Hast du vielleicht die Startzeit mit der Endzeit verwechselt?')
-    valid = false;
-  } else if (!meetingDurationNumber || !meetingStartNumber || !workEndNumber || !workStartNumber)  {
+  } else if (!meetingDuration || !meetingStart || !workEnd || !workStart)  {
     message = ('Bitte fülle alle Felder aus!')
-    valid = false;
-  } else if (meetingStartNumber < workStartNumber){
+  } else if (meetingStart < workStart){
     message =('Das Meeting beginnt vor dem Arbeitsbeginn.')
-    valid = false;
-  } else if (meetingStartNumber >= workEndNumber) {
+  } else if (meetingStart >= workEnd) {
     message = ('Das Meeting startet nachdem dein Arbeitstag geendet hat.')
-    valid = false;
-  } else if ((meetingDurationNumber + meetingStartNumber) >= (++workEndNumber)) {
+  } else if ((meetingDuration + meetingStart) >= (++workEnd)) {
     message = ('Das Meeting würde deine Arbeitszeit überschreiten.')
-    valid = false;
-  } else if (meetingDurationNumber < 5) {
+  } else if (meetingDuration < 5) {
     message = ('Das Meeting sollte mindestens fünf Minuten dauern')
-    valid = false;
   } else {
     message = ('Das Meeting kann stattfinden.');
     valid = true;
