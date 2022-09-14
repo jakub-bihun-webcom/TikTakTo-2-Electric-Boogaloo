@@ -15,7 +15,16 @@ function onButtonSubmission() {
   meetingStart = document.getElementById('meetingStart').value;
   meetingDuration = document.getElementById('meetingDuration').value;
   
-  timeToNumber ();
+
+  try {
+    timeToNumber (); 
+    messageText.style.color = '#a2b9bc';
+    messageText.innerText = 'Das Meeting kann stattfinden!';
+  } catch (error) {
+    messageText.style.color = 'red';
+    messageText.innerText = error.message;
+    
+  }
 }
 // scheduleMeeting()
 // throw new error 
@@ -37,30 +46,25 @@ function validateMeeting(meetingDuration, meetingStart, workStart, workEnd) {
   console.log(workEnd, 'workEnd')
   console.log(workStart, 'workStart');
 
+  //let a = workStart.a();
+
   let valid = false;
 
   if (workStart > workEnd) {
-    message = ('Hast du vielleicht die Startzeit mit der Endzeit verwechselt?')
+    throw new Error('Hast du vielleicht die Startzeit mit der Endzeit verwechselt?');
   } else if (!meetingDuration || !meetingStart || !workEnd || !workStart)  {
-    message = ('Bitte fülle alle Felder aus!')
+    throw new Error('Bitte fülle alle Felder aus!')
   } else if (meetingStart < workStart){
-    message =('Das Meeting beginnt vor dem Arbeitsbeginn.')
+    throw new Error('Das Meeting beginnt vor dem Arbeitsbeginn.')
   } else if (meetingStart >= workEnd) {
-    message = ('Das Meeting startet nachdem dein Arbeitstag geendet hat.')
+    throw new Error('Das Meeting startet nachdem dein Arbeitstag geendet hat.')
   } else if ((meetingDuration + meetingStart) >= (++workEnd)) {
-    message = ('Das Meeting würde deine Arbeitszeit überschreiten.')
+    throw new Error('Das Meeting würde deine Arbeitszeit überschreiten.')
   } else if (meetingDuration < 5) {
-    message = ('Das Meeting sollte mindestens fünf Minuten dauern')
+    throw new Error('Das Meeting sollte mindestens fünf Minuten dauern')
   } else {
     message = ('Das Meeting kann stattfinden.');
     valid = true;
   } 
-
-  if (valid) {
-    messageText.style.color = '#a2b9bc';
-  } else {
-    messageText.style.color = 'red';
-  }
-  messageText.innerText = message;
 
 }
