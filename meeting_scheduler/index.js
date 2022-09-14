@@ -1,9 +1,12 @@
 onload = function (event) {
   messageText = document.getElementById('msg')
-  console.log('messageText', (msg));
-  valid = false;
+  console.log('messageText', (msg))
   message = '';
 }
+let workStart;
+let workEnd;
+let meetingStart;
+let meetingDuration;
 
 function onButtonSubmission() {
   workStart = document.getElementById('workStart').value;
@@ -11,12 +14,16 @@ function onButtonSubmission() {
   meetingStart = document.getElementById('meetingStart').value;
   meetingDuration = document.getElementById('meetingDuration').value;
   
-
-  timeToNumber ();
+  try {
+    timeToNumber (); 
+    messageText.style.color = '#a2b9bc';
+    messageText.innerText = 'Das Meeting kann stattfinden!';
+  } catch (error) {
+    messageText.style.color = 'red';
+    messageText.innerText = error.message;    
+  }
 }
-// scheduleMeeting()
-// throw new error 
-// js data 
+
 function timeToNumber () {
   const workStartSplit = workStart.split(':');
   const workStartNumber = (+workStartSplit[0]) * 60 + (+workStartSplit[1]);
@@ -25,44 +32,25 @@ function timeToNumber () {
   const meetingStartSplit = meetingStart.split(':');
   const meetingStartNumber = (+meetingStartSplit[0]) * 60 + (+meetingStartSplit[1]);
   const meetingDurationNumber = parseFloat(meetingDuration);
-  meetingValidation(meetingDurationNumber, meetingStartNumber, workStartNumber, workEndNumber);
+  validateMeeting(meetingDurationNumber, meetingStartNumber, workStartNumber, workEndNumber);
 }
+function validateMeeting(meetingDuration, meetingStart, workStart, workEnd) {
+  console.log(meetingDuration, 'meetingDuration') 
+  console.log(meetingStart, 'meetingStart')
+  console.log(workEnd, 'workEnd')
+  console.log(workStart, 'workStart');
 
-
-function meetingValidation(meetingDurationNumber, meetingStartNumber, workStartNumber, workEndNumber) {
-  console.log(meetingDurationNumber, 'meetingDuration') 
-  console.log(meetingStartNumber, 'meetingStart')
-  console.log(workEndNumber, 'workEnd')
-  console.log(workStartNumber, 'workStart');
-
-  if (workStartNumber > workEndNumber) {
-    message = ('Hast du vielleicht die Startzeit mit der Endzeit verwechselt?')
-    valid = false;
-  } else if (!meetingDurationNumber || !meetingStartNumber || !workEndNumber || !workStartNumber)  {
-    message = ('Bitte fülle alle Felder aus!')
-    valid = false;
-  } else if (meetingStartNumber < workStartNumber){
-    message =('Das Meeting beginnt vor dem Arbeitsbeginn.')
-    valid = false;
-  } else if (meetingStartNumber >= workEndNumber) {
-    message = ('Das Meeting startet nachdem dein Arbeitstag geendet hat.')
-    valid = false;
-  } else if ((meetingDurationNumber + meetingStartNumber) >= (++workEndNumber)) {
-    message = ('Das Meeting würde deine Arbeitszeit überschreiten.')
-    valid = false;
-  } else if (meetingDurationNumber < 5) {
-    message = ('Das Meeting sollte mindestens fünf Minuten dauern')
-    valid = false;
-  } else {
-    message = ('Das Meeting kann stattfinden.');
-    valid = true;
+  if (workStart > workEnd) {
+    throw new Error('Hast du vielleicht die Startzeit mit der Endzeit verwechselt?');
+  } else if (!meetingDuration || !meetingStart || !workEnd || !workStart)  {
+    throw new Error('Bitte fülle alle Felder aus!')
+  } else if (meetingStart < workStart){
+    throw new Error('Das Meeting beginnt vor dem Arbeitsbeginn.')
+  } else if (meetingStart >= workEnd) {
+    throw new Error('Das Meeting startet nachdem dein Arbeitstag geendet hat.')
+  } else if ((meetingDuration + meetingStart) >= (++workEnd)) {
+    throw new Error('Das Meeting würde deine Arbeitszeit überschreiten.')
+  } else if (meetingDuration < 5) {
+    throw new Error('Das Meeting sollte mindestens fünf Minuten dauern')
   } 
-
-  if (valid) {
-    messageText.style.color = '#a2b9bc';
-  } else {
-    messageText.style.color = 'red';
-  }
-  messageText.innerText = message;
-
 }
