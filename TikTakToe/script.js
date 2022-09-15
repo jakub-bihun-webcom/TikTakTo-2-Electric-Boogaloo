@@ -9,6 +9,7 @@ const winning_combinations = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
+<<<<<<< HEAD
 ]
 
 const cellElements = document.querySelectorAll('[data-cell]');
@@ -44,3 +45,15 @@ function swapTurns(){ // isPlayer_0_Turn boolean switchen
     isPlayer_O_Turn = !isPlayer_O_Turn;
 }
 
+=======
+/*  012
+    345
+    678    */
+]
+const cellElements = document.querySelectorAll('[data-cell]')
+const boardElement = document.getElementById('board')
+const winningMessageElement = document.getElementById('winningMessage')
+const restartButton = document.getElementById('restartButton')
+const winningMessageTextElement = document.getElementById('winningMessageText')
+let isPlayer_O_Turn = false
+>>>>>>> 2026241013ef6cf22e51b070d88d7b941afa0546
