@@ -134,7 +134,7 @@ img {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: var(--color-set);
+	background-color: #9db7cf62;
 	justify-content: center;
 	align-items: center;
 	color: white;
@@ -144,16 +144,16 @@ img {
 .winning-message button {
 	border-radius: 10px;
 	font-size: 3rem;
-	background-color: white;
+	background-color: red;
 	border: 1px solid var(--color-set);
 	padding: .25em .5em;
 	cursor: pointer;
 }
 
 .winning-message button:hover {
-	background-color: var(--color-set);
-	color: white;
-	border-color: white;
+	background-color: red;
+	color: red;
+	border-color: red;
 }
 .winning-message.show {
 	display: flex;
