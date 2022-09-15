@@ -13,3 +13,9 @@ const winning_combinations = [
     345
     678    */
 ]
+const cellElements = document.querySelectorAll('[data-cell]')
+const boardElement = document.getElementById('board')
+const winningMessageElement = document.getElementById('winningMessage')
+const restartButton = document.getElementById('restartButton')
+const winningMessageTextElement = document.getElementById('winningMessageText')
+let isPlayer_O_Turn = false
