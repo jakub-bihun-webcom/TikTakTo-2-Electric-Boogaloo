@@ -9,7 +9,11 @@ const winning_combinations = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]           
-] 
+]
+let messageTextO;
+let messageTextX;
+let messageO;
+let messageX;
 
 const cellElements = document.querySelectorAll('[data-cell]');          //
 const boardElement = document.getElementById('board');
@@ -18,6 +22,14 @@ const restartButton = document.getElementById('restartButton');
 const winningMessageTextElement = document.getElementById('winningMessageText');
 let isPlayer_O_Turn = false;
 let counter = 0;
+let wonGamesX = 0;
+let wonGamesO = 0;
+messageTextO = document.getElementById('wonGamesOMsg')
+console.log(messageTextO);
+messageTextX = document.getElementById('wonGamesXMsg')
+console.log(messageTextX);
+
+
 
 startGame ();
 
@@ -61,8 +73,22 @@ function endGame (draw){        // If Schleife ob Unentschieden oder der Spieler
     } else {
         winningMessageTextElement.innerText = `Spieler mit ${isPlayer_O_Turn ? "O" : "X"} hat gewonnen`;
     }
+    if (isPlayer_O_Turn == true) {
+        ++wonGamesO
+    }
+    else {
+        ++wonGamesX
+    }
+    console.log('won games O ' + wonGamesO)
+    messageO = 'Spieler O : ' + (wonGamesO);
+    console.log('won game X ' + wonGamesX)
+    messageX = 'Spieler X : ' + (wonGamesX);
+    messageTextO.innerText = messageO;
+    messageTextX.innerText = messageX;
     winningMessageElement.classList.add('show');
 }
+
+
 
 function isDraw (){ // 
     return [...cellElements].every(cell =>{

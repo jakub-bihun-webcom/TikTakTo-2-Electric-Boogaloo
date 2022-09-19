@@ -3,8 +3,20 @@ body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Signika Negative', sans-serif;
 }
+header {
+  display: flex;
+  align-items: center;
 
+}
+p {
+  display: block;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 150%;
+}
 .headline {
+  display: flex;
+  justify-content: center;
   text-align: center;
   color: #9db7cf;
   text-shadow: 2px 2px 3px #000000;
@@ -12,8 +24,7 @@ body {
 .headline1 {
   display: flex;
   justify-content: center;
-  margin-left: 40%;
-  margin-right: 40%;
+
   border-radius: 7px;
 
   font-size:250%;
@@ -134,7 +145,6 @@ img {
 	align-items: center;
 	color: white;
 	font-size: 5rem;
-	font-family: 'Courier New', Courier, monospace;
 	flex-direction: column;
 }
 
