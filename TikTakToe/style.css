@@ -49,9 +49,9 @@ body {
 :root {
   --cell-size: 189px;
 
-  --color: #2c3e50;
+  --color: #34495e;
   /* for hover */
-  --color-set: #9db7cf;
+  --color-set: #2c3e50;
   /* when set */
   --l: 10px;
   /* X line-width */
@@ -61,14 +61,6 @@ body {
   cursor: not-allowed;
 }
 
-/* for cross (set) */
-.cell:not(.circle).x {
-	background: linear-gradient(to top right, transparent calc(50% - var(--l) / 2), var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2)),
-				linear-gradient(to bottom right, transparent calc(50% - var(--l) / 2), var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2));
-	background-size: 80% 80%;
-	background-repeat: no-repeat;
-	background-position: center;
-}
 /* for cross */
 .board.x .cell:not(.circle):not(.x):hover {
   background: linear-gradient(to top right, transparent calc(50% - var(--l) / 2), var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2)),
@@ -127,6 +119,7 @@ img {
   border: 3px solid #2c3e505b;
   border-radius: 15px;
 }
+
 .winning-message {
 	display: none;
 	position: fixed;
@@ -134,28 +127,30 @@ img {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #9db7cf;
+	background-color: var(--color-set);
 	justify-content: center;
 	align-items: center;
 	color: white;
 	font-size: 5rem;
+	font-family: 'Courier New', Courier, monospace;
 	flex-direction: column;
 }
+
 .winning-message button {
-  margin-top: 1%;
 	border-radius: 10px;
 	font-size: 3rem;
-	background-color: #34495e;
+	background-color: white;
 	border: 1px solid var(--color-set);
 	padding: .25em .5em;
 	cursor: pointer;
 }
 
 .winning-message button:hover {
-	background-color:#3b546c;
-	color: #9db7cf;
-	border-color: #3b546c;
+	background-color: var(--color-set);
+	color: white;
+	border-color: white;
 }
+
 .winning-message.show {
 	display: flex;
 }
