@@ -17,6 +17,7 @@ const winningMessageElement = document.getElementById('winningMessage');
 const restartButton = document.getElementById('restartButton');
 const winningMessageTextElement = document.getElementById('winningMessageText');
 let isPlayer_O_Turn = false;
+let counter = 0;
 
 startGame ();
 
@@ -29,6 +30,7 @@ function startGame (){ // Löschen aller Eingaben von vorherigen Spielen
         cell.classList.remove(PLAYER_O_CLASS);
         cell.removeEventListener('click', handleCellClick);
         cell.addEventListener('click', handleCellClick, {once: true});  //Once => Jedes Feld kann nur einmal angeklickt werden
+        counter = 0
     })
     setBoardHoverClass();
     winningMessageElement.classList.remove('show');
@@ -44,13 +46,17 @@ function handleCellClick(e) {
     } else if (isDraw()){               
         endGame (true);
     } else {
-        swapTurns();                    // Wenn kein Gewinner feststeht und es kein Unentschieden ist werden di
+        swapTurns();                    // Wenn kein Gewinner feststeht und es kein Unentschieden ist, 
         setBoardHoverClass();
     }
+    counter++;
+    console.log(counter);
 }
 
 function endGame (draw){        // If Schleife ob Unentschieden oder der Spieler welcher dran ist gewonnen hat. Anzeigen wie es ausgegangen ist
-    if (draw){
+    if (counter < 6){
+        winningMessageTextElement.innerText = `Well that was easy. ${isPlayer_O_Turn ? "O" : "X"} hat gewonnen`; 
+    } else if (draw){
         winningMessageTextElement.innerText = 'Unentschieden'; 
     } else {
         winningMessageTextElement.innerText = `Spieler mit ${isPlayer_O_Turn ? "O" : "X"} hat gewonnen`;
@@ -72,7 +78,7 @@ function swapTurns(){ // isPlayer_0_Turn boolean switchen
     isPlayer_O_Turn = !isPlayer_O_Turn;
 }
 
-function setBoardHoverClass(){
+function setBoardHoverClass(){                      // Funktion für die floating Zeichen
     boardElement.classList.remove(PLAYER_X_CLASS);
     boardElement.classList.remove(PLAYER_O_CLASS);
     if (isPlayer_O_Turn){
@@ -82,7 +88,7 @@ function setBoardHoverClass(){
     }
 }
 
-function checkWin(currentClass){
+function checkWin(currentClass){                // Nach jeder TicTacToe Eingabe wird geprüft ob einer der Gewinnkombinationen erreicht wurde
     return winning_combinations.some(combination =>{
         return combination.every(index => {
             return cellElements[index].classList.contains(currentClass);
