@@ -15,7 +15,9 @@
 
 <body>
     <header class="headline">
+        <p class="wonGamesXMsg" id="wonGamesXMsg"></p>
         <h1 class="headline1" >TIK TAK TOE</h1>
+        <p class="wonGamesOMsg" id="wonGamesOMsg"></p>
     </header>
     <div class="board" id="board">
         <div class='cell' data-cell></div>
@@ -30,6 +32,7 @@
     </div>
     <div class="winning-message" id="winningMessage">
         <div id="winningMessageText"></div>
+        <button onclick="startGame()">Restart</button>
     </div>
     <div class="restartButton">
         <button id="restartButton">Restart</button>
