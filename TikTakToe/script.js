@@ -30,14 +30,20 @@ console.log(messageTextX);
 
 startGame();
 
-// Funktionen startet das Spiel und räumt das Spielbrett auf.
+
+/**
+ * Funktionen startet das Spiel und räumt das Spielbrett auf.
+ */
 function startGame() {
     resetBoard();
     setBoardHoverClass();
     winningMessageElement.classList.remove('show');
 }
 
-// Spielfeld wird aufgeräumt und Spieler X fängt die Runde wieder an.
+
+/**
+ * Spielfeld wird aufgeräumt und Spieler X fängt die Runde wieder an.
+ */
 function resetBoard() {
     isPlayer_O_Turn = false;
     cellElements.forEach(cell => {
@@ -49,7 +55,11 @@ function resetBoard() {
     })
 }
 
-// Bei einem Zug wird die Marke gesetzt und gecheckt ob ein Spieler gewonnen hat oder ob es ein Unentschieden gibt.
+
+/**
+ * Bei einem Zug wird die Marke gesetzt und gecheckt ob ein Spieler gewonnen hat oder ob es ein Unentschieden gibt.
+ * @param {*} e 
+ */
 function handleCellClick(e) {
     const cell = e.target;
     const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
@@ -65,7 +75,11 @@ function handleCellClick(e) {
     turnCounter++;
     console.log(turnCounter);
 }
-// If Schleife ob Unentschieden oder der Spieler welcher dran ist gewonnen hat. Anzeigen wie es ausgegangen ist.
+
+/**
+ * Spiel wird Beendet. Zeigt die winningMessage mit dazugehöriger nachricht wer gewonnen hat oder ob ein Unentschieden vorliegt. 
+ * @param {*} draw 
+ */
 function endGame(draw) {
     if (turnCounter < 6) {
         winningMessageTextElement.innerText = `Well that was easy. ${isPlayer_O_Turn ? "O" : "X"} hat gewonnen`;
@@ -90,24 +104,39 @@ function endGame(draw) {
 }
 
 
-// Wird überprüft ob das Spiel unentschieden ausgeht.
+
+/**
+ * Wird überprüft ob das Spiel unentschieden ausgeht.
+ * @returns 
+ */
 function isDraw() { // 
     return [...cellElements].every(cell => {
         return cell.classList.contains(PLAYER_X_CLASS) || cell.classList.contains(PLAYER_O_CLASS);
     })
 }
 
-// Auf einer Zelle das Zeichen des aktiven Spielers einfügen
-function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass);
+
+/**
+ * Auf einer Zelle das Zeichen des aktiven Spielers einfügen
+ * @param {*} cell 
+ * @param {*} currentPlayerClass 
+ */
+function placeMark(cell, currentPlayerClass) {
+    cell.classList.add(currentPlayerClass);
 }
 
-// isPlayer_0_Turn boolean switchen nach jedem Zug
+
+/**
+ * isPlayer_0_Turn boolean switchen nach jedem Zug
+ */
 function swapTurns() {
     isPlayer_O_Turn = !isPlayer_O_Turn;
 }
 
-// Funktion für die floating Symbole
+
+/**
+ * Funktion für die floating Symbole
+ */
 function setBoardHoverClass() {
     boardElement.classList.remove(PLAYER_X_CLASS);
     boardElement.classList.remove(PLAYER_O_CLASS);
@@ -118,11 +147,16 @@ function setBoardHoverClass() {
     }
 }
 
-// Nach jeder Eingabe wird geprüft ob einer der Gewinnkombinationen erreicht wurde
-function checkWin(currentClass) {
+
+/**
+ * Nach jeder Eingabe wird geprüft ob einer der Gewinnkombinationen erreicht wurde
+ * @param {*} currentPlayer 
+ * @returns 
+ */
+function checkWin(currentPlayer) {
     return WINNING_COMBINATIONS.some(combination => {
         return combination.every(index => {
-            return cellElements[index].classList.contains(currentClass);
+            return cellElements[index].classList.contains(currentPlayer);
         })
     })
 }
