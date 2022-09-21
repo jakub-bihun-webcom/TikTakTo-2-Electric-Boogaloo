@@ -1,6 +1,6 @@
 const PLAYER_X_CLASS = 'x';
 const PLAYER_O_CLASS = 'circle';
-const winning_combinations = [
+const WINNING_COMBINATIONS = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -15,45 +15,46 @@ let messageTextX;
 let messageO;
 let messageX;
 
-const cellElements = document.querySelectorAll('[data-cell]');          //
+const cellElements = document.querySelectorAll('[data-cell]');
 const boardElement = document.getElementById('board');
 const winningMessageElement = document.getElementById('winningMessage');
-const restartButton = document.getElementById('restartButton');
 const winningMessageTextElement = document.getElementById('winningMessageText');
 let isPlayer_O_Turn = false;
-let counter = 0;
+let turnCounter = 0;
 let wonGamesX = 0;
 let wonGamesO = 0;
-messageTextO = document.getElementById('wonGamesOMsg')
+messageTextO = document.getElementById('wonGamesOMsg');
 console.log(messageTextO);
-messageTextX = document.getElementById('wonGamesXMsg')
+messageTextX = document.getElementById('wonGamesXMsg');
 console.log(messageTextX);
-
-
 
 startGame();
 
-restartButton.addEventListener('click', startGame);
+// Funktionen startet das Spiel und räumt das Spielbrett auf.
+function startGame() {
+    resetBoard();
+    setBoardHoverClass();
+    winningMessageElement.classList.remove('show');
+}
 
-function startGame() { // Löschen aller Eingaben von vorherigen Spielen 
-    isPlayer_O_Turn = false;        // Player X Beginnt
+// Spielfeld wird aufgeräumt und Spieler X fängt die Runde wieder an.
+function resetBoard() {
+    isPlayer_O_Turn = false;
     cellElements.forEach(cell => {
         cell.classList.remove(PLAYER_X_CLASS);
         cell.classList.remove(PLAYER_O_CLASS);
         cell.removeEventListener('click', handleCellClick);
-        cell.addEventListener('click', handleCellClick, { once: true });  //Once => Jedes Feld kann nur einmal angeklickt werden
-        counter = 0
+        cell.addEventListener('click', handleCellClick, { once: true });
+        turnCounter = 0;
     })
-    setBoardHoverClass();
-    winningMessageElement.classList.remove('show');
-
 }
 
+// Bei einem Zug wird die Marke gesetzt und gecheckt ob ein Spieler gewonnen hat oder ob es ein Unentschieden gibt.
 function handleCellClick(e) {
     const cell = e.target;
-    const currentClass = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
-    placeMark(cell, currentClass);     //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
-    if (checkWin(currentClass)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
+    const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
+    placeMark(cell, currentPlayer);     //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
+    if (checkWin(currentPlayer)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
         endGame(false);
     } else if (isDraw()) {
         endGame(true);
@@ -61,12 +62,12 @@ function handleCellClick(e) {
         swapTurns();                    // Wenn kein Gewinner feststeht und es kein Unentschieden ist, 
         setBoardHoverClass();
     }
-    counter++;
-    console.log(counter);
+    turnCounter++;
+    console.log(turnCounter);
 }
-
-function endGame(draw) {        // If Schleife ob Unentschieden oder der Spieler welcher dran ist gewonnen hat. Anzeigen wie es ausgegangen ist
-    if (counter < 6) {
+// If Schleife ob Unentschieden oder der Spieler welcher dran ist gewonnen hat. Anzeigen wie es ausgegangen ist.
+function endGame(draw) {
+    if (turnCounter < 6) {
         winningMessageTextElement.innerText = `Well that was easy. ${isPlayer_O_Turn ? "O" : "X"} hat gewonnen`;
     } else if (draw) {
         winningMessageTextElement.innerText = 'Unentschieden';
@@ -89,22 +90,25 @@ function endGame(draw) {        // If Schleife ob Unentschieden oder der Spieler
 }
 
 
-
+// Wird überprüft ob das Spiel unentschieden ausgeht.
 function isDraw() { // 
     return [...cellElements].every(cell => {
         return cell.classList.contains(PLAYER_X_CLASS) || cell.classList.contains(PLAYER_O_CLASS);
     })
 }
 
-function placeMark(cell, currentClass) { // auf einer Zelle ein Zeichen des aktiven Spielers einfügen
+// Auf einer Zelle das Zeichen des aktiven Spielers einfügen
+function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
 }
 
-function swapTurns() { // isPlayer_0_Turn boolean switchen
+// isPlayer_0_Turn boolean switchen nach jedem Zug
+function swapTurns() {
     isPlayer_O_Turn = !isPlayer_O_Turn;
 }
 
-function setBoardHoverClass() {                      // Funktion für die floating Zeichen
+// Funktion für die floating Symbole
+function setBoardHoverClass() {
     boardElement.classList.remove(PLAYER_X_CLASS);
     boardElement.classList.remove(PLAYER_O_CLASS);
     if (isPlayer_O_Turn) {
@@ -114,8 +118,9 @@ function setBoardHoverClass() {                      // Funktion für die floati
     }
 }
 
-function checkWin(currentClass) {                // Nach jeder TicTacToe Eingabe wird geprüft ob einer der Gewinnkombinationen erreicht wurde
-    return winning_combinations.some(combination => {
+// Nach jeder Eingabe wird geprüft ob einer der Gewinnkombinationen erreicht wurde
+function checkWin(currentClass) {
+    return WINNING_COMBINATIONS.some(combination => {
         return combination.every(index => {
             return cellElements[index].classList.contains(currentClass);
         })
