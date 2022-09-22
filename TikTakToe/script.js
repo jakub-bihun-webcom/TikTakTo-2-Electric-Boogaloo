@@ -24,9 +24,7 @@ let turnCounter = 0;
 let wonGamesX = 0;
 let wonGamesO = 0;
 messageTextO = document.getElementById('wonGamesOMsg');
-console.log(messageTextO);
 messageTextX = document.getElementById('wonGamesXMsg');
-console.log(messageTextX);
 
 startGame();
 
@@ -63,6 +61,7 @@ function resetBoard() {
 function handleCellClick(e) {
     const cell = e.target;
     const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
+    console.log(cell);
     placeMark(cell, currentPlayer);     //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
     if (checkWin(currentPlayer)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
         endGame(false);
@@ -73,7 +72,7 @@ function handleCellClick(e) {
         setBoardHoverClass();
     }
     turnCounter++;
-    console.log(turnCounter);
+    console.log(cellElements)
 }
 
 /**
@@ -94,9 +93,7 @@ function endGame(draw) {
     else {
         ++wonGamesX
     }
-    console.log('won games O ' + wonGamesO)
     messageO = 'Spieler O : ' + (wonGamesO);
-    console.log('won game X ' + wonGamesX)
     messageX = 'Spieler X : ' + (wonGamesX);
     messageTextO.innerText = messageO;
     messageTextX.innerText = messageX;
@@ -159,4 +156,28 @@ function checkWin(currentPlayer) {
             return cellElements[index].classList.contains(currentPlayer);
         })
     })
+}
+
+function KiMove(currentPlayerClass) {
+    const random = Math.floor(Math.random() * cellElements.length);
+    console.log(cellElements[random]);
+    cellElements[random]
+    cellElements[random].classList.add(currentPlayerClass);
+    console.log(cellElements)
+    const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
+    placeMark(cellElements[random], currentPlayer); 
+    console.log('joshys console',cellElements[random])
+        //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
+    if (checkWin(currentPlayer)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
+        endGame(false);
+    } else if (isDraw()) {
+        endGame(true);
+    } else {
+        swapTurns();                    // Wenn kein Gewinner feststeht und es kein Unentschieden ist, 
+        setBoardHoverClass();
+    }
+    turnCounter++;
+    console.log(cellElements)
+    
+
 }

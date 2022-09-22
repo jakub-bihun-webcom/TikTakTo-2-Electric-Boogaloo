@@ -21,7 +21,7 @@
         <p class="wonGamesOMsg" id="wonGamesOMsg"></p>
     </header>
     <div class="board" id="board">
-        <div class='cell' data-cell></div>
+        <div class='cell' 0></div>
         <div class='cell' data-cell></div>
         <div class='cell' data-cell></div>
         <div class='cell' data-cell></div>
@@ -34,6 +34,10 @@
     <div class="winning-message" id="winningMessage">
         <div id="winningMessageText"></div>
         <button onclick="startGame()">Restart</button>
+        
+    </div>
+    <div class="KiButton">
+        <button class="KiMoveButton" id="KiMoveButton" onclick="KiMove()">KI Zug</button>
     </div>
     <div class="restartButton">
         <button id="restartButton" onclick="startGame()">Restart</button>
