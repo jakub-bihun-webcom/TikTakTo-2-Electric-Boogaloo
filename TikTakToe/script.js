@@ -25,6 +25,10 @@ let wonGamesX = 0;
 let wonGamesO = 0;
 messageTextO = document.getElementById('wonGamesOMsg');
 messageTextX = document.getElementById('wonGamesXMsg');
+let alreadySetCells = [];
+
+
+
 
 startGame();
 
@@ -36,6 +40,8 @@ function startGame() {
     resetBoard();
     setBoardHoverClass();
     winningMessageElement.classList.remove('show');
+    console.log(alreadySetCells)
+    alreadySetCells = [];
 }
 
 
@@ -50,8 +56,10 @@ function resetBoard() {
         cell.removeEventListener('click', handleCellClick);
         cell.addEventListener('click', handleCellClick, { once: true });
         turnCounter = 0;
+        
     })
 }
+
 
 
 /**
@@ -61,7 +69,18 @@ function resetBoard() {
 function handleCellClick(e) {
     const cell = e.target;
     const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
-    console.log(cell);
+
+    
+
+    console.log('verwendete Zellen', alreadySetCells)
+    console.log('Zelle', cell.id)
+    //console.log(typeof alreadySetCells);
+    
+    console.log(alreadySetCells)
+    console.log(alreadySetCells, cell.id)
+    if (alreadySetCells.includes (cell.id)) {
+
+    } else {
     placeMark(cell, currentPlayer);     //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
     if (checkWin(currentPlayer)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
         endGame(false);
@@ -72,13 +91,14 @@ function handleCellClick(e) {
         setBoardHoverClass();
     }
     turnCounter++;
-    console.log(cellElements)
-    console.log('baord Element', boardElement.classList)
-    console.log(cellElements.item)
+    alreadySetCells.push(cell.id);
+    //console.log(cellElements)
+    //console.log('baord Element', boardElement.classList)
+    //console.log(cellElements.item)
     if (isPlayer_O_Turn){
-        KiMove();
+      KiMove();
     }
-}
+}}
 
 /**
  * Spiel wird Beendet. Zeigt die winningMessage mit dazugehöriger nachricht wer gewonnen hat oder ob ein Unentschieden vorliegt. 
@@ -144,6 +164,7 @@ function setBoardHoverClass() {
     boardElement.classList.remove(PLAYER_O_CLASS);
     if (isPlayer_O_Turn) {
         boardElement.classList.add(PLAYER_O_CLASS);
+        
     } else {
         boardElement.classList.add(PLAYER_X_CLASS);
     }
@@ -163,16 +184,25 @@ function checkWin(currentPlayer) {
     })
 }
 
-function KiMove(currentPlayerClass) {
+function KiMove(currentPlayerClass, handleCellClick,) {
+    delayInMilliseconds()
     const random = Math.floor(Math.random() * cellElements.length);
-    console.log(cellElements[random]);
-    cellElements[random]
+    //console.log(cellElements[random]);
+    console.log(cellElements[random].id);
+    if (alreadySetCells.includes (cellElements[random].id)){
+        KiMove()
+    }
+    else {
     cellElements[random].classList.add(currentPlayerClass);
-    console.log(cellElements)
+
+    //console.log(cellElements)
     const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
     placeMark(cellElements[random], currentPlayer); 
-    console.log('joshys console',cellElements[random])
-        //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
+    cellElements.forEach(cell =>cell.removeEventListener('change', handleCellClick));
+    alreadySetCells.push(cellElements[random].id)
+    console.log(alreadySetCells);
+
+
     if (checkWin(currentPlayer)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
         endGame(false);
     } else if (isDraw()) {
@@ -182,5 +212,9 @@ function KiMove(currentPlayerClass) {
         setBoardHoverClass();
     }
     turnCounter++;
-    console.log(cellElements)
+    //console.log(cellElements)
+}}
+
+function delayInMilliseconds() {
+    setTimeout(() => { console.log("world"); }, 1000);
 }
