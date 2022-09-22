@@ -15,7 +15,7 @@ let messageTextX;
 let messageO;
 let messageX;
 
-const cellElements = document.querySelectorAll('[data-cell]');
+let cellElements = document.querySelectorAll('[data-cell]');
 const boardElement = document.getElementById('board');
 const winningMessageElement = document.getElementById('winningMessage');
 const winningMessageTextElement = document.getElementById('winningMessageText');
@@ -73,6 +73,11 @@ function handleCellClick(e) {
     }
     turnCounter++;
     console.log(cellElements)
+    console.log('baord Element', boardElement.classList)
+    console.log(cellElements.item)
+    if (isPlayer_O_Turn){
+        KiMove();
+    }
 }
 
 /**
@@ -178,6 +183,4 @@ function KiMove(currentPlayerClass) {
     }
     turnCounter++;
     console.log(cellElements)
-    
-
 }
