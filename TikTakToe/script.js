@@ -60,8 +60,7 @@ function resetBoard() {
 function handleCellClick(e) {
     const cell = e.target;
     const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
-    if (alreadySetCells.includes(cell.id)) {
-    } else {
+    if (!alreadySetCells.includes(cell.id)) {
         placeMark(cell, currentPlayer);     //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
         if (checkWin(currentPlayer)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
             setTimeout(() => endGame(false), 500);
