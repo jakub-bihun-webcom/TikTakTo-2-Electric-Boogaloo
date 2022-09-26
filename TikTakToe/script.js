@@ -35,9 +35,6 @@ startGame();
 function startGame() {
     resetBoard();
     setBoardHoverClass();
-    winningMessageElement.classList.remove('show');
-    console.log(alreadySetCells)
-    alreadySetCells = [];
 }
 
 /**
@@ -51,8 +48,9 @@ function resetBoard() {
         cell.removeEventListener('click', handleCellClick);
         cell.addEventListener('click', handleCellClick, { once: true });
         turnCounter = 0;
-
     })
+    winningMessageElement.classList.remove('show');
+    alreadySetCells = [];
 }
 
 /**
@@ -76,7 +74,7 @@ function handleCellClick(e) {
         turnCounter++;
         alreadySetCells.push(cell.id);
         if (isPlayer_O_Turn) {
-            setTimeout(() => KiMove(), 200);
+            setTimeout(() => kiMove(), 200);
         }
     }
 }
@@ -99,7 +97,7 @@ function endGame(draw) {
     else {
         ++wonGamesX
     }
-    messageO = 'KI: : ' + (wonGamesO);
+    messageO = 'KI : ' + (wonGamesO);
     messageX = 'Spieler : ' + (wonGamesX);
     messageTextO.innerText = messageO;
     messageTextX.innerText = messageX;
@@ -117,7 +115,7 @@ function isDraw() { //
 }
 
 /**
- * Auf einer Zelle das Zeichen des aktiven Spielers einfügen
+ * Die Zelle. in der die Markierung auf das Spielbrett gesetzt werden soll.
  * @param {*} cell - Eine Bestimmte Zelle 
  * @param {*} currentPlayerClass  - Zeigt welcher Spieler am Zug ist
  */
@@ -126,7 +124,7 @@ function placeMark(cell, currentPlayerClass) {
 }
 
 /**
- * isPlayer_0_Turn boolean switchen nach jedem Zug
+ * Nach jedem Zug wird der Spieler gewechselt.
  */
 function swapTurns() {
     isPlayer_O_Turn = !isPlayer_O_Turn;
@@ -160,15 +158,17 @@ function checkWin(currentPlayer) {
 }
 
 /**
- * 
+ * Die KI wählt eine zufällige Zahl zwischen 0 und 8, diese Zahl wird mit den bereits vergebenen Zellen abgeglichen, 
+ * falls die Zelle schon vergeben ist wird eine neue zufällige Zahl ausgegeben, bis eine freie Zelle gefunden wurde.
+ * In der freien Zelle macht die KI dann ihren Zug.  
  * @param {*} currentPlayerClass - Zeigt welcher Spieler am Zug ist  
  * @param {*} handleCellClick - Ermöglicht es der Ki ein Feld zu clicken
  */
-function KiMove(currentPlayerClass, handleCellClick,) {
+function kiMove(currentPlayerClass, handleCellClick) {
     const random = Math.floor(Math.random() * cellElements.length);
     //console.log(cellElements[random]);
     if (alreadySetCells.includes(cellElements[random].id)) {
-        KiMove()
+        kiMove()
     }
     else {
         cellElements[random].classList.add(currentPlayerClass);
