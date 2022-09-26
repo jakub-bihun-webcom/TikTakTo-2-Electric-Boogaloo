@@ -1,5 +1,8 @@
 const PLAYER_X_CLASS = 'x';
 const PLAYER_O_CLASS = 'circle';
+const boardElement = document.getElementById('board');
+const winningMessageElement = document.getElementById('winningMessage');
+const winningMessageTextElement = document.getElementById('winningMessageText');
 const WINNING_COMBINATIONS = [
     [0, 1, 2],
     [3, 4, 5],
@@ -10,22 +13,18 @@ const WINNING_COMBINATIONS = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-let messageTextO;
-let messageTextX;
-let messageO;
-let messageX;
-
-let cellElements = document.querySelectorAll('[data-cell]');
-const boardElement = document.getElementById('board');
-const winningMessageElement = document.getElementById('winningMessage');
-const winningMessageTextElement = document.getElementById('winningMessageText');
 let isPlayer_O_Turn = false;
 let turnCounter = 0;
 let wonGamesX = 0;
 let wonGamesO = 0;
+let messageTextO;
+let messageTextX;
+let messageO;
+let messageX;
+let cellElements = document.querySelectorAll('[data-cell]');
+let alreadySetCells = [];
 messageTextO = document.getElementById('wonGamesOMsg');
 messageTextX = document.getElementById('wonGamesXMsg');
-let alreadySetCells = [];
 
 startGame();
 
@@ -45,8 +44,8 @@ function resetBoard() {
     cellElements.forEach(cell => {
         cell.classList.remove(PLAYER_X_CLASS);
         cell.classList.remove(PLAYER_O_CLASS);
-        cell.removeEventListener('click', handleCellClick);
-        cell.addEventListener('click', handleCellClick, { once: true });
+        cell.removeEventListener('click', playerMove);
+        cell.addEventListener('click', playerMove, { once: true });
         turnCounter = 0;
     })
     winningMessageElement.classList.remove('show');
@@ -55,32 +54,21 @@ function resetBoard() {
 
 /**
  * Bei einem Zug wird die Marke gesetzt und gecheckt ob ein Spieler gewonnen hat oder ob es ein Unentschieden gibt.
- * @param {*} e - html event 
+ * @param {Element} e - html event 
  */
-function handleCellClick(e) {
+function playerMove(e) {
     const cell = e.target;
-    const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
     if (!alreadySetCells.includes(cell.id)) {
-        placeMark(cell, currentPlayer);     //Funktion placeMark wird ausgeführt für den Spieler dessen Zug ist
-        if (checkWin(currentPlayer)) {       //CheckWin wird mit aktuellem Spieler ausgeführt
-            setTimeout(() => endGame(false), 500);
-        } else if (isDraw()) {
-            setTimeout(() => { endGame(true); }, 500);
-        } else {
-            swapTurns();                    // Wenn kein Gewinner feststeht und es kein Unentschieden ist, 
-            setBoardHoverClass();
-        }
-        turnCounter++;
-        alreadySetCells.push(cell.id);
+        handleCellClick(cell);
         if (isPlayer_O_Turn) {
-            setTimeout(() => kiMove(), 200);
+            kiMove();
         }
     }
 }
 
 /**
  * Spiel wird Beendet. Zeigt die winningMessage mit dazugehöriger nachricht wer gewonnen hat oder ob ein Unentschieden vorliegt. 
- * @param {*} draw - Unentschieden - checkt ob das Spiel unetschieden ausgegangen ist
+ * @param {boolean} draw - Unentschieden - checkt ob das Spiel unetschieden ausgegangen ist
  */
 function endGame(draw) {
     if (turnCounter < 6) {
@@ -105,7 +93,6 @@ function endGame(draw) {
 
 /**
  * Wird überprüft ob das Spiel unentschieden ausgeht.
- * @returns 
  */
 function isDraw() { // 
     return [...cellElements].every(cell => {
@@ -115,8 +102,8 @@ function isDraw() { //
 
 /**
  * Die Zelle. in der die Markierung auf das Spielbrett gesetzt werden soll.
- * @param {*} cell - Eine Bestimmte Zelle 
- * @param {*} currentPlayerClass  - Zeigt welcher Spieler am Zug ist
+ * @param {Element} cell - Eine Bestimmte Zelle 
+ * @param {string} currentPlayerClass  - Zeigt welcher Spieler am Zug ist
  */
 function placeMark(cell, currentPlayerClass) {
     cell.classList.add(currentPlayerClass);
@@ -145,8 +132,7 @@ function setBoardHoverClass() {
 
 /**
  * Nach jeder Eingabe wird geprüft ob einer der Gewinnkombinationen erreicht wurde
- * @param {*} currentPlayer - Zeigt welcher Spieler am Zug ist 
- * @returns 
+ * @param {Element} currentPlayer - Zeigt welcher Spieler am Zug ist 
  */
 function checkWin(currentPlayer) {
     return WINNING_COMBINATIONS.some(combination => {
@@ -160,10 +146,8 @@ function checkWin(currentPlayer) {
  * Die KI wählt eine zufällige Zahl zwischen 0 und 8, diese Zahl wird mit den bereits vergebenen Zellen abgeglichen, 
  * falls die Zelle schon vergeben ist wird eine neue zufällige Zahl ausgegeben, bis eine freie Zelle gefunden wurde.
  * In der freien Zelle macht die KI dann ihren Zug.  
- * @param {*} currentPlayerClass - Zeigt welcher Spieler am Zug ist  
- * @param {*} handleCellClick - Ermöglicht es der Ki ein Feld zu clicken
  */
-function kiMove(currentPlayerClass, handleCellClick) {
+function kiMove(currentPlayerClass, playerMove) {
     const random = Math.floor(Math.random() * cellElements.length);
     //console.log(cellElements[random]);
     if (alreadySetCells.includes(cellElements[random].id)) {
@@ -171,20 +155,28 @@ function kiMove(currentPlayerClass, handleCellClick) {
     }
     else {
         cellElements[random].classList.add(currentPlayerClass);
-        const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;   // Checkt welcher Spieler an der Reihe ist | true = Player X false = Player Y   
-        placeMark(cellElements[random], currentPlayer);
-        cellElements.forEach(cell => cell.removeEventListener('change', handleCellClick));
-        alreadySetCells.push(cellElements[random].id)
-        if (checkWin(currentPlayer)) {
-            setTimeout(() => { endGame(false) }, 500);
-        } else if (isDraw()) {
-            setTimeout(() => { endGame(true); }, 500);
-        } else {
-            swapTurns();                    // Wenn kein Gewinner feststeht und es kein Unentschieden ist, 
-            setBoardHoverClass();
-        }
-        turnCounter++;
+        cellElements.forEach(cell => cell.removeEventListener('change', playerMove));
+        handleCellClick(cellElements[random]);
     }
 }
 
-
+/**
+ * Die Marke wird für den aktiven Spieler gesetzt, anschließend werden die Funktionen zum überprüfen 
+ * von Gewinn/Unentschieden ausgeführt. Wenn es kein Unentschieden/Sieger gibt wird der aktive Spieler 
+ * gewechselt und der nächste Zug startet.
+ * @param {Element} zelle 
+ */
+function handleCellClick(zelle) {
+    const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
+    placeMark(zelle, currentPlayer)
+    if (checkWin(currentPlayer)) {
+        endGame(false);
+    } else if (isDraw()) {
+        endGame(true);
+    } else {
+        swapTurns();
+        setBoardHoverClass();
+    }
+    turnCounter++;
+    alreadySetCells.push(zelle.id);
+}
