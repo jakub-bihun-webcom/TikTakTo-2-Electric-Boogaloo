@@ -171,3 +171,20 @@ img {
 .winning-message.show {
   display: flex;
 }
+
+.KiMoveButton {
+  font-size: 30px;
+  color: #9db7cf;
+  cursor: pointer;
+  background-color: #34495e;
+  border-radius: 30px;
+  width: 20%;
+  box-shadow: 2px 2px 20px #34495e;
+
+}
+
+.KiButton {
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+}
