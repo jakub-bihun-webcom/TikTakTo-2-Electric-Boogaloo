@@ -59,7 +59,7 @@ function resetBoard() {
 function playerMove(e) {
     const cell = e.target;
     if (!alreadySetCells.includes(cell.id)) {
-        handleMove(cell);
+        handleCellClick(cell);
         if (isPlayer_O_Turn) {
             kiMove();
         }
@@ -78,7 +78,10 @@ function endGame(draw) {
     } else {
         winningMessageTextElement.innerText = `Spieler mit ${isPlayer_O_Turn ? "O" : "X"} hat gewonnen`;
     }
-    if (isPlayer_O_Turn == true) {
+    if (draw == true) {
+        //es werden keine Punkte verteilt wenn es Unentschieden ausgeht.
+    }
+    else if (isPlayer_O_Turn == true) {
         ++wonGamesO
     }
     else {
@@ -155,7 +158,8 @@ function kiMove(currentPlayerClass, playerMove) {
     }
     else {
         cellElements[random].classList.add(currentPlayerClass);
-        handleMove(cellElements[random]);
+        cellElements.forEach(cell => cell.removeEventListener('change', playerMove));
+        handleCellClick(cellElements[random]);
     }
 }
 
@@ -163,12 +167,11 @@ function kiMove(currentPlayerClass, playerMove) {
  * Die Marke wird für den aktiven Spieler gesetzt, anschließend werden die Funktionen zum überprüfen 
  * von Gewinn/Unentschieden ausgeführt. Wenn es kein Unentschieden/Sieger gibt wird der aktive Spieler 
  * gewechselt und der nächste Zug startet.
- * @param {Element} cell 
+ * @param {Element} zelle 
  */
-function handleMove(cell) {
+function handleCellClick(zelle) {
     const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
-    alreadySetCells.push(cell.id);
-    placeMark(cell, currentPlayer)
+    placeMark(zelle, currentPlayer)
     if (checkWin(currentPlayer)) {
         endGame(false);
     } else if (isDraw()) {
@@ -178,4 +181,5 @@ function handleMove(cell) {
         setBoardHoverClass();
     }
     turnCounter++;
+    alreadySetCells.push(zelle.id);
 }
