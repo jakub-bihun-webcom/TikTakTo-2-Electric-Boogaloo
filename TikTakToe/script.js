@@ -59,7 +59,7 @@ function resetBoard() {
 function playerMove(e) {
     const cell = e.target;
     if (!alreadySetCells.includes(cell.id)) {
-        handleCellClick(cell);
+        handleMove(cell);
         if (isPlayer_O_Turn) {
             kiMove();
         }
@@ -155,8 +155,7 @@ function kiMove(currentPlayerClass, playerMove) {
     }
     else {
         cellElements[random].classList.add(currentPlayerClass);
-        cellElements.forEach(cell => cell.removeEventListener('change', playerMove));
-        handleCellClick(cellElements[random]);
+        handleMove(cellElements[random]);
     }
 }
 
@@ -164,11 +163,12 @@ function kiMove(currentPlayerClass, playerMove) {
  * Die Marke wird für den aktiven Spieler gesetzt, anschließend werden die Funktionen zum überprüfen 
  * von Gewinn/Unentschieden ausgeführt. Wenn es kein Unentschieden/Sieger gibt wird der aktive Spieler 
  * gewechselt und der nächste Zug startet.
- * @param {Element} zelle 
+ * @param {Element} cell 
  */
-function handleCellClick(zelle) {
+function handleMove(cell) {
     const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
-    placeMark(zelle, currentPlayer)
+    alreadySetCells.push(cell.id);
+    placeMark(cell, currentPlayer)
     if (checkWin(currentPlayer)) {
         endGame(false);
     } else if (isDraw()) {
@@ -178,5 +178,4 @@ function handleCellClick(zelle) {
         setBoardHoverClass();
     }
     turnCounter++;
-    alreadySetCells.push(zelle.id);
 }
