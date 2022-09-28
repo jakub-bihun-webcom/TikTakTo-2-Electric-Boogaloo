@@ -13,6 +13,7 @@ const WINNING_COMBINATIONS = [
     [0, 4, 8],
     [2, 4, 6]
 ]
+const allCells = ["cell0", "cell1", "cell2", "cell3", "cell4", "cell5", "cell6", "cell7", "cell8"];
 let isPlayer_O_Turn = false;
 let turnCounter = 0;
 let wonGamesX = 0;
@@ -23,6 +24,7 @@ let messageO;
 let messageX;
 let cellElements = document.querySelectorAll('[data-cell]');
 let alreadySetCells = [];
+
 messageTextO = document.getElementById('wonGamesOMsg');
 messageTextX = document.getElementById('wonGamesXMsg');
 
@@ -49,6 +51,7 @@ function resetBoard() {
         turnCounter = 0;
     })
     winningMessageElement.classList.remove('show');
+
     alreadySetCells = [];
 }
 
@@ -59,7 +62,7 @@ function resetBoard() {
 function playerMove(e) {
     const cell = e.target;
     if (!alreadySetCells.includes(cell.id)) {
-        handleCellClick(cell);
+        handleMove(cell);
         if (isPlayer_O_Turn) {
             kiMove();
         }
@@ -109,6 +112,8 @@ function isDraw() { //
  * @param {string} currentPlayerClass  - Zeigt welcher Spieler am Zug ist
  */
 function placeMark(cell, currentPlayerClass) {
+    console.log("inPlaceMark", cell)
+
     cell.classList.add(currentPlayerClass);
 }
 
@@ -151,27 +156,23 @@ function checkWin(currentPlayer) {
  * In der freien Zelle macht die KI dann ihren Zug.  
  */
 function kiMove(currentPlayerClass, playerMove) {
-    const random = Math.floor(Math.random() * cellElements.length);
-    //console.log(cellElements[random]);
-    if (alreadySetCells.includes(cellElements[random].id)) {
-        kiMove()
-    }
-    else {
-        cellElements[random].classList.add(currentPlayerClass);
-        cellElements.forEach(cell => cell.removeEventListener('change', playerMove));
-        handleCellClick(cellElements[random]);
-    }
+    let availableCells = getAvailableCells();
+    console.log('hier', availableCells);
+    const random = Math.floor(Math.random() * availableCells.length);
+    cellElements[random].classList.add(currentPlayerClass);
+    cellElements.forEach(cell => cell.removeEventListener('change', playerMove));
+    handleMove(availableCells[random]);
 }
 
 /**
  * Die Marke wird für den aktiven Spieler gesetzt, anschließend werden die Funktionen zum überprüfen 
  * von Gewinn/Unentschieden ausgeführt. Wenn es kein Unentschieden/Sieger gibt wird der aktive Spieler 
  * gewechselt und der nächste Zug startet.
- * @param {Element} zelle 
+ * @param {Element} cell 
  */
-function handleCellClick(zelle) {
-    const currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
-    placeMark(zelle, currentPlayer)
+function handleMove(cell) {
+    let currentPlayer = isPlayer_O_Turn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
+    placeMark(cell, currentPlayer)
     if (checkWin(currentPlayer)) {
         endGame(false);
     } else if (isDraw()) {
@@ -181,5 +182,16 @@ function handleCellClick(zelle) {
         setBoardHoverClass();
     }
     turnCounter++;
-    alreadySetCells.push(zelle.id);
+    alreadySetCells.push(cell.id);
+}
+
+function getAvailableCells() {
+    let availableCells = [];
+    allCells.forEach(cell => {
+        if (!alreadySetCells.includes(cell)) {
+            availableCells.push(cell);
+            console.log('available cells', availableCells);
+        }
+    });
+    return availableCells;
 }
