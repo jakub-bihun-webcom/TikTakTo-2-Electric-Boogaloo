@@ -13,7 +13,7 @@ const WINNING_COMBINATIONS = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-const allCells = ["cell0", "cell1", "cell2", "cell3", "cell4", "cell5", "cell6", "cell7", "cell8"];
+const allCellIds = ["cell0", "cell1", "cell2", "cell3", "cell4", "cell5", "cell6", "cell7", "cell8"];
 let isPlayer_O_Turn = false;
 let turnCounter = 0;
 let wonGamesX = 0;
@@ -115,6 +115,7 @@ function placeMark(cell, currentPlayerClass) {
     console.log("inPlaceMark", cell)
 
     cell.classList.add(currentPlayerClass);
+    //alreadySetCells.add(currentPlayerClass);
 }
 
 /**
@@ -156,12 +157,9 @@ function checkWin(currentPlayer) {
  * In der freien Zelle macht die KI dann ihren Zug.  
  */
 function kiMove(currentPlayerClass, playerMove) {
-    let availableCells = getAvailableCells();
-    console.log('hier', availableCells);
-    const random = Math.floor(Math.random() * availableCells.length);
-    cellElements[random].classList.add(currentPlayerClass);
-    cellElements.forEach(cell => cell.removeEventListener('change', playerMove));
-    handleMove(availableCells[random]);
+    let cellToPlaceMark = getCellToPlaceMark();
+    cellToPlaceMark.classList.add(currentPlayerClass);
+    handleMove(cellToPlaceMark);
 }
 
 /**
@@ -185,13 +183,26 @@ function handleMove(cell) {
     alreadySetCells.push(cell.id);
 }
 
-function getAvailableCells() {
-    let availableCells = [];
-    allCells.forEach(cell => {
+/**
+ * Liefert die Ids der Zellen zurück, auf denen noch keine Markierung gesetzt ist
+ */
+function getAvailableCellIds() {
+    let availableCellIds = [];
+    allCellIds.forEach(cell => {
         if (!alreadySetCells.includes(cell)) {
-            availableCells.push(cell);
-            console.log('available cells', availableCells);
+            availableCellIds.push(cell);
         }
     });
-    return availableCells;
+    return availableCellIds;
+}
+
+function getCellToPlaceMark() {
+    const availableCellIds = getAvailableCellIds();
+    const randomIndexPick = Math.floor(Math.random() * availableCellIds.length);
+    let selectedCellId = availableCellIds[randomIndexPick];
+    // die Id der Zelle besteht aus einem 'sprechenden' Schlüssel wie bspw. 'cell4'.
+    // Da jedoch der Index benötigt wird, lesen wir diesen nachfolgend über den Teilstring aus
+    let selectedCellIndex = selectedCellId.substring('cell'.length);
+    let selectedCell = cellElements[selectedCellIndex];
+    return selectedCell;
 }
