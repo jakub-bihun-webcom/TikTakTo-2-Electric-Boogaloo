@@ -112,8 +112,6 @@ function isDraw() { //
  * @param {string} currentPlayerClass  - Zeigt welcher Spieler am Zug ist
  */
 function placeMark(cell, currentPlayerClass) {
-    console.log("inPlaceMark", cell)
-
     cell.classList.add(currentPlayerClass);
     //alreadySetCells.add(currentPlayerClass);
 }
@@ -195,7 +193,10 @@ function getAvailableCellIds() {
     });
     return availableCellIds;
 }
-
+/**
+ * Wählt zufällig eine Zelle aus in die, die KI ihr Symbol setzten soll.
+ * @returns 
+ */
 function getCellToPlaceMark() {
     const availableCellIds = getAvailableCellIds();
     const randomIndexPick = Math.floor(Math.random() * availableCellIds.length);
