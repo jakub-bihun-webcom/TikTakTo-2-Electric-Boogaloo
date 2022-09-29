@@ -1,3 +1,5 @@
+const PLAYER_X_CLASS = 'X';
+const PLAYER_O_CLASS = 'O';
 const WINNING_COMBINATIONS = [
     [0, 1, 2],
     [3, 4, 5],
@@ -13,24 +15,45 @@ let playerXCells = [];
 let playerOCells = [];
 let alreadySetCells = [];
 let playerXTurn = true;
+let currentPlayer = playerXTurn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
+
+
+
+let topLeft = true;
+let topMid = false;
+let topRight = false;
+let midLeft = false;
+let midMid = false;
+let midRight = false;
+let bottomLeft = false;
+let bottomMid = false;
+let bottomRight = false;
+
 
 startGame();
 /**
  * Nur ein Ansatz das Feld in der Konsoe auszugeben
  */
+
 function printPattern() {
-console.log(' X | O | X ')
-console.log('___|___|___')
-console.log(' O | X | O ')
-console.log('___|___|___')
-console.log(' X | O | X ')
-console.log('   |   |   ')
+    //console.log(adaptPattern(0, 0));
+    //console.log(adaptPattern(0, 1));
+    console.log(' ' + adaptPattern(0, 1) + ' | ' + adaptPattern(0, 2) + ' | ' + adaptPattern(0,3) + ' ');
+    console.log('___|___|___')
+    console.log(' ' + adaptPattern(1, 1) + ' | ' + adaptPattern(1, 2) + ' | ' + adaptPattern(1,3) + ' ');
+    console.log('___|___|___')
+    console.log(' ' + adaptPattern(2, 1) + ' | ' + adaptPattern(2, 2) + ' | ' + adaptPattern(2,3) + ' ');
+    console.log('   |   |   ')
 }
 /**
  * Soll hinterher das printPattern() an die Aktuelle situation anpassen
  */
-function adaptPattern() {
-    
+function adaptPattern(x, y) {
+    // gucken, welches Symbol bei x y ausgegeben werden muss
+    if (y === 2 && x === 1) {
+        return 'X'
+    }
+    return 'O';
 } 
 
 /**
@@ -45,7 +68,7 @@ function startGame(){
 function resetBoard(){
     playerOCells = [];
     playerXCells = [];
-    allCells = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     playerXTurn = true;
 
 }
@@ -68,13 +91,10 @@ function stateOfBoard(){
 function setPlayerX(cell) {
     if (playerXTurn == false){
         console.log("Player O ist am Zug");
-    } else if (!availableCells.includes(cell)) {
-        console.log("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
     } else {
+        setCell(cell);
         playerXCells.push(cell);
-        alreadySetCells.push(cell);
-        availableCells.splice(cell, 1);
-        playerXTurn = false; 
+    //    checkWin();
     }
 }
 /**
@@ -84,12 +104,34 @@ function setPlayerX(cell) {
 function setPlayerO(cell) {
     if (playerXTurn == true) {
         console.log('Spieler X ist am Zug')
-    } else if (!availableCells.includes(cell)) {
-        console.log("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
     } else { 
+        setCell(cell);
         playerOCells.push(cell);
-        alreadySetCells.push(cell); 
-        availableCells.splice(cell, 1);
-        playerXTurn = true;
+       // checkWin(currentPlayer);
     }
 }
+
+function setCell(cell){
+    if(!cell == Number || 0 > cell > 9) {
+        console.log("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen")
+    } else if (!availableCells.includes(cell)) {
+        console.log("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
+    } else {
+        alreadySetCells.push(cell); 
+        for(let index = 0; index < availableCells.length; index++){
+            if(availableCells[index] === cell){
+                availableCells.splice(index, 1);
+            }
+        }
+        playerXTurn = !playerXTurn;
+    }
+} 
+/*
+function checkWin(currentPlayer) {
+    return WINNING_COMBINATIONS.some(combination => {
+        return combination.every(index => {
+            return cellplayer[index].contatins(currentPlayer));
+        }
+    }
+
+*/
