@@ -20,13 +20,6 @@ let currentPlayer = playerXTurn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
 
 startGame();
 
-function adaptPattern(x, y) {
-    // gucken, welches Symbol bei x y ausgegeben werden muss
-    if (y === 2 && x === 2) {
-        return 'X'
-    }
-    return 'O';
-}
 
 /**
  * Startet das Spiel und lässt das Spielfeld aufräumen.
@@ -43,7 +36,6 @@ function resetBoard() {
     playerXCells = [];
     availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     playerXTurn = true;
-
 }
 
 /**
@@ -55,8 +47,12 @@ function setPlayerX(cell) {
         console.log("Player O ist am Zug");
     } else {
         setCell(cell);
-        //  checkWin();
+
     }
+    if (checkWinPlayerX() === true) {
+        console.log('PlayerX hat gewonnen!')
+    }
+    printPattern()
 }
 
 /**
@@ -68,8 +64,11 @@ function setPlayerO(cell) {
         console.log('Spieler X ist am Zug')
     } else {
         setCell(cell);
-        //    checkWin();
     }
+    if (checkWinPlayerO() === true) {
+        console.log('PlayerO hat gewonnen')
+    }
+    printPattern()
 }
 
 /**
@@ -89,6 +88,7 @@ function setCell(cell) {
                 availableCells.splice(index, 1);
             }
         }
+        checkDraw();
         if (playerXTurn == true) {
             playerXCells.push(cell);
         } else {
@@ -96,6 +96,15 @@ function setCell(cell) {
         }
         playerXTurn = !playerXTurn;
     }
+}
+
+/**
+ * Überprüft ob das Spiel unentschieden ist. 
+ */
+function checkDraw() {
+    if (availableCells.length == 0) {
+        console.log('Unentschieden')
+    } else { }
 }
 
 /**
@@ -108,78 +117,62 @@ function stateOfBoard() {
 }
 
 /**
- * Funktion, welche das Array eines Spielers überprüft ob es eine mögliche Gewinnkombination enthält
- * @returns 
+ * Funktion, welche das Array eines Spielers überprüft ob es eine mögliche Gewinnkombination enthält.
+ * Bei Sieg gibt es den Wert 'true' zurück ansonsten 'false'.
+ * ToDo Ohne 'some' oder 'every'
  */
-function checkWin() {
-    return WINNING_COMBINATIONS.some(item => {
-        return item.every(index => {
-            return playerXCells.contains(WINNING_COMBINATIONS);
+function checkWinPlayerX() {
+    return WINNING_COMBINATIONS.some(winningCombination => {
+        return winningCombination.every(index => {
+            return playerXCells.includes(index);
         })
     })
 }
-
-
-
-
-
-
-
-
-/*
-class Fields {
-    constructor(_field) {
-        this.fieldNumber = _field;
-    }
+/**
+ * Überprüft ob PlayerO gewonnen hat.
+ */
+function checkWinPlayerO() {
+    return WINNING_COMBINATIONS.some(winningCombination => {
+        return winningCombination.every(index => {
+            return playerOCells.includes(index);
+        })
+    })
 }
-
-let field0 = new Fields(0);
-let field1 = new Fields(1);
-let field2 = new Fields(2);
-let field3 = new Fields(3);
-let field4 = new Fields(4);
-let field5 = new Fields(5);
-let field6 = new Fields(6);
-let field7 = new Fields(7);
-let field8 = new Fields(8);
-
-console.log("Feld0", field0.fieldNumber, typeof (field0.fieldNumber))
-
-let topLeft = true;
-let topMid = false;
-let topRight = false;
-let midLeft = false;
-let midMid = false;
-let midRight = false;
-let bottomLeft = false;
-let bottomMid = false;
-let bottomRight = false;
+/**
+ * Zeigt das Spielfeld in der Console. 
+ */
+function printPattern() {
+    console.log(' ' + setSymbols(0) + ' | ' + setSymbols(1) + ' | ' + setSymbols(2) + ' ');
+    console.log('___|___|___')
+    console.log(' ' + setSymbols(3) + ' | ' + setSymbols(4) + ' | ' + setSymbols(5) + ' ');
+    console.log('___|___|___')
+    console.log(' ' + setSymbols(6) + ' | ' + setSymbols(7) + ' | ' + setSymbols(8) + ' ');
+    console.log('   |   |   ');
+    console.log(' ');
+}
 
 /**
- * Nur ein Ansatz das Feld in der Konsoe auszugeben
+ * Die Funktion überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechenden Symbol wieder.
+ * @param {number} index 
  */
+function setSymbols(index) {
+    if (playerXCells.includes(index)) {
+        return 'X'
+    } else if (playerOCells.includes(index)) {
+        return 'O'
+    } else {
+        return " "
+    }
+}
 
 /*
-function printPattern() {
-    //console.log(adaptPattern(0, 0));
-    //console.log(adaptPattern(0, 1));
-    for (let index = 0; index < allCells.length; index++) {
-        //   const element = allCells[index];
-        if (playerXCells.includes[index]) {
-            field[index].fieldNumber[index] = "X";
-        } else if (playerOCells.includes[index]) {
-            field[index].fieldNumber[index] = "O";
-        } else {
-            field[index].fieldNumber[index] = "  ";
-        }
-    }
-
-
-    console.log(' ' + field0.fieldNumber + ' | ' + adaptPattern(0, 2) + ' | ' + adaptPattern(0, 3) + ' ');
-    console.log('___|___|___')
-    console.log(' ' + adaptPattern(1, 1) + ' | ' + adaptPattern(1, 2) + ' | ' + adaptPattern(1, 3) + ' ');
-    console.log('___|___|___')
-    console.log(' ' + adaptPattern(2, 1) + ' | ' + adaptPattern(2, 2) + ' | ' + adaptPattern(2, 3) + ' ');
-    console.log('   |   |   ')
-}
+setPlayerX(5);
+setPlayerO(2);
+setPlayerX(0);
+setPlayerO(4);
+setPlayerX(7);
+setPlayerO(1);
+setPlayerX(8);
+setPlayerO(6);
+setPlayerX(3);
 */
