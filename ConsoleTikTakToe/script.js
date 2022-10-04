@@ -17,6 +17,8 @@ let playerOCells = [];
 let alreadySetCells = [];
 let playerXTurn = true;
 let currentPlayer = playerXTurn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
+let draw = false;
+let gameWon = false;
 
 startGame();
 
@@ -51,6 +53,7 @@ function setPlayerX(cell) {
     }
     if (checkWinPlayerX() === true) {
         console.log('PlayerX hat gewonnen!')
+        let gameWon = true; // warum kann ich hier die Globale Variable nicht verändern?
     }
     printPattern()
 }
@@ -67,6 +70,9 @@ function setPlayerO(cell) {
     }
     if (checkWinPlayerO() === true) {
         console.log('PlayerO hat gewonnen')
+        let gameWon = true;  // warum kann ich hier die Globale Variable nicht verändern?
+    } else {
+
     }
     printPattern()
 }
@@ -96,15 +102,23 @@ function setCell(cell) {
         }
         playerXTurn = !playerXTurn;
     }
+    if (gameWon === true) {
+    } else if (draw === true) {
+        console.log('unendschieden');
+    }
 }
 
 /**
  * Überprüft ob das Spiel unentschieden ist. 
  */
 function checkDraw() {
-    if (availableCells.length == 0) {
-        console.log('Unentschieden')
-    } else { }
+    if (gameWon === true ) {
+        console.log(gameWon)
+        console.log('das Spiel wurde gewonnen')
+    } else {
+        (availableCells.length == 0) 
+            draw = true;
+     }
 }
 
 /**
@@ -125,6 +139,7 @@ function checkWinPlayerX() {
     return WINNING_COMBINATIONS.some(winningCombination => {
         return winningCombination.every(index => {
             return playerXCells.includes(index);
+            let  
         })
     })
 }
@@ -165,14 +180,14 @@ function setSymbols(index) {
     }
 }
 
-/*
+// 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
 setPlayerX(5);
 setPlayerO(2);
-setPlayerX(0);
-setPlayerO(4);
-setPlayerX(7);
+setPlayerX(6);
 setPlayerO(1);
+setPlayerX(7);
+setPlayerO(4);
 setPlayerX(8);
-setPlayerO(6);
+setPlayerO(0);
 setPlayerX(3);
-*/
+console.log(draw)
