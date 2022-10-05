@@ -67,8 +67,11 @@ function setPlayerX(cell) {
     if (playerXTurn === false) {
         console.log("Player O ist am Zug!");
     } else {
-        setCell(cell);
-
+        try {
+            setCell(cell);
+        } catch (error) {
+            console.error((error))
+        }
     }
     if (checkWinPlayer() === true) {
         console.log('PlayerX hat gewonnen!');
@@ -86,13 +89,15 @@ function setPlayerO(cell) {
     if (playerXTurn === true) {
         console.log('Spieler X ist am Zug!')
     } else {
-        setCell(cell);
+        try {
+            setCell(cell);
+        } catch (error) {
+            console.error('Es gab einen Fehler: ' + (error))
+        }
     }
     if (checkWinPlayer() === true) {
         console.log('PlayerO hat gewonnen!')
         gameWon = true;
-    } else {
-
     }
     printPattern()
 }
@@ -105,9 +110,11 @@ function setPlayerO(cell) {
 
 function setCell(cell) {
     if (!cell === Number || 0 > cell > 9) {
-        console.log("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.")
+        throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.")
     } else if (!availableCells.includes(cell)) {
-        console.log("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
+        let availableCellString = availableCells.toString();
+        console.log(availableCellString);
+        throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString)
     } else {
         for (let index = 0; index < availableCells.length; index++) {
             if (availableCells[index] === cell) {
@@ -208,4 +215,10 @@ setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
 setPlayerX(3);
+*/
+
+/* ToDos: 
+draw überarbeiten damit Stefan glücklich ist(und leere ifblöcke vermieden werden)
+try.catch ohne function (setPlayerX)
+dopplung von AllCells vermeiden
 */
