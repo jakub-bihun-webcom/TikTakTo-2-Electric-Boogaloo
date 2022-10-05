@@ -69,7 +69,7 @@ function setPlayerX(cell) {
     if (!playerXTurn) {
         throw new Error("Player O ist am Zug!");
     } else {
-    setCell(cell);
+        setCell(cell);
     }
     if (checkWinPlayer() === true) {
         console.log('PlayerX hat gewonnen!');
@@ -88,7 +88,7 @@ function setPlayerO(cell) {
     if (playerXTurn === true) {
         throw new Error('Spieler X ist am Zug!')
     } else {
-            setCell(cell);
+        setCell(cell);
     }
     if (checkWinPlayer() === true) {
         console.log('PlayerO hat gewonnen!')
@@ -136,7 +136,7 @@ function setCell(cell) {
 function checkDraw() {
     if (availableCells.length === 0 && !gameWon) {
         isDraw = true;
-    } 
+    }
 }
 
 /**
@@ -199,7 +199,7 @@ function setSymbols(index) {
 // Test Züge
 // 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
 
-
+/*
 setPlayerX(5);
 setPlayerO(2);
 setPlayerX(6);
@@ -209,10 +209,4 @@ setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
 setPlayerX(3);
-
-
-/* ToDos: 
-draw überarbeiten damit Stefan glücklich ist(und leere ifblöcke vermieden werden)
-try.catch ohne function (setPlayerX)
-dopplung von AllCells vermeiden
 */
