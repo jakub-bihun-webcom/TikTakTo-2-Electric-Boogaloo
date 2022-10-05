@@ -1,6 +1,3 @@
-const PLAYER_X_CLASS = 'X';
-const PLAYER_O_CLASS = 'O';
-const allCells = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 const WINNING_COMBINATIONS = [
     [0, 1, 2],
     [3, 4, 5],
@@ -10,13 +7,14 @@ const WINNING_COMBINATIONS = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-]
-let availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+];
+const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let availableCells = ALLCELLS;
+console.log(availableCells)
 let playerXCells = [];
 let playerOCells = [];
-let alreadySetCells = [];
-let playerXTurn = true;
-let draw = false;
+let playerXTurn;
+let isDraw = false;
 let gameWon = false;
 
 startGame();
@@ -25,102 +23,133 @@ startGame();
 /**
  * Startet das Spiel und lässt das Spielfeld aufräumen.
  */
+
 function startGame() {
     resetBoard();
+    console.log("Mit choosePlayerStart() auswählen welcher Spieler anfängt.");
+    console.log("Für Spieler X 1 eingeben und für Spieler O 2 eingeben.");
 }
 
 /**
  * Setzt das Board zurück sodass alle Felder wieder leer sind. 
  */
+
 function resetBoard() {
     playerOCells = [];
     playerXCells = [];
-    availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    availableCells = ALLCELLS;
     playerXTurn = true;
-    draw = false;
+    isDraw = false;
     gameWon = false;
 }
 
 /**
- * Überprüft ob SpielerX am Zug ist, wenn das der Fall ist wird setCell(), mit der entsprechenden Zelle ausgeführt.
+ * Gibt die belegten Felder von beiden Spielern und alle freien Felder auf der Konsole aus
+ * @param {number} token 
+ */
+
+function choosePlayerStart(token) {
+    if (token === 1) {
+        playerXTurn = true;
+        console.log("Spieler X fängt an.");
+    } else if (token == 2) {
+        playerXTurn = false;
+        console.log("Spieler O fängt an.");
+    } else {
+        console.log("Bitte 1 für X oder 2 für O eingeben.");
+    }
+}
+
+/**
+ * Überprüft ob SpielerX am Zug ist und setzt Martkierung in das entsprechende Feld.
  * @param {number} cell 
  */
+
 function setPlayerX(cell) {
-    if (playerXTurn == false) {
-        console.log("Player O ist am Zug");
+    if (playerXTurn === false) {
+        console.log("Player O ist am Zug!");
     } else {
         setCell(cell);
 
     }
-    if (checkWinPlayerX() === true) {
-        console.log('PlayerX hat gewonnen!')
+    if (checkWinPlayer() === true) {
+        console.log('PlayerX hat gewonnen!');
         gameWon = true;
     }
+
     printPattern()
 }
 
 /**
- * Überprüft ob SpielerO am Zug ist, wenn das der Fall ist wird setCell(), mit der entsprechenden Zelle ausgeführt.
+ * Überprüft ob SpielerX am Zug ist und setzt Martkierung in das entsprechende Feld.
  * @param {number} cell 
  */
+
 function setPlayerO(cell) {
-    if (playerXTurn == true) {
-        console.log('Spieler X ist am Zug')
+    if (playerXTurn === true) {
+        console.log('Spieler X ist am Zug!')
     } else {
+        try {
         setCell(cell);
+        } catch (error) {
+            console.log(error)
+        }
     }
-    if (checkWinPlayerO() === true) {
-        console.log('PlayerO hat gewonnen')
+    if (checkWinPlayer() === true) {
+        console.log('PlayerO hat gewonnen!')
         gameWon = true;
     } else {
 
     }
+
     printPattern()
 }
 
 /**
- * Funktion die überprüft ob die Eingabe korrekt ist und das eingegebene Feld noch verfügbar ist.
- * Wenn das Feld frei ist, wird die dazugehörige Zahl aus dem Array availableCells gestrichen und dem Array des jeweiligen Spielers hinzugefügt.
+ * Überprüft ob die Eingabe korrekt ist und das eingegebene Feld noch verfügbar ist.
+ * Bei erfolgreicher Überprüfung wird das Feld im Array des Spilers gepushed. 
  * @param {number} cell 
  */
+
 function setCell(cell) {
-    if (!cell == Number || 0 > cell > 9) {
-        console.log("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen")
+    if (!cell === Number || 0 > cell > 9) {
+        throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.")
     } else if (!availableCells.includes(cell)) {
-        console.log("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
+        throw new Error("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
     } else {
-        alreadySetCells.push(cell);
         for (let index = 0; index < availableCells.length; index++) {
             if (availableCells[index] === cell) {
                 availableCells.splice(index, 1);
             }
         }
+
         checkDraw();
-        if (playerXTurn == true) {
+        if (playerXTurn === true) {
             playerXCells.push(cell);
         } else {
             playerOCells.push(cell);
         }
         playerXTurn = !playerXTurn;
     }
-    if (gameWon === true) {
-    } else if (draw === true) {
-        console.log('unendschieden');
+    if (isDraw && gameWon === true) {
+        console.log('Unentschieden!');
     }
 }
 
 /**
  * Überprüft ob das Spiel unentschieden ist. 
  */
+
 function checkDraw() {
     if (availableCells.length == 0) {
-            draw = true;
+        isDraw = true;
     }
 }
 
 /**
- * Funktion um die belegten Zellen von beiden Spielern und alle noch freien Felder auslesen zu lassen.
+ * Lässt den Spieler die aktuell belegten und noch freien Felder anzeigen
  */
+
 function stateOfBoard() {
     console.log("Felder von Spieler X: ", playerXCells);
     console.log("Felder von Spieler O: ", playerOCells);
@@ -128,44 +157,42 @@ function stateOfBoard() {
 }
 
 /**
- * Funktion, welche das Array eines Spielers überprüft ob es eine mögliche Gewinnkombination enthält.
+ * Überprüft ob eine Gewinnkombination vorhanden ist. 
  * Bei Sieg gibt es den Wert 'true' zurück ansonsten 'false'.
  * ToDo Ohne 'some' oder 'every'
  */
-function checkWinPlayerX() {
+
+function checkWinPlayer() {
     return WINNING_COMBINATIONS.some(winningCombination => {
         return winningCombination.every(index => {
-            return playerXCells.includes(index); 
+            if (playerXTurn === true) {
+                return playerXCells.includes(index);
+            } else {
+                return playerOCells.includes(index);
+            }
+
         })
     })
 }
-/**
- * Überprüft ob PlayerO gewonnen hat.
- */
-function checkWinPlayerO() {
-    return WINNING_COMBINATIONS.some(winningCombination => {
-        return winningCombination.every(index => {
-            return playerOCells.includes(index);
-        })
-    })
-}
+
 /**
  * Zeigt das Spielfeld in der Console. 
  */
+
 function printPattern() {
     console.log(' ' + setSymbols(0) + ' | ' + setSymbols(1) + ' | ' + setSymbols(2) + ' ');
-    console.log('___|___|___')
+    console.log('———|———|———')
     console.log(' ' + setSymbols(3) + ' | ' + setSymbols(4) + ' | ' + setSymbols(5) + ' ');
-    console.log('___|___|___')
+    console.log('———|———|———')
     console.log(' ' + setSymbols(6) + ' | ' + setSymbols(7) + ' | ' + setSymbols(8) + ' ');
-    console.log('   |   |   ');
     console.log(' ');
 }
 
 /**
- * Die Funktion überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechenden Symbol wieder.
+ * Überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechenden Symbol wieder.
  * @param {number} index 
  */
+
 function setSymbols(index) {
     if (playerXCells.includes(index)) {
         return 'X'
@@ -175,8 +202,10 @@ function setSymbols(index) {
         return " "
     }
 }
-// Test Züge 
+
+// Test Züge
 // 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
+
 /*
 setPlayerX(5);
 setPlayerO(2);
