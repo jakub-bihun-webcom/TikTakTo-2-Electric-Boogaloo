@@ -53,7 +53,7 @@ function setPlayerX(cell) {
     }
     if (checkWinPlayerX() === true) {
         console.log('PlayerX hat gewonnen!')
-        let gameWon = true; // warum kann ich hier die Globale Variable nicht verändern?
+        gameWon = true;
     }
     printPattern()
 }
@@ -70,7 +70,7 @@ function setPlayerO(cell) {
     }
     if (checkWinPlayerO() === true) {
         console.log('PlayerO hat gewonnen')
-        let gameWon = true;  // warum kann ich hier die Globale Variable nicht verändern?
+        gameWon = true;
     } else {
 
     }
@@ -112,13 +112,9 @@ function setCell(cell) {
  * Überprüft ob das Spiel unentschieden ist. 
  */
 function checkDraw() {
-    if (gameWon === true ) {
-        console.log(gameWon)
-        console.log('das Spiel wurde gewonnen')
-    } else {
-        (availableCells.length == 0) 
+    if (availableCells.length == 0) {
             draw = true;
-     }
+    }
 }
 
 /**
@@ -179,15 +175,14 @@ function setSymbols(index) {
         return " "
     }
 }
-
+// Test Züge 
 // 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
 setPlayerX(5);
 setPlayerO(2);
 setPlayerX(6);
-setPlayerO(1);
-setPlayerX(7);
+setPlayerO(7);
+setPlayerX(1);
 setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
 setPlayerX(3);
-console.log(draw)
