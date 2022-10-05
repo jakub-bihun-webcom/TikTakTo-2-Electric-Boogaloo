@@ -8,9 +8,7 @@ const WINNING_COMBINATIONS = [
     [0, 4, 8],
     [2, 4, 6]
 ];
-const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-let availableCells = ALLCELLS;
-console.log(availableCells)
+let availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let playerXCells = [];
 let playerOCells = [];
 let playerXTurn;
@@ -37,7 +35,7 @@ function startGame() {
 function resetBoard() {
     playerOCells = [];
     playerXCells = [];
-    availableCells = ALLCELLS;
+    availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     playerXTurn = true;
     isDraw = false;
     gameWon = false;
@@ -76,7 +74,6 @@ function setPlayerX(cell) {
         console.log('PlayerX hat gewonnen!');
         gameWon = true;
     }
-
     printPattern()
 }
 
@@ -89,11 +86,7 @@ function setPlayerO(cell) {
     if (playerXTurn === true) {
         console.log('Spieler X ist am Zug!')
     } else {
-        try {
         setCell(cell);
-        } catch (error) {
-            console.log(error)
-        }
     }
     if (checkWinPlayer() === true) {
         console.log('PlayerO hat gewonnen!')
@@ -101,7 +94,6 @@ function setPlayerO(cell) {
     } else {
 
     }
-
     printPattern()
 }
 
@@ -113,16 +105,15 @@ function setPlayerO(cell) {
 
 function setCell(cell) {
     if (!cell === Number || 0 > cell > 9) {
-        throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.")
+        console.log("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.")
     } else if (!availableCells.includes(cell)) {
-        throw new Error("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
+        console.log("Die Zelle ist nicht frei, hier sind alle möglichen Felder: ", availableCells)
     } else {
         for (let index = 0; index < availableCells.length; index++) {
             if (availableCells[index] === cell) {
                 availableCells.splice(index, 1);
             }
         }
-
         checkDraw();
         if (playerXTurn === true) {
             playerXCells.push(cell);
@@ -131,7 +122,8 @@ function setCell(cell) {
         }
         playerXTurn = !playerXTurn;
     }
-    if (isDraw && gameWon === true) {
+    if (gameWon) {
+    } else if (isDraw === true) {
         console.log('Unentschieden!');
     }
 }
@@ -141,7 +133,7 @@ function setCell(cell) {
  */
 
 function checkDraw() {
-    if (availableCells.length == 0) {
+    if (availableCells.length === 0) {
         isDraw = true;
     }
 }
@@ -205,13 +197,13 @@ function setSymbols(index) {
 
 // Test Züge
 // 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
-
 /*
+
 setPlayerX(5);
 setPlayerO(2);
 setPlayerX(6);
-setPlayerO(7);
-setPlayerX(1);
+setPlayerO(1);
+setPlayerX(7);
 setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
