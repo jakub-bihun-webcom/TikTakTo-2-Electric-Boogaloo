@@ -16,7 +16,6 @@ let playerXCells = [];
 let playerOCells = [];
 let alreadySetCells = [];
 let playerXTurn = true;
-let currentPlayer = playerXTurn ? PLAYER_O_CLASS : PLAYER_X_CLASS;
 let draw = false;
 let gameWon = false;
 
@@ -38,6 +37,8 @@ function resetBoard() {
     playerXCells = [];
     availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     playerXTurn = true;
+    draw = false;
+    gameWon = false;
 }
 
 /**
@@ -134,8 +135,7 @@ function stateOfBoard() {
 function checkWinPlayerX() {
     return WINNING_COMBINATIONS.some(winningCombination => {
         return winningCombination.every(index => {
-            return playerXCells.includes(index);
-            let  
+            return playerXCells.includes(index); 
         })
     })
 }
@@ -177,6 +177,7 @@ function setSymbols(index) {
 }
 // Test Züge 
 // 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
+/*
 setPlayerX(5);
 setPlayerO(2);
 setPlayerX(6);
@@ -186,3 +187,4 @@ setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
 setPlayerX(3);
+*/
