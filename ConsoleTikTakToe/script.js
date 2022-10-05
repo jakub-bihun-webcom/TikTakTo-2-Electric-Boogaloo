@@ -8,7 +8,9 @@ const WINNING_COMBINATIONS = [
     [0, 4, 8],
     [2, 4, 6]
 ];
-let availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let availableCells = [];
+
 let playerXCells = [];
 let playerOCells = [];
 let playerXTurn;
@@ -35,7 +37,7 @@ function startGame() {
 function resetBoard() {
     playerOCells = [];
     playerXCells = [];
-    availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    availableCells = [...ALLCELLS];
     playerXTurn = true;
     isDraw = false;
     gameWon = false;
@@ -64,19 +66,16 @@ function choosePlayerStart(token) {
  */
 
 function setPlayerX(cell) {
-    if (playerXTurn === false) {
-        console.log("Player O ist am Zug!");
+    if (!playerXTurn) {
+        throw new Error("Player O ist am Zug!");
     } else {
-        try {
-            setCell(cell);
-        } catch (error) {
-            console.error((error))
-        }
+    setCell(cell);
     }
     if (checkWinPlayer() === true) {
         console.log('PlayerX hat gewonnen!');
         gameWon = true;
     }
+
     printPattern()
 }
 
@@ -87,13 +86,9 @@ function setPlayerX(cell) {
 
 function setPlayerO(cell) {
     if (playerXTurn === true) {
-        console.log('Spieler X ist am Zug!')
+        throw new Error('Spieler X ist am Zug!')
     } else {
-        try {
             setCell(cell);
-        } catch (error) {
-            console.error('Es gab einen Fehler: ' + (error))
-        }
     }
     if (checkWinPlayer() === true) {
         console.log('PlayerO hat gewonnen!')
@@ -129,8 +124,7 @@ function setCell(cell) {
         }
         playerXTurn = !playerXTurn;
     }
-    if (gameWon) {
-    } else if (isDraw === true) {
+    if (isDraw === true) {
         console.log('Unentschieden!');
     }
 }
@@ -140,9 +134,9 @@ function setCell(cell) {
  */
 
 function checkDraw() {
-    if (availableCells.length === 0) {
+    if (availableCells.length === 0 && !gameWon) {
         isDraw = true;
-    }
+    } 
 }
 
 /**
@@ -204,18 +198,18 @@ function setSymbols(index) {
 
 // Test Züge
 // 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
-/*
+
 
 setPlayerX(5);
 setPlayerO(2);
 setPlayerX(6);
-setPlayerO(1);
-setPlayerX(7);
+setPlayerO(7);
+setPlayerX(1);
 setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
 setPlayerX(3);
-*/
+
 
 /* ToDos: 
 draw überarbeiten damit Stefan glücklich ist(und leere ifblöcke vermieden werden)
