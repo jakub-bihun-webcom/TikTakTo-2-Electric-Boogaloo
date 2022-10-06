@@ -27,7 +27,7 @@ startGame();
 function startGame() {
     resetBoard();
     console.log("Mit choosePlayerStart() auswählen welcher Spieler anfängt.");
-    console.log("Für Spieler X 1 eingeben und für Spieler O 2 eingeben.");
+    console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
 
 /**
@@ -167,6 +167,23 @@ function checkWinPlayer() {
         })
     })
 }
+
+/**
+ * Setzt eine Markierung für den Spieler der grade am Zzug ist
+ * @param {number} index Das Feld, dass in die Console eingegeben wird 
+ */
+
+function move(index) {
+    if (playerXTurn && !gameWon) {
+        setPlayerX(index)
+        console.log('Jetzt ist Spieler O am Zug')
+    } else if (!gameWon){
+        setPlayerO(index)
+        console.log('Jetzt ist Spieler X am Zug')
+    }
+}
+
+
 
 /**
  * Zeigt das Spielfeld in der Console. 
