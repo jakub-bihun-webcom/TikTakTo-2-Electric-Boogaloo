@@ -84,7 +84,7 @@ function setPlayerX(cell) {
  */
 function setPlayerO(cell) {
     if (allowMove) {
-        if (playerXTurn === true) {
+        if (playerXTurn) {
             throw new Error('Spieler X ist am Zug!');
         } else {
             setCell(cell);
@@ -123,13 +123,13 @@ function setCell(cell) {
 
     checkDraw();
 
-    if (playerXTurn === true) {
+    if (playerXTurn) {
         playerXCells.push(cell);
     } else {
         playerOCells.push(cell);
     }
 
-    if (checkWinPlayer() === true) {
+    if (checkWinPlayer()) {
         gameWon = true;
         allowMove = false;
         if (playerXTurn) {
@@ -172,15 +172,20 @@ function stateOfBoard() {
  * ------ToDo ohne 'some' oder 'every'--------
  */
 function checkWinPlayer() {
-    return WINNING_COMBINATIONS.some(winningCombination => {
-        return winningCombination.every(index => {
-            if (playerXTurn === true) {
-                return playerXCells.includes(index);
+    for (let index = 0; index < WINNING_COMBINATIONS.length; index++) {
+        const WINNING_ROW = WINNING_COMBINATIONS[index];
+        
+        for (let index2 = 0; index2 < WINNING_ROW.length; index2++) {
+            console.log("WinningRow", WINNING_ROW);
+            if (playerXCells.includes(WINNING_ROW[index2])){
+                return true;
+            } else if (playerOCells.includes(WINNING_ROW[index2])){
+                return true;
             } else {
-                return playerOCells.includes(index);
+                return false;
             }
-        })
-    })
+        }
+    }
 }
 
 /**
@@ -279,7 +284,7 @@ setPlayerX(3);
 
 // Gewonnen mit dem move() Befehl
 /*
-choosePlayerStart(2)
+choosePlayerStart(1)
 move(2)
 move(5)
 move(1)
@@ -288,9 +293,9 @@ move(0)
 */
 
 // Unentschieden mit dem move() Befehl
-/*
+
 choosePlayerStart(1)
-move(4)
+move(2)
 move(6)
 move(8)
 move(0)
@@ -298,5 +303,6 @@ move(3)
 move(5)
 move(1)
 move(7)
-move(2)
-*/
+move(4 )
+
+
