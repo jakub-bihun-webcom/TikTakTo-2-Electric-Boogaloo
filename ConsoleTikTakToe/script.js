@@ -46,7 +46,7 @@ function resetBoard() {
 
 /**
  * Gibt die belegten Felder von beiden Spielern und alle freien Felder in der Konsole aus.
- * @param {number} token 
+ * @param {number} token
  */
 
 function choosePlayerStart(token) {
@@ -66,7 +66,7 @@ function choosePlayerStart(token) {
 /**
  * Überprüft ob SpielerX am Zug ist und setzt eine Markierung in das entsprechende Feld.
  * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
- * @param {number} cell 
+ * @param {number} cell
  */
 
 function setPlayerX(cell) {
@@ -77,8 +77,7 @@ function setPlayerX(cell) {
             setCell(cell);
         }
         printPattern();
-    }
-    else {
+    } else {
         throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
     }
 }
@@ -86,7 +85,7 @@ function setPlayerX(cell) {
 /**
  * Überprüft ob SpielerX am Zug ist und setzt Markierung in das entsprechende Feld.
  * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
- * @param {number} cell 
+ * @param {number} cell
  */
 
 function setPlayerO(cell) {
@@ -97,61 +96,67 @@ function setPlayerO(cell) {
             setCell(cell);
         }
         printPattern();
-    }
-    else {
-        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
-    }
-}
-
-/**
- * Überprüft ob die Eingabe eine Zahl zwischen 0 und 8 ist und das eingegebene Feld noch verfügbar ist.
- * Bei erfolgreicher Überprüfung wird das Feld in das Array des Spielers gepushed. 
- * @param {number} cell 
- */
-
-function setCell(cell) {
-    if (allowMove) {
-        if (!cell === Number || 0 > cell > 9) {
-            throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.");
-        } else if (!availableCells.includes(cell)) {
-            let availableCellString = availableCells.toString();
-            console.log(availableCellString);
-            throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString);
-        } else {
-            for (let index = 0; index < availableCells.length; index++) {
-                if (availableCells[index] === cell) {
-                    availableCells.splice(index, 1);
-                }
-            }
-            checkDraw();
-            if (playerXTurn === true) {
-                playerXCells.push(cell);
-            } else {
-                playerOCells.push(cell);
-            }
-            if (checkWinPlayer() === true) {
-                gameWon = true;
-                allowMove = false;
-                if (playerXTurn){
-                    console.log('PlayerX hat gewonnen!');     
-                } else {
-                    console.log('PlayerO hat gewonnen!');
-                }
-                console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
-            }
-            playerXTurn = !playerXTurn;
-        }
-        if (isDraw === true) {
-            console.log('Unentschieden!');
-            console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
-        }
     } else {
         throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
     }
 }
 
 /**
- * Überprüft ob das Spiel unentschieden ist. 
+ * Überprüft ob die Eingabe eine Zahl zwischen 0 und 8 ist und das eingegebene Feld noch verfügbar ist.
+ * Bei erfolgreicher Überprüfung wird das Feld in das Array des Spielers gepushed.
+ * @param {number} cell
+ */
+
+function setCell(cell) {
+    if (!allowMove) {
+        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
+    }
+
+    if (typeof cell !== "number" || 0 > cell > 9) {
+        throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.");
+    }
+
+    if (!availableCells.includes(cell)) {
+        let availableCellString = availableCells.toString();
+        console.log(availableCellString);
+        throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString);
+    }
+
+    for (let index = 0; index < availableCells.length; index++) {
+        if (availableCells[index] === cell) {
+            availableCells.splice(index, 1);
+        }
+    }
+
+    checkDraw();
+
+    if (playerXTurn === true) {
+        playerXCells.push(cell);
+    } else {
+        playerOCells.push(cell);
+    }
+
+    if (checkWinPlayer() === true) {
+        gameWon = true;
+        allowMove = false;
+        if (playerXTurn) {
+            console.log('PlayerX hat gewonnen!');
+        } else {
+            console.log('PlayerO hat gewonnen!');
+        }
+        console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+    }
+
+    playerXTurn = !playerXTurn;
+
+    if (isDraw) {
+        console.log('Unentschieden!');
+        console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+    }
+}
+
+/**
+ * Überprüft ob das Spiel unentschieden ist.
  */
 
 function checkDraw() {
@@ -171,7 +176,7 @@ function stateOfBoard() {
 }
 
 /**
- * Überprüft ob eine Gewinnkombination in dem Array von Spieler X oder Spieler O vorhanden ist. 
+ * Überprüft ob eine Gewinnkombination in dem Array von Spieler X oder Spieler O vorhanden ist.
  * Bei einem Sieg gibt es den Wert 'true' zurück, ansonsten den Wert 'false'.
  * ------ToDo ohne 'some' oder 'every'--------
  */
@@ -190,7 +195,7 @@ function checkWinPlayer() {
 
 /**
  * Setzt eine Markierung für den Spieler, welcher gerade am Zug ist.
- * @param {number} index Das Feld, dass in die Konsole eingegeben wird. 
+ * @param {number} index Das Feld, dass in die Konsole eingegeben wird.
  */
 
 function move(index) {
@@ -198,12 +203,12 @@ function move(index) {
         if (playerXTurn && !gameWon) {
             setPlayerX(index);
             if (!gameWon && !isDraw) {
-            console.log('Jetzt ist Spieler O am Zug');
-            } 
+                console.log('Jetzt ist Spieler O am Zug');
+            }
         } else if (!gameWon) {
             setPlayerO(index);
             if (!gameWon && !isDraw) {
-            console.log('Jetzt ist Spieler X am Zug');
+                console.log('Jetzt ist Spieler X am Zug');
             }
         }
     } else if (gameWon) {
@@ -214,7 +219,7 @@ function move(index) {
 }
 
 /**
- * Zeigt das Spielfeld in der Konsole an. 
+ * Zeigt das Spielfeld in der Konsole an.
  */
 
 function printPattern() {
@@ -228,7 +233,7 @@ function printPattern() {
 
 /**
  * Überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechendem Symbol wieder.
- * @param {number} index 
+ * @param {number} index
  */
 
 function setSymbols(index) {
@@ -242,14 +247,13 @@ function setSymbols(index) {
 }
 
 /**
- * Wechselt die Farben des Info Feldes. 
+ * Wechselt die Farben des Info Feldes.
  */
 
 function switchMode() {
     document.getElementById("infoFeld").style.color = "white";
-    document.getElementById("infoFeld").style.backgroundColor =  "#3e3d3dd7";
+    document.getElementById("infoFeld").style.backgroundColor = "#3e3d3dd7";
 }
-
 
 //Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
 
@@ -267,8 +271,7 @@ setPlayerO(0);
 setPlayerX(3);
 */
 
-
-// Unentschieden mit dem setPlayer_() Befehl 
+// Unentschieden mit dem setPlayer_() Befehl
 /*
 choosePlayerStart(1)
 setPlayerX(5);
@@ -292,8 +295,7 @@ move(8)
 move(0)
 */
 
-
-// Unentschieden mit dem move() Befehl 
+// Unentschieden mit dem move() Befehl
 /*
 choosePlayerStart(1)
 move(4)
