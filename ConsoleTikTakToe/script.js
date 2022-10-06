@@ -16,9 +16,9 @@ let playerOCells = [];
 let playerXTurn;
 let isDraw = false;
 let gameWon = false;
+let allowMove = false;
 
 startGame();
-
 
 /**
  * Startet das Spiel und lässt das Spielfeld aufräumen.
@@ -26,12 +26,10 @@ startGame();
 
 function startGame() {
     resetBoard();
-    console.log("Mit choosePlayerStart() auswählen welcher Spieler anfängt.");
-    console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
 
 /**
- * Setzt das Board zurück sodass alle Felder wieder leer sind. 
+ * Setzt das Board auf den Anfangsstatus zurück. Alles Arrays und booleans werden zurückgesetzt.
  */
 
 function resetBoard() {
@@ -41,10 +39,13 @@ function resetBoard() {
     playerXTurn = true;
     isDraw = false;
     gameWon = false;
+    console.clear();
+    console.log("Mit choosePlayerStart() auswählen welcher Spieler anfängt.");
+    console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
 
 /**
- * Gibt die belegten Felder von beiden Spielern und alle freien Felder auf der Konsole aus
+ * Gibt die belegten Felder von beiden Spielern und alle freien Felder auf der Konsole aus.
  * @param {number} token 
  */
 
@@ -52,9 +53,11 @@ function choosePlayerStart(token) {
     if (token === 1) {
         playerXTurn = true;
         console.log("Spieler X fängt an.");
-    } else if (token == 2) {
+        allowMove = true;
+    } else if (token === 2) {
         playerXTurn = false;
         console.log("Spieler O fängt an.");
+        allowMove = true;
     } else {
         console.log("Bitte 1 für X oder 2 für O eingeben.");
     }
@@ -66,17 +69,17 @@ function choosePlayerStart(token) {
  */
 
 function setPlayerX(cell) {
-    if (!playerXTurn) {
-        throw new Error("Player O ist am Zug!");
-    } else {
-        setCell(cell);
+    if (allowMove) {
+        if (!playerXTurn) {
+            throw new Error("Player O ist am Zug!");
+        } else {
+            setCell(cell);
+        }
+        printPattern();
     }
-    if (checkWinPlayer() === true) {
-        console.log('PlayerX hat gewonnen!');
-        gameWon = true;
+    else {
+        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
     }
-
-    printPattern()
 }
 
 /**
@@ -85,16 +88,17 @@ function setPlayerX(cell) {
  */
 
 function setPlayerO(cell) {
-    if (playerXTurn === true) {
-        throw new Error('Spieler X ist am Zug!')
-    } else {
-        setCell(cell);
+    if (allowMove) {
+        if (playerXTurn === true) {
+            throw new Error('Spieler X ist am Zug!');
+        } else {
+            setCell(cell);
+        }
+        printPattern();
     }
-    if (checkWinPlayer() === true) {
-        console.log('PlayerO hat gewonnen!')
-        gameWon = true;
+    else {
+        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
     }
-    printPattern()
 }
 
 /**
@@ -104,28 +108,43 @@ function setPlayerO(cell) {
  */
 
 function setCell(cell) {
-    if (!cell === Number || 0 > cell > 9) {
-        throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.")
-    } else if (!availableCells.includes(cell)) {
-        let availableCellString = availableCells.toString();
-        console.log(availableCellString);
-        throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString)
-    } else {
-        for (let index = 0; index < availableCells.length; index++) {
-            if (availableCells[index] === cell) {
-                availableCells.splice(index, 1);
-            }
-        }
-        checkDraw();
-        if (playerXTurn === true) {
-            playerXCells.push(cell);
+    if (allowMove) {
+        if (!cell === Number || 0 > cell > 9) {
+            throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.");
+        } else if (!availableCells.includes(cell)) {
+            let availableCellString = availableCells.toString();
+            console.log(availableCellString);
+            throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString);
         } else {
-            playerOCells.push(cell);
+            for (let index = 0; index < availableCells.length; index++) {
+                if (availableCells[index] === cell) {
+                    availableCells.splice(index, 1);
+                }
+            }
+            checkDraw();
+            if (playerXTurn === true) {
+                playerXCells.push(cell);
+            } else {
+                playerOCells.push(cell);
+            }
+            if (checkWinPlayer() === true) {
+                console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+                gameWon = true;
+                allowMove = false;
+                if (playerXTurn){
+                    console.log('PlayerX hat gewonnen!');     
+                } else {
+                    console.log('PlayerO hat gewonnen!');
+                }
+            }
+            playerXTurn = !playerXTurn;
         }
-        playerXTurn = !playerXTurn;
-    }
-    if (isDraw === true) {
-        console.log('Unentschieden!');
+        if (isDraw === true) {
+            console.log('Unentschieden!');
+            console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+        }
+    } else {
+        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
     }
 }
 
@@ -163,7 +182,6 @@ function checkWinPlayer() {
             } else {
                 return playerOCells.includes(index);
             }
-
         })
     })
 }
@@ -174,16 +192,24 @@ function checkWinPlayer() {
  */
 
 function move(index) {
-    if (playerXTurn && !gameWon) {
-        setPlayerX(index)
-        console.log('Jetzt ist Spieler O am Zug')
-    } else if (!gameWon){
-        setPlayerO(index)
-        console.log('Jetzt ist Spieler X am Zug')
+    if (allowMove) {
+        if (playerXTurn && !gameWon) {
+            setPlayerX(index);
+            if (!gameWon && !isDraw) {
+            console.log('Jetzt ist Spieler O am Zug');
+            } 
+        } else if (!gameWon) {
+            setPlayerO(index);
+            if (!gameWon && !isDraw) {
+            console.log('Jetzt ist Spieler X am Zug');
+            }
+        }
+    } else if (gameWon) {
+        throw new Error('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+    } else {
+        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
     }
 }
-
-
 
 /**
  * Zeigt das Spielfeld in der Console. 
@@ -191,9 +217,9 @@ function move(index) {
 
 function printPattern() {
     console.log(' ' + setSymbols(0) + ' | ' + setSymbols(1) + ' | ' + setSymbols(2) + ' ');
-    console.log('———|———|———')
+    console.log('———|———|———');
     console.log(' ' + setSymbols(3) + ' | ' + setSymbols(4) + ' | ' + setSymbols(5) + ' ');
-    console.log('———|———|———')
+    console.log('———|———|———');
     console.log(' ' + setSymbols(6) + ' | ' + setSymbols(7) + ' | ' + setSymbols(8) + ' ');
     console.log(' ');
 }
@@ -205,18 +231,19 @@ function printPattern() {
 
 function setSymbols(index) {
     if (playerXCells.includes(index)) {
-        return 'X'
+        return 'X';
     } else if (playerOCells.includes(index)) {
-        return 'O'
+        return 'O';
     } else {
-        return " "
+        return " ";
     }
 }
 
-// Test Züge
-// 7 und 1 veränden um zwischen unendschieden und Win zu ändern 
+//Hier ein paar Tests. Um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
 
+// Gewonnen mit dem setPlayer_() Befehl 
 /*
+choosePlayerStart(1)
 setPlayerX(5);
 setPlayerO(2);
 setPlayerX(6);
@@ -226,4 +253,44 @@ setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
 setPlayerX(3);
+*/
+
+
+// Unentschieden mit dem setPlayer_() Befehl 
+
+choosePlayerStart(1)
+setPlayerX(5);
+setPlayerO(2);
+setPlayerX(6);
+setPlayerO(7);
+setPlayerX(1);
+setPlayerO(4);
+setPlayerX(8);
+setPlayerO(0);
+setPlayerX(3);
+
+
+// Gewonnen mit dem move() Befehl
+/*
+choosePlayerStart(2)
+move(2)
+move(5)
+move(1)
+move(8)
+move(0)
+*/
+
+
+// Unentschieden mit dem move() Befehl 
+/*
+choosePlayerStart(1)
+move(4)
+move(6)
+move(8)
+move(0)
+move(3)
+move(5)
+move(1)
+move(7)
+move(2)
 */
