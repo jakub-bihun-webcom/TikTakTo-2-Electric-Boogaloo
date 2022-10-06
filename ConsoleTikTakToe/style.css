@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(-45deg, #994b34, #e73c7e, #146683, #158268);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     height: 100vh;
@@ -35,4 +35,29 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.dark-mode-button {
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    color: rgb(252, 244, 244);
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: rgb(65, 60, 60);
+    margin: 0em;
+    padding: 5px 15px;
+    border-width: 4px;
+    border-style: outset;
+    border-color: rgb(150, 147, 147);
+    border-radius: 7px;
+
 }

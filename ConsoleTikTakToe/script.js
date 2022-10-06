@@ -21,7 +21,7 @@ let allowMove = false;
 startGame();
 
 /**
- * Startet das Spiel und lässt das Spielfeld aufräumen.
+ * Startet das Spiel und führt die Funktionen resetBoard() aus.
  */
 
 function startGame() {
@@ -29,7 +29,7 @@ function startGame() {
 }
 
 /**
- * Setzt das Board auf den Anfangsstatus zurück. Alles Arrays und booleans werden zurückgesetzt.
+ * Setzt das Board auf den Anfangsstatus zurück. Alle Arrays und booleans werden zurückgesetzt.
  */
 
 function resetBoard() {
@@ -40,12 +40,12 @@ function resetBoard() {
     isDraw = false;
     gameWon = false;
     console.clear();
-    console.log("Mit choosePlayerStart() auswählen welcher Spieler anfängt.");
+    console.log("Mit choosePlayerStart() auswählen welcher Spieler anfangen soll.");
     console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
 
 /**
- * Gibt die belegten Felder von beiden Spielern und alle freien Felder auf der Konsole aus.
+ * Gibt die belegten Felder von beiden Spielern und alle freien Felder in der Konsole aus.
  * @param {number} token 
  */
 
@@ -59,12 +59,13 @@ function choosePlayerStart(token) {
         console.log("Spieler O fängt an.");
         allowMove = true;
     } else {
-        console.log("Bitte 1 für X oder 2 für O eingeben.");
+        console.log("Bitte 1 für Spieler X oder 2 für Spieler O eingeben.");
     }
 }
 
 /**
- * Überprüft ob SpielerX am Zug ist und setzt Martkierung in das entsprechende Feld.
+ * Überprüft ob SpielerX am Zug ist und setzt eine Markierung in das entsprechende Feld.
+ * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
  * @param {number} cell 
  */
 
@@ -78,12 +79,13 @@ function setPlayerX(cell) {
         printPattern();
     }
     else {
-        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
+        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
     }
 }
 
 /**
- * Überprüft ob SpielerX am Zug ist und setzt Martkierung in das entsprechende Feld.
+ * Überprüft ob SpielerX am Zug ist und setzt Markierung in das entsprechende Feld.
+ * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
  * @param {number} cell 
  */
 
@@ -97,13 +99,13 @@ function setPlayerO(cell) {
         printPattern();
     }
     else {
-        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
+        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
     }
 }
 
 /**
- * Überprüft ob die Eingabe korrekt ist und das eingegebene Feld noch verfügbar ist.
- * Bei erfolgreicher Überprüfung wird das Feld im Array des Spilers gepushed. 
+ * Überprüft ob die Eingabe eine Zahl zwischen 0 und 8 ist und das eingegebene Feld noch verfügbar ist.
+ * Bei erfolgreicher Überprüfung wird das Feld in das Array des Spielers gepushed. 
  * @param {number} cell 
  */
 
@@ -128,7 +130,6 @@ function setCell(cell) {
                 playerOCells.push(cell);
             }
             if (checkWinPlayer() === true) {
-                console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
                 gameWon = true;
                 allowMove = false;
                 if (playerXTurn){
@@ -136,6 +137,7 @@ function setCell(cell) {
                 } else {
                     console.log('PlayerO hat gewonnen!');
                 }
+                console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
             }
             playerXTurn = !playerXTurn;
         }
@@ -144,7 +146,7 @@ function setCell(cell) {
             console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
         }
     } else {
-        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
+        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
     }
 }
 
@@ -169,9 +171,9 @@ function stateOfBoard() {
 }
 
 /**
- * Überprüft ob eine Gewinnkombination vorhanden ist. 
- * Bei Sieg gibt es den Wert 'true' zurück ansonsten 'false'.
- * ToDo Ohne 'some' oder 'every'
+ * Überprüft ob eine Gewinnkombination in dem Array von Spieler X oder Spieler O vorhanden ist. 
+ * Bei einem Sieg gibt es den Wert 'true' zurück, ansonsten den Wert 'false'.
+ * ------ToDo ohne 'some' oder 'every'--------
  */
 
 function checkWinPlayer() {
@@ -187,8 +189,8 @@ function checkWinPlayer() {
 }
 
 /**
- * Setzt eine Markierung für den Spieler der grade am Zzug ist
- * @param {number} index Das Feld, dass in die Console eingegeben wird 
+ * Setzt eine Markierung für den Spieler, welcher gerade am Zug ist.
+ * @param {number} index Das Feld, dass in die Konsole eingegeben wird. 
  */
 
 function move(index) {
@@ -207,12 +209,12 @@ function move(index) {
     } else if (gameWon) {
         throw new Error('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
     } else {
-        throw new Error('Bitte wähle zuerst einen Spieler, der anfängt.');
+        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
     }
 }
 
 /**
- * Zeigt das Spielfeld in der Console. 
+ * Zeigt das Spielfeld in der Konsole an. 
  */
 
 function printPattern() {
@@ -225,7 +227,7 @@ function printPattern() {
 }
 
 /**
- * Überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechenden Symbol wieder.
+ * Überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechendem Symbol wieder.
  * @param {number} index 
  */
 
@@ -239,7 +241,17 @@ function setSymbols(index) {
     }
 }
 
-//Hier ein paar Tests. Um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
+/**
+ * Wechselt die Farben des Info Feldes. 
+ */
+
+function switchMode() {
+    document.getElementById("infoFeld").style.color = "white";
+    document.getElementById("infoFeld").style.backgroundColor =  "#3e3d3dd7";
+}
+
+
+//Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
 
 // Gewonnen mit dem setPlayer_() Befehl 
 /*
@@ -257,7 +269,7 @@ setPlayerX(3);
 
 
 // Unentschieden mit dem setPlayer_() Befehl 
-
+/*
 choosePlayerStart(1)
 setPlayerX(5);
 setPlayerO(2);
@@ -268,7 +280,7 @@ setPlayerO(4);
 setPlayerX(8);
 setPlayerO(0);
 setPlayerX(3);
-
+*/
 
 // Gewonnen mit dem move() Befehl
 /*
