@@ -10,7 +10,6 @@ const WINNING_COMBINATIONS = [
 ];
 const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let availableCells = [];
-
 let playerXCells = [];
 let playerOCells = [];
 let playerXTurn;
@@ -18,14 +17,18 @@ let isDraw = false;
 let gameWon = false;
 let allowMove = false;
 
+/**
+ * Startet das Spiel und führt die Funktionen resetBoard() aus.
+ */
 startGame();
-
 
 function startGame() {
     resetBoard();
 }
 
-
+/**
+ * Setzt das Board auf den Anfangsstatus zurück. Alle Arrays und booleans werden zurückgesetzt.
+ */
 function resetBoard() {
     playerOCells = [];
     playerXCells = [];
@@ -38,7 +41,10 @@ function resetBoard() {
     console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
 
-
+/**
+ * Lässt die Spieler auswählen, ob X oder O anfangen soll.
+ * @param {number} token 
+ */
 function choosePlayerStart(token) {
     if (token === 1) {
         playerXTurn = true;
@@ -49,11 +55,15 @@ function choosePlayerStart(token) {
         console.log("Spieler O fängt an.");
         allowMove = true;
     } else {
-        console.log("Bitte 1 für Spieler X oder 2 für Spieler O eingeben.");
+        throw new Error("Bitte 1 für Spieler X oder 2 für Spieler O eingeben.");
     }
 }
 
-
+/**
+ * Überprüft ob SpielerX am Zug ist und setzt eine Markierung in das entsprechende Feld.
+ * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
+ * @param {number} cell
+ */
 function setPlayerX(cell) {
     if (allowMove) {
         if (!playerXTurn) {
@@ -67,7 +77,11 @@ function setPlayerX(cell) {
     }
 }
 
-
+/**
+ * Überprüft ob SpielerO am Zug ist und setzt eine Markierung in das entsprechende Feld.
+ * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
+ * @param {number} cell
+ */
 function setPlayerO(cell) {
     if (allowMove) {
         if (playerXTurn === true) {
@@ -81,7 +95,11 @@ function setPlayerO(cell) {
     }
 }
 
-
+/**
+ * Überprüft ob die Eingabe eine Zahl zwischen 0 und 8 ist und das eingegebene Feld noch verfügbar ist.
+ * Bei erfolgreicher Überprüfung wird das Feld in das Array des Spielers gepushed.
+ * @param {number} cell
+ */
 function setCell(cell) {
     if (!allowMove) {
         throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
@@ -142,7 +160,6 @@ function checkDraw() {
 /**
  * Lässt den Spieler die aktuell belegten und noch freien Felder anzeigen
  */
-
 function stateOfBoard() {
     console.log("Felder von Spieler X: ", playerXCells);
     console.log("Felder von Spieler O: ", playerOCells);
@@ -219,9 +236,15 @@ function setSymbols(index) {
 /**
  * Wechselt die Farben des Info Feldes.
  */
-function switchMode() {
+function switchDarkMode() {
     document.getElementById("infoFeld").style.color = "white";
     document.getElementById("infoFeld").style.backgroundColor = "#3e3d3dd7";
+}
+
+function switchLightMode() {
+    document.getElementById("infoFeld").style.color = "black";
+    document.getElementById("infoFeld").style.backgroundColor = "white";
+    window.alert('Keine gute Entscheidung!')
 }
 
 //Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen

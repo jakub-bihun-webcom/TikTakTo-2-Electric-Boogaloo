@@ -59,5 +59,6 @@ button {
     border-style: outset;
     border-color: rgb(150, 147, 147);
     border-radius: 7px;
+    margin: 10px;
 
 }
