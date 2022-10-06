@@ -168,21 +168,16 @@ function stateOfBoard() {
 
 /**
  * Überprüft ob eine Gewinnkombination in dem Array von Spieler X oder Spieler O vorhanden ist.
- * Bei einem Sieg gibt es den Wert 'true' zurück, ansonsten den Wert 'false'.
- * ------ToDo ohne 'some' oder 'every'--------
  */
 function checkWinPlayer() {
     for (let index = 0; index < WINNING_COMBINATIONS.length; index++) {
         const WINNING_ROW = WINNING_COMBINATIONS[index];
-        
         for (let index2 = 0; index2 < WINNING_ROW.length; index2++) {
             console.log("WinningRow", WINNING_ROW);
-            if (playerXCells.includes(WINNING_ROW[index2])){
+            if (playerXCells.includes(WINNING_ROW[0]) && playerXCells.includes(WINNING_ROW[1]) && playerXCells.includes(WINNING_ROW[2])) {
                 return true;
-            } else if (playerOCells.includes(WINNING_ROW[index2])){
+            } else if (playerOCells.includes(WINNING_ROW[0]) && playerOCells.includes(WINNING_ROW[1]) && playerOCells.includes(WINNING_ROW[2])) {
                 return true;
-            } else {
-                return false;
             }
         }
     }
@@ -254,7 +249,7 @@ function switchLightMode() {
 
 //Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
 
-// Gewonnen mit dem setPlayer_() Befehl 
+// Gewonnen mit dem setPlayer_() Befehl
 /*
 choosePlayerStart(1)
 setPlayerX(5);
@@ -293,7 +288,7 @@ move(0)
 */
 
 // Unentschieden mit dem move() Befehl
-
+/*
 choosePlayerStart(1)
 move(2)
 move(6)
@@ -303,6 +298,5 @@ move(3)
 move(5)
 move(1)
 move(7)
-move(4 )
-
-
+move(4)
+*/
