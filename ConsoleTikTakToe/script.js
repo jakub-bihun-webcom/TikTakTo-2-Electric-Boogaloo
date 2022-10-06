@@ -20,17 +20,11 @@ let allowMove = false;
 
 startGame();
 
-/**
- * Startet das Spiel und führt die Funktionen resetBoard() aus.
- */
 
 function startGame() {
     resetBoard();
 }
 
-/**
- * Setzt das Board auf den Anfangsstatus zurück. Alle Arrays und booleans werden zurückgesetzt.
- */
 
 function resetBoard() {
     playerOCells = [];
@@ -44,10 +38,6 @@ function resetBoard() {
     console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
 
-/**
- * Gibt die belegten Felder von beiden Spielern und alle freien Felder in der Konsole aus.
- * @param {number} token
- */
 
 function choosePlayerStart(token) {
     if (token === 1) {
@@ -63,11 +53,6 @@ function choosePlayerStart(token) {
     }
 }
 
-/**
- * Überprüft ob SpielerX am Zug ist und setzt eine Markierung in das entsprechende Feld.
- * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
- * @param {number} cell
- */
 
 function setPlayerX(cell) {
     if (allowMove) {
@@ -82,11 +67,6 @@ function setPlayerX(cell) {
     }
 }
 
-/**
- * Überprüft ob SpielerX am Zug ist und setzt Markierung in das entsprechende Feld.
- * Anschließend wird das aktualisierte Spielfeld neu gezeichnet.
- * @param {number} cell
- */
 
 function setPlayerO(cell) {
     if (allowMove) {
@@ -101,11 +81,6 @@ function setPlayerO(cell) {
     }
 }
 
-/**
- * Überprüft ob die Eingabe eine Zahl zwischen 0 und 8 ist und das eingegebene Feld noch verfügbar ist.
- * Bei erfolgreicher Überprüfung wird das Feld in das Array des Spielers gepushed.
- * @param {number} cell
- */
 
 function setCell(cell) {
     if (!allowMove) {
@@ -156,9 +131,8 @@ function setCell(cell) {
 }
 
 /**
- * Überprüft ob das Spiel unentschieden ist.
+ * Überprüft, ob das Spiel unentschieden ist.
  */
-
 function checkDraw() {
     if (availableCells.length === 0 && !gameWon) {
         isDraw = true;
@@ -180,7 +154,6 @@ function stateOfBoard() {
  * Bei einem Sieg gibt es den Wert 'true' zurück, ansonsten den Wert 'false'.
  * ------ToDo ohne 'some' oder 'every'--------
  */
-
 function checkWinPlayer() {
     return WINNING_COMBINATIONS.some(winningCombination => {
         return winningCombination.every(index => {
@@ -197,7 +170,6 @@ function checkWinPlayer() {
  * Setzt eine Markierung für den Spieler, welcher gerade am Zug ist.
  * @param {number} index Das Feld, dass in die Konsole eingegeben wird.
  */
-
 function move(index) {
     if (allowMove) {
         if (playerXTurn && !gameWon) {
@@ -221,7 +193,6 @@ function move(index) {
 /**
  * Zeigt das Spielfeld in der Konsole an.
  */
-
 function printPattern() {
     console.log(' ' + setSymbols(0) + ' | ' + setSymbols(1) + ' | ' + setSymbols(2) + ' ');
     console.log('———|———|———');
@@ -235,7 +206,6 @@ function printPattern() {
  * Überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechendem Symbol wieder.
  * @param {number} index
  */
-
 function setSymbols(index) {
     if (playerXCells.includes(index)) {
         return 'X';
@@ -249,7 +219,6 @@ function setSymbols(index) {
 /**
  * Wechselt die Farben des Info Feldes.
  */
-
 function switchMode() {
     document.getElementById("infoFeld").style.color = "white";
     document.getElementById("infoFeld").style.backgroundColor = "#3e3d3dd7";
