@@ -174,11 +174,11 @@ function stateOfBoard() {
  */
 function checkWinPlayer(playerOCells, playerXCells) {
     for (let winningCombinationIndex = 0; winningCombinationIndex < WINNING_COMBINATIONS.length; winningCombinationIndex++) {
-        const WINNING_ROW = WINNING_COMBINATIONS[winningCombinationIndex];
-        for (let number = 0; number < WINNING_ROW.length; number++) {
-            if (playerXTurn && checkWinRow(playerXCells, WINNING_ROW)) {
+        const winningCombination = WINNING_COMBINATIONS[winningCombinationIndex];
+        for (let number = 0; number < winningCombination.length; number++) {
+            if (playerXTurn && checkWinRow(playerXCells, winningCombination)) {
                 return true;
-            } else if (checkWinRow(playerOCells, WINNING_ROW)){
+            } else if (checkWinRow(playerOCells, winningCombination)){
                 return true;
             }
         }
@@ -188,17 +188,16 @@ function checkWinPlayer(playerOCells, playerXCells) {
 }
 
 /**
- * Funktion testet ob das übergebene Array eine Gewinnkombination beinhaltet.
- * @param {Array} playerCells 
- * @param {Array} WINNING_ROW 
+ * Funktion testet, ob das übergebene Array eine Gewinnkombination beinhaltet.
+ * @param {number[]} playerCells
+ * @param {number[]} winningCombination
  * @returns {boolean}
  */
-function checkWinRow(playerCells, WINNING_ROW) {
-    if (playerCells.includes(WINNING_ROW[0]) && playerCells.includes(WINNING_ROW[1]) && playerCells.includes(WINNING_ROW[2])) {
-        return true;
-    }
+function checkWinRow(playerCells, winningCombination) {
+    return playerCells.includes(winningCombination[0])
+            && playerCells.includes(winningCombination[1])
+            && playerCells.includes(winningCombination[2]);
 }
-
 
 /**
  * Setzt eine Markierung für den Spieler, welcher gerade am Zug ist.
