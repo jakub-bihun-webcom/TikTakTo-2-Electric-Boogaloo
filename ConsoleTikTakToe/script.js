@@ -170,14 +170,15 @@ function stateOfBoard() {
  * Überprüft ob eine Gewinnkombination in dem Array von Spieler X oder Spieler O vorhanden ist.
  * Dabei wird das Array der Gewinnkombinationen mit einer for-Schleife aufgeteilt und die 3 verbleibenden Zahlen
  * der Gewinnreihe werden mit den Feldern beider Spieler abgeglichen.
+ * @return {boolean} Gibt true zurück wenn eine Gewinnkombination übereinstimmt, ansonsten wird false zurückgegeben.
  */
 function checkWinPlayer(playerOCells, playerXCells) {
     for (let winningCombinationIndex = 0; winningCombinationIndex < WINNING_COMBINATIONS.length; winningCombinationIndex++) {
         const WINNING_ROW = WINNING_COMBINATIONS[winningCombinationIndex];
         for (let number = 0; number < WINNING_ROW.length; number++) {
-            if (playerXCells.includes(WINNING_ROW[0]) && playerXCells.includes(WINNING_ROW[1]) && playerXCells.includes(WINNING_ROW[2])) {
+            if (playerXTurn && checkWinRow(playerXCells, WINNING_ROW)) {
                 return true;
-            } else if (playerOCells.includes(WINNING_ROW[0]) && playerOCells.includes(WINNING_ROW[1]) && playerOCells.includes(WINNING_ROW[2])) {
+            } else if (checkWinRow(playerOCells, WINNING_ROW)){
                 return true;
             }
         }
@@ -185,6 +186,19 @@ function checkWinPlayer(playerOCells, playerXCells) {
 
     return false;
 }
+
+/**
+ * 
+ * @param {*} playerCells 
+ * @param {*} WINNING_ROW 
+ * @returns 
+ */
+function checkWinRow(playerCells, WINNING_ROW) {
+    if (playerCells.includes(WINNING_ROW[0]) && playerCells.includes(WINNING_ROW[1]) && playerCells.includes(WINNING_ROW[2])) {
+        return true;
+    }
+}
+
 
 /**
  * Setzt eine Markierung für den Spieler, welcher gerade am Zug ist.
@@ -262,9 +276,10 @@ function testCheckWin(playerOCells, playerXCells, expectedResult) {
 
 // Testfälle für checkWin
 console.log('checkWin testen')
-testCheckWin([], [], false);
-testCheckWin([0, 1, 2], [3, 4], true);
 testCheckWin([1, 4, 6, 8], [0, 2, 3, 5, 7], false);
+testCheckWin([0, 1, 2], [3, 4], true);
+testCheckWin([], [], false);
+testCheckWin([0, 1, 6], [3, 4, 5], true);
 
 //Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
 
