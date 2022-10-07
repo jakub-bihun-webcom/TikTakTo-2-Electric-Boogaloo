@@ -129,7 +129,7 @@ function setCell(cell) {
         playerOCells.push(cell);
     }
 
-    if (checkWinPlayer()) {
+    if (checkWinPlayer(playerOCells, playerXCells)) {
         gameWon = true;
         allowMove = false;
         if (playerXTurn) {
@@ -171,9 +171,9 @@ function stateOfBoard() {
  * Dabei wird das Array der Gewinnkombinationen mit einer for-Schleife aufgeteilt und die 3 verbleibenden Zahlen
  * der Gewinnreihe werden mit den Feldern beider Spieler abgeglichen.
  */
-function checkWinPlayer() {
-    for (let index = 0; index < WINNING_COMBINATIONS.length; index++) {
-        const WINNING_ROW = WINNING_COMBINATIONS[index];
+function checkWinPlayer(playerOCells, playerXCells) {
+    for (let winningCombinationIndex = 0; winningCombinationIndex < WINNING_COMBINATIONS.length; winningCombinationIndex++) {
+        const WINNING_ROW = WINNING_COMBINATIONS[winningCombinationIndex];
         for (let number = 0; number < WINNING_ROW.length; number++) {
             if (playerXCells.includes(WINNING_ROW[0]) && playerXCells.includes(WINNING_ROW[1]) && playerXCells.includes(WINNING_ROW[2])) {
                 return true;
@@ -182,6 +182,8 @@ function checkWinPlayer() {
             }
         }
     }
+
+    return false;
 }
 
 /**
@@ -248,26 +250,21 @@ function switchLightMode() {
     window.alert('Keine gute Entscheidung!')
 }
 
-/**
- * Test Funktion
- * In PlayerXCells und PlayerOCells die Felder eingeben, welche schon platziert sein sollen. 
- * Alle restlichen Felder in availableCells schreiben. Mit move eine letztes Feld platzieren und
- * in der If Schleife den gewünschten Ausgang in die erste Bedingung schreiben.
- */
-function testCheckWin(){
-    choosePlayerStart(1);
-    playerXCells = [0, 6, 8, ];
-    playerOCells = [1, 4, 5, ];
-    availableCells = [3, 7];
-    move(3);
+function testCheckWin(playerOCells, playerXCells, expectedResult) {
+    const actualResult = checkWinPlayer(playerOCells, playerXCells);
 
-    if (checkWinPlayer()){
+    if (actualResult === expectedResult) {
         console.log("Test erfolgreich!");
-        checkWinPlayer();
     } else {
-        throw new Error ("Falsches Ergebnis!");
+        console.error("Falsches Ergebnis! erwartet: " + expectedResult + ", tatsächlich: " + actualResult);
     }
 }
+
+// Testfälle für checkWin
+console.log('checkWin testen')
+testCheckWin([], [], false);
+testCheckWin([0, 1, 2], [3, 4], true);
+testCheckWin([1, 4, 6, 8], [0, 2, 3, 5, 7], false);
 
 //Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
 
