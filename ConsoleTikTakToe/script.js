@@ -188,10 +188,10 @@ function checkWinPlayer(playerOCells, playerXCells) {
 }
 
 /**
- * 
- * @param {*} playerCells 
- * @param {*} WINNING_ROW 
- * @returns 
+ * Funktion testet ob das übergebene Array eine Gewinnkombination beinhaltet.
+ * @param {Array} playerCells 
+ * @param {Array} WINNING_ROW 
+ * @returns {boolean}
  */
 function checkWinRow(playerCells, WINNING_ROW) {
     if (playerCells.includes(WINNING_ROW[0]) && playerCells.includes(WINNING_ROW[1]) && playerCells.includes(WINNING_ROW[2])) {
