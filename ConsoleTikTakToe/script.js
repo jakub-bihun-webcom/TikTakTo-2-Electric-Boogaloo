@@ -168,12 +168,13 @@ function stateOfBoard() {
 
 /**
  * Überprüft ob eine Gewinnkombination in dem Array von Spieler X oder Spieler O vorhanden ist.
+ * Dabei wird das Array der Gewinnkombinationen mit einer for-Schleife aufgeteilt und die 3 verbleibenden Zahlen
+ * der Gewinnreihe werden mit den Feldern beider Spieler abgeglichen.
  */
 function checkWinPlayer() {
     for (let index = 0; index < WINNING_COMBINATIONS.length; index++) {
         const WINNING_ROW = WINNING_COMBINATIONS[index];
-        for (let index2 = 0; index2 < WINNING_ROW.length; index2++) {
-            console.log("WinningRow", WINNING_ROW);
+        for (let number = 0; number < WINNING_ROW.length; number++) {
             if (playerXCells.includes(WINNING_ROW[0]) && playerXCells.includes(WINNING_ROW[1]) && playerXCells.includes(WINNING_ROW[2])) {
                 return true;
             } else if (playerOCells.includes(WINNING_ROW[0]) && playerOCells.includes(WINNING_ROW[1]) && playerOCells.includes(WINNING_ROW[2])) {
