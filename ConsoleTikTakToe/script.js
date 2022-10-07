@@ -36,7 +36,7 @@ function resetBoard() {
     playerXTurn = true;
     isDraw = false;
     gameWon = false;
-    console.clear();
+    // console.clear();
     console.log("Mit choosePlayerStart() auswählen welcher Spieler anfangen soll.");
     console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
@@ -84,7 +84,7 @@ function setPlayerX(cell) {
  */
 function setPlayerO(cell) {
     if (allowMove) {
-        if (playerXTurn === true) {
+        if (playerXTurn) {
             throw new Error('Spieler X ist am Zug!');
         } else {
             setCell(cell);
@@ -123,13 +123,13 @@ function setCell(cell) {
 
     checkDraw();
 
-    if (playerXTurn === true) {
+    if (playerXTurn) {
         playerXCells.push(cell);
     } else {
         playerOCells.push(cell);
     }
 
-    if (checkWinPlayer() === true) {
+    if (checkWinPlayer(playerOCells, playerXCells)) {
         gameWon = true;
         allowMove = false;
         if (playerXTurn) {
@@ -168,19 +168,35 @@ function stateOfBoard() {
 
 /**
  * Überprüft ob eine Gewinnkombination in dem Array von Spieler X oder Spieler O vorhanden ist.
- * Bei einem Sieg gibt es den Wert 'true' zurück, ansonsten den Wert 'false'.
- * ------ToDo ohne 'some' oder 'every'--------
+ * Dabei wird das Array der Gewinnkombinationen mit einer for-Schleife aufgeteilt und die 3 verbleibenden Zahlen
+ * der Gewinnreihe werden mit den Feldern beider Spieler abgeglichen.
+ * @return {boolean} Gibt true zurück wenn eine Gewinnkombination übereinstimmt, ansonsten wird false zurückgegeben.
  */
-function checkWinPlayer() {
-    return WINNING_COMBINATIONS.some(winningCombination => {
-        return winningCombination.every(index => {
-            if (playerXTurn === true) {
-                return playerXCells.includes(index);
-            } else {
-                return playerOCells.includes(index);
+function checkWinPlayer(playerOCells, playerXCells) {
+    for (let winningCombinationIndex = 0; winningCombinationIndex < WINNING_COMBINATIONS.length; winningCombinationIndex++) {
+        const winningCombination = WINNING_COMBINATIONS[winningCombinationIndex];
+        for (let number = 0; number < winningCombination.length; number++) {
+            if (playerXTurn && checkWinRow(playerXCells, winningCombination)) {
+                return true;
+            } else if (checkWinRow(playerOCells, winningCombination)){
+                return true;
             }
-        })
-    })
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Funktion testet, ob das übergebene Array eine Gewinnkombination beinhaltet.
+ * @param {number[]} playerCells
+ * @param {number[]} winningCombination
+ * @returns {boolean}
+ */
+function checkWinRow(playerCells, winningCombination) {
+    return playerCells.includes(winningCombination[0])
+            && playerCells.includes(winningCombination[1])
+            && playerCells.includes(winningCombination[2]);
 }
 
 /**
@@ -247,9 +263,26 @@ function switchLightMode() {
     window.alert('Keine gute Entscheidung!')
 }
 
+function testCheckWin(playerOCells, playerXCells, expectedResult) {
+    const actualResult = checkWinPlayer(playerOCells, playerXCells);
+
+    if (actualResult === expectedResult) {
+        console.log("Test erfolgreich!");
+    } else {
+        console.error("Falsches Ergebnis! erwartet: " + expectedResult + ", tatsächlich: " + actualResult);
+    }
+}
+
+// Testfälle für checkWin
+console.log('checkWin testen')
+testCheckWin([1, 4, 6, 8], [0, 2, 3, 5, 7], false);
+testCheckWin([0, 1, 2], [3, 4], true);
+testCheckWin([], [], false);
+testCheckWin([0, 1, 6], [3, 4, 5], true);
+
 //Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
 
-// Gewonnen mit dem setPlayer_() Befehl 
+// Gewonnen mit dem setPlayer_() Befehl
 /*
 choosePlayerStart(1)
 setPlayerX(5);
@@ -279,7 +312,7 @@ setPlayerX(3);
 
 // Gewonnen mit dem move() Befehl
 /*
-choosePlayerStart(2)
+choosePlayerStart(1)
 move(2)
 move(5)
 move(1)
@@ -290,7 +323,7 @@ move(0)
 // Unentschieden mit dem move() Befehl
 /*
 choosePlayerStart(1)
-move(4)
+move(2)
 move(6)
 move(8)
 move(0)
@@ -298,5 +331,5 @@ move(3)
 move(5)
 move(1)
 move(7)
-move(2)
+move(4)
 */
