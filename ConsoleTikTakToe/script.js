@@ -36,7 +36,7 @@ function resetBoard() {
     playerXTurn = true;
     isDraw = false;
     gameWon = false;
-    console.clear();
+    // console.clear();
     console.log("Mit choosePlayerStart() auswählen welcher Spieler anfangen soll.");
     console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
@@ -246,6 +246,27 @@ function switchLightMode() {
     document.getElementById("infoFeld").style.color = "black";
     document.getElementById("infoFeld").style.backgroundColor = "white";
     window.alert('Keine gute Entscheidung!')
+}
+
+/**
+ * Test Funktion
+ * In PlayerXCells und PlayerOCells die Felder eingeben, welche schon platziert sein sollen. 
+ * Alle restlichen Felder in availableCells schreiben. Mit move eine letztes Feld platzieren und
+ * in der If Schleife den gewünschten Ausgang in die erste Bedingung schreiben.
+ */
+function testCheckWin(){
+    choosePlayerStart(1);
+    playerXCells = [0, 6, 8, ];
+    playerOCells = [1, 4, 5, ];
+    availableCells = [3, 7];
+    move(3);
+
+    if (checkWinPlayer()){
+        console.log("Test erfolgreich!");
+        checkWinPlayer();
+    } else {
+        throw new Error ("Falsches Ergebnis!");
+    }
 }
 
 //Hier ein paar Tests, um diese auszuführen einfach vor dem Test das "/*" und hinter dem Test das "*/" entfernen
