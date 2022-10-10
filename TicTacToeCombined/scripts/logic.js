@@ -36,7 +36,7 @@ function resetBoard() {
     playerXTurn = true;
     isDraw = false;
     gameWon = false;
-    // console.clear();
+    console.clear();
     console.log("Mit choosePlayerStart() auswählen welcher Spieler anfangen soll.");
     console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
