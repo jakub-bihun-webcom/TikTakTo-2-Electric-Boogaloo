@@ -50,8 +50,6 @@ function resetBoard() {
     console.clear();
 }
 
-
-
 /**
  * Setzt eine Markierung für den Spieler, welcher gerade am Zug ist.
  * @param {number} index Das Feld, dass in die Konsole eingegeben wird.
@@ -115,8 +113,6 @@ function setCell(cell) {
 
     checkDraw();
 
-    // drawWebField(cell)
-
     if (checkWinPlayer(playerOCells, playerXCells)) {
         gameWon = true;
         allowMove = false;
@@ -151,11 +147,10 @@ function printPattern() {
 }
 
 /**
- * 
+ * Die Funktion setzt die Hintergrundfarbe für das entsprechende angesprochene Feld
  */
 function setSymbolUI(index) {
     if (!playerXTurn) {
-
         document.getElementById(index).style.backgroundColor = '#981237';
     } else {
         document.getElementById(index).style.backgroundColor = "#696969";
@@ -174,7 +169,9 @@ function setSymbolsConsole(index) {
         return " ";
     }
 }
-
+/**
+ * Gibt die Arrays in der Console wieder 
+ */
 function stateOfBoard() {
     console.log("Felder von Spieler X: ", playerXCells);
     console.log("Felder von Spieler O: ", playerOCells);
@@ -222,6 +219,12 @@ function checkWinRow(playerCells, winningCombination) {
         && playerCells.includes(winningCombination[2]);
 }
 
+/**
+ * Testfunktion für die checkWin Funktion. Es werden mehrere Testfälle durchgegeben und überprüft ob das erwartete Ergebnis mit dem herausgekommenen Ergebnis übereinstimmt.
+ * @param {number[]} playerOCells Array mit den von PlayerO gesetzten Feldern 
+ * @param {number[]} playerXCells Array mit den von PlayerX gesetzten Feldern 
+ * @param {boolean} expectedResult Wenn der test erfolgreich war wird dieser Boolean auf true gesetzt 
+ */
 function testCheckWin(playerOCells, playerXCells, expectedResult) {
     const actualResult = checkWinPlayer(playerOCells, playerXCells);
 
