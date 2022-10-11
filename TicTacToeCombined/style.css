@@ -73,7 +73,7 @@ section {
     background-position: center;
 }
 
-.cell0 {
+.cell {
     font-family: "Permanent Marker", cursive;
     width: 98px;
     height: 100px;
@@ -83,102 +83,6 @@ section {
     line-height: 100px;
     font-size: 60px;
     background-color: #17416e;
-
-}
-
-.cell1 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-
-}
-
-.cell2 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-
-}
-
-.cell3 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-
-}
-
-.cell4 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-
-}
-
-.cell5 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-
-}
-
-.cell6 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-
-}
-
-.cell7 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-
-}
-
-.cell8 {
-    font-family: "Permanent Marker", cursive;
-    width: 98px;
-    height: 100px;
-    box-shadow: 2px 2px 10px #26729c;
-    border: 3px solid #3565b1;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
 
 }
 
@@ -207,10 +111,11 @@ button {
     border-radius: 3%;
     width: 100%;
 }
+
 p {
     border: 0px;
     margin: 10px;
     margin-left: 0px;
     margin-right: 0px;
-    
+
 }

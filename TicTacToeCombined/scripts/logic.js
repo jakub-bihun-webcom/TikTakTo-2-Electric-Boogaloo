@@ -9,7 +9,6 @@ const WINNING_COMBINATIONS = [
     [2, 4, 6]
 ];
 const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-const boardElement = document.getElementById('game--container');
 let availableCells = [];
 let playerXCells = [];
 let playerOCells = [];
@@ -153,7 +152,7 @@ function setSymbolUI(index) {
     if (!playerXTurn) {
         document.getElementById(index).style.backgroundColor = '#981237';
     } else {
-        document.getElementById(index).style.backgroundColor = "#696969";
+        document.getElementById(index).style.backgroundColor = '#696969';
     }
 }
 /**
@@ -227,16 +226,13 @@ function checkWinRow(playerCells, winningCombination) {
  */
 function testCheckWin(playerOCells, playerXCells, expectedResult) {
     const actualResult = checkWinPlayer(playerOCells, playerXCells);
-
     if (actualResult === expectedResult) {
-        console.log("Test erfolgreich!");
     } else {
         console.error("Falsches Ergebnis! erwartet: " + expectedResult + ", tatsächlich: " + actualResult);
     }
 }
 
 // Testfälle für checkWin
-console.log('checkWin testen')
 testCheckWin([1, 4, 6, 8], [0, 2, 3, 5, 7], false);
 testCheckWin([0, 1, 2], [3, 4], true);
 testCheckWin([], [], false);
