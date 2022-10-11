@@ -9,6 +9,7 @@ const WINNING_COMBINATIONS = [
     [2, 4, 6]
 ];
 const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const boardElement = document.getElementById('game--container');
 let availableCells = [];
 let playerXCells = [];
 let playerOCells = [];
@@ -36,28 +37,20 @@ function resetBoard() {
     playerXTurn = true;
     isDraw = false;
     gameWon = false;
+    allowMove = true;
+    document.getElementById("0").style.backgroundColor = "#aca8a897";
+    document.getElementById("1").style.backgroundColor = "#aca8a897";
+    document.getElementById("2").style.backgroundColor = "#aca8a897";
+    document.getElementById("3").style.backgroundColor = "#aca8a897";
+    document.getElementById("4").style.backgroundColor = "#aca8a897";
+    document.getElementById("5").style.backgroundColor = "#aca8a897";
+    document.getElementById("6").style.backgroundColor = "#aca8a897";
+    document.getElementById("7").style.backgroundColor = "#aca8a897";
+    document.getElementById("8").style.backgroundColor = "#aca8a897";
     console.clear();
-    console.log("Mit choosePlayerStart() auswählen welcher Spieler anfangen soll.");
-    console.log("Für Spieler X [1] eingeben und für Spieler O [2] eingeben.");
 }
 
-/**
- * Lässt die Spieler auswählen, ob X oder O anfangen soll.
- * @param {number} token 
- */
-function choosePlayerStart(token) {
-    if (token === 1) {
-        playerXTurn = true;
-        console.log("Spieler X fängt an.");
-        allowMove = true;
-    } else if (token === 2) {
-        playerXTurn = false;
-        console.log("Spieler O fängt an.");
-        allowMove = true;
-    } else {
-        throw new Error("Bitte 1 für Spieler X oder 2 für Spieler O eingeben.");
-    }
-}
+
 
 /**
  * Setzt eine Markierung für den Spieler, welcher gerade am Zug ist.
@@ -68,11 +61,15 @@ function move(index) {
         if (playerXTurn && !gameWon) {
             setCell(index);
             if (!gameWon && !isDraw) {
+                setSymbolUI(index)
+                printPattern()
                 console.log('Jetzt ist Spieler O am Zug');
             }
         } else if (!gameWon) {
             setCell(index);
             if (!gameWon && !isDraw) {
+                setSymbolUI(index)
+                printPattern()
                 console.log('Jetzt ist Spieler X am Zug');
             }
         }
@@ -81,6 +78,7 @@ function move(index) {
     } else {
         throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
     }
+
 }
 
 /**
@@ -98,7 +96,7 @@ function setCell(cell) {
     }
 
     if (!availableCells.includes(cell)) {
-        let availableCellString = availableCells.toString();
+        const availableCellString = availableCells.join(", ");
         console.log(availableCellString);
         throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString);
     }
@@ -109,20 +107,24 @@ function setCell(cell) {
         }
     }
 
-    checkDraw();
-
     if (playerXTurn) {
         playerXCells.push(cell);
     } else {
         playerOCells.push(cell);
     }
 
+    checkDraw();
+
+    // drawWebField(cell)
+
     if (checkWinPlayer(playerOCells, playerXCells)) {
         gameWon = true;
         allowMove = false;
         if (playerXTurn) {
+            printPattern()
             console.log('PlayerX hat gewonnen!');
         } else {
+            printPattern()
             console.log('PlayerO hat gewonnen!');
         }
         console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
@@ -130,9 +132,46 @@ function setCell(cell) {
 
     playerXTurn = !playerXTurn;
 
-    if (isDraw) {
+    if (isDraw && !gameWon) {
         console.log('Unentschieden!');
         console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+    }
+}
+
+/**
+ * Zeigt das Spielfeld in der Konsole an.
+ */
+function printPattern() {
+    console.log(' ' + setSymbolsConsole(0) + ' | ' + setSymbolsConsole(1) + ' | ' + setSymbolsConsole(2) + ' ');
+    console.log('———|———|———');
+    console.log(' ' + setSymbolsConsole(3) + ' | ' + setSymbolsConsole(4) + ' | ' + setSymbolsConsole(5) + ' ');
+    console.log('———|———|———');
+    console.log(' ' + setSymbolsConsole(6) + ' | ' + setSymbolsConsole(7) + ' | ' + setSymbolsConsole(8) + ' ');
+    console.log(' ');
+}
+
+/**
+ * 
+ */
+function setSymbolUI(index) {
+    if (!playerXTurn) {
+
+        document.getElementById(index).style.backgroundColor = '#981237';
+    } else {
+        document.getElementById(index).style.backgroundColor = "#696969";
+    }
+}
+/**
+ * Überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechendem Symbol wieder.
+ * @param {number} index Die Aufgerufene Wert in printPattern()
+ */
+function setSymbolsConsole(index) {
+    if (playerXCells.includes(index)) {
+        return 'X';
+    } else if (playerOCells.includes(index)) {
+        return 'O';
+    } else {
+        return " ";
     }
 }
 
@@ -141,7 +180,6 @@ function stateOfBoard() {
     console.log("Felder von Spieler O: ", playerOCells);
     console.log("Alle verfügbaren Felder: ", availableCells);
 }
-
 
 /**
  * Überprüft, ob das Spiel unentschieden ist.
