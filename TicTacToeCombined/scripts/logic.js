@@ -1,27 +1,3 @@
-const WINNING_COMBINATIONS = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
-const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-let availableCells = [];
-let playerXCells = [];
-let playerOCells = [];
-let playerXTurn;
-let isDraw = false;
-let gameWon = false;
-let allowMove = false;
-
-/**
- * Startet das Spiel und führt die Funktionen resetBoard() aus.
- */
-startGame();
-
 function startGame() {
     resetBoard();
 }
@@ -37,16 +13,8 @@ function resetBoard() {
     isDraw = false;
     gameWon = false;
     allowMove = true;
-    document.getElementById("0").style.backgroundColor = "#aca8a897";
-    document.getElementById("1").style.backgroundColor = "#aca8a897";
-    document.getElementById("2").style.backgroundColor = "#aca8a897";
-    document.getElementById("3").style.backgroundColor = "#aca8a897";
-    document.getElementById("4").style.backgroundColor = "#aca8a897";
-    document.getElementById("5").style.backgroundColor = "#aca8a897";
-    document.getElementById("6").style.backgroundColor = "#aca8a897";
-    document.getElementById("7").style.backgroundColor = "#aca8a897";
-    document.getElementById("8").style.backgroundColor = "#aca8a897";
-    console.clear();
+    resetCellColors();
+    // console.clear();
 }
 
 /**
@@ -134,50 +102,6 @@ function setCell(cell) {
 }
 
 /**
- * Zeigt das Spielfeld in der Konsole an.
- */
-function printPattern() {
-    console.log(' ' + setSymbolsConsole(0) + ' | ' + setSymbolsConsole(1) + ' | ' + setSymbolsConsole(2) + ' ');
-    console.log('———|———|———');
-    console.log(' ' + setSymbolsConsole(3) + ' | ' + setSymbolsConsole(4) + ' | ' + setSymbolsConsole(5) + ' ');
-    console.log('———|———|———');
-    console.log(' ' + setSymbolsConsole(6) + ' | ' + setSymbolsConsole(7) + ' | ' + setSymbolsConsole(8) + ' ');
-    console.log(' ');
-}
-
-/**
- * Die Funktion setzt die Hintergrundfarbe für das entsprechende angesprochene Feld
- */
-function setSymbolUI(index) {
-    if (!playerXTurn) {
-        document.getElementById(index).style.backgroundColor = '#981237';
-    } else {
-        document.getElementById(index).style.backgroundColor = '#696969';
-    }
-}
-/**
- * Überprüft ob das entsprechende Feld von einem Spieler vergeben ist und gibt es mit dem entsprechendem Symbol wieder.
- * @param {number} index Die Aufgerufene Wert in printPattern()
- */
-function setSymbolsConsole(index) {
-    if (playerXCells.includes(index)) {
-        return 'X';
-    } else if (playerOCells.includes(index)) {
-        return 'O';
-    } else {
-        return " ";
-    }
-}
-/**
- * Gibt die Arrays in der Console wieder 
- */
-function stateOfBoard() {
-    console.log("Felder von Spieler X: ", playerXCells);
-    console.log("Felder von Spieler O: ", playerOCells);
-    console.log("Alle verfügbaren Felder: ", availableCells);
-}
-
-/**
  * Überprüft, ob das Spiel unentschieden ist.
  */
 function checkDraw() {
@@ -217,23 +141,3 @@ function checkWinRow(playerCells, winningCombination) {
         && playerCells.includes(winningCombination[1])
         && playerCells.includes(winningCombination[2]);
 }
-
-/**
- * Testfunktion für die checkWin Funktion. Es werden mehrere Testfälle durchgegeben und überprüft ob das erwartete Ergebnis mit dem herausgekommenen Ergebnis übereinstimmt.
- * @param {number[]} playerOCells Array mit den von PlayerO gesetzten Feldern 
- * @param {number[]} playerXCells Array mit den von PlayerX gesetzten Feldern 
- * @param {boolean} expectedResult Wenn der test erfolgreich war wird dieser Boolean auf true gesetzt 
- */
-function testCheckWin(playerOCells, playerXCells, expectedResult) {
-    const actualResult = checkWinPlayer(playerOCells, playerXCells);
-    if (actualResult === expectedResult) {
-    } else {
-        console.error("Falsches Ergebnis! erwartet: " + expectedResult + ", tatsächlich: " + actualResult);
-    }
-}
-
-// Testfälle für checkWin
-testCheckWin([1, 4, 6, 8], [0, 2, 3, 5, 7], false);
-testCheckWin([0, 1, 2], [3, 4], true);
-testCheckWin([], [], false);
-testCheckWin([0, 1, 6], [3, 4, 5], true);
