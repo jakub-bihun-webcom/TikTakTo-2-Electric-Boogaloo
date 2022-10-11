@@ -34,7 +34,7 @@ startGame();
  * Funktionen startet das Spiel und räumt das Spielbrett auf.
  */
 function startGame() {
-    resetBoard();
+    setBoard();
     setBoardHoverClass();
 }
 
