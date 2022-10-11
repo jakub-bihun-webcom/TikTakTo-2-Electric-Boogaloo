@@ -100,11 +100,10 @@ function setCell(cell) {
 
 /**
  * Überprüft, ob das Spiel unentschieden ist.
+ * @returns {boolean}
  */
 function checkDraw() {
-    if (availableCells.length === 0 && !gameWon) {
-        return true;
-    }
+    return availableCells.length === 0 && !gameWon;
 }
 
 
