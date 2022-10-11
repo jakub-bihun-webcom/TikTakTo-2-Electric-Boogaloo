@@ -23,12 +23,3 @@
         return " ";
     }
 }
-
-/**
- * Gibt die Arrays in der Console wieder 
- */
- function stateOfBoard() {
-    console.log("Felder von Spieler X: ", playerXCells);
-    console.log("Felder von Spieler O: ", playerOCells);
-    console.log("Alle verfügbaren Felder: ", availableCells);
-}
