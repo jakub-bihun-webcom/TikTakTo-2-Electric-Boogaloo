@@ -57,22 +57,6 @@ section {
     color: #26729c;
 }
 
-.cell.x {
-    background: linear-gradient(to top right, transparent calc(50% - var(--l) / 2), var(red) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2)),
-        linear-gradient(to bottom right, transparent calc(50% - var(--l) / 2), var(red) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2));
-    background-size: 80% 80%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.cell.circle {
-    background: linear-gradient(to top right, transparent calc(50% - var(--l) / 2), var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2)),
-        linear-gradient(to bottom right, transparent calc(50% - var(--l) / 2), var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2));
-    background-size: 80% 80%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .cell {
     font-family: "Permanent Marker", cursive;
     width: 98px;
@@ -95,8 +79,8 @@ section {
 
 button {
     background-color: #3565b1;
-    width: 200px;
-    height: 50px;
+    width: 175px;
+    height: 40px;
     font-size: 25px;
     color: #f9f9f9;
     box-shadow: 2px 2px 3px #183055;
@@ -112,10 +96,29 @@ button {
     width: 100%;
 }
 
-p {
+.infoFieldText {
     border: 0px;
     margin: 10px;
     margin-left: 0px;
     margin-right: 0px;
 
+}
+
+.textFeld {
+    color: #000000;
+    border-radius: 10px;
+    background-color: #ffffff91;
+    border: 0px;
+    margin: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 80%;
+}
+
+.textFeldDiv {
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 3%;
+    width: 100%;
 }
