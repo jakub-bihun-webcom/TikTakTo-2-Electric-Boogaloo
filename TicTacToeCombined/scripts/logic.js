@@ -111,5 +111,3 @@ function setCell(cell) {
 function checkDraw() {
     return availableCells.length === 0 && !gameWon;
 }
-
-

@@ -20,8 +20,12 @@ function checkWinPlayer(playerOCells, playerXCells) {
         const winningCombination = WINNING_COMBINATIONS[winningCombinationIndex];
         for (let number = 0; number < winningCombination.length; number++) {
             if (playerXTurn && checkWinRow(playerXCells, winningCombination)) {
+                start();
+                stop();
                 return true;
             } else if (checkWinRow(playerOCells, winningCombination)) {
+                start();
+                stop();
                 return true;
             }
         }
