@@ -1,6 +1,7 @@
 const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let gameWon = false;
 let allowMove = false;
+let availableCells = [];
 
 function startGame() {
     resetBoard();
@@ -84,8 +85,8 @@ function setCell(cell) {
     if (checkWinPlayer(playerOCells, playerXCells)) {
         gameWon = true;
         allowMove = false;
-        startingConfetti();
-        stoppingConfetti();
+        startConfetti();
+        stopConfetti();
         if (playerXTurn) {
             printPattern();
             printMessage("Player X hat gewonnen    Bitte setze das Spielfeld mit Restart Game zurück.")

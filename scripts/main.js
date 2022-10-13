@@ -1,4 +1,3 @@
-let availableCells = [];
 let playerXCells = [];
 let playerOCells = [];
 let playerXTurn;
