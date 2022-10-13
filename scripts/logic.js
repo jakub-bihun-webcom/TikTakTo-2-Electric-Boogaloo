@@ -18,7 +18,6 @@ function resetBoard() {
     gameWon = false;
     allowMove = true;
     resetCellColors();
-    // console.clear();
 }
 
 /**
@@ -43,11 +42,9 @@ function move(index) {
             }
         }
     } else if (gameWon) {
-        throw new Error('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
-    } else {
-        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
+        showToast('Bitte setze das Spielfeld mit "resetBoard()" zurück', 'red');
+        throw new Error('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
     }
-
 }
 
 /**
@@ -63,6 +60,7 @@ function setCell(cell) {
     if (!availableCells.includes(cell)) {
         const availableCellString = availableCells.join(", ");
         console.log(availableCellString);
+        showToast('Bitte setze das Spielfeld mit "resetBoard()" zurück', 'red');
         throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString);
     }
 
@@ -85,22 +83,21 @@ function setCell(cell) {
         stopConfetti();
         if (playerXTurn) {
             printPattern();
-            toastPlaxerXWin();
+            showToast('Glückwunsch Spieler X');
             console.log('PlayerX hat gewonnen!');
         } else {
             printPattern();
-            toastPlaxerOWin();
+            showToast('Glückwunsch Spieler O');
             console.log('PlayerO hat gewonnen!');
         }
-        console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
-
+        console.log('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
     }
 
     playerXTurn = !playerXTurn;
     setSymbolUI(cell);
 
     if (checkDraw() && !gameWon) {
-        toastUnentschieden();
+        showToast('Unentschieden');
         console.log('Unentschieden!');
         console.log('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
     }
