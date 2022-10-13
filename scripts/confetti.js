@@ -212,13 +212,13 @@ var confetti = {
 	}
 })();
 
-const start = () => {
+const startingConfetti = () => {
   setTimeout(function() {
       confetti.start()
   }, 1); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
 }
 
-const stop = () => {
+const stoppingConfetti = () => {
   setTimeout(function() {
       confetti.stop()
   }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)

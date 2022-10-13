@@ -14,7 +14,7 @@
 }
 
 // Testfälle für checkWin
-// testCheckWin([1, 4, 6, 8], [0, 2, 3, 5, 7], false);
-// testCheckWin([0, 1, 2], [3, 4], true);
-// testCheckWin([], [], false);
-// testCheckWin([0, 1, 6], [3, 4, 5], true);
+testCheckWin([1, 4, 6, 8], [0, 2, 3, 5, 7], false);
+testCheckWin([0, 1, 2], [3, 4], true);
+testCheckWin([], [], false);
+testCheckWin([0, 1, 6], [3, 4, 5], true);
