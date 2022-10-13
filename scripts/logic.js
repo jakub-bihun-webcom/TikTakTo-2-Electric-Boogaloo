@@ -1,3 +1,8 @@
+const ALLCELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let gameWon = false;
+let allowMove = false;
+let availableCells = [];
+
 function startGame() {
     resetBoard();
 }
@@ -80,21 +85,29 @@ function setCell(cell) {
     if (checkWinPlayer(playerOCells, playerXCells)) {
         gameWon = true;
         allowMove = false;
+        startConfetti();
+        stopConfetti();
         if (playerXTurn) {
-            printPattern()
+            printPattern();
+            printMessage("Player X hat gewonnen    Bitte setze das Spielfeld mit Restart Game zurück.")
             console.log('PlayerX hat gewonnen!');
         } else {
-            printPattern()
+            printPattern();
+            printMessage("Player 0 hat gewonnen    Bitte setze das Spielfeld mit Restart Game zurück.")
+
             console.log('PlayerO hat gewonnen!');
         }
         console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+
     }
 
     playerXTurn = !playerXTurn;
+    setSymbolUI(cell);
 
     if (checkDraw() && !gameWon) {
+        printMessage("Unentschieden!    Bitte setze das Spielfeld mit Restart Game zurück.")
         console.log('Unentschieden!');
-        console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+        console.log('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
     }
 }
 
@@ -105,5 +118,3 @@ function setCell(cell) {
 function checkDraw() {
     return availableCells.length === 0 && !gameWon;
 }
-
-
