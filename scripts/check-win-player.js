@@ -15,13 +15,17 @@ const WINNING_COMBINATIONS = [
  * der Gewinnreihe werden mit den Feldern beider Spieler abgeglichen.
  * @return {boolean} Gibt true zurück wenn eine Gewinnkombination übereinstimmt, ansonsten wird false zurückgegeben.
  */
- function checkWinPlayer(playerOCells, playerXCells) {
+function checkWinPlayer(playerOCells, playerXCells) {
     for (let winningCombinationIndex = 0; winningCombinationIndex < WINNING_COMBINATIONS.length; winningCombinationIndex++) {
         const winningCombination = WINNING_COMBINATIONS[winningCombinationIndex];
         for (let number = 0; number < winningCombination.length; number++) {
             if (playerXTurn && checkWinRow(playerXCells, winningCombination)) {
+                start();
+                stop();
                 return true;
             } else if (checkWinRow(playerOCells, winningCombination)) {
+                start();
+                stop();
                 return true;
             }
         }

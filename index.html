@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -25,28 +24,52 @@
             <div data-cell-index="7" id="7" class="cell" onclick="move(7); setSymbolUI(7)"></div>
             <div data-cell-index="8" id="8" class="cell" onclick="move(8); setSymbolUI(8)"></div>
         </div>
+        <div class="textFeldDiv">
+            <p class='textFeld' id="textFeld"></p>
+        </div>
         <h2 class="game--status"></h2>
         <button class="game--restart" onclick="startGame()">Restart Game</button>
         <div class="infoFeld" id="infoFeld">
-            <h2>Folgende Schritte sind notwendig um das Spiel zu spielen:</h2>
-            <p>Öffne die Konsole mit: </p>
-            <p>Mac: command + option + J</p>
-            <p>Windows: Control + Shift + J</p>
-            <p>Folgende Commands werden benötigt:</p>
-            <p> - move([Feld]]) => Setzt eine Markierung für den Spieler, der grade am Zug ist</p>
-            <p> - resetBoard() => Setzt das Spiel auf die Anfangsposition zurück</p>
-            <p> - stateOfBoard() => Zeigt dir den aktuellen Spielstatus an</p>
+            <h2 class="infoFieldText">Folgende Schritte sind notwendig um das Spiel zu spielen:</h2>
+            <div class="divTable greyGridTable">
+                <div class="divTableBody">
+                <div class="divTableRow">
+                <div class="divTableCell">Öffne die Konsole mit </div>
+                <div class="divTableCell"></div>
+                </div>
+                <div class="divTableRow">
+                <div class="divTableCell">Mac</div>
+                <div class="divTableCell">command + option + J</div>
+                </div>
+                <div class="divTableRow">
+                <div class="divTableCell">Windows </div>
+                <div class="divTableCell">Control + Shift + J</div>
+                </div>
+                <div class="divTableRow">
+                <div class="divTableCell">Folgende Commands werden in der Konsole benötigt</div>
+                <div class="divTableCell"></div>
+                </div>
+                <div class="divTableRow">
+                <div class="divTableCell">move([Feld]])</div>
+                <div class="divTableCell">Setzt eine Markierung für den Spieler, der grade am Zug ist</div>
+                </div>
+                <div class="divTableRow">
+                <div class="divTableCell">resetBoard()</div>
+                <div class="divTableCell">Setzt das Spiel auf die Anfangsposition zurück</div>
+                </div>
+                </div>
+                </div>
+
         </div>
         <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
 
-
-        <script src="./scripts/console.js" ></script>
-        <script src="./scripts/ui.js" ></script>
-        <script src="./scripts/check-win-player.js" ></script>
-        <script src="./scripts/logic.js" ></script>
+        <script src="./scripts/confetti.js"></script>
+        <script src="./scripts/console.js"></script>
+        <script src="./scripts/ui.js"></script>
+        <script src="./scripts/check-win-player.js"></script>
+        <script src="./scripts/logic.js"></script>
         <script src="./scripts/main.js"></script>
-        <script src="./scripts/check-win-player.spec.js" ></script>
-        
+        <script src="./scripts/check-win-player.spec.js"></script>
 </body>
 
 </html>

@@ -81,20 +81,26 @@ function setCell(cell) {
         gameWon = true;
         allowMove = false;
         if (playerXTurn) {
-            printPattern()
+            printPattern();
+            printMessage("Player X hat gewonnen    Bitte setze das Spielfeld mit Restart Game zurück.")
             console.log('PlayerX hat gewonnen!');
         } else {
-            printPattern()
+            printPattern();
+            printMessage("Player 0 hat gewonnen    Bitte setze das Spielfeld mit Restart Game zurück.")
+
             console.log('PlayerO hat gewonnen!');
         }
         console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+
     }
 
     playerXTurn = !playerXTurn;
+    setSymbolUI(cell);
 
     if (checkDraw() && !gameWon) {
+        printMessage("Unentschieden!    Bitte setze das Spielfeld mit Restart Game zurück.")
         console.log('Unentschieden!');
-        console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
+        console.log('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
     }
 }
 
@@ -105,5 +111,3 @@ function setCell(cell) {
 function checkDraw() {
     return availableCells.length === 0 && !gameWon;
 }
-
-
