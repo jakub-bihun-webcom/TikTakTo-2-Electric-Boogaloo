@@ -55,10 +55,6 @@ function move(index) {
  * @param {number} cell
  */
 function setCell(cell) {
-    if (!allowMove) {
-        throw new Error('Bitte wähle zuerst einen Spieler aus, der anfangen soll.');
-    }
-
     if (typeof cell !== "number" || 0 > cell > 9) {
         throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.");
     }
@@ -88,12 +84,11 @@ function setCell(cell) {
         stoppingConfetti();
         if (playerXTurn) {
             printPattern();
-            printMessage("Player X hat gewonnen    Bitte setze das Spielfeld mit Restart Game zurück.")
+            toastPlaxerXWin();
             console.log('PlayerX hat gewonnen!');
         } else {
             printPattern();
-            printMessage("Player 0 hat gewonnen    Bitte setze das Spielfeld mit Restart Game zurück.")
-
+            toastPlaxerOWin();
             console.log('PlayerO hat gewonnen!');
         }
         console.log('Bitte setzte das Spielfeld mit "resetBoard()" zurück.');
@@ -104,7 +99,7 @@ function setCell(cell) {
     setSymbolUI(cell);
 
     if (checkDraw() && !gameWon) {
-        printMessage("Unentschieden!    Bitte setze das Spielfeld mit Restart Game zurück.")
+        toastUnentschieden();
         console.log('Unentschieden!');
         console.log('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
     }
