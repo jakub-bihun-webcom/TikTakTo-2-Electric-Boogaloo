@@ -17,7 +17,7 @@ a:hover{
     display: grid;
     grid:
         "header header header" auto "leftSide body rightSide" 1fr "footer footer footer" auto / auto 1fr auto;
-    gap: 8px;
+    gap: 0px;
 }
 
 .header {
@@ -29,6 +29,7 @@ a:hover{
 
 .leftSide {
     grid-area: leftSide;
+    background-color: rgba(220, 227, 245, 0.281);
 }
 
 .body {
@@ -38,15 +39,22 @@ a:hover{
 
 .rightSide {
     grid-area: rightSide;
+    background-color: rgba(220, 227, 245, 0.281);
 }
 
 .footer {
     grid-area: footer;
+    background-color: rgba(220, 227, 245, 0.281);
 }
 
 .header--text {
     font-size: 50px;
     font-weight: bold;
     margin-left: 50%;
+}
 
+.footer--text {
+    font-size: 30px;
+    font-weight: 400;
+    margin-left: 80%;
 }
