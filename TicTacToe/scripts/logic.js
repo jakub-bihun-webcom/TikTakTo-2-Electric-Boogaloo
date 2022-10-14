@@ -42,7 +42,7 @@ function move(index) {
             }
         }
     } else if (gameWon) {
-        showToast('Bitte setze das Spielfeld mit "resetBoard()" zurück', 'red');
+        showToast('Spiel beendet', undefined, 'red');
         throw new Error('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
     }
 }
@@ -60,7 +60,7 @@ function setCell(cell) {
     if (!availableCells.includes(cell)) {
         const availableCellString = availableCells.join(", ");
         console.log(availableCellString);
-        showToast('Bitte setze das Spielfeld mit "resetBoard()" zurück', 'red');
+        showToast('Fehler', 'Das Feld ist belegt.', 'red');
         throw new Error("Das Feld ist nicht frei, hier sind alle möglichen Felder: " + availableCellString);
     }
 
