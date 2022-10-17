@@ -18,6 +18,14 @@ function calculateDuration(time) {
     const minutes = Math.floor(restOfHours / 60);
     const seconds = restOfHours % 60;
     timeArray.push(years, days, hours, minutes, seconds);
+
+    console.log('TimeArray', timeArray);
+    console.log(output(years, 'year')
+    + commaDays(timeArray) + output(days, 'day')
+    + commaHours(timeArray) + output(hours, 'hour')
+    + commaMinutes(timeArray) + output(minutes, 'minute')
+    + commaSeconds(timeArray) + output(seconds, 'second'));
+
     return output(years, 'year')
             + commaDays(timeArray) + output(days, 'day')
             + commaHours(timeArray) + output(hours, 'hour')
@@ -73,7 +81,10 @@ function commaSeconds(timeArray) {
         return ''
     } else if (newArray.filter(biggerThan1).length === 0) {
         return ''
-    } else return ' and '
+    } else if (timeArray[3] === 0){
+        return ''
+    }
+        return ' and '
 }
 
 function biggerThan1(number) {
