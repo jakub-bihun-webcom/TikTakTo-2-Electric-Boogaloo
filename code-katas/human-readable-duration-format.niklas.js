@@ -57,7 +57,7 @@ function commaHours(timeArray) {
     } else if (timeArray[4] === 0 && timeArray[3] === 0 && timeArray[2] === 0) {
         return ''
     } else if (newArray.filter(biggerThan1).length === 1) {
-        return 'and '
+        return ' and '
     } else return ', '
 }
 
