@@ -1,60 +1,53 @@
-body{
-    background-color: rgba(233, 233, 233, 0.26);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(114, 114, 114);
 }
 
-a{
-      text-decoration: none;
-}
-
-a:hover{
-    background-color: rgb(223, 161, 80);
-}
-
-.layout {
-    font-family: 'Roboto', sans-serif;
-    width: 1366px;
-    height: 768px;
-    display: grid;
-    grid:
-        "header header header" auto "leftSide body rightSide" 1fr "footer footer footer" auto / auto 1fr auto;
-    gap: 0px;
-}
 
 .header {
-    padding: 5px;
-    grid-area: header;
-    align-self: center;
-    background-color: rgba(220, 227, 245, 0.281);
-}
+    color: white;
+    width: 100%;
+    font-size: 35px;
+    background-color: rgb(114, 114, 114);
+    display: flex;
+    justify-content: center;
+    text-shadow: 5px 5px 10px rgba(201, 201, 201, 0.432);
 
-.leftSide {
-    grid-area: leftSide;
-    background-color: rgba(220, 227, 245, 0.281);
 }
 
 .body {
-    grid-area: body;
-
+    display: flex;
+    justify-content: center;
+    background-color:rgb(114, 114, 114);
+    height: 670px;
 }
 
-.rightSide {
-    grid-area: rightSide;
-    background-color: rgba(220, 227, 245, 0.281);
+a {
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-decoration: none;
+    
+}
+
+a:hover {
+    color: tomato;
 }
 
 .footer {
-    grid-area: footer;
-    background-color: rgba(220, 227, 245, 0.281);
-}
+    background-color: rgb(114, 114, 114);
+    display: flex;
 
-.header--text {
-    font-size: 50px;
-    font-weight: bold;
-    margin-left: 50%;
 }
 
 .footer--text {
-    font-size: 30px;
-    font-weight: 400;
-    margin-left: 80%;
+    color: white;
+    margin-right: 3%;
+    justify-content: right;
+    margin-left: 75%;
+}
+
+.logo {
+    justify-content: left;
 }
