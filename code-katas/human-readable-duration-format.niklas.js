@@ -50,7 +50,7 @@ function output(input, text) {
 }
 
 /**
- * Funktion, welche überprüft ob an dieser Stelle ein Komma ein 'and' oder nichts eingefügt werden soll.
+ * Nimmt die Prüfung vor, ob an dieser Stelle ein Komma, ein 'and', oder nichts eingefügt werden soll
  * @param number[] timeArray 
  * @returns {string} Entweder wird ein '', 'and ' oder ', ' zurückgegeben.
  */
@@ -80,7 +80,7 @@ function commaHours(timeArray) {
 }
 
 /**
- * Überprüft ob an dieser Stelle ein Komma ein 'and' oder nichts eingefügt werden soll.
+ * Nimmt die Prüfung vor, ob an dieser Stelle ein Komma, ein 'and', oder nichts eingefügt werden soll
  * @param number[] timeArray 
  * @returns {string} Entweder wird ein '', 'and ' oder ', ' zurückgegeben.
  */
