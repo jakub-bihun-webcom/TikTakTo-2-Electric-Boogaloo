@@ -12,8 +12,8 @@ function fibonacciRecursive(steps) {
   if (steps < 3) {
     return 1;
   }
-  if (!fibArr.get(steps)) {
-    fibArr.set(steps,fibonacciRecursive(steps - 1) + fibonacciRecursive(steps - 2));
+  if (!fibMap.get(steps)) {
+    fibMap.set(steps,fibonacciRecursive(steps - 1) + fibonacciRecursive(steps - 2));
   }
-  return fibArr.get(steps);
+  return fibMap.get(steps);
 }
