@@ -2,19 +2,18 @@ let fibMap = new Map();
 
 /**
  * Funktion zum Berechnen der nten Fibonacci Zahl
- * @param {number} steps 
+ * @param {number} steps
  * @returns {number} Fibonacci Zahl
  */
 function fibonacciRecursive(steps) {
-    if (steps === 0) {
-      return 0;
-    }
-    if (steps < 3) {
-      return 1;
-    }
-    if (!fibArr.get(steps)){
-      fibArr.set(steps, fibonacciRecursive(steps - 1) + fibonacciRecursive(steps - 2))  
-    }
-    return fibArr.get(steps);
+  if (steps === 0) {
+    return 0;
   }
-  
+  if (steps < 3) {
+    return 1;
+  }
+  if (!fibArr.get(steps)) {
+    fibArr.set(steps,fibonacciRecursive(steps - 1) + fibonacciRecursive(steps - 2));
+  }
+  return fibArr.get(steps);
+}
