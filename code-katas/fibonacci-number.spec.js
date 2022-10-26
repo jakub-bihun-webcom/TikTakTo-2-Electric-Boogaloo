@@ -4,10 +4,14 @@ describe("Fibonacci Number should be", () => {
         expect(functionToTest(20)).toBe(6765);
         expect(functionToTest(0)).toBe(0);
         expect(functionToTest(4)).toBe(3);
+        expect(functionToTest(1)).toBe(1);
     }
 
     it("Niklas", () => {
         executeTests(fibonacciNiklas);
+    });
+    it("Joshua", () => {
+        executeTests(fibJoshua);
     });
 
 });
