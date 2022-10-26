@@ -1,33 +1,26 @@
 /**
- * Funktion für die Grenzfälle der Fibonacci Zahl
- * @param {number} steps 
+ * Funktion zum Ausrechnen der Fibonacci-Zahl
+ * @param {number} steps
  * @returns {number}
  */
 function fibonacciNiklas(steps) {
-  if (steps === 0){
-    return 0
-  } else if (steps === 1){
-    return 1
-  }
-  return fibonacciCalculator(steps);
-}
-
-/**
- * Funktion zum ausrechner der Fibonacci Zahl
- * @param {number} steps 
- * @returns {number}
- */
-function fibonacciCalculator(steps){
   let number1 = 0;
   let number2 = 1;
-  let fibNumber;
-  let stepsMinusOne = steps - 1;
 
-  for (let index = 0; index < stepsMinusOne; index++) {
+  if (steps === 0) {
+    return number1;
+  } else if (steps === 1) {
+    return number2;
+  }
+
+  let fibNumber;
+
+  for (let index = 0; index < steps - 1; index++) {
     fibNumber = number1 + number2;
+    console.log(fibNumber);
     number1 = number2;
     number2 = fibNumber;
   }
-  
+
   return fibNumber;
 }
