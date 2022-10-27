@@ -14,13 +14,13 @@ function formatDurationNiklas(seconds) {
 
 /**
  * Funktion rechnet die Sekunden um und gibt die Zeit im richtigen Format zurück.
- * @param number[] time 
+ * @param {number} seconds 
  * @returns {string} String im human-readable-duration-format
  */
-function calculateDuration(time) {
+function calculateDuration(seconds) {
     const timeArray = [];
-    const years = Math.floor(time / 31536000);
-    const restOfYears = time % 31536000;
+    const years = Math.floor(seconds / 31536000);
+    const restOfYears = seconds % 31536000;
     const days = Math.floor(restOfYears / 86400);
     const restOfDays = restOfYears % 86400;
     const hours = Math.floor(restOfDays / 3600);
@@ -28,25 +28,25 @@ function calculateDuration(time) {
     const minutes = Math.floor(restOfHours / 60);
     const seconds = restOfHours % 60;
     timeArray.push(years, days, hours, minutes, seconds);
-    return output(years, 'year')
-        + commaDays(timeArray) + output(days, 'day')
-        + commaHours(timeArray) + output(hours, 'hour')
-        + commaMinutes(timeArray) + output(minutes, 'minute')
-        + commaSeconds(timeArray) + output(seconds, 'second');
+    return timeFormat(years, 'year')
+        + commaDays(timeArray) + timeFormat(days, 'day')
+        + commaHours(timeArray) + timeFormat(hours, 'hour')
+        + commaMinutes(timeArray) + timeFormat(minutes, 'minute')
+        + commaSeconds(timeArray) + timeFormat(seconds, 'second');
 }
 
 /**
- * Überprüft ob der Input ungleich 0 ist und fügt bei dem Text ein 's' für die Mehrzahl ein.
- * @param {number} input Die Anzahl der Zeiteinheit
- * @param {string} text Die jeweilige Zeiteinheit
+ * Überprüft, ob der Input ungleich 0 ist, und fügt bei dem Text ein 's' für die Mehrzahl ein.
+ * @param {number} unitCount Die Anzahl der Zeiteinheit
+ * @param {string} timeUnit Die jeweilige Zeiteinheit
  * @returns {string} String im richtigen Format
  */
-function output(input, text) {
-    if (input === 0) {
+function timeFormat(unitCount, timeUnit) {
+    if (unitCount === 0) {
         return '';
-    } else if (input === 1) {
-        return input + ' ' + text + ''
-    } else return input + ' ' + text + 's'
+    } else if (unitCount === 1) {
+        return unitCount + ' ' + timeUnit + ''
+    } else return unitCount + ' ' + timeUnit + 's'
 }
 
 /**
@@ -55,26 +55,26 @@ function output(input, text) {
  * @returns {string} Entweder wird ein '', 'and ' oder ', ' zurückgegeben.
  */
 function commaDays(timeArray) {
-    const newArray = [timeArray[1], timeArray[2], timeArray[3], timeArray[4]];
+    const verifyOtherUnits = [timeArray[1], timeArray[2], timeArray[3], timeArray[4]];
     if (timeArray[0] === 0) {
         return ''
-    } else if (newArray.filter(filterZeros).length === 1) {
+    } else if (verifyOtherUnits.filter(filterZeros).length === 1) {
         return 'and '
     } else return ', '
 }
 
 /**
- * Überprüft ob an dieser Stelle ein Komma ein 'and' oder nichts eingefügt werden soll.
+ * Überprüft, ob an dieser Stelle ein Komma ein 'and' oder nichts eingefügt werden soll.
  * @param number[] timeArray 
  * @returns {string} Entweder wird ein '', 'and ' oder ', ' zurückgegeben.
  */
 function commaHours(timeArray) {
-    const newArray = [timeArray[2], timeArray[3], timeArray[4]];
+    const verifyOtherUnits = [timeArray[2], timeArray[3], timeArray[4]];
     if (timeArray[0] === 0 && timeArray[1] === 0) {
         return ''
     } else if (timeArray[4] === 0 && timeArray[3] === 0 && timeArray[2] === 0) {
         return ''
-    } else if (newArray.filter(filterZeros).length === 1) {
+    } else if (verifyOtherUnits.filter(filterZeros).length === 1) {
         return 'and '
     } else return ', '
 }
@@ -85,12 +85,12 @@ function commaHours(timeArray) {
  * @returns {string} Entweder wird ein '', 'and ' oder ', ' zurückgegeben.
  */
 function commaMinutes(timeArray) {
-    const newArray = [timeArray[3], timeArray[4]]
+    const verifyOtherUnits = [timeArray[3], timeArray[4]]
     if (timeArray[0] === 0 && timeArray[1] === 0 && timeArray[2] === 0) {
         return ''
     } else if (timeArray[3] === 0 && timeArray[4] === 0) {
         return ''
-    } else if (newArray.filter(filterZeros) > 0) {
+    } else if (verifyOtherUnits.filter(filterZeros) > 0) {
         return ' and '
     } else if (timeArray[2] === 0) {
         return ''
@@ -99,21 +99,21 @@ function commaMinutes(timeArray) {
 }
 
 /**
- * Funktion, welche überprüft ob an dieser Stelle ein Komma ein 'and' oder nichts eingefügt werden soll.
+ * Funktion, welche überprüft, ob an dieser Stelle ein Komma ein 'and' oder nichts eingefügt werden soll.
  * @param number[] timeArray 
  * @returns {string} Entweder wird ein '' oder ' and ' zurückgegeben.
  */
 function commaSeconds(timeArray) {
-    const newArray = [timeArray[0], timeArray[1], timeArray[2], timeArray[3]]
+    const verifyOtherUnits = [timeArray[0], timeArray[1], timeArray[2], timeArray[3]]
     if (timeArray[4] === 0) {
         return ''
-    } else if (newArray.filter(filterZeros).length === 0) {
+    } else if (verifyOtherUnits.filter(filterZeros).length === 0) {
         return ''
     } else return ' and '
 }
 
 /**
- * Prüft ob die übergebene Zahl größer 0 ist.
+ * Prüft, ob die übergebene Zahl größer 0 ist.
  * @param {number} number 
  * @returns {number} Wenn number größer 0 ist.
  */
