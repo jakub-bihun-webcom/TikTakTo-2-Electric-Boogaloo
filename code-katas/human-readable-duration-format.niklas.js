@@ -27,7 +27,7 @@ function calculateDuration(seconds) {
     const restOfHours = restOfDays % 3600;
     const minutes = Math.floor(restOfHours / 60);
     const second = restOfHours % 60;
-    return combineWithSeperators(years, days, hours, minutes, second);
+    return formatWithSeperators(years, days, hours, minutes, second);
 }
 
 /**
@@ -39,45 +39,47 @@ function calculateDuration(seconds) {
  * @param {number} seconds 
  * @returns {string} Zusammengesetzter String des Zeit
  */
-function combineWithSeperators(years, days, hours, minutes, seconds) {
-    const unitCount = [];
-    const timeFormatCount = []
+function formatWithSeperators(years, days, hours, minutes, seconds) {
+    const unitCounts = [];
+    const formattedTimes = []
 
     if (years !== 0) {
-        unitCount.push(years);
-        timeFormatCount.push(timeFormat(years, 'year'));
+        unitCounts.push(years);
+        formattedTimes.push(formatUnit(years, 'year'));
     }
     if (days !== 0) {
-        unitCount.push(days);
-        timeFormatCount.push(timeFormat(days, 'day'));
+        unitCounts.push(days);
+        formattedTimes.push(formatUnit(days, 'day'));
     }
     if (hours !== 0) {
-        unitCount.push(hours);
-        timeFormatCount.push(timeFormat(hours, 'hour'));
+        unitCounts.push(hours);
+        formattedTimes.push(formatUnit(hours, 'hour'));
     }
     if (minutes !== 0) {
-        unitCount.push(minutes);
-        timeFormatCount.push(timeFormat(minutes, 'minute'));
+        unitCounts.push(minutes);
+        formattedTimes.push(formatUnit(minutes, 'minute'));
     }
     if (seconds !== 0) {
-        unitCount.push(seconds);
-        timeFormatCount.push(timeFormat(seconds, 'second'));
+        unitCounts.push(seconds);
+        formattedTimes.push(formatUnit(seconds, 'second'));
     }
 
     let combinedString = '';
 
-    for (let currentUnitIndex = 0; currentUnitIndex < unitCount.length; currentUnitIndex++) {
-        let prefix
-        if (currentUnitIndex < unitCount.length - 1) {
-            if (currentUnitIndex < unitCount.length - 2) {
-                prefix = ', '
+    for (let currentUnitIndex = 0; currentUnitIndex < unitCounts.length; currentUnitIndex++) {
+        let suffix;
+        const isLast = currentUnitIndex === unitCounts.length - 1;
+        const isSecondLast = currentUnitIndex === unitCounts.length - 2;
+        if (!isLast) {
+            if (!isSecondLast) {
+                suffix = ', '
             } else {
-                prefix = ' and '
+                suffix = ' and '
             } 
         } else {
-            prefix = ''
+            suffix = ''
         }
-        combinedString = combinedString + unitCount[currentUnitIndex] + timeFormatCount[currentUnitIndex] + prefix;
+        combinedString = combinedString + unitCounts[currentUnitIndex] + formattedTimes[currentUnitIndex] + suffix;
     }
     return combinedString
 }
@@ -89,7 +91,7 @@ function combineWithSeperators(years, days, hours, minutes, seconds) {
  * @param {string} timeUnit Die jeweilige Zeiteinheit
  * @returns {string} String im richtigen Format
  */
-function timeFormat(unitCount, timeUnit) {
+function formatUnit(unitCount, timeUnit) {
     if (unitCount === 1) {
         return ' ' + timeUnit
     } else return ' ' + timeUnit + 's'
