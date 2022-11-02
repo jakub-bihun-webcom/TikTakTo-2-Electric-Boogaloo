@@ -11,11 +11,11 @@ describe('Fibonacci Number should be', () => {
         executeTests(fibonacciNiklas);
     });
 
-    it('Joshua', () => {
+    it('Joshua iterativ', () => {
         executeTests(fibJoshua);
     });
 
-    it('Joshua', () => {
+    it('Joshua rekursiv', () => {
         executeTests(fibonacciRecursive);
     });
 });
