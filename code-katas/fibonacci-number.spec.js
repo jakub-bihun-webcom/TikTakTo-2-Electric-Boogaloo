@@ -12,6 +12,10 @@ describe('Fibonacci Number should be', () => {
     });
 
     it('Joshua', () => {
+        executeTests(fibJoshua);
+    });
+
+    it('Joshua', () => {
         executeTests(fibonacciRecursive);
     });
 });

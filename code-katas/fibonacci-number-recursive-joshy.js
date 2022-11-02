@@ -1,6 +1,6 @@
 /**
  * @param {number} steps Die Stelle in der fibonacci Formel 
- * @param {number} value Der Wert für die Stelle in der fibonacci Formel
+ * @param {object} value Der Wert für die Stelle in der fibonacci Formel
  * @returns {number} Die Fibonacci Zahl an der stelle "steps"
  * Konvertiert die Eingabe in die zutreffende Fibonacci Zahl.
  * Das ganze passiert rekursiv.
