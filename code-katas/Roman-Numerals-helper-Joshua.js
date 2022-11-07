@@ -1,8 +1,10 @@
 const RomanNumeralsJoshua = {
-        romanNumbersArray: ["M", "D", "C", "L", "X", "V", "IV", "I"],
+        romanNumbersArray: ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"],
 
         toRoman: function (input) {
             const orderedInput = this.conversion(input);
+
+             console.log(orderedInput);
 
             const testOutput = this.createOutput(orderedInput);
 
@@ -18,20 +20,35 @@ const RomanNumeralsJoshua = {
             const inputThousand = Math.floor(input / 1000);
             const restOfThousand = input % 1000;
             orderedInput.push(inputThousand);
-            const inputFiveHundred = Math.floor(restOfThousand / 500);
-            const restOfFiveHundred = restOfThousand % 500;
+            const inputNineHundred = Math.floor(restOfThousand / 900);
+            const restOfNineHundred = restOfThousand % 900;
+            orderedInput.push(inputNineHundred);
+            const inputFiveHundred = Math.floor(restOfNineHundred / 500);
+            const restOfFiveHundred = restOfNineHundred % 500;
             orderedInput.push(inputFiveHundred);
-            const inputHundred = Math.floor(restOfFiveHundred / 100);
-            const restOfHundred = restOfFiveHundred % 100;
+            const inputFourHundred = Math.floor(restOfFiveHundred / 400);
+            const restOfFourHundred = restOfFiveHundred % 400;
+            orderedInput.push(inputFourHundred);
+            const inputHundred = Math.floor(restOfFourHundred / 100);
+            const restOfHundred = restOfFourHundred % 100;
             orderedInput.push(inputHundred);
-            const inputFifty = Math.floor(restOfHundred / 50);
-            const restOfFifty = restOfHundred % 50;
+            const inputNinety = Math.floor(restOfHundred / 90);
+            const restOfNinety = restOfHundred % 90;
+            orderedInput.push(inputNinety);
+            const inputFifty = Math.floor(restOfNinety / 50);
+            const restOfFifty = restOfNinety % 50;
             orderedInput.push(inputFifty);
-            const inputTen = Math.floor(restOfFifty / 10);
-            const restOfTen = restOfFifty % 10;
+            const inputForty = Math.floor(restOfFifty / 40);
+            const restOfForty = restOfFifty % 40;
+            orderedInput.push(inputForty);
+            const inputTen = Math.floor(restOfForty / 10);
+            const restOfTen = restOfForty % 10;
             orderedInput.push(inputTen);
-            const inputFive = Math.floor(restOfTen / 5);
-            const restOfFive = restOfTen % 5;
+            const inputNine = Math.floor(restOfTen / 9);
+            const restOfNine = restOfTen % 9;
+            orderedInput.push(inputNine);
+            const inputFive = Math.floor(restOfNine / 5);
+            const restOfFive = restOfNine % 5;
             orderedInput.push(inputFive);
             const inputFour = Math.floor(restOfFive / 4);
             const restOfFour = restOfFive % 4;
