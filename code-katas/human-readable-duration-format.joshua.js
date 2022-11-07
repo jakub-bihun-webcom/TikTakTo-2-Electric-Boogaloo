@@ -1,3 +1,0 @@
-function formatDurationJoshua(seconds) {
-    return "";
-}

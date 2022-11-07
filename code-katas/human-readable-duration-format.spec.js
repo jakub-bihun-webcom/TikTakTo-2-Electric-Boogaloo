@@ -13,9 +13,9 @@ describe("Human readable duration format", () => {
         executeTests(formatDurationNiklas);
     });
 
-    it("Joshua", () => {
-        executeTests(formatDurationJoshua);
-    });
+    // it("Joshua", () => {
+    //     executeTests(formatDurationJoshua);
+    // });
 
     it("Stefan", () => {
         executeTests(formatDurationStefan);
