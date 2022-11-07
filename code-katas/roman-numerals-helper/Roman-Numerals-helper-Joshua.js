@@ -4,7 +4,7 @@ const RomanNumeralsJoshua = {
         toRoman: function (input) {
             const orderedInput = this.conversion(input);
 
-             console.log(orderedInput);
+            console.log(orderedInput);
 
             const testOutput = this.createOutput(orderedInput);
 
@@ -12,6 +12,100 @@ const RomanNumeralsJoshua = {
 
             return output;
         },
+
+        fromRoman: function (input) {
+
+            let inputArray = input.split('');
+            let sum = [];
+            let sum1 =[];
+
+
+            for (let i = 0; i < inputArray.length; i++) {
+                if (inputArray[i] === "I") {
+                    sum.push(1)
+                } else if (inputArray[i] === "V") {
+                    sum.push(5)
+                } else if (inputArray[i] === "X") {
+                    sum.push(10)
+                } else if (inputArray[i] === "L") {
+                    sum.push(50)
+                } else if (inputArray[i] === "C") {
+                    sum.push(100)
+                } else if (inputArray[i] === "D") {
+                    sum.push(500)
+                } else if (inputArray[i] === "M") {
+                    sum.push(1000)
+                }
+
+            }
+
+            for (let i = 0; i < sum.length; i++) {
+                if (1 === sum[i]) {
+                    if (1 < sum[i + 1]){
+                        sum1.push(-1)
+                    } else {
+                        sum1.push(1);
+                    }
+                }
+                if (5 === sum[i]) {
+                    if (5 < sum[i + 1]){
+                        sum1.push(-5)
+                    } else {
+                        sum1.push(5);
+                    }
+                }
+                if (10 === sum[i]) {
+                    if (10 < sum[i + 1]){
+                        sum1.push(-10)
+                    } else {
+                        sum1.push(10);
+                    }
+                }
+                if (50 === sum[i]) {
+                    if (50 < sum[i + 1]){
+                        sum1.push(-50)
+                    } else {
+                        sum1.push(50);
+                    }
+                }
+                if (100 === sum[i]) {
+                    if (100 < sum[i + 1]){
+                        sum1.push(-100)
+                    } else {
+                        sum1.push(100);
+                    }
+                }
+                if (500 === sum[i]) {
+                    if (500 < sum[i + 1]){
+                        sum1.push(-500)
+                    } else {
+                        sum1.push(500);
+                    }
+                }
+                if (1000 === sum[i]) {
+                    if (1000 < sum[i + 1]){
+                        sum1.push(-1000)
+                    } else {
+                        sum1.push(1000);
+                    }
+                }
+
+            }
+
+
+            let addition = 0;
+
+            for (let i = 0; i < sum1.length;
+                 i++
+            ) {
+                addition += sum1[i];
+            }
+            return addition;
+
+
+        }
+        ,
+
 
         conversion: function (input) {
 
@@ -57,7 +151,8 @@ const RomanNumeralsJoshua = {
             orderedInput.push(inputOne);
 
             return (orderedInput);
-        },
+        }
+        ,
 
         createOutput(orderedInput) {
             const testOutput = [];
@@ -72,19 +167,22 @@ const RomanNumeralsJoshua = {
             }
 
             return testOutput;
-        },
+        }
+        ,
 
         formateString(testOutput) {
             let outputString = testOutput.toString()
 
             let output = outputString.replace(/,/g, "")
             return output;
-        },
+        }
+        ,
     }
 
 
 ;
 RomanNumeralsJoshua.toRoman();
+RomanNumeralsJoshua.fromRoman()
 
 
 /*
