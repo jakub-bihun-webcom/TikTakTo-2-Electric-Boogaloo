@@ -23,9 +23,11 @@
           romanOutput.push("M");
         }
       }
+      
       this.converter(romanOutput, hundredPlace, "C", "D", "M");
       this.converter(romanOutput, tenPlace, "X", "L", "C");
       this.converter(romanOutput, onePlace, "I", "V", "X");
+      
       romanOutputInString = romanOutput.join("");
       return romanOutputInString;
     },
@@ -46,9 +48,11 @@
       } else if (number >= 5) {
         romanOutput.push(`${fives}`);
         number -= 5;
+
         for (let i = 0; i < number; i++) {
           romanOutput.push(`${ones}`);
         }
+
         return;
       } else if (number === 4) {
         romanOutput.push(`${ones}${fives}`);
@@ -67,6 +71,7 @@
      */
     fromRoman: function (romanInput) {
       let romanInArray = [];
+
       this.convertToNumber(romanInArray, romanInput);
   
       return this.arrayToNumber(romanInArray);
@@ -111,10 +116,13 @@
           numberOutput.push(-romanInArray[i]);
         }
       }
+
       numberOutput.push(romanInArray[romanInArray.length - 1])
+
       const sum = numberOutput.reduce((counter, value) => {
         return counter + value;
       }, 0);
+
       console.log(sum);
       return sum;
     },
