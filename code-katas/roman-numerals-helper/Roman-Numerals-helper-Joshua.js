@@ -1,25 +1,41 @@
 const RomanNumeralsJoshua = {
         romanNumbersArray: ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"],
 
+        /**
+         * converts a number into a roman numeral
+         * @param input a Number from 0 > 4000
+         * @returns {string} The according roman numeral
+         */
         toRoman: function (input) {
             const orderedInput = this.conversion(input);
 
-            console.log(orderedInput);
+            const romanNumerals = this.createOutput(orderedInput);
 
-            const testOutput = this.createOutput(orderedInput);
-
-            const output = this.formateString(testOutput);
-
-            return output;
+            return this.formateString(romanNumerals);
         },
 
+        /**
+         * converts a roman numeral into a number
+         * @param input a roman Numeral
+         * @returns {number} the according number
+         */
         fromRoman: function (input) {
 
             let inputArray = input.split('');
+
+            let sum1 = [];
+
+            const romanToNumber = this.convertRomanNumbersToNumbers(inputArray);
+            return this.getSumOfNumbers(romanToNumber, sum1);
+        },
+
+        /**
+         * Converts each roman numeral into its dedicated number
+         * @param inputArray The Roman numbers
+         * @returns {*[]} Array of where each roman numeral was replaced with its dedicated number
+         */
+        convertRomanNumbersToNumbers: function (inputArray) {
             let sum = [];
-            let sum1 =[];
-
-
             for (let i = 0; i < inputArray.length; i++) {
                 if (inputArray[i] === "I") {
                     sum.push(1)
@@ -36,77 +52,55 @@ const RomanNumeralsJoshua = {
                 } else if (inputArray[i] === "M") {
                     sum.push(1000)
                 }
-
             }
+            return sum;
+        },
 
-            for (let i = 0; i < sum.length; i++) {
-                if (1 === sum[i]) {
-                    if (1 < sum[i + 1]){
-                        sum1.push(-1)
-                    } else {
-                        sum1.push(1);
-                    }
-                }
-                if (5 === sum[i]) {
-                    if (5 < sum[i + 1]){
-                        sum1.push(-5)
-                    } else {
-                        sum1.push(5);
-                    }
-                }
-                if (10 === sum[i]) {
-                    if (10 < sum[i + 1]){
-                        sum1.push(-10)
-                    } else {
-                        sum1.push(10);
-                    }
-                }
-                if (50 === sum[i]) {
-                    if (50 < sum[i + 1]){
-                        sum1.push(-50)
-                    } else {
-                        sum1.push(50);
-                    }
-                }
-                if (100 === sum[i]) {
-                    if (100 < sum[i + 1]){
-                        sum1.push(-100)
-                    } else {
-                        sum1.push(100);
-                    }
-                }
-                if (500 === sum[i]) {
-                    if (500 < sum[i + 1]){
-                        sum1.push(-500)
-                    } else {
-                        sum1.push(500);
-                    }
-                }
-                if (1000 === sum[i]) {
-                    if (1000 < sum[i + 1]){
-                        sum1.push(-1000)
-                    } else {
-                        sum1.push(1000);
-                    }
-                }
+        /**
+         * Gets the sum of the numbers while considering the rules for converting a number into roman numerals
+         * @param romanToNumber Array with a number for each numeral
+         * @param sum1 Array to store the numbers
+         * @returns {number} The final result
+         */
+        getSumOfNumbers: function (romanToNumber, sum1) {
 
+            for (let i = 0; i < romanToNumber.length; i++) {
+                if (1 === romanToNumber[i]) {
+                    sum1.push((1 < romanToNumber[i + 1]) ? -1 : 1);
+                }
+                if (5 === romanToNumber[i]) {
+                    sum1.push((5 < romanToNumber[i + 1]) ? -5 : 5);
+                }
+                if (10 === romanToNumber[i]) {
+                    sum1.push((10 < romanToNumber[i + 1]) ? -10 : 10);
+                }
+                if (50 === romanToNumber[i]) {
+                    sum1.push((50 < romanToNumber[i + 1]) ? -50 : 50);
+                }
+                if (100 === romanToNumber[i]) {
+                    sum1.push((100 < romanToNumber[i + 1]) ? -100 : 100);
+                }
+                if (500 === romanToNumber[i]) {
+                    sum1.push((500 < romanToNumber[i + 1]) ? -500 : 500);
+                }
+                if (1000 === romanToNumber[i]) {
+                    sum1.push((1000 < romanToNumber[i + 1]) ? -1000 : 1000);
+                }
             }
-
 
             let addition = 0;
 
-            for (let i = 0; i < sum1.length;
-                 i++
-            ) {
+            for (let i = 0; i < sum1.length; i++) {
                 addition += sum1[i];
             }
             return addition;
+        },
 
-
-        }
-        ,
-
-
+        /**
+         * Splits the Number into its different components. Example: 1393 -> 1 thousand, 3 hundreds, 9 tens and 3 ones
+         * @param input The number which is to be converted into a Roman Number
+         * @returns {*[]} Array of different components of the input number
+         */
         conversion: function (input) {
 
             let orderedInput = [];
@@ -147,51 +141,40 @@ const RomanNumeralsJoshua = {
             const inputFour = Math.floor(restOfFive / 4);
             const restOfFour = restOfFive % 4;
             orderedInput.push(inputFour);
-            const inputOne = Math.floor(restOfFour / 1);
+            const inputOne = Math.floor(restOfFour);
             orderedInput.push(inputOne);
 
             return (orderedInput);
-        }
-        ,
+        },
 
+        /**
+         * Turns the ordered input into its according Roman Numerals
+         * @param orderedInput the input number but split into its different components
+         * @returns {*[]} The Roman numerals
+         */
         createOutput(orderedInput) {
-            const testOutput = [];
+            const romanNumerals = [];
 
             for (let i = 0; i < orderedInput.length; i++) {
                 if (orderedInput[i]) {
                     let tempValue = orderedInput[i];
                     for (let j = 0; j < tempValue; j++) {
-                        testOutput.push(this.romanNumbersArray[i]);
+                        romanNumerals.push(this.romanNumbersArray[i]);
                     }
                 }
             }
 
-            return testOutput;
-        }
-        ,
+            return romanNumerals;
+        },
 
-        formateString(testOutput) {
-            let outputString = testOutput.toString()
+        /**
+         * Gets rid of the commas
+         * @param romanNumerals
+         * @returns {string} The Roman numerals without the commas in between
+         */
+        formateString(romanNumerals) {
+            let outputString = romanNumerals.toString()
 
-            let output = outputString.replace(/,/g, "")
-            return output;
-        }
-        ,
-    }
-
-
-;
-RomanNumeralsJoshua.toRoman();
-RomanNumeralsJoshua.fromRoman()
-
-
-/*
-//pseudocode
-Schaue, ob der Input eine Number oder ein String ist. Bei eine Number mache:
-
-For schleife: Nehme weinen Wert (Tausend, Hundert, Fünfzig etc. ) für jede ganze Zahl in diesem Wert printe einmal den
-jeweiligen buchstaben und subtrahieren 1 vo, Tausender Wert. Wenn dieser Wert Null entspricht springe zum Nächsten Wert.
-
-Bei einem String mache:
-*/
-
+            return outputString.replace(/,/g, "")
+        },
+    };
