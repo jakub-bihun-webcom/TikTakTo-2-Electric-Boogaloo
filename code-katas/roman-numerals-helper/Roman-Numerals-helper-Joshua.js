@@ -1,8 +1,10 @@
 /**
  * @param {object} RomanNumeralsJoshua Can turn roman numerals into numbers and the other way around
  */
+// TODO: Methoden auf private setzen (mit _ davor und JSDoc anpassen)
 const RomanNumeralsJoshua = {
     romanNumbersArray: ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"],
+    numberList: [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
 
     /**
      * converts a number into a roman numeral
@@ -10,9 +12,9 @@ const RomanNumeralsJoshua = {
      * @returns {string} The according roman numeral
      */
     toRoman: function (input) {
-        const orderedInput = this.conversion(input);
+        const orderedInput = this._convert(input);
         const romanNumerals = this.createOutput(orderedInput);
-        return this.formateString(romanNumerals);
+        return this.formatString(romanNumerals);
     },
 
     /**
@@ -21,8 +23,8 @@ const RomanNumeralsJoshua = {
      * @returns {number} the according number
      */
     fromRoman: function (input) {
-        let inputArray = input.split('');
-        let sum1 = [];
+        const inputArray = input.split('');
+        const sum1 = [];
         const romanToNumber = this.convertRomanNumbersToNumbers(inputArray);
         return this.getSumOfNumbers(romanToNumber, sum1);
     },
@@ -85,6 +87,7 @@ const RomanNumeralsJoshua = {
             }
         }
 
+        // TODO: reduce() verwenden
         let addition = 0;
         for (let i = 0; i < sum1.length; i++) {
             addition += sum1[i];
@@ -96,19 +99,20 @@ const RomanNumeralsJoshua = {
      * Splits the Number into its different components. Example: 1393 -> 1 thousand, 3 hundreds, 9 tens and 3 ones
      * @param {number} input The number which is to be converted into a Roman Number
      * @returns {array} Array of different components of the input number
+     * @private
      */
-    conversion: function (input) {
-        let orderedInput = [];
+    _convert: function (input) {
+        const orderedInput = [];
         let restCurrentNumber = input;
-        let numberList = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 
-        for (let i = 0; i < numberList.length; i++) {
-            const currentNumber = Math.floor(restCurrentNumber / numberList[i]);
-            restCurrentNumber = restCurrentNumber % numberList[i];
+        // TODO: durch Array.map() ersetzen
+        for (let i = 0; i < this.numberList.length; i++) {
+            const currentNumber = Math.floor(restCurrentNumber / this.numberList[i]);
+            restCurrentNumber = restCurrentNumber % this.numberList[i];
             orderedInput.push(currentNumber);
         }
 
-        return orderedInput
+        return orderedInput;
     },
 
     /**
@@ -119,6 +123,7 @@ const RomanNumeralsJoshua = {
     createOutput(orderedInput) {
         const romanNumerals = [];
 
+        // TODO: durch map() ersetzen
         for (let i = 0; i < orderedInput.length; i++) {
             if (orderedInput[i]) {
                 let tempValue = orderedInput[i];
@@ -127,6 +132,7 @@ const RomanNumeralsJoshua = {
                 }
             }
         }
+
         return romanNumerals;
     },
 
@@ -135,8 +141,8 @@ const RomanNumeralsJoshua = {
      * @param {array} romanNumerals
      * @returns {string} The Roman numerals without the commas in between
      */
-    formateString(romanNumerals) {
-        let outputString = romanNumerals.toString();
+    formatString(romanNumerals) {
+        const outputString = romanNumerals.toString();
         return outputString.replace(/,/g, "");
     },
 };

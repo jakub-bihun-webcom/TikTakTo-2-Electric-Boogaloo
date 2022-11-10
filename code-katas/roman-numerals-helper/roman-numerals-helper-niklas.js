@@ -1,21 +1,22 @@
 /**
  * Ein Objekt, welches Zahlen in das römische Format und römische Zahlen in das Dezimalsystem umwandeln kann.
  */
+// TODO: Methoden auf private setzen (mit _ davor und JSDoc anpassen)
 const RomanNumerals = {
   /**
    * Bricht die Zahl auf ihre Einer-, Zehner-, Hunderter-, Tausenderstelle herunter und gibt diese mit den römischen Parametern in die Konvertierung.
    * @param {number} number
-   * @returns String im RomanFormat
+   * @returns {string} String im RomanFormat
    */
   toRoman: function (number) {
-    let romanOutput = [];
+    const romanOutput = [];
     const thousandPlace = Math.floor(number / 1000);
     const restOfThousand = number % 1000;
     const hundredPlace = Math.floor(restOfThousand / 100);
     const restOfHundred = restOfThousand % 100;
     const tenPlace = Math.floor(restOfHundred / 10);
     const restOfTen = restOfHundred % 10;
-    const onePlace = Math.floor(restOfTen / 1);
+    const onePlace = Math.floor(restOfTen);
 
     if (thousandPlace >= 1) {
       for (let i = 0; i < thousandPlace; i++) {
@@ -23,16 +24,15 @@ const RomanNumerals = {
       }
     }
 
-    this.converter(romanOutput, hundredPlace, "C", "D", "M");
-    this.converter(romanOutput, tenPlace, "X", "L", "C");
-    this.converter(romanOutput, onePlace, "I", "V", "X");
+    this.convert(romanOutput, hundredPlace, "C", "D", "M");
+    this.convert(romanOutput, tenPlace, "X", "L", "C");
+    this.convert(romanOutput, onePlace, "I", "V", "X");
 
-    romanOutputInString = romanOutput.join("");
-    return romanOutputInString;
+    return romanOutput.join("");
   },
 
   /**
-   * Funktion, welche für alle Einer-, Zehner-, und Hunderterstellen die entsprechenden römischen Zeicen in ein Array pushed.
+   * Funktion, welche für alle Einer-, Zehner-, und Hunderterstellen die entsprechenden römischen Zeichen in ein Array pushed.
    * @param {[string]} romanOutput
    * @param {number} number
    * @param {string} ones
@@ -40,10 +40,9 @@ const RomanNumerals = {
    * @param {string} tens
    * @returns
    */
-  converter: function (romanOutput, number, ones, fives, tens) {
+  convert: function(romanOutput, number, ones, fives, tens) {
     if (number === 9) {
       romanOutput.push(`${ones}${tens}`);
-      return;
     } else if (number >= 5) {
       romanOutput.push(`${fives}`);
       number -= 5;
@@ -51,11 +50,8 @@ const RomanNumerals = {
       for (let i = 0; i < number; i++) {
         romanOutput.push(`${ones}`);
       }
-
-      return;
     } else if (number === 4) {
       romanOutput.push(`${ones}${fives}`);
-      return;
     } else if (number >= 1) {
       for (let i = 0; i < number; i++) {
         romanOutput.push(`${ones}`);
@@ -69,7 +65,7 @@ const RomanNumerals = {
    * @returns Wert der römischen Zahl in Nummern
    */
   fromRoman: function (romanInput) {
-    let romanInArray = [];
+    const romanInArray = [];
 
     this.convertToNumber(romanInArray, romanInput);
 
@@ -107,7 +103,9 @@ const RomanNumerals = {
    * @returns
    */
   arrayToNumber: function (romanInArray) {
-    let numberOutput = [];
+    const numberOutput = [];
+
+    // TODO: durch map() ersetzen
     for (let i = 0; i < romanInArray.length - 1; i++) {
       if (romanInArray[i] >= romanInArray[i + 1]) {
         numberOutput.push(romanInArray[i]);
