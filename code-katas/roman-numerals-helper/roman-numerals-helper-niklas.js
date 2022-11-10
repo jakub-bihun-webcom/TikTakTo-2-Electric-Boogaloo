@@ -120,7 +120,6 @@ const RomanNumerals = {
       return counter + value;
     }, 0);
 
-    console.log(sum);
     return sum;
   },
 };
