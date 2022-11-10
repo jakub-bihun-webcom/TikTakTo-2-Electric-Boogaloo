@@ -79,7 +79,7 @@ const RomanNumeralsJoshua = {
         const orderedInput = [];
         let restCurrentNumber = input;
 
-        // TODO map()
+        // TODO: durch map() ersetzen
         for (let i = 0; i < this.numberList.length; i++) {
             const currentNumber = Math.floor(restCurrentNumber / this.numberList[i]);
             restCurrentNumber = restCurrentNumber % this.numberList[i];
