@@ -40,13 +40,10 @@ const RomanNumeralsJoshua = {
     _convertRomanNumbersToNumbers: function (inputArray) {
         let sum = [];
 
-
-        const romanNumbers = [1, 5, 10, 50, 100, 500, 1000];
-
         for (let i = 0; i < inputArray.length; i++) {
-            for (let j = 0; j < romanNumbers.length; j++) {
+            for (let j = 0; j < this.shortNumberList.length; j++) {
                 if (inputArray[i] === this.shortRomanList[j]) {
-                    sum.push(romanNumbers[j]);
+                    sum.push(this.shortNumberList[j]);
                 }
             }
 
