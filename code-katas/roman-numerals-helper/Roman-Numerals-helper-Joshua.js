@@ -7,7 +7,6 @@ const RomanNumeralsJoshua = {
     numberList: [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
     shortNumberList: [1, 5, 10, 50, 100, 500, 1000],
 
-
     /**
      * converts a number into a roman numeral
      * @param {number} input a Number from 0 > 4000
@@ -76,17 +75,14 @@ const RomanNumeralsJoshua = {
      * @private
      */
     _convert: function (input) {
-        const orderedInput = [];
         let restCurrentNumber = input;
 
-        // TODO: durch map() ersetzen
-        for (let i = 0; i < this.numberList.length; i++) {
-            const currentNumber = Math.floor(restCurrentNumber / this.numberList[i]);
-            restCurrentNumber = restCurrentNumber % this.numberList[i];
-            orderedInput.push(currentNumber);
-        }
-
-        return orderedInput;
+        return this.numberList
+            .map((value) => {
+            const currentNumber = Math.floor(restCurrentNumber / value);
+            restCurrentNumber = restCurrentNumber % value;
+            return currentNumber;
+        });
     },
 
     /**
@@ -98,7 +94,6 @@ const RomanNumeralsJoshua = {
     _createOutput(orderedInput) {
         const romanNumerals = [];
 
-        // TODO: durch map() ersetzen
         for (let i = 0; i < orderedInput.length; i++) {
             if (orderedInput[i]) {
                 let tempValue = orderedInput[i];
