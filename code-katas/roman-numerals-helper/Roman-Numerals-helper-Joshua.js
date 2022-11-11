@@ -3,7 +3,7 @@
  */
 const RomanNumeralsJoshua = {
     romanList: ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"],
-    shortRomanList : ["I", "V", "X", "L", "C", "D", "M"],
+    shortRomanList: ["I", "V", "X", "L", "C", "D", "M"],
     numberList: [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
     shortNumberList: [1, 5, 10, 50, 100, 500, 1000],
 
@@ -12,7 +12,7 @@ const RomanNumeralsJoshua = {
      * @param {number} input a Number from 0 > 4000
      * @returns {string} The according roman numeral
      */
-    toRoman: function (input) {
+    toRoman: function(input) {
         const orderedInput = this._convert(input);
         const romanNumerals = this._createOutput(orderedInput);
         return this._formatString(romanNumerals);
@@ -23,7 +23,7 @@ const RomanNumeralsJoshua = {
      * @param {string} input a roman Numeral
      * @returns {number} the according number
      */
-    fromRoman: function (input) {
+    fromRoman: function(input) {
         const inputArray = input.split('');
         const sum1 = [];
         const romanToNumber = this._convertRomanNumbersToNumbers(inputArray);
@@ -36,7 +36,7 @@ const RomanNumeralsJoshua = {
      * @returns {array} Array of where each roman numeral was replaced with its dedicated number
      * @private
      */
-    _convertRomanNumbersToNumbers: function (inputArray) {
+    _convertRomanNumbersToNumbers: function(inputArray) {
         let sum = [];
 
         for (let i = 0; i < inputArray.length; i++) {
@@ -47,6 +47,7 @@ const RomanNumeralsJoshua = {
             }
 
         }
+
         return sum;
     },
 
@@ -57,11 +58,12 @@ const RomanNumeralsJoshua = {
      * @returns {number} The final result
      * @private
      */
-    _getSumOfNumbers: function (romanToNumber, sum1) {
+    _getSumOfNumbers: function(romanToNumber, sum1) {
         for (let i = 0; i < romanToNumber.length; i++) {
             for (let j = 0; j < this.shortNumberList.length; j++) {
-                if(romanToNumber[i] === this.shortNumberList[j]) {
-                    sum1.push((this.shortNumberList[j] < romanToNumber[i + 1]) ? -this.shortNumberList[j] : this.shortNumberList[j]);
+                if (romanToNumber[i] === this.shortNumberList[j]) {
+                    sum1.push((this.shortNumberList[j] < romanToNumber[i + 1]) ? -this.shortNumberList[j]
+                            : this.shortNumberList[j]);
                 }
             }
         }
@@ -74,11 +76,10 @@ const RomanNumeralsJoshua = {
      * @returns {array} Array of different components of the input number
      * @private
      */
-    _convert: function (input) {
+    _convert: function(input) {
         let restCurrentNumber = input;
 
-        return this.numberList
-            .map((value) => {
+        return this.numberList.map((value) => {
             const currentNumber = Math.floor(restCurrentNumber / value);
             restCurrentNumber = restCurrentNumber % value;
             return currentNumber;
