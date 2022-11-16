@@ -5,17 +5,12 @@
  * @param {boolean} expectedResult Wenn der test erfolgreich war wird dieser Boolean auf true gesetzt
  */
 function testCheckWin(playerOCells, playerXCells, expectedResult) {
-  const actualResult = checkWinPlayer(playerOCells, playerXCells);
-  if (actualResult === expectedResult) {
-    console.log("√");
-  } else {
-    console.error(
-      "Falsches Ergebnis! erwartet: " +
-        expectedResult +
-        ", tatsächlich: " +
-        actualResult
-    );
-  }
+    const actualResult = checkWinPlayer(playerOCells, playerXCells);
+    if (actualResult === expectedResult) {
+        console.log('√');
+    } else {
+        console.error('Falsches Ergebnis! erwartet: ' + expectedResult + ', tatsächlich: ' + actualResult);
+    }
 }
 
 // Testfälle für checkWin

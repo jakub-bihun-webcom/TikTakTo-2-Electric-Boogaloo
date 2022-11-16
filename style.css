@@ -1,56 +1,56 @@
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0;
-  margin: 0;
-  background-color: rgb(114, 114, 114);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(114, 114, 114);
 }
 
 .header {
-  color: white;
-  width: 100%;
-  font-size: 35px;
-  background-color: rgb(114, 114, 114);
-  display: flex;
-  justify-content: center;
-  text-shadow: 5px 5px 10px rgba(201, 201, 201, 0.432);
+    color: white;
+    width: 100%;
+    font-size: 35px;
+    background-color: rgb(114, 114, 114);
+    display: flex;
+    justify-content: center;
+    text-shadow: 5px 5px 10px rgba(201, 201, 201, 0.432);
 }
 
 .codewars {
-  display: flex;
-  justify-content: center;
-  background-color: rgb(114, 114, 114);
-  height: 600px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(114, 114, 114);
+    height: 600px;
 }
 
 .body {
-  display: flex;
-  justify-content: center;
-  background-color: rgb(114, 114, 114);
-  height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(114, 114, 114);
+    height: 50px;
 }
 
 a {
-  color: rgb(255, 255, 255);
-  padding: 10px;
-  text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-decoration: none;
 }
 
 a:hover {
-  color: tomato;
+    color: tomato;
 }
 
 .footer {
-  background-color: rgb(114, 114, 114);
-  display: flex;
+    background-color: rgb(114, 114, 114);
+    display: flex;
 }
 
 .footer--text {
-  color: white;
-  margin-right: 3%;
-  justify-content: right;
-  margin-left: 75%;
+    color: white;
+    margin-right: 3%;
+    justify-content: right;
+    margin-left: 75%;
 }
 
 .logo {
-  justify-content: left;
+    justify-content: left;
 }

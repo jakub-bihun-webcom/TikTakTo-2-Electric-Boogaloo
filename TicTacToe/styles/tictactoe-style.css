@@ -1,166 +1,166 @@
 body {
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(-45deg, #c6745b, #f572a4, #40a1c4, #42c5a6);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(-45deg, #c6745b, #f572a4, #40a1c4, #42c5a6);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
 
-  50% {
-    background-position: 100% 50%;
-  }
+    50% {
+        background-position: 100% 50%;
+    }
 
-  100% {
-    background-position: 0% 50%;
-  }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-@import url("https://fonts.googleapis.com/css?family=Lato:100&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
 
 section {
-  text-align: center;
-  border: 1px;
+    text-align: center;
+    border: 1px;
 }
 
 .choose--player {
-  font-size: 14px;
-  align-content: center;
-  height: 40px;
-  width: 98px;
-  margin: 0px;
-  margin-top: 3px;
-  border-radius: 10px;
+    font-size: 14px;
+    align-content: center;
+    height: 40px;
+    width: 98px;
+    margin: 0px;
+    margin-top: 3px;
+    border-radius: 10px;
 }
 
 .game--title {
-  padding-top: 10px;
-  font-size: 65px;
-  color: #17416e;
-  margin: 10px auto;
-  text-shadow: 3px 3px #1b79ace2;
+    padding-top: 10px;
+    font-size: 65px;
+    color: #17416e;
+    margin: 10px auto;
+    text-shadow: 3px 3px #1b79ace2;
 }
 
 .game--container {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  width: 310px;
-  margin: 10px auto;
-  background-color: #aca8a897;
-  color: #26729c;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 310px;
+    margin: 10px auto;
+    background-color: #aca8a897;
+    color: #26729c;
 }
 
 .cell {
-  font-family: "Permanent Marker", cursive;
-  width: 98px;
-  height: 100px;
-  box-shadow: 2px 2px 10px #26729c;
-  border: 3px solid #3565b1;
-  cursor: pointer;
-  line-height: 100px;
-  font-size: 60px;
-  background-color: #17416e;
+    font-family: 'Permanent Marker', cursive;
+    width: 98px;
+    height: 100px;
+    box-shadow: 2px 2px 10px #26729c;
+    border: 3px solid #3565b1;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 60px;
+    background-color: #17416e;
 }
 
 .game--status {
-  font-size: 50px;
-  color: #d7a62f;
-  margin: 20px auto;
+    font-size: 50px;
+    color: #d7a62f;
+    margin: 20px auto;
 }
 
 button {
-  background-color: #3565b1;
-  width: 175px;
-  height: 40px;
-  font-size: 25px;
-  color: #f9f9f9;
-  box-shadow: 2px 2px 3px #183055;
-  border-radius: 15px;
-  border: 2px solid #214379;
+    background-color: #3565b1;
+    width: 175px;
+    height: 40px;
+    font-size: 25px;
+    color: #f9f9f9;
+    box-shadow: 2px 2px 3px #183055;
+    border-radius: 15px;
+    border: 2px solid #214379;
 }
 
 .infoFeld {
-  margin-top: 5%;
-  padding: 4px;
-  background-color: #ffffff91;
-  width: 100%;
+    margin-top: 5%;
+    padding: 4px;
+    background-color: #ffffff91;
+    width: 100%;
 }
 
 .infoFieldText {
-  border: 0px;
-  margin: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
-  font-weight: bold;
+    border: 0px;
+    margin: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-weight: bold;
 }
 
 .textFeld {
-  color: #000000;
-  border-radius: 10px;
-  background-color: #ffffff91;
-  border: 0px;
-  margin: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
-  width: 80%;
+    color: #000000;
+    border-radius: 10px;
+    background-color: #ffffff91;
+    border: 0px;
+    margin: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 80%;
 }
 
 .textFeldDiv {
-  display: flex;
-  justify-content: center;
-  padding: 4px;
-  border-radius: 3%;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 3%;
+    width: 100%;
 }
 
 div.greyGridTable {
-  border: 2px solid #ffffff;
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
-  text-align: left;
+    border: 2px solid #ffffff;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    text-align: left;
 }
 .divTable.greyGridTable .divTableCell,
 .divTable.greyGridTable .divTableHead {
-  border: 1px solid #ffffff;
-  padding: 3px 4px;
+    border: 1px solid #ffffff;
+    padding: 3px 4px;
 }
 .divTable.greyGridTable .divTableBody .divTableCell {
-  font-size: 13px;
+    font-size: 13px;
 }
 .divTable.greyGridTable .divTableCell:nth-child(even) {
-  background: #ebebeb;
+    background: #ebebeb;
 }
 .greyGridTable .tableFootStyle {
-  font-size: 14px;
+    font-size: 14px;
 }
 /* DivTable.com */
 .divTable {
-  display: table;
+    display: table;
 }
 .divTableRow {
-  display: table-row;
+    display: table-row;
 }
 .divTableHeading {
-  display: table-header-group;
+    display: table-header-group;
 }
 .divTableCell,
 .divTableHead {
-  display: table-cell;
+    display: table-cell;
 }
 .divTableHeading {
-  display: table-header-group;
+    display: table-header-group;
 }
 .divTableFoot {
-  display: table-footer-group;
+    display: table-footer-group;
 }
 .divTableBody {
-  display: table-row-group;
+    display: table-row-group;
 }
