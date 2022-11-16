@@ -20,15 +20,15 @@ const RomanNumerals = {
 
     if (thousandPlace >= 1) {
       for (let i = 0; i < thousandPlace; i++) {
-        romanOutput.push("M");
+        romanOutput.push('M');
       }
     }
 
-    this._convert(romanOutput, hundredPlace, "C", "D", "M");
-    this._convert(romanOutput, tenPlace, "X", "L", "C");
-    this._convert(romanOutput, onePlace, "I", "V", "X");
+    this._convert(romanOutput, hundredPlace, 'C', 'D', 'M');
+    this._convert(romanOutput, tenPlace, 'X', 'L', 'C');
+    this._convert(romanOutput, onePlace, 'I', 'V', 'X');
 
-    return romanOutput.join("");
+    return romanOutput.join('');
   },
 
   /**
@@ -79,19 +79,19 @@ const RomanNumerals = {
    */
   _convertToNumber: function (romanInArray, romanInput) {
     for (let i in romanInput) {
-      if (romanInput[i] === "I") {
+      if (romanInput[i] === 'I') {
         romanInArray.push(1);
-      } else if (romanInput[i] === "V") {
+      } else if (romanInput[i] === 'V') {
         romanInArray.push(5);
-      } else if (romanInput[i] === "X") {
+      } else if (romanInput[i] === 'X') {
         romanInArray.push(10);
-      } else if (romanInput[i] === "L") {
+      } else if (romanInput[i] === 'L') {
         romanInArray.push(50);
-      } else if (romanInput[i] === "C") {
+      } else if (romanInput[i] === 'C') {
         romanInArray.push(100);
-      } else if (romanInput[i] === "D") {
+      } else if (romanInput[i] === 'D') {
         romanInArray.push(500);
-      } else if (romanInput[i] === "M") {
+      } else if (romanInput[i] === 'M') {
         romanInArray.push(1000);
       }
     }
@@ -121,5 +121,5 @@ const RomanNumerals = {
     }, 0);
 
     return sum;
-  },
+  }
 };

@@ -31,18 +31,18 @@ function move(index) {
       if (!gameWon && !checkDraw()) {
         setSymbolUI(index);
         printPattern();
-        console.log("Jetzt ist Spieler O am Zug");
+        console.log('Jetzt ist Spieler O am Zug');
       }
     } else if (!gameWon) {
       setCell(index);
       if (!gameWon && !checkDraw()) {
         setSymbolUI(index);
         printPattern();
-        console.log("Jetzt ist Spieler X am Zug");
+        console.log('Jetzt ist Spieler X am Zug');
       }
     }
   } else if (gameWon) {
-    showToast("Spiel beendet", undefined, "red");
+    showToast('Spiel beendet', undefined, 'red');
     throw new Error('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
   }
 }
@@ -53,18 +53,15 @@ function move(index) {
  * @param {number} cell
  */
 function setCell(cell) {
-  if (typeof cell !== "number" || 0 > cell > 9) {
-    throw new Error("Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.");
+  if (typeof cell !== 'number' || 0 > cell > 9) {
+    throw new Error('Ein Feld mit einer Zahl zwischen 0 und 8 auswählen.');
   }
 
   if (!availableCells.includes(cell)) {
-    const availableCellString = availableCells.join(", ");
+    const availableCellString = availableCells.join(', ');
     console.log(availableCellString);
-    showToast("Fehler", "Das Feld ist belegt.", "red");
-    throw new Error(
-      "Das Feld ist nicht frei, hier sind alle möglichen Felder: " +
-        availableCellString
-    );
+    showToast('Fehler', 'Das Feld ist belegt.', 'red');
+    throw new Error('Das Feld ist nicht frei, hier sind alle möglichen Felder: ' + availableCellString);
   }
 
   for (let index = 0; index < availableCells.length; index++) {
@@ -86,12 +83,12 @@ function setCell(cell) {
     stopConfetti();
     if (playerXTurn) {
       printPattern();
-      showToast("Glückwunsch Spieler X");
-      console.log("PlayerX hat gewonnen!");
+      showToast('Glückwunsch Spieler X');
+      console.log('PlayerX hat gewonnen!');
     } else {
       printPattern();
-      showToast("Glückwunsch Spieler O");
-      console.log("PlayerO hat gewonnen!");
+      showToast('Glückwunsch Spieler O');
+      console.log('PlayerO hat gewonnen!');
     }
     console.log('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
   }
@@ -100,8 +97,8 @@ function setCell(cell) {
   setSymbolUI(cell);
 
   if (checkDraw() && !gameWon) {
-    showToast("Unentschieden");
-    console.log("Unentschieden!");
+    showToast('Unentschieden');
+    console.log('Unentschieden!');
     console.log('Bitte setze das Spielfeld mit "resetBoard()" zurück.');
   }
 }

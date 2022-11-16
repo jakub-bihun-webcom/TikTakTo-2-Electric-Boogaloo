@@ -16,7 +16,6 @@ const fibonacciRecursive = (steps, value = {}) => {
     return value[steps];
   }
 
-  value[steps] =
-    fibonacciRecursive(steps - 1, value) + fibonacciRecursive(steps - 2, value);
+  value[steps] = fibonacciRecursive(steps - 1, value) + fibonacciRecursive(steps - 2, value);
   return value[steps];
 };

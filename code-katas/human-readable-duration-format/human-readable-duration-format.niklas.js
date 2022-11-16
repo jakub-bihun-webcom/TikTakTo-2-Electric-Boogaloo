@@ -5,7 +5,7 @@
  */
 function formatDurationNiklas(seconds) {
   if (seconds === 0) {
-    return "now";
+    return 'now';
   } else {
     return calculateDuration(seconds);
   }
@@ -44,49 +44,41 @@ function formatWithSeperators(years, days, hours, minutes, seconds) {
 
   if (years !== 0) {
     unitCounts.push(years);
-    formattedTimes.push(formatUnit(years, "year"));
+    formattedTimes.push(formatUnit(years, 'year'));
   }
   if (days !== 0) {
     unitCounts.push(days);
-    formattedTimes.push(formatUnit(days, "day"));
+    formattedTimes.push(formatUnit(days, 'day'));
   }
   if (hours !== 0) {
     unitCounts.push(hours);
-    formattedTimes.push(formatUnit(hours, "hour"));
+    formattedTimes.push(formatUnit(hours, 'hour'));
   }
   if (minutes !== 0) {
     unitCounts.push(minutes);
-    formattedTimes.push(formatUnit(minutes, "minute"));
+    formattedTimes.push(formatUnit(minutes, 'minute'));
   }
   if (seconds !== 0) {
     unitCounts.push(seconds);
-    formattedTimes.push(formatUnit(seconds, "second"));
+    formattedTimes.push(formatUnit(seconds, 'second'));
   }
 
-  let combinedString = "";
+  let combinedString = '';
 
-  for (
-    let currentUnitIndex = 0;
-    currentUnitIndex < unitCounts.length;
-    currentUnitIndex++
-  ) {
+  for (let currentUnitIndex = 0; currentUnitIndex < unitCounts.length; currentUnitIndex++) {
     let suffix;
     const isLast = currentUnitIndex === unitCounts.length - 1;
     const isSecondLast = currentUnitIndex === unitCounts.length - 2;
     if (!isLast) {
       if (!isSecondLast) {
-        suffix = ", ";
+        suffix = ', ';
       } else {
-        suffix = " and ";
+        suffix = ' and ';
       }
     } else {
-      suffix = "";
+      suffix = '';
     }
-    combinedString =
-      combinedString +
-      unitCounts[currentUnitIndex] +
-      formattedTimes[currentUnitIndex] +
-      suffix;
+    combinedString = combinedString + unitCounts[currentUnitIndex] + formattedTimes[currentUnitIndex] + suffix;
   }
   return combinedString;
 }
@@ -99,6 +91,6 @@ function formatWithSeperators(years, days, hours, minutes, seconds) {
  */
 function formatUnit(unitCount, timeUnit) {
   if (unitCount === 1) {
-    return " " + timeUnit;
-  } else return " " + timeUnit + "s";
+    return ' ' + timeUnit;
+  } else return ' ' + timeUnit + 's';
 }

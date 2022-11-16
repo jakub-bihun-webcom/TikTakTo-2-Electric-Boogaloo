@@ -4,7 +4,7 @@
  */
 function formatDurationStefan(duration) {
   if (duration === 0) {
-    return "now";
+    return 'now';
   }
 
   const years = Math.floor(duration / 31536000);
@@ -16,19 +16,13 @@ function formatDurationStefan(duration) {
   const minutes = Math.floor(restOfHours / 60);
   const seconds = restOfHours % 60;
 
-  const yearOutput = formatTimeUnit("year", years);
-  const dayOutput = formatTimeUnit("day", days);
-  const hourOutput = formatTimeUnit("hour", hours);
-  const minuteOutput = formatTimeUnit("minute", minutes);
-  const secondOutput = formatTimeUnit("second", seconds);
+  const yearOutput = formatTimeUnit('year', years);
+  const dayOutput = formatTimeUnit('day', days);
+  const hourOutput = formatTimeUnit('hour', hours);
+  const minuteOutput = formatTimeUnit('minute', minutes);
+  const secondOutput = formatTimeUnit('second', seconds);
 
-  const outputs = [
-    yearOutput,
-    dayOutput,
-    hourOutput,
-    minuteOutput,
-    secondOutput,
-  ];
+  const outputs = [yearOutput, dayOutput, hourOutput, minuteOutput, secondOutput];
 
   return createFinalOutput(outputs);
 }
@@ -39,7 +33,7 @@ function formatDurationStefan(duration) {
  */
 function formatTimeUnit(name, count) {
   if (count === 0) {
-    return "";
+    return '';
   }
   if (count === 1) {
     return `${count} ${name}`;
@@ -52,17 +46,17 @@ function formatTimeUnit(name, count) {
  * @returns {string}
  */
 function createFinalOutput(outputs) {
-  const nonEmptyOutputs = outputs.filter((output) => output !== "");
+  const nonEmptyOutputs = outputs.filter(output => output !== '');
 
-  let finalOutput = "";
+  let finalOutput = '';
 
   nonEmptyOutputs.forEach((output, i) => {
     if (!finalOutput) {
       finalOutput = output;
     } else if (i === nonEmptyOutputs.length - 1) {
-      finalOutput += " and " + output;
+      finalOutput += ' and ' + output;
     } else {
-      finalOutput += ", " + output;
+      finalOutput += ', ' + output;
     }
   });
 

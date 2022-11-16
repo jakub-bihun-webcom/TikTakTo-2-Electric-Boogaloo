@@ -1,6 +1,6 @@
 body {
-  font-family: "Open Sans", sans-serif;
-  font-family: "Varela Round", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Varela Round', sans-serif;
   background-image: url(grunge-taefelungen-fuer-textur_174699-4.jpeg);
 }
 
@@ -25,7 +25,7 @@ body {
   flex-direction: column-reverse;
   text-align: center;
 }
-input[type="time" i] {
+input[type='time' i] {
   background-color: #a2b9bc;
   box-sizing: content-box;
   border-radius: 10px;
@@ -45,7 +45,7 @@ button:hover {
   border-color: rgb(97, 93, 93);
   background-color: #8fcad4;
 }
-input[type="range" i] {
+input[type='range' i] {
   appearance: auto;
   cursor: grab;
   color: #a2b9bc;

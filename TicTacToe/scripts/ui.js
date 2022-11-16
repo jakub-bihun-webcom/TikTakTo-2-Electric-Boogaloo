@@ -3,7 +3,7 @@
  */
 function resetCellColors() {
   for (let index = 0; index < 9; index++) {
-    document.getElementById(index).style.backgroundColor = "#aca8a897";
+    document.getElementById(index).style.backgroundColor = '#aca8a897';
   }
 }
 
@@ -12,8 +12,8 @@ function resetCellColors() {
  */
 function setSymbolUI(index) {
   if (!playerXTurn) {
-    document.getElementById(index).style.backgroundColor = "#981237";
+    document.getElementById(index).style.backgroundColor = '#981237';
   } else {
-    document.getElementById(index).style.backgroundColor = "#696969";
+    document.getElementById(index).style.backgroundColor = '#696969';
   }
 }

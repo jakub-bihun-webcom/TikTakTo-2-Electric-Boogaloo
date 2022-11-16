@@ -2,22 +2,8 @@
  * @param {object} RomanNumeralsJoshua Can turn roman numerals into numbers and the other way around
  */
 const RomanNumeralsJoshua = {
-  romanList: [
-    "M",
-    "CM",
-    "D",
-    "CD",
-    "C",
-    "XC",
-    "L",
-    "XL",
-    "X",
-    "IX",
-    "V",
-    "IV",
-    "I",
-  ],
-  shortRomanList: ["I", "V", "X", "L", "C", "D", "M"],
+  romanList: ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'],
+  shortRomanList: ['I', 'V', 'X', 'L', 'C', 'D', 'M'],
   numberList: [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
   shortNumberList: [1, 5, 10, 50, 100, 500, 1000],
 
@@ -38,7 +24,7 @@ const RomanNumeralsJoshua = {
    * @returns {number} the according number
    */
   fromRoman: function (input) {
-    const inputArray = input.split("");
+    const inputArray = input.split('');
     const sum1 = [];
     const romanToNumber = this._convertRomanNumbersToNumbers(inputArray);
     return this._getSumOfNumbers(romanToNumber, sum1);
@@ -75,16 +61,12 @@ const RomanNumeralsJoshua = {
       for (let j = 0; j < this.shortNumberList.length; j++) {
         const shortNumber = this.shortNumberList[j];
         if (romanToNumber[i] === shortNumber) {
-          const numberForLetter =
-            shortNumber < romanToNumber[i + 1] ? -shortNumber : shortNumber;
+          const numberForLetter = shortNumber < romanToNumber[i + 1] ? -shortNumber : shortNumber;
           sum1.push(numberForLetter);
         }
       }
     }
-    return sum1.reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      0
-    );
+    return sum1.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   },
 
   /**
@@ -96,7 +78,7 @@ const RomanNumeralsJoshua = {
   _convert: function (input) {
     let restCurrentNumber = input;
 
-    return this.numberList.map((value) => {
+    return this.numberList.map(value => {
       const currentNumber = Math.floor(restCurrentNumber / value);
       restCurrentNumber = restCurrentNumber % value;
       return currentNumber;
@@ -132,6 +114,6 @@ const RomanNumeralsJoshua = {
    */
   _formatString(romanNumerals) {
     const outputString = romanNumerals.toString();
-    return outputString.replace(/,/g, "");
-  },
+    return outputString.replace(/,/g, '');
+  }
 };

@@ -1,8 +1,8 @@
-const PLAYER_X_CLASS = "x";
-const PLAYER_O_CLASS = "circle";
-const boardElement = document.getElementById("board");
-const winningMessageElement = document.getElementById("winningMessage");
-const winningMessageTextElement = document.getElementById("winningMessageText");
+const PLAYER_X_CLASS = 'x';
+const PLAYER_O_CLASS = 'circle';
+const boardElement = document.getElementById('board');
+const winningMessageElement = document.getElementById('winningMessage');
+const winningMessageTextElement = document.getElementById('winningMessageText');
 const WINNING_COMBINATIONS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -11,19 +11,9 @@ const WINNING_COMBINATIONS = [
   [1, 4, 7],
   [2, 5, 8],
   [0, 4, 8],
-  [2, 4, 6],
+  [2, 4, 6]
 ];
-const allCellIds = [
-  "cell0",
-  "cell1",
-  "cell2",
-  "cell3",
-  "cell4",
-  "cell5",
-  "cell6",
-  "cell7",
-  "cell8",
-];
+const allCellIds = ['cell0', 'cell1', 'cell2', 'cell3', 'cell4', 'cell5', 'cell6', 'cell7', 'cell8'];
 let isPlayer_O_Turn = false;
 let turnCounter = 0;
 let wonGamesX = 0;
@@ -32,11 +22,11 @@ let messageTextO;
 let messageTextX;
 let messageO;
 let messageX;
-let cellElements = document.querySelectorAll("[data-cell]");
+let cellElements = document.querySelectorAll('[data-cell]');
 let alreadySetCells = [];
 
-messageTextO = document.getElementById("wonGamesOMsg");
-messageTextX = document.getElementById("wonGamesXMsg");
+messageTextO = document.getElementById('wonGamesOMsg');
+messageTextX = document.getElementById('wonGamesXMsg');
 
 startGame();
 
@@ -53,14 +43,14 @@ function startGame() {
  */
 function resetBoard() {
   isPlayer_O_Turn = false;
-  cellElements.forEach((cell) => {
+  cellElements.forEach(cell => {
     cell.classList.remove(PLAYER_X_CLASS);
     cell.classList.remove(PLAYER_O_CLASS);
-    cell.removeEventListener("click", playerMove);
-    cell.addEventListener("click", playerMove, { once: true });
+    cell.removeEventListener('click', playerMove);
+    cell.addEventListener('click', playerMove, { once: true });
     turnCounter = 0;
   });
-  winningMessageElement.classList.remove("show");
+  winningMessageElement.classList.remove('show');
 
   alreadySetCells = [];
 }
@@ -85,15 +75,11 @@ function playerMove(e) {
  */
 function endGame(draw) {
   if (turnCounter < 6) {
-    winningMessageTextElement.innerText = `Well that was easy. ${
-      isPlayer_O_Turn ? "O" : "X"
-    } hat gewonnen`;
+    winningMessageTextElement.innerText = `Well that was easy. ${isPlayer_O_Turn ? 'O' : 'X'} hat gewonnen`;
   } else if (draw) {
-    winningMessageTextElement.innerText = "Unentschieden";
+    winningMessageTextElement.innerText = 'Unentschieden';
   } else {
-    winningMessageTextElement.innerText = `Spieler mit ${
-      isPlayer_O_Turn ? "O" : "X"
-    } hat gewonnen`;
+    winningMessageTextElement.innerText = `Spieler mit ${isPlayer_O_Turn ? 'O' : 'X'} hat gewonnen`;
   }
   if (draw == true) {
     //es werden keine Punkte verteilt wenn es Unentschieden ausgeht.
@@ -102,11 +88,11 @@ function endGame(draw) {
   } else {
     ++wonGamesX;
   }
-  messageO = "KI : " + wonGamesO;
-  messageX = "Spieler : " + wonGamesX;
+  messageO = 'KI : ' + wonGamesO;
+  messageX = 'Spieler : ' + wonGamesX;
   messageTextO.innerText = messageO;
   messageTextX.innerText = messageX;
-  winningMessageElement.classList.add("show");
+  winningMessageElement.classList.add('show');
 }
 
 /**
@@ -114,11 +100,8 @@ function endGame(draw) {
  */
 function isDraw() {
   //
-  return [...cellElements].every((cell) => {
-    return (
-      cell.classList.contains(PLAYER_X_CLASS) ||
-      cell.classList.contains(PLAYER_O_CLASS)
-    );
+  return [...cellElements].every(cell => {
+    return cell.classList.contains(PLAYER_X_CLASS) || cell.classList.contains(PLAYER_O_CLASS);
   });
 }
 
@@ -157,8 +140,8 @@ function setBoardHoverClass() {
  * @param {Element} currentPlayer - Zeigt welcher Spieler am Zug ist
  */
 function checkWin(currentPlayer) {
-  return WINNING_COMBINATIONS.some((combination) => {
-    return combination.every((index) => {
+  return WINNING_COMBINATIONS.some(combination => {
+    return combination.every(index => {
       return cellElements[index].classList.contains(currentPlayer);
     });
   });
@@ -201,7 +184,7 @@ function handleMove(cell) {
  */
 function getAvailableCellIds() {
   let availableCellIds = [];
-  allCellIds.forEach((cell) => {
+  allCellIds.forEach(cell => {
     if (!alreadySetCells.includes(cell)) {
       availableCellIds.push(cell);
     }
@@ -218,7 +201,7 @@ function getCellToPlaceMark() {
   let selectedCellId = availableCellIds[randomIndexPick];
   // die Id der Zelle besteht aus einem 'sprechenden' Schlüssel wie bspw. 'cell4'.
   // Da jedoch der Index benötigt wird, lesen wir diesen nachfolgend über den Teilstring aus
-  let selectedCellIndex = selectedCellId.substring("cell".length);
+  let selectedCellIndex = selectedCellId.substring('cell'.length);
   let selectedCell = cellElements[selectedCellIndex];
   return selectedCell;
 }

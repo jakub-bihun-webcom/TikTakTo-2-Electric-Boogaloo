@@ -7,14 +7,9 @@
 function testCheckWin(playerOCells, playerXCells, expectedResult) {
   const actualResult = checkWinPlayer(playerOCells, playerXCells);
   if (actualResult === expectedResult) {
-    console.log("√");
+    console.log('√');
   } else {
-    console.error(
-      "Falsches Ergebnis! erwartet: " +
-        expectedResult +
-        ", tatsächlich: " +
-        actualResult
-    );
+    console.error('Falsches Ergebnis! erwartet: ' + expectedResult + ', tatsächlich: ' + actualResult);
   }
 }
 
