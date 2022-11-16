@@ -1,13 +1,12 @@
 body {
   background-color: #4e5a65;
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Signika Negative', sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-family: "Signika Negative", sans-serif;
 }
 
 header {
   display: flex;
   align-items: center;
-
 }
 
 p {
@@ -79,8 +78,18 @@ p {
 
 /* for cross */
 .board.x .cell:not(.circle):not(.x):hover {
-  background: linear-gradient(to top right, transparent calc(50% - var(--l) / 2), var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2)),
-    linear-gradient(to bottom right, transparent calc(50% - var(--l) / 2), var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2));
+  background: linear-gradient(
+      to top right,
+      transparent calc(50% - var(--l) / 2),
+      var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2),
+      transparent calc(50% + var(--l) / 2)
+    ),
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - var(--l) / 2),
+      var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2),
+      transparent calc(50% + var(--l) / 2)
+    );
   background-size: 80% 80%;
   background-repeat: no-repeat;
   background-position: center;
@@ -88,8 +97,18 @@ p {
 
 /* for cross (set) */
 .cell:not(.circle).x {
-  background: linear-gradient(to top right, transparent calc(50% - var(--l) / 2), var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2)),
-    linear-gradient(to bottom right, transparent calc(50% - var(--l) / 2), var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2), transparent calc(50% + var(--l) / 2));
+  background: linear-gradient(
+      to top right,
+      transparent calc(50% - var(--l) / 2),
+      var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2),
+      transparent calc(50% + var(--l) / 2)
+    ),
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - var(--l) / 2),
+      var(--color-set) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2),
+      transparent calc(50% + var(--l) / 2)
+    );
   background-size: 80% 80%;
   background-repeat: no-repeat;
   background-position: center;
@@ -128,7 +147,6 @@ button {
   display: flex;
   justify-content: end;
   padding: 1%;
-
 }
 
 img {
@@ -158,7 +176,7 @@ img {
   font-size: 3rem;
   background-color: white;
   border: 1px solid var(--color-set);
-  padding: .25em .5em;
+  padding: 0.25em 0.5em;
   cursor: pointer;
 }
 
@@ -180,7 +198,6 @@ img {
   border-radius: 30px;
   width: 20%;
   box-shadow: 2px 2px 20px #34495e;
-
 }
 
 .KiButton {

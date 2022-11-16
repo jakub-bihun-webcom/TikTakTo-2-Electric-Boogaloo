@@ -13,7 +13,10 @@ function fibonacciRecursive(steps) {
     return 1;
   }
   if (!fibMap.get(steps)) {
-    fibMap.set(steps,fibonacciRecursive(steps - 1) + fibonacciRecursive(steps - 2));
+    fibMap.set(
+      steps,
+      fibonacciRecursive(steps - 1) + fibonacciRecursive(steps - 2)
+    );
   }
   return fibMap.get(steps);
 }
