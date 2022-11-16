@@ -24,9 +24,9 @@ const RomanNumerals = {
       }
     }
 
-    this.convert(romanOutput, hundredPlace, "C", "D", "M");
-    this.convert(romanOutput, tenPlace, "X", "L", "C");
-    this.convert(romanOutput, onePlace, "I", "V", "X");
+    this._convert(romanOutput, hundredPlace, "C", "D", "M");
+    this._convert(romanOutput, tenPlace, "X", "L", "C");
+    this._convert(romanOutput, onePlace, "I", "V", "X");
 
     return romanOutput.join("");
   },
@@ -40,7 +40,7 @@ const RomanNumerals = {
    * @param {string} tens
    * @returns
    */
-  convert: function(romanOutput, number, ones, fives, tens) {
+  _convert: function(romanOutput, number, ones, fives, tens) {
     if (number === 9) {
       romanOutput.push(`${ones}${tens}`);
     } else if (number >= 5) {
@@ -67,9 +67,9 @@ const RomanNumerals = {
   fromRoman: function (romanInput) {
     const romanInArray = [];
 
-    this.convertToNumber(romanInArray, romanInput);
+    this._convertToNumber(romanInArray, romanInput);
 
-    return this.arrayToNumber(romanInArray);
+    return this._arrayToNumber(romanInArray);
   },
 
   /**
@@ -77,7 +77,7 @@ const RomanNumerals = {
    * @param {[number]} romanInArray
    * @param {string} romanInput
    */
-  convertToNumber: function (romanInArray, romanInput) {
+  _convertToNumber: function (romanInArray, romanInput) {
     for (let i in romanInput) {
       if (romanInput[i] === "I") {
         romanInArray.push(1);
@@ -102,7 +102,7 @@ const RomanNumerals = {
    * @param {*} romanInArray
    * @returns
    */
-  arrayToNumber: function (romanInArray) {
+  _arrayToNumber: function (romanInArray) {
     const numberOutput = [];
 
     // TODO: durch map() ersetzen
@@ -120,7 +120,6 @@ const RomanNumerals = {
       return counter + value;
     }, 0);
 
-    console.log(sum);
     return sum;
   },
 };

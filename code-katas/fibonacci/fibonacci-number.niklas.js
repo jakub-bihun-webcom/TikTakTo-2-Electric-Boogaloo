@@ -17,7 +17,6 @@ function fibonacciNiklas(steps) {
 
   for (let index = 0; index < steps - 1; index++) {
     fibNumber = number1 + number2;
-    console.log(fibNumber);
     number1 = number2;
     number2 = fibNumber;
   }
