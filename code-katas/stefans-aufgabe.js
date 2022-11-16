@@ -18,6 +18,15 @@ class Employee {
     this.type = type;
     this.salary = salary;
   }
+
+  introduce(){
+    const begruessung = "Hallo mein Name ist " + this.name + " und ich arbeite als " + this.type;
+    if (this.type === Type.AZUBI || this.type === Type.STUDENT){
+      return console.log(begruessung);
+    } else {
+    return console.log(begruessung + " und verdiene " + this.salary)
+    }
+  }
 }
 
 const employees = [
@@ -57,6 +66,7 @@ const aufgabe5 = employees.reduce((accumulator, object) =>{
   return accumulator + object.salary;
 }, 0);
 
+const aufgabe6 = employees.forEach(element => element.introduce()) 
 
 /**
  * Aufgaben:
@@ -80,3 +90,4 @@ const aufgabe5 = employees.reduce((accumulator, object) =>{
  console.log("Aufgabe 3 ", aufgabe3[aufgabe3.length - 1]);
  console.log("Aufgabe 4 ", aufgabe4);
  console.log("Aufgabe 5 ", aufgabe5);
+//  console.log("Aufgabe 6 ", aufgabe6);
