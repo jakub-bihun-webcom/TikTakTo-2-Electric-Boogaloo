@@ -33,7 +33,7 @@ const employees = [
 ];
 
 const aufgabe1 = employees;
-// console.log(employees.filter(noAzubiAndStudenten));
+
 
 const aufgabe2 = employees.filter(function (element) {
   return element.type != Type.AZUBI && element.type != Type.STUDENT;
@@ -44,19 +44,19 @@ const allAzubis = employees.filter(function (element) {
 });
 
 // const aufgabe3 = Math.max(...allAzubis())
-const aufgabe3 = allAzubis.sort(function (element) {
-  element.salary;
+const aufgabe3 = allAzubis.sort((a, b) => {
+  return a.salary - b.salary
 });
-// const aufgabe3 = allAzubis.salary
+
 
 const aufgabe4 = employees.filter(function (element) {
   return element.name === "M";
 });
 
-console.log("Aufgabe 1 ", aufgabe1);
-console.log("Aufgabe 2 ", aufgabe2);
-console.log("Aufgabe 3 ", aufgabe3);
-console.log("Aufgabe 4 ", aufgabe4);
+const aufgabe5 = employees.reduce((accumulator, object) =>{
+  return accumulator + object.salary;
+}, 0);
+
 
 /**
  * Aufgaben:
@@ -74,3 +74,9 @@ console.log("Aufgabe 4 ", aufgabe4);
  *
  * PS: Ähnlichkeiten zu real existierenden Personen sind rein zufällig und nicht beabsichtigt!
  */
+
+ console.log("Aufgabe 1 ", aufgabe1);
+ console.log("Aufgabe 2 ", aufgabe2);
+ console.log("Aufgabe 3 ", aufgabe3[aufgabe3.length - 1]);
+ console.log("Aufgabe 4 ", aufgabe4);
+ console.log("Aufgabe 5 ", aufgabe5);
