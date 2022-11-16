@@ -7,43 +7,43 @@ let KEY_DOWN = false;
 let KEY_UP = false;
 
 document.onkeydown = function (e) {
-    if (e.key == 'ArrowRight') {
-        KEY_RIGHT = true;
-    }
+  if (e.key == 'ArrowRight') {
+    KEY_RIGHT = true;
+  }
 };
 document.onkeydown = function (e) {
-    if (e.key == 'ArrowUp') {
-        KEY_UP = true;
-    }
+  if (e.key == 'ArrowUp') {
+    KEY_UP = true;
+  }
 };
 document.onkeydown = function (e) {
-    if (e.key == 'ArrowLeft') {
-        KEY_LEFT = true;
-    }
+  if (e.key == 'ArrowLeft') {
+    KEY_LEFT = true;
+  }
 };
 document.onkeydown = function (e) {
-    if (e.key == 'ArrowDown') {
-        KEY_DOWN = true;
-    }
+  if (e.key == 'ArrowDown') {
+    KEY_DOWN = true;
+  }
 };
 
 document.onkeyup = function (e) {
-    if (e.key == 'ArrowLeft') {
-        KEY_LEFT = false;
-    }
+  if (e.key == 'ArrowLeft') {
+    KEY_LEFT = false;
+  }
 };
 document.onkeyup = function (e) {
-    if (e.key == 'ArrowRight') {
-        KEY_RIGHT = false;
-    }
+  if (e.key == 'ArrowRight') {
+    KEY_RIGHT = false;
+  }
 };
 document.onkeyup = function (e) {
-    if (e.key == 'ArrowUp') {
-        KEY_UP = false;
-    }
+  if (e.key == 'ArrowUp') {
+    KEY_UP = false;
+  }
 };
 document.onkeyup = function (e) {
-    if (e.key == 'ArrowDown') {
-        KEY_DOWN = false;
-    }
+  if (e.key == 'ArrowDown') {
+    KEY_DOWN = false;
+  }
 };

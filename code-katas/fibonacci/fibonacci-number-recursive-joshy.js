@@ -6,16 +6,16 @@
  * Das ganze passiert rekursiv.
  */
 const fibonacciRecursive = (steps, value = {}) => {
-    if (steps === 0) {
-        return 0;
-    } else if (steps <= 2) {
-        return 1;
-    }
+  if (steps === 0) {
+    return 0;
+  } else if (steps <= 2) {
+    return 1;
+  }
 
-    if (value[steps]) {
-        return value[steps];
-    }
-
-    value[steps] = fibonacciRecursive(steps - 1, value) + fibonacciRecursive(steps - 2, value);
+  if (value[steps]) {
     return value[steps];
+  }
+
+  value[steps] = fibonacciRecursive(steps - 1, value) + fibonacciRecursive(steps - 2, value);
+  return value[steps];
 };

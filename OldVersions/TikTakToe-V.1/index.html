@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>TikTakToe - Webcom</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Signika+Negative&display=swap"
-            rel="stylesheet" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikTakToe - Webcom</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Signika+Negative&display=swap"
+      rel="stylesheet" />
+  </head>
 
-    <body>
-        <header class="headline">
-            <p class="wonGamesXMsg" id="wonGamesXMsg"></p>
-            <h1 class="headline1">TIK TAK TOE</h1>
-            <p class="wonGamesOMsg" id="wonGamesOMsg"></p>
-        </header>
-        <div class="board" id="board">
-            <div class="cell" id="cell0" data-cell></div>
-            <div class="cell" id="cell1" data-cell></div>
-            <div class="cell" id="cell2" data-cell></div>
-            <div class="cell" id="cell3" data-cell></div>
-            <div class="cell" id="cell4" data-cell></div>
-            <div class="cell" id="cell5" data-cell></div>
-            <div class="cell" id="cell6" data-cell></div>
-            <div class="cell" id="cell7" data-cell></div>
-            <div class="cell" id="cell8" data-cell></div>
-        </div>
-        <div class="winning-message" id="winningMessage">
-            <div id="winningMessageText"></div>
-            <button onclick="startGame()">Restart</button>
-        </div>
+  <body>
+    <header class="headline">
+      <p class="wonGamesXMsg" id="wonGamesXMsg"></p>
+      <h1 class="headline1">TIK TAK TOE</h1>
+      <p class="wonGamesOMsg" id="wonGamesOMsg"></p>
+    </header>
+    <div class="board" id="board">
+      <div class="cell" id="cell0" data-cell></div>
+      <div class="cell" id="cell1" data-cell></div>
+      <div class="cell" id="cell2" data-cell></div>
+      <div class="cell" id="cell3" data-cell></div>
+      <div class="cell" id="cell4" data-cell></div>
+      <div class="cell" id="cell5" data-cell></div>
+      <div class="cell" id="cell6" data-cell></div>
+      <div class="cell" id="cell7" data-cell></div>
+      <div class="cell" id="cell8" data-cell></div>
+    </div>
+    <div class="winning-message" id="winningMessage">
+      <div id="winningMessageText"></div>
+      <button onclick="startGame()">Restart</button>
+    </div>
 
-        <div class="restartButton">
-            <button id="restartButton" onclick="startGame()">Restart</button>
-        </div>
-        <div class="logo">
-            <a href="https://www.web-computing.de/">
-                <img src="Logo-klein-3.png" />
-            </a>
-        </div>
-        <script src="script.js"></script>
-    </body>
+    <div class="restartButton">
+      <button id="restartButton" onclick="startGame()">Restart</button>
+    </div>
+    <div class="logo">
+      <a href="https://www.web-computing.de/">
+        <img src="Logo-klein-3.png" />
+      </a>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

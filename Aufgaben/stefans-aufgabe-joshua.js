@@ -1,35 +1,35 @@
 const Type = {
-    CEO: 'CEO',
-    TEAMLEAD: 'TEAMLEAD',
-    DULLY: 'DULLY',
-    STUDENT: 'STUDENT',
-    AZUBI: 'AZUBI'
+  CEO: 'CEO',
+  TEAMLEAD: 'TEAMLEAD',
+  DULLY: 'DULLY',
+  STUDENT: 'STUDENT',
+  AZUBI: 'AZUBI'
 };
 
 class Employee {
-    /**
-     * Creates a new Employee.
-     * @param {string} name
-     * @param {Type} type
-     * @param {number} salary
-     */
-    constructor(name, type, salary) {
-        this.name = name;
-        this.type = type;
-        this.salaray = salary;
-    }
+  /**
+   * Creates a new Employee.
+   * @param {string} name
+   * @param {Type} type
+   * @param {number} salary
+   */
+  constructor(name, type, salary) {
+    this.name = name;
+    this.type = type;
+    this.salaray = salary;
+  }
 }
 
 const employees = [
-    new Employee('M', Type.CEO, 1000000),
-    new Employee('AK', Type.TEAMLEAD, 300),
-    new Employee('G', Type.DULLY, 150),
-    new Employee('S', Type.DULLY, 100),
-    new Employee('J', Type.AZUBI, 42),
-    new Employee('N', Type.AZUBI, 50),
-    new Employee('M', Type.AZUBI, 70),
-    new Employee('G', Type.STUDENT, 3),
-    new Employee('M', Type.STUDENT, 5)
+  new Employee('M', Type.CEO, 1000000),
+  new Employee('AK', Type.TEAMLEAD, 300),
+  new Employee('G', Type.DULLY, 150),
+  new Employee('S', Type.DULLY, 100),
+  new Employee('J', Type.AZUBI, 42),
+  new Employee('N', Type.AZUBI, 50),
+  new Employee('M', Type.AZUBI, 70),
+  new Employee('G', Type.STUDENT, 3),
+  new Employee('M', Type.STUDENT, 5)
 ];
 
 /**

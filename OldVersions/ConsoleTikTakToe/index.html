@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>TicTacToe V2.0</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TicTacToe V2.0</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body>
-        <div class="infoFeld" id="infoFeld">
-            <h2>Folgende Schritte sind notwendig um das Spiel zu spielen:</h2>
-            <p>Öffne die Konsole mit:</p>
-            <p>Mac: command + option + J</p>
-            <p>Windows: Control + Shift + J</p>
-            <p>Folgende Commands werden benötigt:</p>
-            <p>- choosePlayerStart([Spieler]) = um den Spieler auszuwählen, der starten soll</p>
-            <p>-> move([Feld]]) = Setzt eine Markierung für den Spieler, der grade am Zug ist</p>
-            <p>- resetBoard() = um das Spiel auf die Anfangsposition zu setzen</p>
-            <p>- stateOfBoard() = um dir den aktuellen Spielstatus anzeigen zu lassen</p>
-            <p>Das Feld ist folgerndermaßen aufgebaut:</p>
+  <body>
+    <div class="infoFeld" id="infoFeld">
+      <h2>Folgende Schritte sind notwendig um das Spiel zu spielen:</h2>
+      <p>Öffne die Konsole mit:</p>
+      <p>Mac: command + option + J</p>
+      <p>Windows: Control + Shift + J</p>
+      <p>Folgende Commands werden benötigt:</p>
+      <p>- choosePlayerStart([Spieler]) = um den Spieler auszuwählen, der starten soll</p>
+      <p>-> move([Feld]]) = Setzt eine Markierung für den Spieler, der grade am Zug ist</p>
+      <p>- resetBoard() = um das Spiel auf die Anfangsposition zu setzen</p>
+      <p>- stateOfBoard() = um dir den aktuellen Spielstatus anzeigen zu lassen</p>
+      <p>Das Feld ist folgerndermaßen aufgebaut:</p>
 
-            <div class="gridfoto">
-                <a href="https://www.web-computing.de/">
-                    <img src="gridimg.png" />
-                </a>
-            </div>
-        </div>
-        <div class="dark-mode-button">
-            <button onclick="switchDarkMode()" id="darkButton">Dark Mode</button>
+      <div class="gridfoto">
+        <a href="https://www.web-computing.de/">
+          <img src="gridimg.png" />
+        </a>
+      </div>
+    </div>
+    <div class="dark-mode-button">
+      <button onclick="switchDarkMode()" id="darkButton">Dark Mode</button>
 
-            <div class="light-mode-button">
-                <button onclick="switchLightMode()" id="darkButton">Light Mode</button>
-            </div>
-        </div>
-        <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
-        <script src="script.js"></script>
-    </body>
+      <div class="light-mode-button">
+        <button onclick="switchLightMode()" id="darkButton">Light Mode</button>
+      </div>
+    </div>
+    <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+    <script src="script.js"></script>
+  </body>
 </html>
