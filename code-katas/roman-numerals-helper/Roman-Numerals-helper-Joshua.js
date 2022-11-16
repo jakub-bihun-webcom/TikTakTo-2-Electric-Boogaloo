@@ -60,8 +60,10 @@ const RomanNumeralsJoshua = {
     _getSumOfNumbers: function (romanToNumber, sum1) {
         for (let i = 0; i < romanToNumber.length; i++) {
             for (let j = 0; j < this.shortNumberList.length; j++) {
-                if(romanToNumber[i] === this.shortNumberList[j]) {
-                    sum1.push((this.shortNumberList[j] < romanToNumber[i + 1]) ? -this.shortNumberList[j] : this.shortNumberList[j]);
+                const shortNumber = this.shortNumberList[j];
+                if (romanToNumber[i] === shortNumber) {
+                    const numberForLetter = (shortNumber < romanToNumber[i + 1]) ? -shortNumber : shortNumber;
+                    sum1.push(numberForLetter);
                 }
             }
         }
@@ -77,8 +79,7 @@ const RomanNumeralsJoshua = {
     _convert: function (input) {
         let restCurrentNumber = input;
 
-        return this.numberList
-            .map((value) => {
+        return this.numberList.map((value) => {
             const currentNumber = Math.floor(restCurrentNumber / value);
             restCurrentNumber = restCurrentNumber % value;
             return currentNumber;
