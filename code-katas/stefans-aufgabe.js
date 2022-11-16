@@ -66,7 +66,7 @@ const aufgabe5 = employees.reduce((accumulator, object) =>{
   return accumulator + object.salary;
 }, 0);
 
-const aufgabe6 = employees.forEach(element => element.introduce()) 
+
 
 /**
  * Aufgaben:
@@ -90,4 +90,4 @@ const aufgabe6 = employees.forEach(element => element.introduce())
  console.log("Aufgabe 3 ", aufgabe3[aufgabe3.length - 1]);
  console.log("Aufgabe 4 ", aufgabe4);
  console.log("Aufgabe 5 ", aufgabe5);
-//  console.log("Aufgabe 6 ", aufgabe6);
+ const aufgabe6 = employees.forEach(element => element.introduce()); 
