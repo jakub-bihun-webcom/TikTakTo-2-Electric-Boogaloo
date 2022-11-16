@@ -40,7 +40,7 @@ const RomanNumerals = {
    * @param {string} tens
    * @returns
    */
-  _convert: function(romanOutput, number, ones, fives, tens) {
+  _convert: function (romanOutput, number, ones, fives, tens) {
     if (number === 9) {
       romanOutput.push(`${ones}${tens}`);
     } else if (number >= 5) {

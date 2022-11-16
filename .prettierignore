@@ -1,0 +1,5 @@
+# Ignore artifacts: (Name der Dateien welche nicht geformated werden sollen)
+lib
+iziToast.min.js
+iziToast.min.css
+# Ignore all ... Files (Alle Dateiendungen welche ignoriert werden sollen)
