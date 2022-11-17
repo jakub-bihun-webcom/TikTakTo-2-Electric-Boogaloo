@@ -44,7 +44,7 @@ const employees = [
 const aufgabe1 = employees;
 
 const aufgabe2 = employees.filter(function (element) {
-  return element.type != Type.AZUBI && element.type != Type.STUDENT;
+  return element.type !== Type.AZUBI && element.type !== Type.STUDENT;
 });
 
 const allAzubis = employees.filter(function (element) {
