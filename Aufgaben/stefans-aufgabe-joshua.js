@@ -32,6 +32,42 @@ const employees = [
   new Employee('M', Type.STUDENT, 5)
 ];
 
+
+//Aufgabe 1
+console.log(employees);
+
+//Aufgabe 2
+console.log(employees.filter(function (x) {
+  return x.type != Type.AZUBI && x.type != Type.STUDENT
+}));
+
+//Aufgabe 3
+console.log('Aufgabe 3 ')
+console.log(employees.filter(function (element) {
+  return element.type === this.AZUBI;
+}));
+
+//Aufgabe 4
+console.log(employees.filter(function (element) {
+  return element.name === 'M'
+}));
+
+//Aufgabe 5
+console.log(employees.reduce((x, element) => {
+  return x + element.salaray
+},0));
+
+//Aufgabe 6
+let initialValue = 0;
+console.log(employees.reduce((x, element) => {
+  return x + element.salaray
+},initialValue));
+//Aufgabe 7
+
+console.log(employees.filter(function (element) {
+  return element.name === 'M'
+}));
+
 /**
  * Aufgaben:
  * 1. Gebe eine Liste mit allen Mitarbeitern mit Name, Stellenbezeichnung und Gehalt auf der Konsole aus.
