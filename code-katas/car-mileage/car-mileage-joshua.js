@@ -47,7 +47,7 @@ const carMileage = {
     const countingDown = this._checkCountingDown(number);
     const palindrome = this._checkPalindrome(number);
     const isAwesomePhrase = this._checkAwesomePhrase(number, awesomePhrase);
-    return !!(zeros || sameNumbers || countingUp || countingDown || palindrome || isAwesomePhrase);
+    return (zeros || sameNumbers || countingUp || countingDown || palindrome || isAwesomePhrase);
   },
 
   /**
