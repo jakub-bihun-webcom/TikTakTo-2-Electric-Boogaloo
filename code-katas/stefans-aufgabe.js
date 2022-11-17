@@ -51,7 +51,6 @@ const allAzubis = employees.filter(function (element) {
   return element.type === Type.AZUBI;
 });
 
-// const aufgabe3 = Math.max(...allAzubis())
 const aufgabe3 = allAzubis.sort((a, b) => {
   return a.salary - b.salary;
 });
