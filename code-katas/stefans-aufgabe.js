@@ -1,9 +1,9 @@
 const Type = {
-  CEO: "CEO",
-  TEAMLEAD: "TEAMLEAD",
-  DULLY: "DULLY",
-  STUDENT: "STUDENT",
-  AZUBI: "AZUBI",
+  CEO: 'CEO',
+  TEAMLEAD: 'TEAMLEAD',
+  DULLY: 'DULLY',
+  STUDENT: 'STUDENT',
+  AZUBI: 'AZUBI'
 };
 
 class Employee {
@@ -19,30 +19,29 @@ class Employee {
     this.salary = salary;
   }
 
-  introduce(){
-    const begruessung = "Hallo mein Name ist " + this.name + " und ich arbeite als " + this.type;
-    if (this.type === Type.AZUBI || this.type === Type.STUDENT){
+  introduce() {
+    const begruessung = 'Hallo mein Name ist ' + this.name + ' und ich arbeite als ' + this.type;
+    if (this.type === Type.AZUBI || this.type === Type.STUDENT) {
       return console.log(begruessung);
     } else {
-    return console.log(begruessung + " und verdiene " + this.salary)
+      return console.log(begruessung + ' und verdiene ' + this.salary);
     }
   }
 }
 
 const employees = [
-  new Employee("M", Type.CEO, 1000000),
-  new Employee("AK", Type.TEAMLEAD, 300),
-  new Employee("G", Type.DULLY, 150),
-  new Employee("S", Type.DULLY, 100),
-  new Employee("J", Type.AZUBI, 42),
-  new Employee("N", Type.AZUBI, 50),
-  new Employee("M", Type.AZUBI, 70),
-  new Employee("G", Type.STUDENT, 3),
-  new Employee("M", Type.STUDENT, 5),
+  new Employee('M', Type.CEO, 1000000),
+  new Employee('AK', Type.TEAMLEAD, 300),
+  new Employee('G', Type.DULLY, 150),
+  new Employee('S', Type.DULLY, 100),
+  new Employee('J', Type.AZUBI, 42),
+  new Employee('N', Type.AZUBI, 50),
+  new Employee('M', Type.AZUBI, 70),
+  new Employee('G', Type.STUDENT, 3),
+  new Employee('M', Type.STUDENT, 5)
 ];
 
 const aufgabe1 = employees;
-
 
 const aufgabe2 = employees.filter(function (element) {
   return element.type != Type.AZUBI && element.type != Type.STUDENT;
@@ -54,19 +53,16 @@ const allAzubis = employees.filter(function (element) {
 
 // const aufgabe3 = Math.max(...allAzubis())
 const aufgabe3 = allAzubis.sort((a, b) => {
-  return a.salary - b.salary
+  return a.salary - b.salary;
 });
-
 
 const aufgabe4 = employees.filter(function (element) {
-  return element.name === "M";
+  return element.name === 'M';
 });
 
-const aufgabe5 = employees.reduce((accumulator, object) =>{
+const aufgabe5 = employees.reduce((accumulator, object) => {
   return accumulator + object.salary;
 }, 0);
-
-
 
 /**
  * Aufgaben:
@@ -85,9 +81,9 @@ const aufgabe5 = employees.reduce((accumulator, object) =>{
  * PS: Ähnlichkeiten zu real existierenden Personen sind rein zufällig und nicht beabsichtigt!
  */
 
- console.log("Aufgabe 1 ", aufgabe1);
- console.log("Aufgabe 2 ", aufgabe2);
- console.log("Aufgabe 3 ", aufgabe3[aufgabe3.length - 1]);
- console.log("Aufgabe 4 ", aufgabe4);
- console.log("Aufgabe 5 ", aufgabe5);
- const aufgabe6 = employees.forEach(element => element.introduce()); 
+console.log('Aufgabe 1 ', aufgabe1);
+console.log('Aufgabe 2 ', aufgabe2);
+console.log('Aufgabe 3 ', aufgabe3[aufgabe3.length - 1]);
+console.log('Aufgabe 4 ', aufgabe4);
+console.log('Aufgabe 5 ', aufgabe5);
+const aufgabe6 = employees.forEach(element => element.introduce());
