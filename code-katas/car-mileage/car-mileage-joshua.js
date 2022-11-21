@@ -136,7 +136,7 @@ const carMileage = {
 
   /**
    * @param {number} number
-   * @param awesomePhrase
+   * @param {number[]} awesomePhrase
    * @returns {boolean}
    * @private
    */
