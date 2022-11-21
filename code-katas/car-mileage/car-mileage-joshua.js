@@ -27,7 +27,7 @@ const carMileage = {
     if (numberPlusOneIsAwesome || numberPlusTwoIsAwesome) {
       return 1;
     }
-      return 0;
+    return 0;
   },
 
   /**
