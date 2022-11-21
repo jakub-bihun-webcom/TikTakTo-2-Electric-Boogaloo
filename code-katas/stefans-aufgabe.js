@@ -43,24 +43,24 @@ const employees = [
 
 const aufgabe1 = employees;
 
-const aufgabe2 = employees.filter(function (element) {
-  return element.type !== Type.AZUBI && element.type !== Type.STUDENT;
+const aufgabe2 = employees.filter(function (emlpoyee) {
+  return emlpoyee.type !== Type.AZUBI && emlpoyee.type !== Type.STUDENT;
 });
 
-const allAzubis = employees.filter(function (element) {
-  return element.type === Type.AZUBI;
+const allAzubis = employees.filter(function (employee) {
+  return employee.type === Type.AZUBI;
 });
 
-const aufgabe3 = allAzubis.sort((a, b) => {
-  return a.salary - b.salary;
+const aufgabe3 = allAzubis.sort((employeeA, employeeB) => {
+  return employeeA.salary - employeeB.salary;
 });
 
-const aufgabe4 = employees.filter(function (element) {
-  return element.name === 'M';
+const aufgabe4 = employees.filter(function (employee) {
+  return employee.name === 'M';
 });
 
-const aufgabe5 = employees.reduce((accumulator, object) => {
-  return accumulator + object.salary;
+const aufgabe5 = employees.reduce((accumulator, employee) => {
+  return accumulator + employee.salary;
 }, 0);
 
 /**
