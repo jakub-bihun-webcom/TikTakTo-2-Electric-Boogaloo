@@ -108,7 +108,7 @@ const carMileage = {
 
     for (let i = 0; i < numberArray.length - 1; i++) {
       if (numberArray[i] - 1 !== numberArray[i + 1]) {
-        return false
+        return false;
       }
     }
 
