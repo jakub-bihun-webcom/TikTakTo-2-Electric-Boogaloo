@@ -105,15 +105,14 @@ const carMileage = {
    */
   _checkCountingDown: function (number) {
     const numberArray = Array.from(String(number), Number);
-    let passedCheck = false;
 
     for (let i = 0; i < numberArray.length - 1; i++) {
       if (numberArray[i] - 1 !== numberArray[i + 1]) {
-        passedCheck = true;
+        return false
       }
     }
 
-    return !passedCheck;
+    return true;
   },
 
   /**
