@@ -51,8 +51,8 @@ const allAzubis = employees.filter(function (employee) {
   return employee.type === Type.AZUBI;
 });
 
-const aufgabe3 = allAzubis.sort((employeeA, employeeB) => {
-  return employeeA.salary - employeeB.salary;
+const aufgabe3 = allAzubis.sort((azubiA, azubiB) => {
+  return azubiA.salary - azubiB.salary;
 });
 
 const aufgabe4 = employees.filter(function (employee) {
@@ -85,4 +85,4 @@ console.log('Aufgabe 2 ', aufgabe2);
 console.log('Aufgabe 3 ', aufgabe3[aufgabe3.length - 1]);
 console.log('Aufgabe 4 ', aufgabe4);
 console.log('Aufgabe 5 ', aufgabe5);
-const aufgabe6 = employees.forEach(element => element.introduce());
+const aufgabe6 = employees.forEach(employee => employee.introduce());
