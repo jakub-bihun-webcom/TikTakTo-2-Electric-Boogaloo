@@ -1,18 +1,18 @@
 function isInterestingNiklas(number, awesomePhrases) {
-    const numberPlusOne = number + 1;
-    const numberPlusTwo = number + 2;
+  const numberPlusOne = number + 1;
+  const numberPlusTwo = number + 2;
 
-    if (numberPlusTwo < 100) {
-        return 0;
-    }
+  if (numberPlusTwo < 100) {
+    return 0;
+  }
 
-    if (checkNumber(number, awesomePhrases)) {
-        return 2;
-    } else if (checkNumber(numberPlusOne, awesomePhrases) || checkNumber(numberPlusTwo, awesomePhrases)) {
-        return 1;
-    } else {
-        return 0;
-    }
+  if (checkNumber(number, awesomePhrases)) {
+    return 2;
+  } else if (checkNumber(numberPlusOne, awesomePhrases) || checkNumber(numberPlusTwo, awesomePhrases)) {
+    return 1;
+  } else {
+    return 0;
+  }
 }
 
 /**
@@ -22,15 +22,15 @@ function isInterestingNiklas(number, awesomePhrases) {
  * @returns
  */
 function checkNumber(number, awesomePhrases) {
-    return (
-        (isAwesomePhrases(number, awesomePhrases) ||
-            isFollowedByZeros(number) ||
-            isSameDigit(number) ||
-            isSequentialDecrementing(number) ||
-            isSequentialIncrementing(number) ||
-            isPalindrome(number)) &&
-        number > 99
-    );
+  return (
+    (isAwesomePhrases(number, awesomePhrases) ||
+      isFollowedByZeros(number) ||
+      isSameDigit(number) ||
+      isSequentialDecrementing(number) ||
+      isSequentialIncrementing(number) ||
+      isPalindrome(number)) &&
+    number > 99
+  );
 }
 
 /**
@@ -39,9 +39,9 @@ function checkNumber(number, awesomePhrases) {
  * @returns {boolean}
  */
 function isFollowedByZeros(number) {
-    const arrayOfNumber = numberToArray(number);
-    arrayOfNumber.shift();
-    return arrayOfNumber.every(i => i === 0);
+  const arrayOfNumber = numberToArray(number);
+  arrayOfNumber.shift();
+  return arrayOfNumber.every(i => i === 0);
 }
 
 /**
@@ -50,9 +50,9 @@ function isFollowedByZeros(number) {
  * @returns {boolean}
  */
 function isSameDigit(number) {
-    const arrayOfNumber = numberToArray(number);
-    const numbersSet = new Set(arrayOfNumber);
-    return numbersSet.size === 1;
+  const arrayOfNumber = numberToArray(number);
+  const numbersSet = new Set(arrayOfNumber);
+  return numbersSet.size === 1;
 }
 
 /**
@@ -61,16 +61,16 @@ function isSameDigit(number) {
  * @returns {boolean}
  */
 function isSequentialIncrementing(number) {
-    const arrayOfNumber = numberToArray(number);
-    const isZero = arrayOfNumber.indexOf(0);
-    if (isZero !== -1) {
-        arrayOfNumber[isZero] = 10;
-    }
-    for (let i = 0; i < arrayOfNumber.length - 1; i++) {
-        if (arrayOfNumber[i + 1] - arrayOfNumber[i] === 1) {
-        } else return false;
-    }
-    return true;
+  const arrayOfNumber = numberToArray(number);
+  const isZero = arrayOfNumber.indexOf(0);
+  if (isZero !== -1) {
+    arrayOfNumber[isZero] = 10;
+  }
+  for (let i = 0; i < arrayOfNumber.length - 1; i++) {
+    if (arrayOfNumber[i + 1] - arrayOfNumber[i] === 1) {
+    } else return false;
+  }
+  return true;
 }
 
 /**
@@ -79,12 +79,12 @@ function isSequentialIncrementing(number) {
  * @returns {boolean}
  */
 function isSequentialDecrementing(number) {
-    const arrayOfNumber = numberToArray(number);
-    for (let i = 0; i < arrayOfNumber.length - 1; i++) {
-        if (arrayOfNumber[i] - arrayOfNumber[i + 1] === 1) {
-        } else return false;
-    }
-    return true;
+  const arrayOfNumber = numberToArray(number);
+  for (let i = 0; i < arrayOfNumber.length - 1; i++) {
+    if (arrayOfNumber[i] - arrayOfNumber[i + 1] === 1) {
+    } else return false;
+  }
+  return true;
 }
 
 /**
@@ -93,13 +93,13 @@ function isSequentialDecrementing(number) {
  * @returns {boolean}
  */
 function isPalindrome(number) {
-    const arrayOfNumber = numberToArray(number);
-    const numberToCheck = Math.floor(arrayOfNumber.length / 2);
-    for (let i = 0; i < numberToCheck; i++) {
-        if (arrayOfNumber[i] === arrayOfNumber[arrayOfNumber.length - 1 - i]) {
-        } else return false;
-    }
-    return true;
+  const arrayOfNumber = numberToArray(number);
+  const numberToCheck = Math.floor(arrayOfNumber.length / 2);
+  for (let i = 0; i < numberToCheck; i++) {
+    if (arrayOfNumber[i] === arrayOfNumber[arrayOfNumber.length - 1 - i]) {
+    } else return false;
+  }
+  return true;
 }
 
 /**
@@ -109,7 +109,7 @@ function isPalindrome(number) {
  * @returns {boolean}
  */
 function isAwesomePhrases(number, awesomePhrases) {
-    return awesomePhrases.includes(number);
+  return awesomePhrases.includes(number);
 }
 
 /**
@@ -117,6 +117,6 @@ function isAwesomePhrases(number, awesomePhrases) {
  * @param number
  * @returns {[number]}
  */
-function numberToArray(number){
-    return Array.from(String(number), Number);
+function numberToArray(number) {
+  return Array.from(String(number), Number);
 }
