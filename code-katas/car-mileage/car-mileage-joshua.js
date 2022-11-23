@@ -3,7 +3,7 @@
  * @param {number[]} awesomePhrases
  * @returns {number}
  */
-function isInteresting(number, awesomePhrases) {
+function isInterestingJoshua(number, awesomePhrases) {
   return carMileage.isInteresting(number, awesomePhrases);
 }
 
@@ -46,7 +46,7 @@ const carMileage = {
     const countingUp = this._checkCountingUp(number);
     const countingDown = this._checkCountingDown(number);
     const palindrome = this._checkPalindrome(number);
-    const isAwesomePhrase = this._checkAwesomePhrase(number, awesomePhrases);
+    const isAwesomePhrase = this._checkAwesomePhrases(number, awesomePhrases);
 
     return zeros || sameNumbers || countingUp || countingDown || palindrome || isAwesomePhrase;
   },
@@ -140,7 +140,7 @@ const carMileage = {
    * @returns {boolean}
    * @private
    */
-  _checkAwesomePhrase: function (number, awesomePhrases) {
+  _checkAwesomePhrases: function (number, awesomePhrases) {
     return awesomePhrases.includes(number);
   }
 };

@@ -10,6 +10,10 @@ describe('Catching Car Mileage Numbers:', () => {
   };
 
   it('Joshua', () => {
-    executeTests(isInteresting);
+    executeTests(isInterestingJoshua);
+  });
+
+  it('Niklas', () => {
+    executeTests(isInterestingNiklas);
   });
 });
