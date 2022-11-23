@@ -1,25 +1,25 @@
 /**
  * @param {number} number
- * @param {number[]} awesomePhrase
+ * @param {number[]} awesomePhrases
  * @returns {number}
  */
-function isInteresting(number, awesomePhrase) {
-  return carMileage.isInteresting(number, awesomePhrase);
+function isInteresting(number, awesomePhrases) {
+  return carMileage.isInteresting(number, awesomePhrases);
 }
 
 const carMileage = {
   /**
    * Checkt, ob eine gegebene Zahl interessant ist oder nicht
    * @param {number} number
-   * @param {number[]} awesomePhrase
+   * @param {number[]} awesomePhrases
    * @returns {number}
    */
-  isInteresting: function (number, awesomePhrase) {
+  isInteresting: function (number, awesomePhrases) {
     const numberPlusOne = number + 1;
     const numberPlusTwo = number + 2;
-    const numberIsAwesome = this._numberIsAwesome(number, awesomePhrase);
-    const numberPlusOneIsAwesome = this._numberIsAwesome(numberPlusOne, awesomePhrase);
-    const numberPlusTwoIsAwesome = this._numberIsAwesome(numberPlusTwo, awesomePhrase);
+    const numberIsAwesome = this._numberIsAwesome(number, awesomePhrases);
+    const numberPlusOneIsAwesome = this._numberIsAwesome(numberPlusOne, awesomePhrases);
+    const numberPlusTwoIsAwesome = this._numberIsAwesome(numberPlusTwo, awesomePhrases);
 
     if (numberIsAwesome) {
       return 2;
@@ -32,11 +32,11 @@ const carMileage = {
 
   /**
    * @param {number} number
-   * @param {number[]} awesomePhrase
+   * @param {number[]} awesomePhrases
    * @returns {boolean}
    * @private
    */
-  _numberIsAwesome: function (number, awesomePhrase) {
+  _numberIsAwesome: function (number, awesomePhrases) {
     if (number < 100) {
       return false;
     }
@@ -46,7 +46,7 @@ const carMileage = {
     const countingUp = this._checkCountingUp(number);
     const countingDown = this._checkCountingDown(number);
     const palindrome = this._checkPalindrome(number);
-    const isAwesomePhrase = this._checkAwesomePhrase(number, awesomePhrase);
+    const isAwesomePhrase = this._checkAwesomePhrase(number, awesomePhrases);
 
     return zeros || sameNumbers || countingUp || countingDown || palindrome || isAwesomePhrase;
   },
@@ -136,11 +136,11 @@ const carMileage = {
 
   /**
    * @param {number} number
-   * @param {number[]} awesomePhrase
+   * @param {number[]} awesomePhrases
    * @returns {boolean}
    * @private
    */
-  _checkAwesomePhrase: function (number, awesomePhrase) {
-    return awesomePhrase.includes(number);
+  _checkAwesomePhrase: function (number, awesomePhrases) {
+    return awesomePhrases.includes(number);
   }
 };
