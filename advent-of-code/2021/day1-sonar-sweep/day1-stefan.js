@@ -17,8 +17,6 @@ function solve(measurements) {
   let previousMeasurement;
   let increaseCount = 0;
 
-  console.log(measurements);
-
   measurements.forEach(measurement => {
     if (previousMeasurement !== undefined && measurement > previousMeasurement) {
       increaseCount++;

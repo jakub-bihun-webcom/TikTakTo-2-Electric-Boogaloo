@@ -12,8 +12,8 @@ function resetCellColors() {
  */
 function setSymbolUI(index) {
   if (!playerXTurn) {
-    document.getElementById(index).style.backgroundColor = '#981237';
+    document.getElementById(index).style.backgroundColor = '#886323';
   } else {
-    document.getElementById(index).style.backgroundColor = '#696969';
+    document.getElementById(index).style.backgroundColor = '#c2a040';
   }
 }
