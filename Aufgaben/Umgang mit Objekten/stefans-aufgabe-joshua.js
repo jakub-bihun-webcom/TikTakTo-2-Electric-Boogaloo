@@ -20,6 +20,15 @@ class Employee {
   }
 }
 
+function introduce () {
+    let introduction = 'Hallo mein ich heiße ' + employees.name + ' und ich bin ' + employees.type;
+    if (employees.type === Type.AZUBI || employees.type === Type.STUDENT) {
+        return console.log(introduction + '.');
+    } else {
+        return console.log(introduction + ' und verdiene ' + this.salary + '.');
+    }
+}
+
 const employees = [
   new Employee('M', Type.CEO, 1000000),
   new Employee('AK', Type.TEAMLEAD, 300),
@@ -37,47 +46,34 @@ console.log(employees);
 
 //Aufgabe 2
 console.log(
-  employees.filter(function (x) {
-    return x.type !== Type.AZUBI && x.type !== Type.STUDENT;
+  employees.filter(function (employees) {
+    return employees.type !== Type.AZUBI && employees.type !== Type.STUDENT;
   })
 );
 
 //Aufgabe 3
-console.log('Aufgabe 3 ');
 console.log(
-  employees.filter(function (element) {
-    return element.type === this.AZUBI;
+  employees.filter(function (employees) {
+    return employees.type === this.AZUBI;
   })
 );
 
 //Aufgabe 4
 console.log(
-  employees.filter(function (element) {
-    return element.name === 'M';
+  employees.filter(function (employees) {
+    return employees.name === 'M';
   })
 );
 
 //Aufgabe 5
-console.log(
-  employees.reduce((x, element) => {
-    return x + element.salaray;
-  }, 0)
-);
-
-//Aufgabe 6
 let initialValue = 0;
 console.log(
-  employees.reduce((x, element) => {
-    return x + element.salaray;
-  }, initialValue)
+    employees.reduce((x, employees) => {
+      return x + employees.salaray;
+    }, initialValue)
 );
-//Aufgabe 7
-
-console.log(
-  employees.filter(function (element) {
-    return element.name === 'M';
-  })
-);
+//Aufgabe 6
+console.log(introduce());
 
 /**
  * Aufgaben:
