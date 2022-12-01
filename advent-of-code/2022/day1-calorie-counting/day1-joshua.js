@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-const inputFile = fs.readFileSync('input-joshua.txt', { encoding: 'utf8' });
+const inputFile = fs.readFileSync('input.txt', { encoding: 'utf8' });
 const input = inputFile
   .toString()
   .trim()
