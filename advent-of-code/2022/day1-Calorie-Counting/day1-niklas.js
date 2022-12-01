@@ -62,5 +62,3 @@ function topThreeCalories(input) {
   });
   return top1 + top2 + top3;
 }
-console.log(solution);
-console.log(solution2);
