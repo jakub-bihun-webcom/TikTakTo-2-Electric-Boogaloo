@@ -36,7 +36,7 @@ function getFattestElf(input) {
 
 //Aufgabe 2
 function getThreeFattestElves(input) {
-  let theFattestOfTheAllCalledStefan = 0;
+  let theFattestOfThemAllCalledStefan = 0;
   let theFastEaterCalledNiklas = 0;
   let theOneWhoNeverFinishesHisFoodCalledJoshy = 0;
   let aRandomElvWhoseCaloriesAreBeingCounted = 0;
@@ -47,10 +47,10 @@ function getThreeFattestElves(input) {
     } else {
       aRandomElvWhoseCaloriesAreBeingCounted = aRandomElvWhoseCaloriesAreBeingCounted + input[i];
 
-      if (aRandomElvWhoseCaloriesAreBeingCounted >= theFattestOfTheAllCalledStefan) {
-        theFastEaterCalledNiklas = theFattestOfTheAllCalledStefan;
+      if (aRandomElvWhoseCaloriesAreBeingCounted >= theFattestOfThemAllCalledStefan) {
+        theFastEaterCalledNiklas = theFattestOfThemAllCalledStefan;
         theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas;
-        theFattestOfTheAllCalledStefan = aRandomElvWhoseCaloriesAreBeingCounted;
+        theFattestOfThemAllCalledStefan = aRandomElvWhoseCaloriesAreBeingCounted;
       } else if (aRandomElvWhoseCaloriesAreBeingCounted >= theFastEaterCalledNiklas) {
         theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas;
         theFastEaterCalledNiklas = aRandomElvWhoseCaloriesAreBeingCounted;
@@ -59,5 +59,5 @@ function getThreeFattestElves(input) {
       }
     }
   }
-  return theOneWhoNeverFinishesHisFoodCalledJoshy + theFastEaterCalledNiklas + theFattestOfTheAllCalledStefan;
+  return theOneWhoNeverFinishesHisFoodCalledJoshy + theFastEaterCalledNiklas + theFattestOfThemAllCalledStefan;
 }
