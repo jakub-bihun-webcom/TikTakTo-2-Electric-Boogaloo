@@ -10,35 +10,41 @@ const solution = maxCalories(input);
 const solution2 = topThreeCalories(input);
 
 /**
- *
- * @param input
- * @returns {number}
+ *  Funktion addiert die Kalorien jedes Elfen und gibt die Kalorienanzahl des Elfs zurück, welcher am meisten Kalorien
+ *  dabei hat, damit alle anderen Elfen wissen, wo sie sich essen schnorren können.
+ * @param {[number]} input
+ * @returns {number} currentHighest
  */
 function maxCalories(input) {
   let currentHighest = 0;
   let currentCalories = 0;
 
-  for (let i = 0; i < input.length; i++) {
-    if (!isNaN(input[i])) {
-      currentCalories = input[i] + currentCalories;
+  for (const item of input) {
+    if (!isNaN(item)) {
+      currentCalories = item + currentCalories;
       if (currentCalories > currentHighest) {
         currentHighest = currentCalories;
       }
-    } else if (isNaN(input[i])) {
+    } else if (isNaN(item)) {
       currentCalories = 0;
     }
   }
   return currentHighest;
 }
 
+/**
+ * Das Essen von einem Elfen war nicht genug, deshalb wird bei den Top 3 Elfen geschaut wie viel Essen die dabei haben.
+ * @param {[number]} input
+ * @returns {number}
+ */
 function topThreeCalories(input) {
   let currentCalories = 0;
   let top1 = 0;
   let top2 = 0;
   let top3 = 0;
-  for (let i = 0; i < input.length; i++) {
-    if (!isNaN(input[i])) {
-      currentCalories = input[i] + currentCalories;
+  for (const item of input) {
+    if (!isNaN(item)) {
+      currentCalories = item + currentCalories;
       if (currentCalories > top1) {
         top3 = top2;
         top2 = top1;
@@ -49,7 +55,7 @@ function topThreeCalories(input) {
       } else if (currentCalories > top3) {
         top3 = currentCalories;
       }
-    } else if (isNaN(input[i])) {
+    } else if (isNaN(item)) {
       currentCalories = 0;
     }
   }
