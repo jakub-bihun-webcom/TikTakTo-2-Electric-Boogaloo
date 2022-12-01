@@ -9,6 +9,10 @@ const input = inputFile
 
 console.log(getFattestElf(input));
 
+/**
+ * @param {array} input
+ * @returns {number} solution
+ */
 function getFattestElf(input) {
   let tempHighestCalories = 0;
   let highestCalories = 0;
