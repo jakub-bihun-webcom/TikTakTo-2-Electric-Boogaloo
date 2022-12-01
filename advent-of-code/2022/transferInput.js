@@ -8,6 +8,6 @@ export function inputToObject() {
 
 export function inputToString() {
   const inputFile = fs.readFileSync('input.txt', { encoding: 'utf8' });
-  const input = inputFile.toString().replace(/\n/g, ' ').replace(/  /g, ' ');
+  const input = inputFile.toString().replace(/\n/g, ' ');
   return input;
 }
