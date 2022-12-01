@@ -10,9 +10,10 @@ const solution = maxCalories(input);
 const solution2 = topThreeCalories(input);
 
 /**
- *
- * @param input
- * @returns {number}
+ *  Funktion addiert die Kalorien jedes Elfen und gibt die Kalorienanzahl des Elfs zurück, welcher am meisten Kalorien
+ *  dabei hat, damit alle anderen Elfen wissen, wo sie sich essen schnorren können.
+ * @param {[number]} input
+ * @returns {number} currentHighest
  */
 function maxCalories(input) {
   let currentHighest = 0;
@@ -31,6 +32,11 @@ function maxCalories(input) {
   return currentHighest;
 }
 
+/**
+ * Das Essen von einem Elfen war nicht genug, deshalb wird bei den Top 3 Elfen geschaut wie viel Essen die dabei haben.
+ * @param {[number]} input
+ * @returns {number}
+ */
 function topThreeCalories(input) {
   let currentCalories = 0;
   let top1 = 0;
