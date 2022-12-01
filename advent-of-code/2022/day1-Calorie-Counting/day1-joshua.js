@@ -39,23 +39,23 @@ function getThreeFattestElves(input) {
   let theFattestOfThemAllCalledStefan = 0;
   let theFastEaterCalledNiklas = 0;
   let theOneWhoNeverFinishesHisFoodCalledJoshy = 0;
-  let aRandomElvWhoseCaloriesAreBeingCounted = 0;
+  let aRandomElfWhoseCaloriesAreBeingCounted = 0;
 
   for (let i = 0; i < input.length; i++) {
     if (isNaN(input[i])) {
-      aRandomElvWhoseCaloriesAreBeingCounted = 0;
+      aRandomElfWhoseCaloriesAreBeingCounted = 0;
     } else {
-      aRandomElvWhoseCaloriesAreBeingCounted = aRandomElvWhoseCaloriesAreBeingCounted + input[i];
+      aRandomElfWhoseCaloriesAreBeingCounted = aRandomElfWhoseCaloriesAreBeingCounted + input[i];
 
-      if (aRandomElvWhoseCaloriesAreBeingCounted >= theFattestOfThemAllCalledStefan) {
+      if (aRandomElfWhoseCaloriesAreBeingCounted >= theFattestOfThemAllCalledStefan) {
         theFastEaterCalledNiklas = theFattestOfThemAllCalledStefan;
         theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas;
-        theFattestOfThemAllCalledStefan = aRandomElvWhoseCaloriesAreBeingCounted;
-      } else if (aRandomElvWhoseCaloriesAreBeingCounted >= theFastEaterCalledNiklas) {
+        theFattestOfThemAllCalledStefan = aRandomElfWhoseCaloriesAreBeingCounted;
+      } else if (aRandomElfWhoseCaloriesAreBeingCounted >= theFastEaterCalledNiklas) {
         theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas;
-        theFastEaterCalledNiklas = aRandomElvWhoseCaloriesAreBeingCounted;
-      } else if (aRandomElvWhoseCaloriesAreBeingCounted >= theOneWhoNeverFinishesHisFoodCalledJoshy) {
-        theOneWhoNeverFinishesHisFoodCalledJoshy = aRandomElvWhoseCaloriesAreBeingCounted;
+        theFastEaterCalledNiklas = aRandomElfWhoseCaloriesAreBeingCounted;
+      } else if (aRandomElfWhoseCaloriesAreBeingCounted >= theOneWhoNeverFinishesHisFoodCalledJoshy) {
+        theOneWhoNeverFinishesHisFoodCalledJoshy = aRandomElfWhoseCaloriesAreBeingCounted;
       }
     }
   }
