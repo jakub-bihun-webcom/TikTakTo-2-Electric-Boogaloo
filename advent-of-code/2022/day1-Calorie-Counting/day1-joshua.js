@@ -8,7 +8,7 @@ const input = inputFile
   .map(num => parseInt(num, 10));
 
 console.log('Star 1 ' + getFattestElf(input));
-console.log('Star 2 ' + getThreeFattestElves(input))
+console.log('Star 2 ' + getThreeFattestElves(input));
 
 //Aufgabe 1
 /**
@@ -49,14 +49,13 @@ function getThreeFattestElves(input) {
 
       if (aRandomElvWhoseCaloriesAreBeingCounted >= theFattestOfTheAllCalledStefan) {
         theFastEaterCalledNiklas = theFattestOfTheAllCalledStefan;
-        theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas
+        theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas;
         theFattestOfTheAllCalledStefan = aRandomElvWhoseCaloriesAreBeingCounted;
       } else if (aRandomElvWhoseCaloriesAreBeingCounted >= theFastEaterCalledNiklas) {
-        theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas
+        theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas;
         theFastEaterCalledNiklas = aRandomElvWhoseCaloriesAreBeingCounted;
       } else if (aRandomElvWhoseCaloriesAreBeingCounted >= theOneWhoNeverFinishesHisFoodCalledJoshy) {
-        theOneWhoNeverFinishesHisFoodCalledJoshy = aRandomElvWhoseCaloriesAreBeingCounted
-
+        theOneWhoNeverFinishesHisFoodCalledJoshy = aRandomElvWhoseCaloriesAreBeingCounted;
       }
     }
   }
