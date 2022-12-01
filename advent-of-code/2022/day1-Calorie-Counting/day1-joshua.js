@@ -7,8 +7,10 @@ const input = inputFile
   .split('\n')
   .map(num => parseInt(num, 10));
 
-console.log(getFattestElf(input));
+console.log('Star 1 ' + getFattestElf(input));
+console.log('Star 2 ' + getThreeFattestElves(input))
 
+//Aufgabe 1
 /**
  * @param {array} input
  * @returns {number} solution
@@ -30,4 +32,33 @@ function getFattestElf(input) {
   }
 
   return highestCalories;
+}
+
+//Aufgabe 2
+function getThreeFattestElves(input) {
+  let theFattestOfTheAllCalledStefan = 0;
+  let theFastEaterCalledNiklas = 0;
+  let theOneWhoNeverFinishesHisFoodCalledJoshy = 0;
+  let aRandomElvWhoseCaloriesAreBeingCounted = 0;
+
+  for (let i = 0; i < input.length; i++) {
+    if (isNaN(input[i])) {
+      aRandomElvWhoseCaloriesAreBeingCounted = 0;
+    } else {
+      aRandomElvWhoseCaloriesAreBeingCounted = aRandomElvWhoseCaloriesAreBeingCounted + input[i];
+
+      if (aRandomElvWhoseCaloriesAreBeingCounted >= theFattestOfTheAllCalledStefan) {
+        theFastEaterCalledNiklas = theFattestOfTheAllCalledStefan;
+        theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas
+        theFattestOfTheAllCalledStefan = aRandomElvWhoseCaloriesAreBeingCounted;
+      } else if (aRandomElvWhoseCaloriesAreBeingCounted >= theFastEaterCalledNiklas) {
+        theOneWhoNeverFinishesHisFoodCalledJoshy = theFastEaterCalledNiklas
+        theFastEaterCalledNiklas = aRandomElvWhoseCaloriesAreBeingCounted;
+      } else if (aRandomElvWhoseCaloriesAreBeingCounted >= theOneWhoNeverFinishesHisFoodCalledJoshy) {
+        theOneWhoNeverFinishesHisFoodCalledJoshy = aRandomElvWhoseCaloriesAreBeingCounted
+
+      }
+    }
+  }
+  return theOneWhoNeverFinishesHisFoodCalledJoshy + theFastEaterCalledNiklas + theFattestOfTheAllCalledStefan;
 }
