@@ -18,13 +18,13 @@ function maxCalories(input) {
   let currentHighest = 0;
   let currentCalories = 0;
 
-  for (let i = 0; i < input.length; i++) {
-    if (!isNaN(input[i])) {
-      currentCalories = input[i] + currentCalories;
+  for (const item of input) {
+    if (!isNaN(item)) {
+      currentCalories = item + currentCalories;
       if (currentCalories > currentHighest) {
         currentHighest = currentCalories;
       }
-    } else if (isNaN(input[i])) {
+    } else if (isNaN(item)) {
       currentCalories = 0;
     }
   }
@@ -36,9 +36,9 @@ function topThreeCalories(input) {
   let top1 = 0;
   let top2 = 0;
   let top3 = 0;
-  for (let i = 0; i < input.length; i++) {
-    if (!isNaN(input[i])) {
-      currentCalories = input[i] + currentCalories;
+  for (const item of input) {
+    if (!isNaN(item)) {
+      currentCalories = item + currentCalories;
       if (currentCalories > top1) {
         top3 = top2;
         top2 = top1;
@@ -49,7 +49,7 @@ function topThreeCalories(input) {
       } else if (currentCalories > top3) {
         top3 = currentCalories;
       }
-    } else if (isNaN(input[i])) {
+    } else if (isNaN(item)) {
       currentCalories = 0;
     }
   }
