@@ -2,4 +2,5 @@
 lib
 iziToast.min.js
 iziToast.min.css
+node_modules
 # Ignore all ... Files (Alle Dateiendungen welche ignoriert werden sollen)

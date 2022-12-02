@@ -3,3 +3,6 @@
 # Ignore IntelliJ Project files
 *.iml
 .idea
+
+# dependencies
+/node_modules
