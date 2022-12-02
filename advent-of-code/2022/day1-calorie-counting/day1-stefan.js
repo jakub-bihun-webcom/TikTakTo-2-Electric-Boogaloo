@@ -1,7 +1,6 @@
-import * as fs from 'fs';
+import { inputFileReader } from '../input-file-reader.js';
 
-const inputFile = fs.readFileSync('input-joshua.txt', { encoding: 'utf8' });
-const inputLines = inputFile.toString().trim().split('\n');
+const inputLines = inputFileReader.readAsStringArray('input-stefan.txt');
 
 const calorieSums = [];
 let calorieSum = 0;
@@ -17,6 +16,13 @@ inputLines.forEach(line => {
   }
 });
 
+// Part One
 const maxCalories = Math.max(...calorieSums);
+console.log('Fattest elf: ' + maxCalories);
 
-console.log(maxCalories);
+// Part Two
+const sumOfThreeFattestElves = calorieSums
+  .sort((a, b) => b - a) // sort descending (Arrays.sort() sorts alphabetically by default)
+  .splice(0, 3) // get the first 3 elements
+  .reduce((accumulator, currentValue) => accumulator + currentValue, 0); // sum
+console.log('Three fattest elves: ' + sumOfThreeFattestElves);

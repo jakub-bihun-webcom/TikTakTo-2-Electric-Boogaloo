@@ -1,11 +1,6 @@
-import * as fs from 'fs';
+import { inputFileReader } from '../input-file-reader.js';
 
-const inputFile = fs.readFileSync('input-niklas.txt', { encoding: 'utf8' });
-const input = inputFile
-  .toString()
-  .trim()
-  .split('\n')
-  .map(num => parseInt(num, 10));
+const input = inputFileReader.readAsNumberArray('input-niklas.txt');
 const solution = maxCalories(input);
 const solution2 = topThreeCalories(input);
 
