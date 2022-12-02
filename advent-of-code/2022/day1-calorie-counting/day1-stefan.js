@@ -1,7 +1,6 @@
-import * as fs from 'fs';
+import { inputFileReader } from '../input-file-reader.js';
 
-const inputFile = fs.readFileSync('input-stefan.txt', { encoding: 'utf8' });
-const inputLines = inputFile.toString().trim().split('\n');
+const inputLines = inputFileReader.readAsStringArray('input-stefan.txt');
 
 const calorieSums = [];
 let calorieSum = 0;

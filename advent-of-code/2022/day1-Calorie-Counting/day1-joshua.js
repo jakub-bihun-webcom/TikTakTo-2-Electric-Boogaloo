@@ -1,11 +1,6 @@
-import * as fs from 'fs';
+import { inputFileReader } from '../input-file-reader.js';
 
-const inputFile = fs.readFileSync('input-joshua.txt', { encoding: 'utf8' });
-const input = inputFile
-  .toString()
-  .trim()
-  .split('\n')
-  .map(num => parseInt(num, 10));
+const input = inputFileReader.readAsNumberArray('input-joshua.txt');
 
 console.log('Star 1 ' + getFattestElf(input));
 console.log('Star 2 ' + getThreeFattestElves(input));
