@@ -10,7 +10,7 @@ export const inputFileReader = {
    * @return {number[]}
    */
   readAsNumberArray(path) {
-    return this.readAsStringArray(path).map(num => parseInt(num, 10));
+    return this.readAsStringArray(path).map(line => parseInt(line, 10));
   },
 
   /**
