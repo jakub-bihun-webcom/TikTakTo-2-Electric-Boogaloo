@@ -28,7 +28,7 @@ function numbersInArray(number) {
     arr.push(parseInt(number[0] + number[1]));
     arr.push(parseInt(number[2]));
     arr.push(parseInt(number[3]));
-    console.log(arr);
+    console.log("aa" + arr);
   }
 }
 
