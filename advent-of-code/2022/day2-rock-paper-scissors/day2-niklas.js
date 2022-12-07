@@ -1,6 +1,6 @@
 import { inputFileReader } from '../input-file-reader.js';
 
-const inputLines = inputFileReader.readAsStringArray('input.txt');
+const inputLines = inputFileReader.readAsStringArray('input-niklas.txt');
 const movePairs = inputLines.map(line => ({ enemyMove: line.charAt(0), myMove: line.charAt(2) }));
 
 let score = 0;

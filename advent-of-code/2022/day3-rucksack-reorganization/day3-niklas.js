@@ -11,10 +11,12 @@ function duplicates() {
   console.log('Aufgabe 1: ' + score);
   groupBadge();
 }
+
 function split(rucksack) {
   const result = [rucksack.slice(0, rucksack.length / 2), rucksack.slice(rucksack.length / 2)];
   compareStrings(result);
 }
+
 function compareStrings(str) {
   const compartment1 = str[0].split('');
   const compartment2 = str[1].split('');
