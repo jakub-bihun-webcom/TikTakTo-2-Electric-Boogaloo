@@ -13,18 +13,42 @@ const crateOrder = [
   ['H', 'G', 'Z', 'R', 'C']
 ];
 
-function getAllNumber() {
+function getAllNumbers() {
   inputLines.forEach(numbers => {
     const replaced = numbers.replace(/\D/g, '');
     const line = numbersInArray(replaced);
-    moveCrate(line);
+    createOrder(line);
   });
+  printOutput();
 }
 
-function moveCrate(line) {
+function createOrder(line) {
   const amount = line[0];
   const startRow = line[1];
   const finRow = line[2];
+
+  const start = crateOrder[startRow - 1];
+  const finnish = crateOrder[finRow - 1];
+
+  moveCrate(amount, start, finnish, startRow, finRow);
+}
+
+function moveCrate(amount, start, finnish, startRow, finRow) {
+  for (let i = 0; i < amount; i++) {
+    finnish.push(start.pop());
+  }
+  crateOrder[startRow - 1] = start;
+  crateOrder[finRow - 1] = finnish;
+
+  console.log('Row1: ' + crateOrder[0]);
+  console.log('Row2: ' + crateOrder[1]);
+  console.log('Row3: ' + crateOrder[2]);
+  console.log('Row4: ' + crateOrder[3]);
+  console.log('Row5: ' + crateOrder[4]);
+  console.log('Row6: ' + crateOrder[5]);
+  console.log('Row7: ' + crateOrder[6]);
+  console.log('Row8: ' + crateOrder[7]);
+  console.log('Row9: ' + crateOrder[8]);
 }
 
 function numbersInArray(number) {
@@ -39,4 +63,4 @@ function numbersInArray(number) {
   }
 }
 
-getAllNumber();
+getAllNumbers();
