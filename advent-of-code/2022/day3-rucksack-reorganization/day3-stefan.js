@@ -1,5 +1,5 @@
 import { inputFileReader } from '../input-file-reader.js';
-import { intersectionMethod } from '../intersection-method.js';
+import { createIntersection } from '../create-intersection.js';
 
 const lowercaseAlphabet = [...'abcdefghijklmnopqrstuvwxyz'];
 const uppercaseAlphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
@@ -15,7 +15,7 @@ inputLines.forEach(line => {
   const secondCompartment = line.slice(lineLength / 2, lineLength);
   const firstCompartmentSet = new Set([...firstCompartment]);
   const secondCompartmentSet = new Set([...secondCompartment]);
-  const intersection = intersectionMethod.createNewIntersection(firstCompartmentSet, secondCompartmentSet);
+  const intersection = createIntersection(firstCompartmentSet, secondCompartmentSet);
   const [commonItem] = intersection;
   const priority = getPriority(commonItem);
   prioritySum += priority;
@@ -41,7 +41,7 @@ groups.forEach(group => {
   const elf1 = new Set(group[0].split(''));
   const elf2 = new Set(group[1].split(''));
   const elf3 = new Set(group[2].split(''));
-  const intersection = [elf1, elf2, elf3].reduce((a, b) => intersectionMethod.createNewIntersection(a, b));
+  const intersection = [elf1, elf2, elf3].reduce((a, b) => createIntersection(a, b));
   const [commonItem] = intersection;
   const priority = getPriority(commonItem);
   badgePrioritySum += priority;
