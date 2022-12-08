@@ -18,20 +18,20 @@ function uniqueSequence() {
 }
 
 function uniqueMessage() {
-    for (let i = 13; i < signal.length - 1; i++) {
-        let arrayOfMessage = []
-        for (let j = 0; j < 14; j++) {
-            arrayOfMessage.push(signal[i - j])
-        }
-        const duplicates = arrayOfMessage => arrayOfMessage.filter((item, index) => arrayOfMessage.indexOf(item) !==index)
-        const tofindDuplicates = duplicates(arrayOfMessage);
-        if (tofindDuplicates.length === 0){
-            console.log(i)
-        }
+  for (let i = 13; i < signal.length - 1; i++) {
+    let arrayOfMessage = [];
+    for (let j = 0; j < 14; j++) {
+      arrayOfMessage.push(signal[i - j]);
     }
+    const duplicates = arrayOfMessage => arrayOfMessage.filter((item, index) => arrayOfMessage.indexOf(item) !== index);
+    const toFindDuplicates = duplicates(arrayOfMessage);
+    if (toFindDuplicates.length === 0) {
+      console.log(i);
+    }
+  }
 }
 
-uniqueMessage()
+uniqueMessage();
 //
 // console.log(uniqueSequence());
 /**
