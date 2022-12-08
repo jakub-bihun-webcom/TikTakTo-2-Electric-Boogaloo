@@ -3,13 +3,11 @@ import { inputFileReader } from '../input-file-reader.js';
 const inputLines = inputFileReader.readAsStringArray('input-niklas.txt');
 const movePairs = inputLines.map(line => ({ enemyMove: line.charAt(0), myMove: line.charAt(2) }));
 
-let score = 0;
-
 function scores() {
-  score = 0;
-  pointsForChoice();
-  rockPaperScissors();
-  console.log(score);
+  let score = 0;
+  score += pointsForChoice();
+  score += rockPaperScissors(score);
+  return score;
 }
 
 function pointsForChoice() {
@@ -19,10 +17,10 @@ function pointsForChoice() {
   const amountRock = movePairs.filter(obj => obj.myMove === rock).length;
   const amountPaper = movePairs.filter(obj => obj.myMove === paper).length;
   const amountScissor = movePairs.filter(obj => obj.myMove === scissor).length;
-  score = amountRock + 2 * amountPaper + 3 * amountScissor;
+  return amountRock + 2 * amountPaper + 3 * amountScissor;
 }
 
-function rockPaperScissors() {
+function rockPaperScissors(score) {
   // Rock :        A || X
   // Paper:        B || Y
   // Scissors:     C || Z
@@ -52,11 +50,12 @@ function rockPaperScissors() {
         score += 6;
       } else score += 0;
     }
+    return score;
   }
 }
 
 function calculatedResult() {
-  score = 0;
+  let score = 0;
   // Rock :        A  + 1 ||  X:   lose
   // Paper:        B  + 2 ||  Y:   draw
   // Scissors:     C  + 3 ||  Z:   win
@@ -93,8 +92,8 @@ function calculatedResult() {
       score += 7;
     }
   }
-  console.log(score);
+  return score;
 }
 
-scores();
-calculatedResult();
+console.log('Aufgabe 1: ' + scores());
+console.log('Aufgabe 2: ' + calculatedResult());
