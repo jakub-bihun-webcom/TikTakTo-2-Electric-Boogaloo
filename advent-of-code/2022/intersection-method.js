@@ -3,8 +3,7 @@
  * @type {{createNewIntersection(*, *): Set<T>}}
  */
 export const intersectionMethod = {
-    createNewIntersection(section1, section2){
-        return new Set ([...section1].filter(item => section2.has(item)));
-    }
-}
-
+  createNewIntersection(section1, section2) {
+    return new Set([...section1].filter(item => section2.has(item)));
+  }
+};

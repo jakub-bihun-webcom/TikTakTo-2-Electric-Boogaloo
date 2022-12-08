@@ -1,5 +1,5 @@
 import { inputFileReader } from '../input-file-reader.js';
-import { intersectionMethod } from '../intersection-method.js'
+import { intersectionMethod } from '../intersection-method.js';
 
 const lowercaseAlphabet = [...'abcdefghijklmnopqrstuvwxyz'];
 const uppercaseAlphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
@@ -15,7 +15,7 @@ inputLines.forEach(line => {
   const secondCompartment = line.slice(lineLength / 2, lineLength);
   const firstCompartmentSet = new Set([...firstCompartment]);
   const secondCompartmentSet = new Set([...secondCompartment]);
-  const intersection = intersectionMethod.createNewIntersection(firstCompartmentSet, secondCompartmentSet)
+  const intersection = intersectionMethod.createNewIntersection(firstCompartmentSet, secondCompartmentSet);
   const [commonItem] = intersection;
   const priority = getPriority(commonItem);
   prioritySum += priority;
