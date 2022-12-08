@@ -45,7 +45,7 @@ function moveCrate2(amount, start, finnish, startRow, finRow) {
   let temp = [];
   temp = start.slice(start.length - amount);
   for (let i = 0; i < amount; i++) {
-    start.pop()
+    start.pop();
   }
   const finnish2 = finnish.concat(temp);
   crateOrder[startRow - 1] = start;
