@@ -1,9 +1,9 @@
 /**
  * Generiert ein neues Set aus der Schnittmenge der angegebenen Sets.
- * @param section1
- * @param section2
+ * @param {Set<>} a
+ * @param {Set<>} b
  * @returns {Set<>}
  */
-export function createIntersection(section1, section2) {
-  return new Set([...section1].filter(item => section2.has(item)));
+export function createIntersection(a, b) {
+  return new Set([...a].filter(item => b.has(item)));
 }
