@@ -16,17 +16,17 @@ class Employee {
   constructor(name, type, salary) {
     this.name = name;
     this.type = type;
-    this.salaray = salary;
+    this.salary = salary;
   }
-}
 
-function introduce () {
-    let introduction = 'Hallo mein ich heiße ' + employees.name + ' und ich bin ' + employees.type;
-    if (employees.type === Type.AZUBI || employees.type === Type.STUDENT) {
-        return console.log(introduction + '.');
+  introduce() {
+    let introduction = 'Hallo mein ich heiße ' + this.name + ' und ich bin ' + this.type;
+    if (this.type === Type.AZUBI || this.type === Type.STUDENT) {
+      console.log(introduction + '.');
     } else {
-        return console.log(introduction + ' und verdiene ' + this.salary + '.');
+      console.log(introduction + ' und verdiene ' + this.salary + '.');
     }
+  }
 }
 
 const employees = [
@@ -52,11 +52,10 @@ console.log(
 );
 
 //Aufgabe 3
-console.log(
-  employees.filter(function (employees) {
-    return employees.type === this.AZUBI;
-  })
+const highestSalary = Math.max(
+  ...employees.filter(employee => employee.type === Type.AZUBI).map(employee => employee.salary)
 );
+console.log(highestSalary);
 
 //Aufgabe 4
 console.log(
@@ -68,12 +67,13 @@ console.log(
 //Aufgabe 5
 let initialValue = 0;
 console.log(
-    employees.reduce((x, employees) => {
-      return x + employees.salaray;
-    }, initialValue)
+  employees.reduce((x, employees) => {
+    return x + employees.salary;
+  }, initialValue)
 );
+
 //Aufgabe 6
-console.log(introduce());
+employees.forEach(employee => employee.introduce());
 
 /**
  * Aufgaben:
