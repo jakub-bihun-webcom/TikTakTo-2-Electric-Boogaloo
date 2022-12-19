@@ -20,7 +20,7 @@ class Employee {
   }
 
   introduce() {
-    let introduction = 'Hallo mein ich heiße ' + this.name + ' und ich bin ' + this.type;
+    let introduction = 'Hallo ich heiße ' + this.name + ' und ich bin ' + this.type;
     if (this.type === Type.AZUBI || this.type === Type.STUDENT) {
       console.log(introduction + '.');
     } else {
