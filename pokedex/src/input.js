@@ -3,6 +3,19 @@ window.onload = function () {
     let inputValue = document.getElementById('input').value;
     console.log(inputValue);
 
+    messageText = document.getElementById('msg');
+    message = '';
+
+    try {
+      getPokemonName(inputValue).then(name => {
+        messageText.style.color = '#a2b9bc';
+        messageText.innerText = name;
+      });
+    } catch (error) {
+      messageText.style.color = '#850303';
+      messageText.innerText = error.message;
+    }
+
     /**
      * @param inputValue
      * @returns {boolean} true wenn der UserInput zwischen 1 und 150 liegt
@@ -40,7 +53,7 @@ window.onload = function () {
         return data.name;
       } catch (error) {
         console.error('There has been an issue while sending your API request');
-        return 'Your Input does not return a Pokemon name. Please note that zero is not a valid Input.';
+        return 'Your Input does not return a Pokemon name. Please note that the Input has to be a number between 1 and 150.';
       }
     }
   });

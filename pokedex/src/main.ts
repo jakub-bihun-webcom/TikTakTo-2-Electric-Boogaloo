@@ -11,6 +11,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <input id="input" type="text"> 
       <button class="searchButton" id="button" type="button">Suche</button>
     </div>
+    <div class="Output">
+    <p class="outputBox" id="msg" disabled></p>
+    </div>
   </div>
 
 `;
