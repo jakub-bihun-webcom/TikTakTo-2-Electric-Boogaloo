@@ -1,5 +1,4 @@
 import './style.css';
-import { setupCounter } from './counter';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -7,10 +6,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <img src="/International_Pokémon_logo.svg.png" class="logo" alt="Pokemon logo" />
     </a>
     <h1>Pokedex</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+    <div class="inputField">
+      <label  for="inputField">Pokemon ID: </label>
+      <input id="input" type="text"> 
+      <button class="searchButton" id="button" type="button">Suche</button>
     </div>
   </div>
-`;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
+`;
