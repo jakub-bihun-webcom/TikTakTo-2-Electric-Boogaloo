@@ -12,9 +12,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <button class="searchButton" id="button" type="button">Suche</button>
     </div>
     <div class="Output">
-      <img id="myImage" src="" >
+      <img id="myImage" src="" class="animatedImage">
     <p class="outputBox" id="msg" disabled></p>
     </div>
   </div>
-
 `;
