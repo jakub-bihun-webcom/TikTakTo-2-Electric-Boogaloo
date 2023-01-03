@@ -39,8 +39,8 @@ window.onload = function () {
         const data = await response.json();
         return data.name;
       } catch (error) {
+        console.error('There has been an issue while sending your API request');
         return 'Your Input does not return a Pokemon name. Please note that zero is not a valid Input.';
-        console.error('Fehler bei der Abfrage der API');
       }
     }
   });
