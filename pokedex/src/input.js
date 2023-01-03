@@ -1,12 +1,13 @@
 window.onload = function () {
   document.getElementById('button').addEventListener('click', function () {
-    let inputValue = document.getElementById('input').value;
+    let inputValue = parseInt(document.getElementById('input').value) + 1;
     console.log(inputValue);
 
     messageText = document.getElementById('msg');
     message = '';
 
     try {
+      displayImage(inputValue);
       getPokemonName(inputValue).then(name => {
         messageText.style.color = '#a2b9bc';
         messageText.innerText = name;
@@ -55,6 +56,11 @@ window.onload = function () {
         console.error('There has been an issue while sending your API request');
         return 'Your Input does not return a Pokemon name. Please note that the Input has to be a number between 1 and 150.';
       }
+    }
+
+    function displayImage(inputValue) {
+      let image = document.getElementById('myImage');
+      image.src = 'src/animated/' + inputValue + '.gif';
     }
   });
 };
