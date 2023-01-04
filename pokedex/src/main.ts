@@ -12,8 +12,20 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <button class="searchButton" id="button" type="button">Suche</button>
     </div>
     <div class="Output">
-      <img id="myImage" src="" class="animatedImage">
+      <img id="myImage" src="" class="animatedImage" alt="">
     <p class="outputBox" id="msg" disabled></p>
     </div>
+<div class="box">
+<a class="button" href="#popup1">Pokemon Liste</a>
+</div>
+
+<div id="popup1" class="overlay">
+<div class="popup">
+<h2>Pokemon List</h2>
+<a class="close" href="#">&times;</a>
+<div class="content">
+</div>
+</div>
+</div>
   </div>
 `;
