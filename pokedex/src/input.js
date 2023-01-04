@@ -56,6 +56,10 @@ window.onload = function () {
       }
     }
 
+    /**
+     * zeigt das passende Bild zum inputValue
+     * @param inputValue
+     */
     function displayImage(inputValue) {
       let image = document.getElementById('myImage');
       image.src = 'src/animated/' + inputValue + '.gif';
@@ -75,6 +79,9 @@ for (let i = 1; i <= 150; i++) {
     });
 }
 
+/**
+ * Kreiert die eine Liste aller Pokemon Namen und zeigt diese im Popup an
+ */
 setTimeout(function () {
   let pokemonListElem = document.createElement('ul');
   pokemonList.forEach(function (pokemonName) {
@@ -89,5 +96,6 @@ setTimeout(function () {
   pokemonListElem.style.height = '650px';
 }, 1000);
 
+// Funktioniert noch nicht so, wie ichs gerne hätte :(
 let image = document.getElementById('myImage');
 image.src = './pokeball.gif';
