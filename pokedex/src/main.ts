@@ -1,7 +1,8 @@
+import '@picocss/pico/css/pico.min.css';
 import './style.css';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
+  <main class="container">
     <a href="https://www.pokemon.com/de" target="_blank">
       <img src="/International_Pokémon_logo.svg.png" class="logo" alt="Pokemon logo" />
     </a>
@@ -15,6 +16,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <img id="myImage" src="" class="animatedImage" alt="">
     <p class="outputBox" id="msg" disabled></p>
     </div>
+  </main>
 <div class="box">
 <a class="button" href="#popup1">Pokemon Liste</a>
 </div>
