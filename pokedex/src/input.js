@@ -3,8 +3,7 @@ window.onload = function () {
     let inputValue = parseInt(document.getElementById('input').value);
     console.log(inputValue);
 
-    messageText = document.getElementById('msg');
-    message = '';
+    let messageText = document.getElementById('msg');
 
     try {
       inputValidation(inputValue);
@@ -30,16 +29,6 @@ window.onload = function () {
       } else {
         return true;
       }
-    }
-
-    /**
-     * loggt den das Ergebnis der Abfrage mit dem UserInput
-     */
-    function logPokemonName() {
-      getPokemonName(inputValue).then(name => console.log(name));
-    }
-    if (isValidInput(inputValue)) {
-      logPokemonName();
     }
 
     /**
