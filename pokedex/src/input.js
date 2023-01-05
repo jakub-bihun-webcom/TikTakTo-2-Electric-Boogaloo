@@ -50,6 +50,9 @@ window.onload = function () {
      * @param inputValue
      */
     function displayImage(inputValue) {
+      let myImage = document.getElementById('myImage');
+      myImage.removeAttribute('hidden');
+
       let image = document.getElementById('myImage');
       image.src = 'src/animated/' + inputValue + '.gif';
     }
