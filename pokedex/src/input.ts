@@ -2,7 +2,6 @@ export function searchPokemon() {
   const pokemonInput = document.getElementById('input') as HTMLInputElement;
   let inputValue = pokemonInput.value;
   console.log(inputValue);
-
   let messageText = document.getElementById('msg');
 
   try {
@@ -35,7 +34,7 @@ export function searchPokemon() {
    * @param inputValue (wenn isValid true ist)
    * @returns {Promise<*>} (den namen des Pokemon in einem Promise Objekt)
    */
-  async function getPokemonName(inputValue) {
+  async function getPokemonName(inputValue: string) {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`);
       const data = await response.json();
@@ -45,14 +44,24 @@ export function searchPokemon() {
     }
   }
 
+  async function getPokemonImage(inputValue: string) {
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`);
+      const data = await response.json();
+      return data.sprites.front_default;
+    } catch (error) {
+      return 'Your Input does not return a Pokemon image. Please note that the Input cant be 0!';
+    }
+  }
+
   /**
    * zeigt das passende Bild zum inputValue
    */
-  function displayImage(inputValue: string) {
+  async function displayImage(inputValue: string) {
     const myImage = document.getElementById('myImage');
     myImage.removeAttribute('hidden');
 
     const image = document.getElementById('myImage') as HTMLImageElement;
-    image.src = 'src/animated/' + inputValue + '.gif';
+    image.src = await getPokemonImage(inputValue);
   }
 }

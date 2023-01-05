@@ -65,7 +65,3 @@ setTimeout(function () {
 
   pokemonListElem.style.height = '650px';
 }, 1000);
-
-// Funktioniert noch nicht so, wie ichs gerne hätte :(
-let image = document.getElementById('myImage');
-image.src = './pokeball.gif';
