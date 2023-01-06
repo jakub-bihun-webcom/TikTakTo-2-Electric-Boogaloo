@@ -12,7 +12,13 @@ body {
   align-items: center;
 }
 
+.logoDev {
+  display: flex;
+  align-content: center;
+}
+
 .logo {
+  max-width: 700px;
   margin-bottom: 20px;
 }
 
