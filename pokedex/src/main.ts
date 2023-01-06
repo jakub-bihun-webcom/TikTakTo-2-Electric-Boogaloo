@@ -46,15 +46,13 @@ document.getElementById('input').addEventListener('keydown', function (event) {
 let pokemonList = [];
 
 for (let i = 1; i <= 150; i++) {
-  setTimeout(function () {
-    fetch('https://pokeapi.co/api/v2/pokemon/' + i)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (pokemon) {
-        pokemonList.push('Nr. ' + `${i} ` + pokemon.name);
-      });
-  }, 10);
+  fetch('https://pokeapi.co/api/v2/pokemon/' + i)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (pokemon) {
+      pokemonList.push('Nr. ' + `${i} ` + pokemon.name);
+    });
 }
 
 /**
