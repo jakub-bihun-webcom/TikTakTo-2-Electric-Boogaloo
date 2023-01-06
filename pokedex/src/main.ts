@@ -37,6 +37,12 @@ window.onload = function () {};
 
 document.getElementById('button').addEventListener('click', searchPokemon);
 
+document.getElementById('input').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    searchPokemon();
+  }
+});
+
 let pokemonList = [];
 
 for (let i = 1; i <= 150; i++) {
