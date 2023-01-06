@@ -4,7 +4,7 @@ import { searchPokemon } from './input';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
   <main class="container">
-    <a href="https://www.pokemon.com/de" target="_blank">
+    <a class="logoDev" href="https://www.pokemon.com/de" target="_blank">
       <img src="/International_Pokémon_logo.svg.png" class="logo" alt="Pokemon logo" />
     </a>
     <h1>Pokedex</h1>
@@ -40,19 +40,27 @@ document.getElementById('button').addEventListener('click', searchPokemon);
 let pokemonList = [];
 
 for (let i = 1; i <= 150; i++) {
-  fetch('https://pokeapi.co/api/v2/pokemon/' + i)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (pokemon) {
-      pokemonList.push('Nr. ' + `${i} ` + pokemon.name);
-    });
+  setTimeout(function () {
+    fetch('https://pokeapi.co/api/v2/pokemon/' + i)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (pokemon) {
+        pokemonList.push('Nr. ' + `${i} ` + pokemon.name);
+      });
+  }, 10);
 }
 
 /**
  * Kreiert die eine Liste aller Pokemon Namen und zeigt diese im Popup an
  */
 setTimeout(function () {
+  pokemonList.sort(function (a, b) {
+    let aNumber = parseInt(a.split(' ')[1]);
+    let bNumber = parseInt(b.split(' ')[1]);
+    return aNumber - bNumber;
+  });
+
   let pokemonListElem = document.createElement('ul');
   pokemonList.forEach(function (pokemonName) {
     let li = document.createElement('li');
