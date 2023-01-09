@@ -1,0 +1,40 @@
+import './style.css';
+import { getFeiertage } from './input';
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+  <main class="container">
+    <h1>API</h1>
+    <div class="inputField">
+      <label  for="inputField">Land: </label>
+<select name = "auswahl">
+  <option value="NW">Nordrhein-Westfalen</option>
+  <option value="BW">Baden-Württenberg</option>
+  <option value="BY">Bayern</option>
+  <option value="BE">Berlin</option>
+  <option value="BB">Brandenburg</option>
+  <option value="HB">Bremen</option>
+  <option value="HH">Hamburg</option>
+  <option value="HE">Hessen</option>
+  <option value="MV">Mecklenburg-Vorpommern</option>
+  <option value="NI">Niedersachsen</option>
+  <option value="RP">Rheinland-Pfalz</option>
+  <option value="SL">Saarland</option>
+  <option value="SN">Sachsen</option>
+  <option value="ST">Sachsen-Anhalt</option>
+  <option value="SH">Schleswig Holstein</option>
+  <option value="TH">Thüringen</option>
+</select>
+      <input id="input" type="text">
+      <button class="searchButton" id="button" type="button">Suche</button>
+    </div>
+    <div class="Output">
+      <p class="outputBox" id="msg" disabled></p>
+    </div>
+
+    </div>
+  </main>
+`;
+
+// @ts-ignore
+document.getElementById('button').addEventListener('click', getFeiertage);
+
