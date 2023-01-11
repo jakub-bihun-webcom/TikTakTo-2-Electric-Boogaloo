@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/webcomputing/azubi-projects#readme",
   "dependencies": {
+    "@picocss/pico": "^1.5.6",
     "vit": "^0.0.1",
     "vite": "^4.0.4"
   }
