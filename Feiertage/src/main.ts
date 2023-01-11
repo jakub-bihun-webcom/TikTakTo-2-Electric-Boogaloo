@@ -29,7 +29,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div class="Output">
       <p class="outputBox" id="msg"></p>
     </div>
-
+    <div id = "table"></div>
     </div>
   </main>
 `;
