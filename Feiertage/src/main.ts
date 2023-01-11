@@ -5,10 +5,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <main class="container">
     <h1>API</h1>
     <div class="inputField">
-      <label  for="inputField">Land: </label>
+      <label  for="inputField">Bundesland: </label>
 <select name = "auswahl">
-  <option value="NW">Nordrhein-Westfalen</option>
-  <option value="BW">Baden-Württenberg</option>
+  <option value="NW">Allgemeine Feiertage</option>
+  <option value="BW">Baden-Württemberg</option>
   <option value="BY">Bayern</option>
   <option value="BE">Berlin</option>
   <option value="BB">Brandenburg</option>
@@ -17,6 +17,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <option value="HE">Hessen</option>
   <option value="MV">Mecklenburg-Vorpommern</option>
   <option value="NI">Niedersachsen</option>
+  <option value="NW">Nordrhein-Westfalen</option>
   <option value="RP">Rheinland-Pfalz</option>
   <option value="SL">Saarland</option>
   <option value="SN">Sachsen</option>
@@ -24,8 +25,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <option value="SH">Schleswig Holstein</option>
   <option value="TH">Thüringen</option>
 </select>
-      <input id="input" type="text">
-      <button class="searchButton" id="button" type="button">Suche</button>
+      <button class="searchButton" id="button" type="button">Feiertage anzeigen</button>
     </div>
     <div class="Output">
       <p class="outputBox" id="msg" disabled></p>
