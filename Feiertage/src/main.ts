@@ -37,4 +37,3 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 // @ts-ignore
 document.getElementById('button').addEventListener('click', getFeiertage);
-
