@@ -6,8 +6,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <h1>API</h1>
     <div class="inputField">
       <label  for="inputField">Bundesland: </label>
-<select name = "auswahl">
-  <option value="NW">Allgemeine Feiertage</option>
+<select id = "bundeslandAuswahl", name = "auswahl">
   <option value="BW">Baden-Württemberg</option>
   <option value="BY">Bayern</option>
   <option value="BE">Berlin</option>
@@ -25,7 +24,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <option value="SH">Schleswig Holstein</option>
   <option value="TH">Thüringen</option>
 </select>
-      <button class="searchButton" id="button" type="button">Feiertage anzeigen</button>
+      <button class="searchButton" id="feiertageAnzeigenButton" type="button">Feiertage anzeigen</button>
     </div>
     <div class="Output">
       <p class="outputBox" id="msg" disabled></p>
@@ -36,4 +35,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `;
 
 // @ts-ignore
-document.getElementById('button').addEventListener('click', getFeiertage);
+document.getElementById('feiertageAnzeigenButton').addEventListener('click', getFeiertage);
