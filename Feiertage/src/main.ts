@@ -26,10 +26,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 </select>
       <button class="searchButton" id="feiertageAnzeigenButton" type="button">Feiertage anzeigen</button>
     </div>
+    <div class = "inputJahr">
+          <label  for="inputJahr">Jahr: </label>
+    <input id = "jahr"></input>
+</div>
     <div class="Output">
       <p class="outputBox" id="msg"></p>
     </div>
-    <div id = "table" ></div>
+    <table id = "table" ></table>
     </div>
   </main>
 `;

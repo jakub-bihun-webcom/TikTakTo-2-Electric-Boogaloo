@@ -1,29 +1,28 @@
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
-  let bundeslandValue = bundeslandInput.value;
-  console.log(bundeslandValue);
+  const jahrInput = document.getElementById('jahr') as HTMLInputElement;
 
-  const response = await fetch(`https://feiertage-api.de/api/?jahr=2023&nur_land=${bundeslandValue}`);
+  let jahrValue = jahrInput.value;
+  let bundeslandValue = bundeslandInput.value;
+
+  const response = await fetch(`https://feiertage-api.de/api/?jahr=${jahrValue}&nur_land=${bundeslandValue}`);
   const json = await response.json();
 
   createTable(json);
-
-  console.log(json);
 }
 
 function createTable(json: object) {
   let table = document.getElementById('table');
   // @ts-ignore
-  table.innerHTML = "";
+  table.innerHTML = '';
+
+  console.log(typeof table);
 
   let keys: string[] = [];
   Object.keys(json).forEach(prop => keys.push(prop));
 
   const dates: any[] = [];
   Object.values(json).forEach(val => dates.push(val.datum));
-
-  console.log(dates);
-  console.log(keys);
 
   const arr = [keys, dates];
 
@@ -38,5 +37,4 @@ function createTable(json: object) {
     // @ts-ignore
     table.appendChild(row);
   }
-
 }
