@@ -6,7 +6,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <h1>API</h1>
     <div class="inputField">
       <label  for="inputField">Bundesland: </label>
-<select id = "bundeslandAuswahl", name = "auswahl">
+<select id = "bundeslandAuswahl" name = "auswahl">
   <option value="BW">Baden-Württemberg</option>
   <option value="BY">Bayern</option>
   <option value="BE">Berlin</option>
@@ -27,7 +27,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <button class="searchButton" id="feiertageAnzeigenButton" type="button">Feiertage anzeigen</button>
     </div>
     <div class="Output">
-      <p class="outputBox" id="msg" disabled></p>
+      <p class="outputBox" id="msg"></p>
     </div>
 
     </div>
