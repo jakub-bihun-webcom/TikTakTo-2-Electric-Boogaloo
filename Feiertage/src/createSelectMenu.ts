@@ -19,10 +19,10 @@ bundeslaender.set('SH', 'Schleswig Holstein');
 bundeslaender.set('TH', 'Thüringen');
 
 export function createSelectMenu() {
-    const dropDownMenu = document.getElementById('bundeslandAuswahl') as HTMLElement;
-    bundeslaender.forEach((land, key) => {
-        const option = dropDownMenu.appendChild(document.createElement('option'));
-        option.innerText = land;
-        option.value = key;
-    });
+  const dropDownMenu = document.getElementById('bundeslandAuswahl') as HTMLElement;
+  bundeslaender.forEach((land, key) => {
+    const option = dropDownMenu.appendChild(document.createElement('option'));
+    option.innerText = land;
+    option.value = key;
+  });
 }

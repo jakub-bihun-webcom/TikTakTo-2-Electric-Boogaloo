@@ -23,5 +23,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 createSelectMenu();
 
-// @ts-ignore
 document.getElementById('feiertageAnzeigenButton').addEventListener('click', getFeiertage);
