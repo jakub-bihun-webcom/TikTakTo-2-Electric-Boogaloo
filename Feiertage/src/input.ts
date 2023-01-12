@@ -1,7 +1,5 @@
 import { getWeekdays } from './getWeekdays';
 
-
-
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
   const yearInput = document.getElementById('jahr') as HTMLInputElement;
