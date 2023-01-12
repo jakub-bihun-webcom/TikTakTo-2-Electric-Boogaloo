@@ -10,4 +10,22 @@ describe('sortPokemons', () => {
     // @ts-ignore
     expect(sortPokemons(pokemons)).toEqual(expected);
   });
+
+  it('should sort pokemons by id', () => {
+    const pokemons = [{ game_indices: { id: 5 } }, { game_indices: { id: 9 } }, { game_indices: { id: 1 } }];
+
+    const expected = [{ game_indices: { id: 1 } }, { game_indices: { id: 5 } }, { game_indices: { id: 9 } }];
+
+    // @ts-ignore
+    expect(sortPokemons(pokemons)).toEqual(expected);
+  });
+
+  it('should sort pokemons by id', () => {
+    const pokemons = [{ game_indices: { id: 120 } }, { game_indices: { id: 230 } }, { game_indices: { id: 234 } }];
+
+    const expected = [{ game_indices: { id: 120 } }, { game_indices: { id: 230 } }, { game_indices: { id: 234 } }];
+
+    // @ts-ignore
+    expect(sortPokemons(pokemons)).toEqual(expected);
+  });
 });
