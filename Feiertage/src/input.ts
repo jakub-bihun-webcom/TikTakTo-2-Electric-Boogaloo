@@ -52,7 +52,7 @@ function validateYearInput(yearInput: number): void{
 }
 */
 
-function getWeekday(dates: any[]){
+function getWeekday(dates: string[]){
   const weekdays: string[] = [];
   dates.forEach(date => {
     const currentDate = new Date(date);

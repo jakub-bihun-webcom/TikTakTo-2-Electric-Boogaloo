@@ -28,7 +28,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </div>
   <div class = "inputJahr">
     <label  for="inputJahr">Jahr: </label>
-    <input id = "jahr"></input>
+    <input id = "jahr" value="2023"></input>
   </div>
     <table id = "table" ></table>
   </div>
