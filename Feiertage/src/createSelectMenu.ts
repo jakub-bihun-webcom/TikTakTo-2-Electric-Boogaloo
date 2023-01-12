@@ -18,7 +18,7 @@ bundeslaender.set('ST', 'Sachsen-Anhalt');
 bundeslaender.set('SH', 'Schleswig Holstein');
 bundeslaender.set('TH', 'Thüringen');
 
-export function createSelectMenu() {
+export function createSelectMenu(): void {
   const dropDownMenu = document.getElementById('bundeslandAuswahl') as HTMLElement;
   bundeslaender.forEach((land, key) => {
     const option = dropDownMenu.appendChild(document.createElement('option'));
