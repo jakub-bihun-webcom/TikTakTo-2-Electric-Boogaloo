@@ -39,7 +39,7 @@ function createTable(json: object): void {
   }
 }
 
-function getWeekday(dates: string[]): string[] {
+export function getWeekday(dates: string[]): string[] {
   const weekdays: string[] = [];
   dates.forEach(date => {
     const currentDate = new Date(date);
