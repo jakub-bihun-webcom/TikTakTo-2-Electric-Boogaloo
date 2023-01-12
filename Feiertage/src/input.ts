@@ -1,3 +1,5 @@
+import { getWeekdays } from './getWeekdays';
+
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
   const yearInput = document.getElementById('jahr') as HTMLInputElement;
@@ -22,7 +24,7 @@ function createTable(json: object): void {
   const dates: string[] = [];
   Object.values(json).forEach(val => dates.push(val.datum));
 
-  const weekdays: string[] = getWeekday(dates);
+  const weekdays: string[] = getWeekdays(dates);
 
   const arr = [keys, dates, weekdays];
 
@@ -37,13 +39,4 @@ function createTable(json: object): void {
     // @ts-ignore
     table.appendChild(row);
   }
-}
-
-export function getWeekday(dates: string[]): string[] {
-  const weekdays: string[] = [];
-  dates.forEach(date => {
-    const currentDate = new Date(date);
-    weekdays.push(currentDate.toLocaleString('default', { weekday: 'long' }));
-  });
-  return weekdays;
 }

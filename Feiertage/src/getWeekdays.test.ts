@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getWeekday } from './input';
+import { getWeekdays } from './getWeekdays';
 
 describe('getWeekdays', () => {
   it('should create Weekdays for each Date', () => {
@@ -7,6 +7,6 @@ describe('getWeekdays', () => {
 
     const expected = ['Sonntag', 'Dienstag', 'Dienstag'];
 
-    expect(getWeekday(dates)).toEqual(expected);
+    expect(getWeekdays(dates)).toEqual(expected);
   });
 });
