@@ -1,3 +1,4 @@
+import '@picocss/pico/css/pico.min.css';
 import './style.css';
 import { getFeiertage } from './input';
 import { createSelectMenu } from './createSelectMenu';
@@ -23,4 +24,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 createSelectMenu();
 
+// @ts-ignore
 document.getElementById('feiertageAnzeigenButton').addEventListener('click', getFeiertage);
