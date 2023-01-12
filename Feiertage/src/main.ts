@@ -3,7 +3,7 @@ import { getFeiertage } from './input';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <main class="container">
-    <h1>API</h1>
+    <h1>Feiertage</h1>
     <div class="inputField">
       <label  for="inputField">Bundesland: </label>
 <select id = "bundeslandAuswahl" name = "auswahl">
