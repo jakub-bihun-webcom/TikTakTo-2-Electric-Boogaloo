@@ -2,6 +2,7 @@ import '@picocss/pico/css/pico.min.css';
 import './style.css';
 import { searchPokemon } from './input';
 import { loadPokemons } from './load-pokemons';
+import { sortPokemons } from './sort-pokemons';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
   <main class="container">
@@ -48,13 +49,13 @@ async function showPokemonList() {
   const pokemons = await loadPokemons();
 
   // Pokemons sortieren --> TODO Joshua
-
+  const sortedPokemons = sortPokemons(pokemons);
   // Popup anzeigen
   const pokemonListElem = document.createElement('ul');
-  pokemons.forEach(function (pokemon, i) {
+  console.log(sortedPokemons);
+  sortedPokemons.forEach(function (sortedPokemons, i) {
     const li = document.createElement('li');
-    li.textContent = 'Nr. ' + `${i + 1} ` + pokemon.name;
-    console.log(pokemon);
+    li.textContent = 'Nr. ' + `${i + 1} ` + sortedPokemons.name.charAt(0).toUpperCase() + sortedPokemons.name.slice(1);
     pokemonListElem.appendChild(li);
   });
 
