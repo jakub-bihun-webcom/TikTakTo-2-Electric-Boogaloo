@@ -1,6 +1,6 @@
 import './style.css';
 import { getFeiertage } from './input';
-import {createSelectMenu } from './createSelectMenu';
+import { createSelectMenu } from './createSelectMenu';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <main class="container">
@@ -21,9 +21,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </main>
 `;
 
-createSelectMenu()
+createSelectMenu();
 
 // @ts-ignore
 document.getElementById('feiertageAnzeigenButton').addEventListener('click', getFeiertage);
-
-
