@@ -2,10 +2,10 @@ export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
   const yearInput = document.getElementById('jahr') as HTMLInputElement;
 
-  let jahrValue: string = yearInput.value;
+  let yearValue: string = yearInput.value;
   let bundeslandValue: string = bundeslandInput.value;
 
-  const response = await fetch(`https://feiertage-api.de/api/?jahr=${jahrValue}&nur_land=${bundeslandValue}`);
+  const response = await fetch(`https://feiertage-api.de/api/?jahr=${yearValue}&nur_land=${bundeslandValue}`);
   const json = await response.json();
 
   createTable(json);
@@ -19,10 +19,10 @@ function createTable(json: object): void {
   let keys: string[] = [];
   Object.keys(json).forEach(prop => keys.push(prop));
 
-  const dates: any[] = [];
+  const dates: string[] = [];
   Object.values(json).forEach(val => dates.push(val.datum));
 
-  const weekdays = getWeekday(dates);
+  const weekdays: string[] = getWeekday(dates);
 
   const arr = [keys, dates, weekdays];
 
