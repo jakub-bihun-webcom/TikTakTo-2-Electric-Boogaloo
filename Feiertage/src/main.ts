@@ -24,18 +24,15 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <option value="SH">Schleswig Holstein</option>
   <option value="TH">Thüringen</option>
 </select>
-      <button class="searchButton" id="feiertageAnzeigenButton" type="button">Feiertage anzeigen</button>
-    </div>
-    <div class = "inputJahr">
-          <label  for="inputJahr">Jahr: </label>
+    <button class="searchButton" id="feiertageAnzeigenButton" type="button">Feiertage anzeigen</button>
+  </div>
+  <div class = "inputJahr">
+    <label  for="inputJahr">Jahr: </label>
     <input id = "jahr"></input>
-</div>
-    <div class="Output">
-      <p class="outputBox" id="msg"></p>
-    </div>
+  </div>
     <table id = "table" ></table>
-    </div>
-  </main>
+  </div>
+</main>
 `;
 
 // @ts-ignore
