@@ -2,13 +2,12 @@ export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
   const yearInput = document.getElementById('jahr') as HTMLInputElement;
 
-
-//  validateYearInput(yearInput);
+  //  validateYearInput(yearInput);
   let jahrValue = yearInput.value;
   let bundeslandValue = bundeslandInput.value;
 
-  if (jahrValue === ""){
-    jahrValue = "2023"
+  if (jahrValue === '') {
+    jahrValue = '2023';
   }
 
   const response = await fetch(`https://feiertage-api.de/api/?jahr=${jahrValue}&nur_land=${bundeslandValue}`);
@@ -28,7 +27,7 @@ function createTable(json: object) {
   const dates: any[] = [];
   Object.values(json).forEach(val => dates.push(val.datum));
 
-  const weekdays = getWeekday(dates)
+  const weekdays = getWeekday(dates);
 
   const arr = [keys, dates, weekdays];
 
@@ -45,18 +44,17 @@ function createTable(json: object) {
   }
 }
 
-
 /*
 function validateYearInput(yearInput: number): void{
 
 }
 */
 
-function getWeekday(dates: string[]){
+function getWeekday(dates: string[]) {
   const weekdays: string[] = [];
   dates.forEach(date => {
     const currentDate = new Date(date);
-    weekdays.push(currentDate.toLocaleString('default', {weekday: 'long'}))
+    weekdays.push(currentDate.toLocaleString('default', { weekday: 'long' }));
   });
-  return weekdays
+  return weekdays;
 }
