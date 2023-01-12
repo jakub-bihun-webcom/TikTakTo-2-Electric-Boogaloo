@@ -1,5 +1,4 @@
 import { Pokemon } from './types/pokemon-api';
-
 export async function loadPokemons(): Promise<Pokemon[]> {
   const promises = [];
 
