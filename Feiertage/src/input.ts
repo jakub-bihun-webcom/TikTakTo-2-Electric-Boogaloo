@@ -1,41 +1,6 @@
 import { getWeekdays } from './getWeekdays';
 
-const bundeslaender = new Map();
 
-bundeslaender.set('BW', 'Baden-Württemberg');
-bundeslaender.set('BY', 'Bayern');
-bundeslaender.set('BE', 'Berlin');
-bundeslaender.set('BB', 'Brandenburg');
-bundeslaender.set('HB', 'Bremen');
-bundeslaender.set('HH', 'Hamburg');
-bundeslaender.set('BW', 'Baden-Württemberg');
-bundeslaender.set('HE', 'Hessen');
-bundeslaender.set('MV', 'Mecklenburg-Vorpommern');
-bundeslaender.set('NI', 'Niedersachsen');
-bundeslaender.set('NW', 'Nordrhein-Westfalen');
-bundeslaender.set('RP', 'Rheinland-Pfalz');
-bundeslaender.set('SL', 'Saarland');
-bundeslaender.set('SN', 'Sachsen');
-bundeslaender.set('ST', 'Sachsen-Anhalt');
-bundeslaender.set('SH', 'Schleswig Holstein');
-bundeslaender.set('TH', 'Thüringen');
-
-console.log(bundeslaender);
-
-export function createSelectMenu() {
-  const dropDownMenu = document.getElementById('bundeslandAuswahl');
-  bundeslaender.forEach((land, key, map) => {
-    console.log(map)
-    console.log()
-    const option = dropDownMenu.appendChild(document.createElement('option'));
-    option.innerText = land;
-    option.value = key;
-  });
-  /*
-  const BW = dropDownMenu.appendChild(document.createElement('option'));
-  BW.innerText = 'Baden-Württemberg';
-*/
-}
 
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;

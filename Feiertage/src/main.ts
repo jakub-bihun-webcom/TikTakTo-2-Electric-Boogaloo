@@ -1,6 +1,6 @@
 import './style.css';
 import { getFeiertage } from './input';
-import {createSelectMenu} from './input';
+import {createSelectMenu } from './createSelectMenu';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <main class="container">
