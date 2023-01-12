@@ -26,7 +26,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
     <div id="popup1" class="overlay">
       <div class="popup">
         <h2>Pokemon List</h2>
-        <a class="close" href="#">&times;</a>
+        <a class="close" id="closePupupButton" href="#">&times;</a>
         <div class="content">
         </div>
       </div>
@@ -37,6 +37,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
 
 document.getElementById('searchButton').addEventListener('click', searchPokemon);
 document.getElementById('popupButton').addEventListener('click', showPokemonList);
+//--> TODO Joshua fix Bug
+// document.getElementById('closePupupButton').addEventListener('click', clearList());
 
 document.getElementById('input').addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
@@ -45,14 +47,10 @@ document.getElementById('input').addEventListener('keydown', function (event) {
 });
 
 async function showPokemonList() {
-  // Pokemons laden
   const pokemons = await loadPokemons();
-
-  // Pokemons sortieren --> TODO Joshua
+  console.log(pokemons);
   const sortedPokemons = sortPokemons(pokemons);
-  // Popup anzeigen
   const pokemonListElem = document.createElement('ul');
-  console.log(sortedPokemons);
   sortedPokemons.forEach(function (sortedPokemons, i) {
     const li = document.createElement('li');
     li.textContent = 'Nr. ' + `${i + 1} ` + sortedPokemons.name.charAt(0).toUpperCase() + sortedPokemons.name.slice(1);
