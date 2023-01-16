@@ -10,6 +10,7 @@ export async function getFeiertage() {
   const response = await fetch(`https://feiertage-api.de/api/?jahr=${yearValue}&nur_land=${bundeslandValue}`);
   const json = await response.json();
 
+  createFeiertagsArrays(json);
   createTable(json);
 }
 
@@ -36,4 +37,11 @@ function createTable(json: object): void {
     }
     table.appendChild(row);
   }
+}
+
+export function createFeiertagsArrays(json: object) {
+  const keys: string[] = Object.keys(json);
+  const dates: string[] = [];
+  Object.values(json).forEach(val => dates.push(val.datum));
+  console.log(keys, dates);
 }
