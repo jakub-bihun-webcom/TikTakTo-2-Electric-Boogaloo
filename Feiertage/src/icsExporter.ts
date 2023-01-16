@@ -1,13 +1,18 @@
-import { createEvent, DateArray, EventAttributes } from 'ics';
+import { createEvents, DateArray, EventAttributes } from 'ics';
 import { createIcsDownload } from './createIcsDownload';
 import { Feiertage } from './feiertage';
 
 export function getFeiertagsInfo(feiertage: Feiertage) {
   const feiertagsDatum = feiertage.dates;
   const feiertagsName = feiertage.keys;
+  const multipleIcsEntries = []
   for (let i = 0; i < feiertagsDatum.length; i++) {
-    createICS(feiertagsDatum[i], feiertagsName[i]);
+    const singeIcs = createICS(feiertagsDatum[i], feiertagsName[i]);
+    multipleIcsEntries.push(singeIcs)
   }
+  const icsContent = createEvents(multipleIcsEntries)
+  console.log(icsContent.value)
+  createIcsDownload(icsContent.value)
 }
 
 export function createICS(daten: string, feiertagsName: string) {
@@ -18,6 +23,5 @@ export function createICS(daten: string, feiertagsName: string) {
     end: datum,
     title: feiertagsName
   };
-  const event = createEvent(eventAttributes);
-  createIcsDownload(event.value);
+  return eventAttributes
 }

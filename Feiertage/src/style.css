@@ -47,6 +47,12 @@ h1 {
   left: 43%;
 }
 
+.downloadLink {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 .feiertagsTable {
   position: center;
 }
