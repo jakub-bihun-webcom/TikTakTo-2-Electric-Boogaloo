@@ -6,6 +6,7 @@ import { createSelectMenu } from './createSelectMenu';
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <main class="container">
     <h1>Feiertage</h1>
+    <div class ="chooseField">
     <div class="inputField">
       <label  for="inputField">Bundesland: </label>
         <select id = "bundeslandAuswahl" name = "auswahl">
@@ -17,7 +18,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <label  for="inputJahr">Jahr: </label>
         <input id = "jahr" value="2023">
     </div>
-    <table id = "table" ></table>
+    </div>
+    <table id = "table" class = "feiertagsTable"></table>
     </div>
   </main>
 `;

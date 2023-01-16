@@ -5,7 +5,7 @@
   font-weight: 400;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #aaaaaa;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,13 +29,26 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  color: chartreuse;
-  background-color: black;
+  color: #030203;
+  background-color: #eeeeee;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  position: fixed;
+  top: 8%;
+  left: 45%;
+}
+
+.chooseField {
+  position: fixed;
+  top: 15%;
+  left: 45%;
+}
+
+.feiertagsTable {
+  position: center;
 }
 
 #app {
@@ -72,7 +85,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: lightgreen;
+  background-color: black;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -93,6 +106,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: chartreuse;
+    background-color: black;
   }
 }
