@@ -1,5 +1,5 @@
 import { getWeekdays } from './getWeekdays';
-import { createICS } from './icsExporter';
+import { getFeiertagsInfo } from './icsExporter';
 
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
@@ -11,9 +11,9 @@ export async function getFeiertage() {
   const response = await fetch(`https://feiertage-api.de/api/?jahr=${yearValue}&nur_land=${bundeslandValue}`);
   const json = await response.json();
 
-  const feiertagsArrays = createFeiertagsArrays(json);
+  const feiertagsObject = createFeiertagsObject(json);
   createTable(json);
-  createICS(feiertagsArrays)
+  getFeiertagsInfo(feiertagsObject)
 }
 
 function createTable(json: object): void {
@@ -41,9 +41,9 @@ function createTable(json: object): void {
   }
 }
 
-export function createFeiertagsArrays(json: object) {
+export function createFeiertagsObject(json: object) {
   const keys: string[] = Object.keys(json);
   const dates: string[] = [];
   Object.values(json).forEach(val => dates.push(val.datum));
-  return [keys, dates];
+  return {keys, dates};
 }

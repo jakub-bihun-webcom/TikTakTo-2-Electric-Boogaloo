@@ -1,20 +1,24 @@
-import { createEvent, DateArray } from 'ics';
+import { createEvent, DateArray, EventAttributes } from 'ics';
 
-// Für jedes Array Element createEvent() aufrufen mit date und title
-export function createICS(feiertagsArrays) {
-  const daten = feiertagsArrays[1];
-  const feiertagsName = feiertagsArrays[0];
-  for (let i = 0; i < daten.length; i++) {
-    transform(daten[i], feiertagsName[i]);
+interface Feiertage {
+    keys: string[],
+    dates: string[]
+}
+
+export function getFeiertagsInfo(feiertage: Feiertage) {
+  const feiertagsDatum = feiertage.dates;
+  const feiertagsName = feiertage.keys;
+  for (let i = 0; i < feiertagsDatum.length; i++) {
+    createICS(feiertagsDatum[i], feiertagsName[i]);
   }
 }
 
-function transform(daten: string, feiertagsName: string) {
-  const datum = [];
+function createICS(daten: string, feiertagsName: string) {
+  const datum = [] as unknown as DateArray;
   daten.split('-').map(function (val) {
     datum.push(parseInt(val));
   });
-  const eventAttributes = {
+  const eventAttributes: EventAttributes = {
     start: datum,
     end: datum,
     title: feiertagsName
@@ -23,3 +27,4 @@ function transform(daten: string, feiertagsName: string) {
   const event = createEvent(eventAttributes);
   console.log(event.value);
 }
+
