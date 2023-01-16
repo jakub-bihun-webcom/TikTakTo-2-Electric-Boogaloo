@@ -15,6 +15,7 @@
     "vitest": "^0.27.0"
   },
   "dependencies": {
-    "@picocss/pico": "^1.5.6"
+    "@picocss/pico": "^1.5.6",
+    "ics": "^2.41.0"
   }
 }

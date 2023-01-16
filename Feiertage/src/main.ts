@@ -1,5 +1,6 @@
 import '@picocss/pico/css/pico.min.css';
 import './style.css';
+import { createEvent } from 'ics';
 import { getFeiertage } from './input';
 import { createSelectMenu } from './createSelectMenu';
 
@@ -28,3 +29,5 @@ createSelectMenu();
 
 const button = document.getElementById('feiertageAnzeigenButton') as HTMLElement;
 button.addEventListener('click', getFeiertage);
+
+console.log(createEvent)
