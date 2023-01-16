@@ -1,9 +1,5 @@
 import { createEvent, DateArray, EventAttributes } from 'ics';
-
-export interface Feiertage {
-  keys: string[];
-  dates: string[];
-}
+import { Feiertage } from './feiertage';
 
 export function getFeiertagsInfo(feiertage: Feiertage) {
   const feiertagsDatum = feiertage.dates;

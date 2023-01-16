@@ -1,6 +1,6 @@
+import { Feiertage } from './feiertage';
 import { getWeekdays } from './getWeekdays';
 import { getFeiertagsInfo } from './icsExporter';
-import { Feiertage } from './icsExporter';
 
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
