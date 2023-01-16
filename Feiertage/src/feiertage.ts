@@ -1,4 +1,4 @@
 export interface Feiertage {
-    keys: string[];
-    dates: string[];
+  keys: string[];
+  dates: string[];
 }

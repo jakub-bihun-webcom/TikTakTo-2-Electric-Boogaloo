@@ -1,4 +1,5 @@
 import { createEvent, DateArray, EventAttributes } from 'ics';
+import { createIcsDownload } from './createIcsDownload';
 import { Feiertage } from './feiertage';
 
 export function getFeiertagsInfo(feiertage: Feiertage) {
@@ -9,7 +10,7 @@ export function getFeiertagsInfo(feiertage: Feiertage) {
   }
 }
 
-function createICS(daten: string, feiertagsName: string) {
+export function createICS(daten: string, feiertagsName: string) {
   const splitDate = daten.split('-');
   const datum = splitDate.map(val => parseInt(val)) as unknown as DateArray;
   const eventAttributes: EventAttributes = {
@@ -17,7 +18,6 @@ function createICS(daten: string, feiertagsName: string) {
     end: datum,
     title: feiertagsName
   };
-  console.log(datum);
   const event = createEvent(eventAttributes);
-  console.log(event.value);
+  createIcsDownload(event.value);
 }
