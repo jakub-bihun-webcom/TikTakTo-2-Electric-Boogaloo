@@ -13,7 +13,7 @@ export async function getFeiertage() {
 
   const feiertagsObject = createFeiertagsObject(json);
   createTable(json);
-  getFeiertagsInfo(feiertagsObject)
+  getFeiertagsInfo(feiertagsObject);
 }
 
 function createTable(json: object): void {
@@ -45,5 +45,5 @@ export function createFeiertagsObject(json: object) {
   const keys: string[] = Object.keys(json);
   const dates: string[] = [];
   Object.values(json).forEach(val => dates.push(val.datum));
-  return {keys, dates};
+  return { keys, dates };
 }

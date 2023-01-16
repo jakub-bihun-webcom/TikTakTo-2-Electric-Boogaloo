@@ -1,8 +1,8 @@
 import { createEvent, DateArray, EventAttributes } from 'ics';
 
 interface Feiertage {
-    keys: string[],
-    dates: string[]
+  keys: string[];
+  dates: string[];
 }
 
 export function getFeiertagsInfo(feiertage: Feiertage) {
@@ -27,4 +27,3 @@ function createICS(daten: string, feiertagsName: string) {
   const event = createEvent(eventAttributes);
   console.log(event.value);
 }
-
