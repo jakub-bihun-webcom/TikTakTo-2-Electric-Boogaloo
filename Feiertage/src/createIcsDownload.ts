@@ -10,3 +10,10 @@ export function createIcsDownload(icsContent: string) {
 
   createLink.append(link);
 }
+
+export function deleteLink() {
+  const clearLink = document.querySelector('a') as HTMLElement;
+  if (clearLink != null) {
+    clearLink.remove();
+  }
+}

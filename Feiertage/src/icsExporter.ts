@@ -5,11 +5,11 @@ import { Feiertage } from './feiertage';
 export function getFeiertagsInfo(feiertage: Feiertage) {
   const feiertagsDatum = feiertage.dates;
   const feiertagsName = feiertage.keys;
-  const multipleIcsEntries = [];
-  for (let i = 0; i < feiertagsDatum.length; i++) {
-    const singeIcs = createICS(feiertagsDatum[i], feiertagsName[i]);
-    multipleIcsEntries.push(singeIcs);
-  }
+
+  const multipleIcsEntries = feiertagsDatum.map((datum, i) => {
+    return createICS(datum, feiertagsName[i]);
+  });
+
   const icsContent = createEvents(multipleIcsEntries);
   const icsDownloadFile = icsContent.value as string;
   createIcsDownload(icsDownloadFile);

@@ -1,3 +1,4 @@
+import { deleteLink } from './createIcsDownload';
 import { Feiertage } from './feiertage';
 import { getWeekdays } from './getWeekdays';
 import { getFeiertagsInfo } from './icsExporter';
@@ -5,7 +6,7 @@ import { getFeiertagsInfo } from './icsExporter';
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
   const yearInput = document.getElementById('jahr') as HTMLInputElement;
-
+  deleteLink();
   let yearValue: string = yearInput.value;
   let bundeslandValue: string = bundeslandInput.value;
 

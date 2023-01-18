@@ -23,7 +23,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <table id = "table" class = "feiertagsTable"></table>
     </div>
 
-
   </main>
 `;
 
