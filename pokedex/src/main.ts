@@ -55,7 +55,7 @@ async function showPokemonList() {
   const popup = document.getElementById('popup1');
   popup.querySelector('.content').appendChild(pokemonListElem);
 
-  pokemonListElem.style.height = '650px';
+  pokemonListElem.style.height = '550px';
 }
 
 function clearList() {
