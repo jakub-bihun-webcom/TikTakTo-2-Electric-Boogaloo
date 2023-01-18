@@ -2,6 +2,7 @@ import '@picocss/pico/css/pico.min.css';
 import './style.css';
 import { searchPokemon } from './input';
 import { loadPokemons } from './load-pokemons';
+import { sortPokemons } from './sort-pokemons';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
 <main class="container">
@@ -43,8 +44,11 @@ document.getElementById('input').addEventListener('keydown', function (event) {
   }
 });
 
+const pokemons = await loadPokemons();
+
 async function showPokemonList() {
-  const sortedPokemons = await loadPokemons();
+  const sortedPokemons = await sortPokemons(pokemons);
+  console.log(sortedPokemons);
   const pokemonListElem = document.createElement('ul');
   sortedPokemons.forEach(function (sortedPokemons, i) {
     const li = document.createElement('li');
