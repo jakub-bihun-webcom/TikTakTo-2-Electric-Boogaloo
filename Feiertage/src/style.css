@@ -35,21 +35,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  top: 8%;
-  left: 43%;
-}
-
-.chooseField {
-  top: 15%;
-  left: 43%;
-}
-
-.downloadLink {
-  bottom: 0;
-  right: 0;
-}
-
-.feiertagsTable {
 }
 
 #app {

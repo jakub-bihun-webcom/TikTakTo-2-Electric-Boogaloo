@@ -1,5 +1,5 @@
 export function createIcsDownload(icsContent: string) {
-  const createLink = document.getElementById('app') as HTMLElement;
+  const app = document.getElementById('app') as HTMLElement;
 
   const blob = new Blob([icsContent], { type: 'text/ics;charset=utf-8,' });
   const objUrl = URL.createObjectURL(blob);
@@ -8,5 +8,5 @@ export function createIcsDownload(icsContent: string) {
   link.setAttribute('download', 'Feiertage.ics');
   link.textContent = 'Click to Download';
 
-  createLink.append(link);
+  app.append(link);
 }
