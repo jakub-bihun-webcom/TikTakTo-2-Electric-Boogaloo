@@ -1,11 +1,12 @@
+import { clearTable, deleteLink } from './deleteHTMLInputs';
+import { Feiertage } from './feiertage';
 import { getWeekdays } from './getWeekdays';
 import { getFeiertagsInfo } from './icsExporter';
-import { Feiertage } from './icsExporter';
 
 export async function getFeiertage() {
   const bundeslandInput = document.getElementById('bundeslandAuswahl') as HTMLInputElement;
   const yearInput = document.getElementById('jahr') as HTMLInputElement;
-
+  deleteLink();
   let yearValue: string = yearInput.value;
   let bundeslandValue: string = bundeslandInput.value;
 
@@ -18,13 +19,12 @@ export async function getFeiertage() {
 }
 
 function createTable(feiertage: Feiertage): void {
+  clearTable();
+
   const table = document.getElementById('table') as HTMLTableElement;
-  table.innerHTML = '';
 
   const { dates, keys } = feiertage;
-
   const weekdays: string[] = getWeekdays(dates);
-
   const arr = [keys, dates, weekdays];
 
   for (let i = 0; i < arr.length; i++) {
