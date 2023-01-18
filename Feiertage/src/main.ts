@@ -1,6 +1,6 @@
 import '@picocss/pico/css/pico.min.css';
 import './style.css';
-import { clearTable, getFeiertage } from './input';
+import { getFeiertage } from './input';
 import { createSelectMenu } from './createSelectMenu';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
@@ -31,7 +31,3 @@ createSelectMenu();
 
 const button = document.getElementById('feiertageAnzeigenButton') as HTMLElement;
 button.addEventListener('click', getFeiertage);
-const clear = document.getElementById('inputField') as HTMLSelectElement;
-clear.onchange = function () {
-  clearTable();
-};

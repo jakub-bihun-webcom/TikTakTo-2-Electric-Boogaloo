@@ -8,8 +8,5 @@ export function createIcsDownload(icsContent: string) {
   link.setAttribute('download', 'Feiertage.ics');
   link.textContent = 'Click to Download';
 
-  const clear = document.querySelector('a') as HTMLElement;
-
   createLink.append(link);
-  clear.remove();
 }

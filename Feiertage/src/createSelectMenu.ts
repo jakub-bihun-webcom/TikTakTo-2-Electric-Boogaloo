@@ -1,3 +1,5 @@
+import { clearTable } from './input';
+
 const bundeslaender = new Map();
 
 bundeslaender.set('BW', 'Baden-Württemberg');
@@ -20,6 +22,11 @@ bundeslaender.set('TH', 'Thüringen');
 
 export function createSelectMenu(): void {
   const dropDownMenu = document.getElementById('bundeslandAuswahl') as HTMLElement;
+  dropDownMenu.onchange = function () {
+    clearTable();
+    const clearLink = document.querySelector('a') as HTMLElement;
+    clearLink.remove();
+  };
   bundeslaender.forEach((land, key) => {
     const option = dropDownMenu.appendChild(document.createElement('option'));
     option.innerText = land;
