@@ -2,6 +2,7 @@ import '@picocss/pico/css/pico.min.css';
 import './style.css';
 import { searchPokemon } from './input';
 import { loadPokemons } from './load-pokemons';
+import { sortPokemons } from './sort-pokemons';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
 <main class="container">
@@ -28,10 +29,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
       <a class="close" id="closePopupButton" href="#">&times;</a>
       <div id="popupContent" class="content"></div>
     </div>
-  </div>
-</main>
-
+    </div>
+  </main>
 `;
+
 document.getElementById('searchButton').addEventListener('click', searchPokemon);
 document.getElementById('popupButton').addEventListener('click', showPokemonList);
 document.getElementById('closePopupButton').addEventListener('click', clearList);
@@ -45,17 +46,18 @@ document.getElementById('input').addEventListener('keydown', function (event) {
 
 async function showPokemonList() {
   const pokemons = await loadPokemons();
+  const sortedPokemons = await sortPokemons(pokemons);
   const pokemonListElem = document.createElement('ul');
-  pokemons.forEach(function (pokemon, i) {
+  sortedPokemons.forEach(function (sortedPokemons, i) {
     const li = document.createElement('li');
-    li.textContent = 'Nr. ' + `${i + 1} ` + pokemon.name;
-    console.log(pokemon);
+    li.textContent = 'Nr. ' + `${i + 1} ` + sortedPokemons.name.charAt(0).toUpperCase() + sortedPokemons.name.slice(1);
     pokemonListElem.appendChild(li);
   });
 
   const popup = document.getElementById('popup1');
   popup.querySelector('.content').appendChild(pokemonListElem);
-  pokemonListElem.style.height = '650px';
+
+  pokemonListElem.style.height = '550px';
 }
 
 function clearList() {
