@@ -44,11 +44,9 @@ document.getElementById('input').addEventListener('keydown', function (event) {
   }
 });
 
-const pokemons = await loadPokemons();
-
 async function showPokemonList() {
+  const pokemons = await loadPokemons();
   const sortedPokemons = await sortPokemons(pokemons);
-  console.log(sortedPokemons);
   const pokemonListElem = document.createElement('ul');
   sortedPokemons.forEach(function (sortedPokemons, i) {
     const li = document.createElement('li');
