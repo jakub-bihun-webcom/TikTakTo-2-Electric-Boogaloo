@@ -18,13 +18,10 @@ export async function getFeiertage() {
 }
 
 function createTable(feiertage: Feiertage): void {
-  const table = document.getElementById('table') as HTMLTableElement;
-  table.innerHTML = '';
+  const table = clearTable();
 
   const { dates, keys } = feiertage;
-
   const weekdays: string[] = getWeekdays(dates);
-
   const arr = [keys, dates, weekdays];
 
   for (let i = 0; i < arr.length; i++) {
@@ -43,4 +40,10 @@ export function createFeiertagsObject(json: object): Feiertage {
   const keys: string[] = Object.keys(json);
   const dates: string[] = Object.values(json).map(val => val.datum);
   return { keys, dates };
+}
+
+export function clearTable() {
+  const table = document.getElementById('table') as HTMLTableElement;
+  table.innerHTML = '';
+  return table;
 }

@@ -11,7 +11,7 @@ export function getFeiertagsInfo(feiertage: Feiertage) {
     multipleIcsEntries.push(singeIcs);
   }
   const icsContent = createEvents(multipleIcsEntries);
-  const icsDownloadFile = icsContent.value as String;
+  const icsDownloadFile = icsContent.value as string;
   createIcsDownload(icsDownloadFile);
 }
 
