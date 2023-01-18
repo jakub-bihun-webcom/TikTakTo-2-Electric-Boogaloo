@@ -5,14 +5,14 @@ import { Feiertage } from './feiertage';
 export function getFeiertagsInfo(feiertage: Feiertage) {
   const feiertagsDatum = feiertage.dates;
   const feiertagsName = feiertage.keys;
-  const multipleIcsEntries = []
+  const multipleIcsEntries = [];
   for (let i = 0; i < feiertagsDatum.length; i++) {
     const singeIcs = createICS(feiertagsDatum[i], feiertagsName[i]);
-    multipleIcsEntries.push(singeIcs)
+    multipleIcsEntries.push(singeIcs);
   }
-  const icsContent = createEvents(multipleIcsEntries)
-  const icsDownloadFile= icsContent.value as String
-  createIcsDownload(icsDownloadFile)
+  const icsContent = createEvents(multipleIcsEntries);
+  const icsDownloadFile = icsContent.value as String;
+  createIcsDownload(icsDownloadFile);
 }
 
 export function createICS(daten: string, feiertagsName: string) {
@@ -23,5 +23,5 @@ export function createICS(daten: string, feiertagsName: string) {
     end: datum,
     title: feiertagsName
   };
-  return eventAttributes
+  return eventAttributes;
 }
