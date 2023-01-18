@@ -1,4 +1,4 @@
-import { deleteLink } from './createIcsDownload';
+import { clearTable, deleteLink } from './deleteHTMLInputs';
 import { Feiertage } from './feiertage';
 import { getWeekdays } from './getWeekdays';
 import { getFeiertagsInfo } from './icsExporter';
@@ -43,9 +43,4 @@ export function createFeiertagsObject(json: object): Feiertage {
   const keys: string[] = Object.keys(json);
   const dates: string[] = Object.values(json).map(val => val.datum);
   return { keys, dates };
-}
-
-export function clearTable() {
-  const table = document.getElementById('table') as HTMLTableElement;
-  table.innerHTML = '';
 }

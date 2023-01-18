@@ -1,5 +1,4 @@
-import { deleteLink } from './createIcsDownload';
-import { clearTable } from './input';
+import { clearTable, deleteLink } from './deleteHTMLInputs';
 
 const bundeslaender = new Map();
 
