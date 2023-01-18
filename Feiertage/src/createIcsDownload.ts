@@ -5,7 +5,6 @@ export function createIcsDownload(icsContent) {
   link.setAttribute('href', objUrl);
   link.setAttribute('download', 'Feiertage.ics');
   link.textContent = 'Click to Download';
-
   const createLink = document.querySelector('a') as HTMLAnchorElement;
   createLink.append(link);
 }

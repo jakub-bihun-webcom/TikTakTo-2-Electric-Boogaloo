@@ -11,8 +11,8 @@ export function getFeiertagsInfo(feiertage: Feiertage) {
     multipleIcsEntries.push(singeIcs)
   }
   const icsContent = createEvents(multipleIcsEntries)
-  console.log(icsContent.value)
-  createIcsDownload(icsContent.value)
+  const icsDownloadFile= icsContent.value as String
+  createIcsDownload(icsDownloadFile)
 }
 
 export function createICS(daten: string, feiertagsName: string) {
