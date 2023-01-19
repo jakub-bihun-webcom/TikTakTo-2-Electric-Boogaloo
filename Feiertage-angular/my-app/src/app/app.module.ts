@@ -6,6 +6,7 @@ import { SimpleTableComponent } from './simple-table/simple-table.component';
 import { HeaderComponent } from './header/header.component';
 import { InputComponent } from './input/input.component';
 import { TableComponent } from './table/table.component';
+import { DropDownListComponent } from './drop-down-list/drop-down-list.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { TableComponent } from './table/table.component';
     SimpleTableComponent,
     HeaderComponent,
     InputComponent,
-    TableComponent
+    TableComponent,
+    DropDownListComponent
   ],
   imports: [
     BrowserModule
