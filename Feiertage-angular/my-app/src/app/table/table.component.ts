@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FeiertageService } from '../feiertage.service';
 
 @Component({
   selector: 'app-table',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class TableComponent {
 
+
+  constructor(service: FeiertageService) {
+
+  }
 }
