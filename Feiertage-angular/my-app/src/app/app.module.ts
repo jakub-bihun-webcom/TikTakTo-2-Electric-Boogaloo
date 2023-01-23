@@ -18,11 +18,8 @@ import { DropDownListComponent } from './drop-down-list/drop-down-list.component
     TableComponent,
     DropDownListComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, HttpClientModule],
 
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

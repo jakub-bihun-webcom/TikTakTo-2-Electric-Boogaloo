@@ -7,6 +7,5 @@ import { FeiertageService } from '../feiertage.service';
   styleUrls: ['./simple-table.component.css']
 })
 export class SimpleTableComponent {
- constructor(private feiertageService: FeiertageService) {
- }
+  constructor(private feiertageService: FeiertageService) {}
 }
