@@ -32,7 +32,7 @@ export class FeiertageService {
     );
   }
 
-  getWeekdays(dates: string[]) {
+  private getWeekdays(dates: string[]) {
     return dates.map(date => {
       const currentDate = new Date(date);
       return currentDate.toLocaleString('default', { weekday: 'long' });
