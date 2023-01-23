@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./drop-down-list.component.css']
 })
 export class DropDownListComponent {
+  createSelectMenu(){
 
+  }
 }

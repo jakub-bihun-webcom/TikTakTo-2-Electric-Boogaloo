@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FeiertageService } from '../feiertage.service';
 
 @Component({
   selector: 'app-simple-table',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./simple-table.component.css']
 })
 export class SimpleTableComponent {
-
+ constructor(private feiertageService: FeiertageService) {
+ }
 }
