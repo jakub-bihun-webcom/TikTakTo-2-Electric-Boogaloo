@@ -17,8 +17,8 @@ export class FeiertageService {
         const dates: string[] = Object.values(value).map(val => val.datum);
         const weekday: string[] = this.getWeekdays(dates);
 
-        return keys.map((name, index) => ({
-          name,
+        return keys.map((key, index) => ({
+          name: key,
           date: dates[index],
           weekday: weekday[index]
         }));
