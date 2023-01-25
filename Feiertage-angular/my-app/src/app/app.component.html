@@ -9,10 +9,12 @@
   </div>
   <button (click)="this.getFeiertage()" type="button">Feiertage anzeigen</button>
   <ng-container *ngIf="this.feiertage$ | async as feiertage">
-    <div *ngFor="let feiertag of feiertage">{{ feiertag.name }} {{ feiertag.date }} {{ feiertag.weekday }}</div>
+    <table>
+      <div *ngFor="let feiertag of feiertage">
+        <td>{{ feiertag.name }}</td>
+        <td>{{ feiertag.date }}</td>
+        <td>{{ feiertag.weekday }}</td>
+      </div>
+    </table>
   </ng-container>
-</div>
-
-<div class="input">
-  <app-input></app-input>
 </div>

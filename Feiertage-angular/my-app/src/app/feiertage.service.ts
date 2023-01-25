@@ -6,7 +6,6 @@ import { FeiertagTableEntry } from './feiertage';
 @Injectable({
   providedIn: 'root'
 })
-
 export class FeiertageService {
   constructor(private httpClient: HttpClient) {}
 

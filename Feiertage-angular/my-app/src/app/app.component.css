@@ -1,0 +1,7 @@
+table,
+td {
+  width: 60%;
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 5px;
+}
