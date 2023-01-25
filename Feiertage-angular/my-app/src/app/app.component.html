@@ -1,8 +1,11 @@
 <div>
   <app-header></app-header>
-  <select #laender (change)="getChange(laender.value)">
-    <option *ngFor="let bundesland of bundeslaender" value="{{ bundesland.value }}">{{ bundesland.key }}</option>
-  </select>
+  <div class="inputBundesland">
+    <label>Bundesland: </label>
+    <select #laender (change)="getChange(laender.value)">
+      <option *ngFor="let bundesland of bundeslaender" value="{{ bundesland.value }}">{{ bundesland.key }}</option>
+    </select>
+  </div>
   <div class="inputJahr">
     <label>Jahr: </label>
     <input #year (change)="getYear(year.value)" value="2023" />
@@ -10,10 +13,21 @@
   <button (click)="this.getFeiertage()" type="button">Feiertage anzeigen</button>
   <ng-container *ngIf="this.feiertage$ | async as feiertage">
     <table>
+      <thead>
+      <tr>
+        <th>Feiertag</th>
+        <th>Datum</th>
+        <th>Wochentag</th>
+      </tr>
+      </thead>
       <div *ngFor="let feiertag of feiertage">
-        <td>{{ feiertag.name }}</td>
-        <td>{{ feiertag.date }}</td>
-        <td>{{ feiertag.weekday }}</td>
+        <tbody>
+        <tr>
+          <td>{{ feiertag.name }}</td>
+          <td>{{ feiertag.date }}</td>
+          <td>{{ feiertag.weekday }}</td>
+        </tr>
+        </tbody>
       </div>
     </table>
   </ng-container>
