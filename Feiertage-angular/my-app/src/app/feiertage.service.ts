@@ -6,6 +6,7 @@ import { FeiertagTableEntry } from './feiertage';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FeiertageService {
   constructor(private httpClient: HttpClient) {}
 
@@ -17,17 +18,11 @@ export class FeiertageService {
         const dates: string[] = Object.values(value).map(val => val.datum);
         const weekday: string[] = this.getWeekdays(dates);
 
-        const feiertageObject = [];
-
-        for (let i = 0; i < keys.length; i++) {
-          feiertageObject.push({
-            name: keys[i],
-            date: dates[i],
-            weekday: weekday[i]
-          });
-        }
-
-        return feiertageObject;
+        return keys.map((name, index) => ({
+          name,
+          date: dates[index],
+          weekday: weekday[index]
+        }));
       })
     );
   }
