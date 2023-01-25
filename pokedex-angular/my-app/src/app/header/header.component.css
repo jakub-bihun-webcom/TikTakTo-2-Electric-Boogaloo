@@ -17,11 +17,13 @@
 .header-option {
   margin-right: 3%;
   margin-left: 3%;
+  transition: transform 1s;
 }
 
 .header-option:hover {
   color: #ffffff;
   cursor: pointer;
+  transform:translate(0%, -7%);
 }
 
 .header-searchbar {
