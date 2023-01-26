@@ -1,4 +1,5 @@
 export function createIcsDownload(icsContent: string) {
+  console.log(icsContent)
   const app = document.getElementById('app') as HTMLElement;
 
   const blob = new Blob([icsContent], { type: 'text/ics;charset=utf-8,' });

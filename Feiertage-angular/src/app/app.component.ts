@@ -9,9 +9,9 @@ import { FeiertageService } from './feiertage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-app';
 
   feiertage$?: Observable<FeiertagTableEntry[]> = undefined;
+  feiertageICS$?: Observable<FeiertagTableEntry[]> = undefined;
   bundeslandValue = 'BW';
   yearValue = '2023';
 
@@ -29,5 +29,9 @@ export class AppComponent {
 
   getFeiertage() {
     this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
+  }
+
+  icsDownloadUrl(){
+
   }
 }

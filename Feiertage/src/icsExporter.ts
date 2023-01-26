@@ -7,6 +7,7 @@ export function getFeiertagsInfo(feiertage: Feiertage) {
   const feiertagsName = feiertage.keys;
 
   const multipleIcsEntries = feiertagsDatum.map((datum, i) => {
+    console.log(createICS(datum, feiertagsName[i]))
     return createICS(datum, feiertagsName[i]);
   });
 

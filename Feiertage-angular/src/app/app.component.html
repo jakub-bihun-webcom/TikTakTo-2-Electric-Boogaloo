@@ -21,4 +21,6 @@
       <div class="feiertagWochentag">{{ feiertag.weekday }}</div>
     </div>
   </ng-container>
+
+  <a *ngIf="icsDownloadUrl" [href]="icsDownloadUrl">Download as ICS</a>
 </div>
