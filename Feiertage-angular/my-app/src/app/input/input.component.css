@@ -1,0 +1,16 @@
+.inputField {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBundesland {
+  padding: 5px;
+}
+
+.inputJahr {
+  padding: 5px;
+}
+
+.feiertageAnzeigenButton {
+  padding: 5px;
+}
