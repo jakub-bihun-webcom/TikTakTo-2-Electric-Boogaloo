@@ -8,7 +8,6 @@ import { FeiertagTableEntry } from './feiertage';
   providedIn: 'root'
 })
 export class FeiertageService {
-
   readonly bundeslaender = [
     { value: 'BW', key: 'Baden-Württemberg' },
     { value: 'BY', key: 'Bayern' },
@@ -72,16 +71,16 @@ export class FeiertageService {
     });
     const icsContent = createEvents(icsFormat);
     console.log(icsContent.value);
-    const icsDownloadContent = icsContent.value as string
-    this.createIcsDownload(icsDownloadContent)
+    const icsDownloadContent = icsContent.value as string;
+    this.createIcsDownload(icsDownloadContent);
   }
 
   createIcsDownload(icsContent: string) {
-    const blob = new Blob([icsContent], { type: 'text/ics:charset=utf-8'});
+    const blob = new Blob([icsContent], { type: 'text/ics:charset=utf-8' });
     const objUrl = URL.createObjectURL(blob);
-    const link = document.querySelector('a') as HTMLAnchorElement
-    link.setAttribute('href', objUrl)
-    link.setAttribute('download', 'Feiertage.ics')
-    console.log(link)
+    const link = document.querySelector('a') as HTMLAnchorElement;
+    link.setAttribute('href', objUrl);
+    link.setAttribute('download', 'Feiertage.ics');
+    console.log(link);
   }
 }
