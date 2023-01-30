@@ -1,16 +1,21 @@
 <div>
+
   <app-header></app-header>
+
   <div class="input">
+
     <div class="inputBundesland">
       <label>Bundesland: </label>
       <select class="inputBundeslandMenu" #laender (change)="onBundeslandChange(laender.value)">
         <option *ngFor="let bundesland of bundeslaender" value="{{ bundesland.value }}">{{ bundesland.key }}</option>
       </select>
     </div>
+
     <div class="inputYearClass">
       <label>Jahr: </label>
       <input class="inputJahr" #year (change)="onYearChange(year.value)" value="2023" />
     </div>
+
     <button class="inputButton" (click)="this.getFeiertage()" type="button">Feiertage anzeigen</button>
   </div>
 
@@ -23,4 +28,5 @@
   </ng-container>
 
   <a [href]="icsDownloadUrl">Download as ICS</a>
+
 </div>
