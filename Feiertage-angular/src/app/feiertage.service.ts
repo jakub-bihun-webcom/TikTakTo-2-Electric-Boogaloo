@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { createEvent, createEvents, DateArray, EventAttributes } from 'ics';
+import { createEvents, DateArray } from 'ics';
 import { map, Observable, tap } from 'rxjs';
-import { AppComponent } from './app.component';
 import { FeiertagTableEntry } from './feiertage';
 
 @Injectable({
@@ -80,9 +79,9 @@ export class FeiertageService {
   createIcsDownload(icsContent: string) {
     const blob = new Blob([icsContent], { type: 'text/ics:charset=utf-8'});
     const objUrl = URL.createObjectURL(blob);
-    const link = document.createElement('a')
+    const link = document.querySelector('a') as HTMLAnchorElement
     link.setAttribute('href', objUrl)
     link.setAttribute('download', 'Feiertage.ics')
-    return link
+    console.log(link)
   }
 }
