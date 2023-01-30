@@ -60,7 +60,7 @@ export class FeiertageService {
   }
 
   createICS(fTage: { date: string; name: string }[]) {
-    const icsFormat = fTage.map((value, index) => {
+    const icsFormat = fTage.map(value => {
       const splitDate = value.date.split('-');
       const datum = splitDate.map(val => parseInt(val)) as unknown as DateArray;
       return {
@@ -70,7 +70,6 @@ export class FeiertageService {
       };
     });
     const icsContent = createEvents(icsFormat);
-    console.log(icsContent.value);
     const icsDownloadContent = icsContent.value as string;
     this.createIcsDownload(icsDownloadContent);
   }
@@ -81,6 +80,5 @@ export class FeiertageService {
     const link = document.querySelector('a') as HTMLAnchorElement;
     link.setAttribute('href', objUrl);
     link.setAttribute('download', 'Feiertage.ics');
-    console.log(link);
   }
 }
