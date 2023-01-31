@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-pokemon.component.css']
 })
 export class SearchPokemonComponent {
-  async searchPokemon() {
-    console.log('AYO HIER STEHT WAS WTF ?!?!?!');
+  searchID: number = 0;
+  getValue(searchID: number) {
+    console.log(searchID);
+  }
+
+  getAPI() {
+    const response = this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
   }
 }

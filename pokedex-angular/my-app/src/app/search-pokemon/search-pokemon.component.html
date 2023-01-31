@@ -1,10 +1,12 @@
+<div class="">
 <h1>Pokedex</h1>
 <div class="inputField">
   <label for="input">Pokemon ID: </label>
-  <input id="input" type="text" />
-  <button class="searchButton" id="searchButton" (click)="this.searchPokemon()" type="button">Suche</button>
+  <input id="input" type="text" name="searchID" [(ngModel)]="searchID"/>
+  <button class="searchButton" id="searchButton" (click)="getValue(searchID)" type="button">Suche</button>
 </div>
 <div class="Output">
   <img id="myImage" hidden src="" class="animatedImage" alt="" />
   <p class="outputBox" id="msg" disabled></p>
+</div>
 </div>
