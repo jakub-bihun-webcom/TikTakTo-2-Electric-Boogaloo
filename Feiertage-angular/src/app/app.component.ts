@@ -24,6 +24,10 @@ export class AppComponent {
 
   onYearChange(value: string) {
     this.yearValue = value;
+    if (this.yearValue === '') {
+      value = '2023';
+    }
+    this.yearValue = value;
   }
 
   getFeiertage() {
