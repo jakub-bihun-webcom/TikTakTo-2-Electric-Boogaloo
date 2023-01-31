@@ -1,9 +1,7 @@
 <div>
-
   <app-header></app-header>
 
   <div class="input">
-
     <div class="inputBundesland">
       <label>Bundesland: </label>
       <select class="inputBundeslandMenu" #laender (change)="onBundeslandChange(laender.value)">
@@ -27,6 +25,8 @@
     </div>
   </ng-container>
 
-  <a [href]="icsDownloadUrl">Download as ICS</a>
-
+  <div class="link">
+    <a [href]="">Download as ICS</a>
+    <div></div>
+  </div>
 </div>
