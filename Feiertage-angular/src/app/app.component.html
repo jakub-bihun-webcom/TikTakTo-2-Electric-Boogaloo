@@ -5,13 +5,13 @@
     <div class="inputBundesland">
       <label>Bundesland: </label>
       <select class="inputBundeslandMenu" #laender (change)="onBundeslandChange(laender.value)">
-        <option *ngFor="let bundesland of bundeslaender" value="{{ bundesland.value }}">{{ bundesland.key }}</option>
+        <option *ngFor="let bundesland of bundeslaender" value="{{ bundesland.value }}">{{ bundesland.name }}</option>
       </select>
     </div>
 
     <div class="inputYearClass">
       <label>Jahr: </label>
-      <input class="inputJahr" #year (change)="onYearChange(year.value)" value="{{ yearValue }}" />
+      <input class="inputJahr" #year (input)="onYearChange(year.value)" value="{{ yearValue }}" />
     </div>
 
     <button class="inputButton" (click)="this.getFeiertage()" type="button">Feiertage anzeigen</button>

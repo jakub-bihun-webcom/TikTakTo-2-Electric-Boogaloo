@@ -9,22 +9,22 @@ import { FeiertagTableEntry } from './feiertage';
 })
 export class FeiertageService {
   readonly bundeslaender = [
-    { value: 'BW', key: 'Baden-Württemberg' },
-    { value: 'BY', key: 'Bayern' },
-    { value: 'BE', key: 'Berlin' },
-    { value: 'BB', key: 'Brandenburg' },
-    { value: 'HB', key: 'Bremen' },
-    { value: 'HH', key: 'Hamburg' },
-    { value: 'HE', key: 'Hessen' },
-    { value: 'MV', key: 'Mecklenburg-Vorpommern' },
-    { value: 'NI', key: 'Niedersachsen' },
-    { value: 'NW', key: 'Nordrhein-Westfalen' },
-    { value: 'RP', key: 'Rheinland-Pfalz' },
-    { value: 'SL', key: 'Saarland' },
-    { value: 'SN', key: 'Sachsen' },
-    { value: 'ST', key: 'Sachsen-Anhalt' },
-    { value: 'SH', key: 'Schleswig-Holstein' },
-    { value: 'TH', key: 'Thüringen' }
+    { value: 'BW', name: 'Baden-Württemberg' },
+    { value: 'BY', name: 'Bayern' },
+    { value: 'BE', name: 'Berlin' },
+    { value: 'BB', name: 'Brandenburg' },
+    { value: 'HB', name: 'Bremen' },
+    { value: 'HH', name: 'Hamburg' },
+    { value: 'HE', name: 'Hessen' },
+    { value: 'MV', name: 'Mecklenburg-Vorpommern' },
+    { value: 'NI', name: 'Niedersachsen' },
+    { value: 'NW', name: 'Nordrhein-Westfalen' },
+    { value: 'RP', name: 'Rheinland-Pfalz' },
+    { value: 'SL', name: 'Saarland' },
+    { value: 'SN', name: 'Sachsen' },
+    { value: 'ST', name: 'Sachsen-Anhalt' },
+    { value: 'SH', name: 'Schleswig-Holstein' },
+    { value: 'TH', name: 'Thüringen' }
   ];
 
   constructor(private httpClient: HttpClient) {}
@@ -73,7 +73,7 @@ export class FeiertageService {
     this.createIcsDownload(icsDownloadContent);
   }
 
-  createIcsDownload(icsContent: string) {
+  private createIcsDownload(icsContent: string) {
     const blob = new Blob([icsContent], { type: 'text/ics:charset=utf-8' });
     const objUrl = URL.createObjectURL(blob);
     const link = document.querySelector('a') as HTMLAnchorElement;
