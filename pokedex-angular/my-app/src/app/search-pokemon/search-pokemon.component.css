@@ -1,15 +1,15 @@
+.header {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -160px;
+  margin-left: -200px;
+}
+
 .inputField {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.inputField label {
-  width: 100%;
-  margin-right: 10px;
-}
-
-.searchButton {
-  border: none;
-  margin-left: 15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -200px;
 }

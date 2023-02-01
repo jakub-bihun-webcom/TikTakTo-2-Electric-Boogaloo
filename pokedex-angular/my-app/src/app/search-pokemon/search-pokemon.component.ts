@@ -7,11 +7,17 @@ import { Component } from '@angular/core';
 })
 export class SearchPokemonComponent {
   searchID: number = 0;
+  msgBox: string = '';
+
+  displayMessage() {
+    console.log('test');
+  }
+
   getValue(searchID: number) {
     console.log(searchID);
   }
 
-  getAPI() {
-    const response = this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-  }
+  // async getAPI() {
+  //   const response = httpClient.get(`https://pokeapi.co/api/v2/pokemon/${this.searchID}`);
+  // }
 }
