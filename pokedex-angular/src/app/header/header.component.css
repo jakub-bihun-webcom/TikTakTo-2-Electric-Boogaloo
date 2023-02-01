@@ -1,0 +1,35 @@
+.header {
+  background-color: #388fe1;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px #000000;
+}
+
+.logo {
+  height: 60px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  background-color: #388fe1;
+}
+
+.header-option {
+  margin-right: 3%;
+  margin-left: 3%;
+  transition: transform 1s;
+}
+
+.header-option:hover {
+  color: #ffffff;
+  cursor: pointer;
+  transform: translate(0%, -7%);
+}
+
+.header-searchbar {
+  margin-left: 40%;
+  border-color: #ffcb05;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #a6b5c4;
+  /*font-color: #ffcb05;*/
+}
