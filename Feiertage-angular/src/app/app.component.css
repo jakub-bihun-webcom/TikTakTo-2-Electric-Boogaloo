@@ -1,0 +1,67 @@
+.input {
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  display: grid;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.inputButton {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  justify-content: center;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+}
+
+.inputJahr,
+.inputBundeslandMenu {
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  color: #3c4043;
+  display: inline-flex;
+  justify-content: center;
+  max-width: 100%;
+  overflow: visible;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+}
+
+.inputYearClass,
+.inputBundesland {
+  display: flex;
+}
+
+label {
+  padding-right: 20px;
+}
+
+.tableBundesland {
+  display: grid;
+  background-color: #dddddd;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
