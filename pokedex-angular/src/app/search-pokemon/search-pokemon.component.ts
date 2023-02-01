@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { PokemonAPIRequestService } from '../services/apiRequests/pokemon-apirequest.service';
+import { Observable } from 'rxjs';
+import { Pokemon } from '../pokemon-api';
 
 @Component({
   selector: 'app-search-pokemon',
@@ -6,8 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-pokemon.component.css']
 })
 export class SearchPokemonComponent {
-  searchID: number = 0;
+  searchID: number = 130;
   msgBox: string = '';
+
+  pokemon$?: Observable<Pokemon>;
+
+  constructor(private pokemonAPIRequestService: PokemonAPIRequestService) {}
 
   displayMessage() {
     console.log('test');
@@ -15,7 +22,7 @@ export class SearchPokemonComponent {
 
   getValue(searchID: number) {
     if (this.validateInput(searchID)) {
-      console.log(searchID);
+      this.pokemon$ = this.pokemonAPIRequestService.fetchPokemon(searchID);
     } else {
       throw new Error('Your Input is not valid');
     }
