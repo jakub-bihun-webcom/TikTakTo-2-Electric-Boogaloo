@@ -11,7 +11,7 @@
 
     <div class="inputYearClass">
       <label>Jahr: </label>
-      <input class="inputJahr" #year (input)="onYearChange(year.value)" value="{{ yearValue }}" />
+      <input class="inputJahr" #year (input)="onYearChange(year.value)" [value]="yearValue" />
     </div>
 
     <button class="inputButton" (click)="this.getFeiertage()" type="button">Feiertage anzeigen</button>

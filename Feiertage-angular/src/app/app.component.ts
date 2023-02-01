@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BundeslaenderService } from './bundeslaender.service';
 import { FeiertagTableEntry } from './feiertage';
 import { FeiertageService } from './feiertage.service';
 
@@ -13,9 +14,9 @@ export class AppComponent {
   bundeslandValue = 'BW';
   yearValue = '2023';
 
-  constructor(private feiertageService: FeiertageService) {}
+  constructor(private feiertageService: FeiertageService, private bundeslaenderService: BundeslaenderService) {}
 
-  bundeslaender = this.feiertageService.bundeslaender;
+  bundeslaender = this.bundeslaenderService.bundeslaender;
 
   onBundeslandChange(value: string) {
     this.bundeslandValue = value;
