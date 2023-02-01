@@ -32,8 +32,4 @@ export class SearchPokemonComponent {
       return true;
     }
   }
-
-  // async getAPI() {
-  //   const response = httpClient.get(`https://pokeapi.co/api/v2/pokemon/${this.searchID}`);
-  // }
 }
