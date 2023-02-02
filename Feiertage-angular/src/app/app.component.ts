@@ -27,6 +27,7 @@ export class AppComponent {
   onBundeslandChange(value: string) {
     this.bundeslandValue = value;
     this.feiertage$ = undefined;
+    this.showLink = false;
   }
 
   onYearChange(value: string) {
@@ -38,10 +39,10 @@ export class AppComponent {
 
   getFeiertage() {
     this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
+    this.showLink = true;
   }
 
   downloadFile() {
-    const downloadFile = this.generateIcsService.blob
+    const downloadFile = this.generateIcsService.blob;
   }
-
 }
