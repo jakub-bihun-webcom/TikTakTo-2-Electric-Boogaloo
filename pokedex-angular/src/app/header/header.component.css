@@ -26,15 +26,15 @@
 }
 
 .header-searchbar {
+  right: 5px;
   color: #000000;
-  margin: 25px 40px;
+  margin-right: 20px;
+  width: 300px;
   height: 40px;
-  width: 350px;
   align-self: flex-end;
   border-color: #ffcb05;
   border-width: 3px;
   border-radius: 10px;
   text-align: center;
   background-color: #a6b5c4;
-  /*font-color: #ffcb05;*/
 }

@@ -20,14 +20,13 @@ body {
   background-color: transparent;
   border: none;
   position: absolute;
+  width: 10px;
   top: 50%;
-  padding-left: 1700px;
+  right: 2%;
   transform: translateY(-50%);
   font-size: 1em;
   cursor: pointer;
 }
-
-
 
 .header {
   position: fixed;
@@ -71,7 +70,3 @@ body {
 .PokemonImg:hover {
   filter: drop-shadow(0 0 5px rgb(56, 138, 216));
 }
-
-
-
-
