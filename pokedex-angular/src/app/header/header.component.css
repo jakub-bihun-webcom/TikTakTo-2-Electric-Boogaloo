@@ -26,11 +26,10 @@
 }
 
 .header-searchbar {
-  right: 5px;
   color: #000000;
-  margin-right: 20px;
-  width: 300px;
+  margin: 25px 40px;
   height: 40px;
+  width: 350px;
   align-self: flex-end;
   border-color: #ffcb05;
   border-width: 3px;
