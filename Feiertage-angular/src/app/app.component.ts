@@ -15,6 +15,7 @@ export class AppComponent {
   bundeslandValue = 'BW';
   yearValue = '2023';
   showLink = false;
+  objUrl: string | undefined;
 
   constructor(
     private feiertageService: FeiertageService,
@@ -43,6 +44,9 @@ export class AppComponent {
   }
 
   downloadFile() {
-    const downloadFile = this.generateIcsService.blob;
+    const blob = new Blob([this.generateIcsService.icsDownloadContent as string], { type: 'text/ics;charset=utf-8' });
+    const objUrl = URL.createObjectURL(blob);
+    console.log(objUrl);
+    return objUrl;
   }
 }
