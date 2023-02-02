@@ -25,7 +25,7 @@
     </div>
   </ng-container>
 
-  <div class="link">
-    <a [href]="">Download as ICS</a>
-  </div>
+
+    <a *ngIf="this.showLink" #downloadLink  href="downloadLink">Download as ICS</a>
+
 </div>

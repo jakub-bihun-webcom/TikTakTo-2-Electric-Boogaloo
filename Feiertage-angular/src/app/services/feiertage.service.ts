@@ -8,6 +8,7 @@ import { GenerateIcsService } from './generate-ics.service';
   providedIn: 'root'
 })
 export class FeiertageService {
+
   constructor(private httpClient: HttpClient, private generateIcsService: GenerateIcsService) {}
 
   getFeiertage(bundesland: string, year: string): Observable<FeiertagTableEntry[]> {

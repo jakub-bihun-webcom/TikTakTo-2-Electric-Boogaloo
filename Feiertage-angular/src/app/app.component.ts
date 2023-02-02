@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { BundeslaenderService } from './services/bundeslaender.service';
 import { FeiertagTableEntry } from './feiertage';
 import { FeiertageService } from './services/feiertage.service';
+import { GenerateIcsService } from './services/generate-ics.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,13 @@ export class AppComponent {
   feiertage$?: Observable<FeiertagTableEntry[]> = undefined;
   bundeslandValue = 'BW';
   yearValue = '2023';
+  showLink = false;
 
-  constructor(private feiertageService: FeiertageService, private bundeslaenderService: BundeslaenderService) {}
+  constructor(
+    private feiertageService: FeiertageService,
+    private bundeslaenderService: BundeslaenderService,
+    private generateIcsService: GenerateIcsService
+  ) {}
 
   bundeslaender = this.bundeslaenderService.bundeslaender;
 
@@ -33,4 +39,9 @@ export class AppComponent {
   getFeiertage() {
     this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
   }
+
+  downloadFile() {
+    const downloadFile = this.generateIcsService.blob
+  }
+
 }

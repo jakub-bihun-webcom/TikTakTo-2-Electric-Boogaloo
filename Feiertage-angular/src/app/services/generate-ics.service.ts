@@ -5,6 +5,8 @@ import { createEvents, DateArray } from 'ics';
   providedIn: 'root'
 })
 export class GenerateIcsService {
+  blob: Blob | undefined;
+
   constructor() {}
 
   createICS(fTage: { date: string; name: string }[]) {
@@ -19,16 +21,6 @@ export class GenerateIcsService {
     });
     const icsContent = createEvents(icsFormat);
     const icsDownloadContent = icsContent.value as string;
-    const blob = new Blob([icsDownloadContent], { type: 'text/ics:charset=utf-8' });
-    const objUrl = URL.createObjectURL(blob);
-    console.log(objUrl);
-  }
-
-  private createIcsDownload(icsContent: string) {
-    const blob = new Blob([icsContent], { type: 'text/ics:charset=utf-8' });
-    const objUrl = URL.createObjectURL(blob);
-    const link = document.querySelector('a') as HTMLAnchorElement;
-    link.setAttribute('href', objUrl);
-    link.setAttribute('download', 'Feiertage.ics');
+    this.blob = new Blob([icsDownloadContent], { type: 'text/ics:charset=utf-8' });
   }
 }
