@@ -2,7 +2,7 @@
   <h1 class="header">Pokedex</h1>
   <div class="inputField">
     <label for="input">Pokemon ID: </label>
-    <input id="input" type="text" name="searchID" [(ngModel)]="searchID" />
+    <input id="input" type="text" name="searchID" [(ngModel)]="searchID" (keyup.enter)="getValue(searchID)" />
     <button class="searchButton" id="searchButton" (click)="getValue(searchID)" type="button">Search Pokémon</button>
   </div>
   <ng-container *ngIf="pokemon$ | async as pokemon">

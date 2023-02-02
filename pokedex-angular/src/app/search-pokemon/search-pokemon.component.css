@@ -13,6 +13,10 @@ body {
   margin-left: -200px;
 }
 
+.searchButton {
+  background-color: #508edb;
+}
+
 .inputField {
   position: fixed;
   top: 50%;
@@ -22,23 +26,25 @@ body {
 }
 
 .pokemonNameOutput {
-  font-size: large;
+  font-size: larger;
   position: fixed;
   top: 50%;
   left: 50%;
   margin-top: -25px;
-  margin-left: -100px;
+  margin-left: 290px;
 }
 
 .PokemonImg {
   position: fixed;
+  height: 180px;
+  width: 180px;
   top: 50%;
   left: 50%;
-  margin-top: -60px;
-  margin-left: -200px;
+  margin-top: -80px;
+  margin-left: 100px;
 }
 
 .PokemonImg:hover {
-  filter: drop-shadow(0 0 5px rgb(245, 196, 14));
+  filter: drop-shadow(0 0 5px rgb(56, 138, 216));
 }
 

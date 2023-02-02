@@ -7,9 +7,10 @@ import { SearchPokemonComponent } from './search-pokemon/search-pokemon.componen
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SearchPokemonComponent],
+  declarations: [AppComponent, HeaderComponent, SearchPokemonComponent, FooterComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, AsyncPipe],
   providers: [],
   bootstrap: [AppComponent]
