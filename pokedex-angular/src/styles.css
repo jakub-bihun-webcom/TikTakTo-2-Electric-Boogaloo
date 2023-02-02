@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Signika+Negative&display=swap');
 
+
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Signika Negative', sans-serif;
   margin: 0;
-  background-color: rgb(115, 115, 115);
+  background-color: rgb(48, 56, 56);
 }

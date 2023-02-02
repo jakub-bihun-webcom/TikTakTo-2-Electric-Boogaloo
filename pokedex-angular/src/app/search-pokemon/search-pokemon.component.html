@@ -6,7 +6,7 @@
     <button class="searchButton" id="searchButton" (click)="getValue(searchID)" type="button">Search Pokémon</button>
   </div>
   <ng-container *ngIf="pokemon$ | async as pokemon">
-    <p>{{ pokemon.name }}</p>
+    <p class="pokemonNameOutput">{{ pokemon.name | titlecase}}</p>
   </ng-container>
   <p class="outputBox" id="msg" [(ngModel)]="msgBox"></p>
 </div>
