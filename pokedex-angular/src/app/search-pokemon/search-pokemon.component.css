@@ -19,6 +19,14 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  margin-top: -25px;
+  margin-left: -100px;
+}
+
+.PokemonImg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
   margin-top: -60px;
-  margin-left: -110px;
+  margin-left: -200px;
 }

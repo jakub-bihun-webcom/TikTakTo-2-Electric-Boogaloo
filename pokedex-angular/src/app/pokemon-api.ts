@@ -3,4 +3,7 @@ export interface Pokemon {
   game_indices: {
     id: number;
   };
+  sprites: {
+    front_default: string;
+  };
 }

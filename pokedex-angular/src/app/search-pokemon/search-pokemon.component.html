@@ -8,5 +8,8 @@
   <ng-container *ngIf="pokemon$ | async as pokemon">
     <p class="pokemonNameOutput">{{ pokemon.name | titlecase}}</p>
   </ng-container>
-  <p class="outputBox" id="msg" [(ngModel)]="msgBox"></p>
+  <ng-container *ngIf="pokemon$ | async as pokemon">
+    <img class="PokemonImg" src="{{ pokemon.sprites.front_default }}" alt="Image of {{pokemon.name}}">
+    <p class="pokemonNameOutput">{{ pokemon.name | titlecase}}</p>
+  </ng-container>
 </div>
