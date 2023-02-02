@@ -33,11 +33,22 @@ export class SearchPokemonComponent {
 
   private validateInput(searchID: number) {
     if (isNaN(searchID)) {
+      this.displayError('Input has to be a number');
       throw new Error('Input has to be a number');
     } else if (searchID >= 701 || searchID <= 0) {
+      this.displayError('Only numbers between 1 and 700 are being accepted');
       throw new Error('Only numbers between 1 and 700 are being accepted');
     } else {
+      this.clearError();
       return true;
     }
+  }
+
+  private displayError(error: string) {
+    this.msgBox = error;
+  }
+
+  clearError() {
+    this.msgBox = '';
   }
 }
