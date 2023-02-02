@@ -9,7 +9,7 @@ import { Pokemon } from '../pokemon-api';
   styleUrls: ['./search-pokemon.component.css']
 })
 export class SearchPokemonComponent {
-  searchID: number = 130;
+  searchID: number | undefined = undefined;
   msgBox: string = '';
 
   pokemon$?: Observable<Pokemon>;
@@ -20,7 +20,10 @@ export class SearchPokemonComponent {
     console.log('test');
   }
 
-  getValue(searchID: number) {
+  getValue(searchID: number | undefined) {
+    if (searchID === undefined) {
+      return;
+    }
     if (this.validateInput(searchID)) {
       this.pokemon$ = this.pokemonAPIRequestService.fetchPokemon(searchID);
     } else {
@@ -30,10 +33,8 @@ export class SearchPokemonComponent {
 
   private validateInput(searchID: number) {
     if (isNaN(searchID)) {
-      let error2 = 'Input has to be a number';
       throw new Error('Input has to be a number');
     } else if (searchID >= 701 || searchID <= 0) {
-      let error3 = 'Only numbers between 1 and 700 are being accepted';
       throw new Error('Only numbers between 1 and 700 are being accepted');
     } else {
       return true;

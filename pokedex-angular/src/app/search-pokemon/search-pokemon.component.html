@@ -2,14 +2,20 @@
   <h1 class="header">Pokedex</h1>
   <div class="inputField">
     <label for="input">Pokemon ID: </label>
-    <input id="input" type="text" name="searchID" [(ngModel)]="searchID" (keyup.enter)="getValue(searchID)" />
+    <input
+      id="input"
+      type="text"
+      name="searchID"
+      placeholder="ID"
+      [(ngModel)]="searchID"
+      (keyup.enter)="getValue(searchID)" />
     <button class="searchButton" id="searchButton" (click)="getValue(searchID)" type="button">Search Pokémon</button>
   </div>
   <ng-container *ngIf="pokemon$ | async as pokemon">
-    <p class="pokemonNameOutput">{{ pokemon.name | titlecase}}</p>
+    <p class="pokemonNameOutput">{{ pokemon.name | titlecase }}</p>
   </ng-container>
   <ng-container *ngIf="pokemon$ | async as pokemon">
-    <img class="PokemonImg" src="{{ pokemon.sprites.front_default }}" alt="Image of {{pokemon.name}}">
-    <p class="pokemonNameOutput">{{ pokemon.name | titlecase}}</p>
+    <img class="PokemonImg" src="{{ pokemon.sprites.front_default }}" alt="Image of {{ pokemon.name }}" />
+    <p class="pokemonNameOutput">{{ pokemon.name | titlecase }}</p>
   </ng-container>
 </div>
