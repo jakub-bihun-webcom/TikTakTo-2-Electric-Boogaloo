@@ -5,8 +5,7 @@ import { createEvents, DateArray } from 'ics';
   providedIn: 'root'
 })
 export class GenerateIcsService {
-
-  constructor() { }
+  constructor() {}
 
   createICS(fTage: { date: string; name: string }[]) {
     const icsFormat = fTage.map(value => {
@@ -20,9 +19,9 @@ export class GenerateIcsService {
     });
     const icsContent = createEvents(icsFormat);
     const icsDownloadContent = icsContent.value as string;
-    const blob = new Blob([icsDownloadContent], { type: 'text/ics:charset=utf-8'});
-    const objUrl = URL.createObjectURL(blob)
-    console.log(objUrl)
+    const blob = new Blob([icsDownloadContent], { type: 'text/ics:charset=utf-8' });
+    const objUrl = URL.createObjectURL(blob);
+    console.log(objUrl);
   }
 
   private createIcsDownload(icsContent: string) {

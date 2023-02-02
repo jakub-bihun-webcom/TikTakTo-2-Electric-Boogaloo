@@ -22,5 +22,5 @@ export class BundeslaenderService {
     { value: 'SH', name: 'Schleswig-Holstein' },
     { value: 'TH', name: 'Thüringen' }
   ];
-  constructor() { }
+  constructor() {}
 }

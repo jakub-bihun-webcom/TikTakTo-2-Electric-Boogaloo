@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BundeslaenderService } from './bundeslaender.service';
+import { BundeslaenderService } from './services/bundeslaender.service';
 import { FeiertagTableEntry } from './feiertage';
-import { FeiertageService } from './feiertage.service';
+import { FeiertageService } from './services/feiertage.service';
 
 @Component({
   selector: 'app-root',
