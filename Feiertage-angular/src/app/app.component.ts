@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BundeslaenderService } from './services/bundeslaender.service';
 import { FeiertagTableEntry } from './feiertage';
+import { BundeslaenderService } from './services/bundeslaender.service';
 import { FeiertageService } from './services/feiertage.service';
 import { GenerateIcsService } from './services/generate-ics.service';
 
@@ -45,8 +45,6 @@ export class AppComponent {
 
   downloadFile() {
     const blob = new Blob([this.generateIcsService.icsDownloadContent as string], { type: 'text/ics;charset=utf-8' });
-    const objUrl = URL.createObjectURL(blob);
-    console.log(objUrl);
-    return objUrl;
+    return URL.createObjectURL(blob);
   }
 }
