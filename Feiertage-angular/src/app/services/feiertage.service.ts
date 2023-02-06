@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { FeiertagTableEntry } from '../feiertage';
-import { GenerateIcsService } from './generate-ics.service';
+import { IcsService } from './ics.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeiertageService {
-  constructor(private httpClient: HttpClient, private generateIcsService: GenerateIcsService) {}
+  constructor(private httpClient: HttpClient, private generateIcsService: IcsService) {}
 
   getFeiertage(bundesland: string, year: string): Observable<FeiertagTableEntry[]> {
     return this.httpClient.get(`https://feiertage-api.de/api/?jahr=${year}&nur_land=${bundesland}`).pipe(
@@ -21,7 +21,7 @@ export class FeiertageService {
           name: key,
           date: dates[index]
         }));
-        this.generateIcsService.createICS(feiertageIcsFormat);
+        this.generateIcsService.createIcsContent(feiertageIcsFormat);
 
         return keys.map((key, index) => ({
           name: key,

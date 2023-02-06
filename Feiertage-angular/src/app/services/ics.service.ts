@@ -4,10 +4,10 @@ import { createEvents, DateArray } from 'ics';
 @Injectable({
   providedIn: 'root'
 })
-export class GenerateIcsService {
-  icsDownloadContent: string | undefined;
+export class IcsService {
+  icsDownloadContent?: string;
 
-  createICS(fTage: { date: string; name: string }[]) {
+  createIcsContent(fTage: { date: string; name: string }[]) {
     const icsFormat = fTage.map(value => {
       const splitDate = value.date.split('-');
       const datum = splitDate.map(val => parseInt(val)) as unknown as DateArray;

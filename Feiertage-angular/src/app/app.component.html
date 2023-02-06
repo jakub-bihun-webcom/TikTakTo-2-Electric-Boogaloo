@@ -25,7 +25,7 @@
     </div>
   </ng-container>
 
-  <div *ngIf="this.showLink">
+  <div *ngIf="this.feiertage$">
     <a (click)="this.downloadFile()" href="{{ this.objUrl }}" download="Feiertage.ics">Download as ICS</a>
   </div>
 </div>

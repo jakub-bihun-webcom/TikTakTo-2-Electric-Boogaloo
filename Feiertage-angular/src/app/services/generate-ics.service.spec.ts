@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GenerateIcsService } from './generate-ics.service';
+import { IcsService } from './ics.service';
 
 describe('GenerateIcsService', () => {
-  let service: GenerateIcsService;
+  let service: IcsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GenerateIcsService);
+    service = TestBed.inject(IcsService);
   });
 
   it('should be created', () => {
