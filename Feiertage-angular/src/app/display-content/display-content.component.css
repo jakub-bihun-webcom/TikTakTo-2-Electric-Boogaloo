@@ -1,0 +1,8 @@
+.tableBundesland {
+  display: grid;
+  background-color: #dddddd;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

@@ -18,11 +18,7 @@
   </div>
 
   <ng-container *ngIf="this.feiertage$ | async as feiertage">
-    <div class="tableBundesland" *ngFor="let feiertag of feiertage">
-      <div class="feiertagName">{{ feiertag.name }}</div>
-      <div class="feiertagDatum">{{ feiertag.date }}</div>
-      <div class="feiertagWochentag">{{ feiertag.weekday }}</div>
-    </div>
+    <app-display-content [feiertage]="feiertage"></app-display-content>
   </ng-container>
 
   <div *ngIf="this.feiertage$">
