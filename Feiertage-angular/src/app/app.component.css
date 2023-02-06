@@ -65,3 +65,10 @@ label {
   padding-top: 10px;
   font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+.link {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+}
