@@ -16,10 +16,7 @@ export class AppComponent {
   yearValue = '2023';
   objUrl?: string;
 
-  constructor(
-    private feiertageService: FeiertageService,
-    private generateIcsService: IcsService
-  ) {}
+  constructor(private feiertageService: FeiertageService, private generateIcsService: IcsService) {}
 
   bundeslaender = bundeslaender;
 
