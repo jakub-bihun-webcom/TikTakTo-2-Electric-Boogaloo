@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FeiertagTableEntry } from './feiertage';
-import { BundeslaenderService } from './services/bundeslaender.service';
+import { bundeslaender } from './services/bundeslaender';
 import { FeiertageService } from './services/feiertage.service';
 import { IcsService } from './services/ics.service';
 
@@ -18,11 +18,10 @@ export class AppComponent {
 
   constructor(
     private feiertageService: FeiertageService,
-    private bundeslaenderService: BundeslaenderService,
     private generateIcsService: IcsService
   ) {}
 
-  bundeslaender = this.bundeslaenderService.bundeslaender;
+  bundeslaender = bundeslaender;
 
   onBundeslandChange(value: string) {
     this.bundeslandValue = value;
