@@ -12,8 +12,8 @@ describe('GenerateIcsService', () => {
   it('should be created', () => {
     let result = service.createIcsContent(bw2023Input, ["_VY8QaTOMaQ1XSofs1geY", "yAxcbfZ90uLN81etwDsFJ"]);
     let resultFirst = result.slice(0, 172)
-    let expextedFirst = bw2023Output.slice(0, 172)
-    expect(resultFirst).toBe(expextedFirst);
+    let expectedFirst = bw2023Output.slice(0, 172)
+    expect(resultFirst).toBe(expectedFirst);
   });
 
   it( 'should be created',()=>{
