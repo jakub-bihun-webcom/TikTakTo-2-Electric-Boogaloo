@@ -10,29 +10,28 @@ describe('GenerateIcsService', () => {
   });
 
   it('should be created', () => {
-    let result = service.createIcsContent(bw2023Input, ["_VY8QaTOMaQ1XSofs1geY", "yAxcbfZ90uLN81etwDsFJ"]);
-    let resultFirst = result.slice(0, 172)
-    let expectedFirst = bw2023Output.slice(0, 172)
-    expect(resultFirst).toBe(expectedFirst);
+    expect(service).toBeTruthy();
   });
 
-  it( 'should be created',()=>{
-    let result = service.createIcsContent(bw2023Input, ["_VY8QaTOMaQ1XSofs1geY", "yAxcbfZ90uLN81etwDsFJ"]);
-    let resultMiddle = result.slice(198, 319)
-    let expectedMiddle = bw2023Output.slice(198, 319)
-    expect(resultMiddle).toBe(expectedMiddle);
-  })
+  it('should create ics string', () => {
+    const result = service.createIcsContent(bw2023Input, ['_VY8QaTOMaQ1XSofs1geY', 'yAxcbfZ90uLN81etwDsFJ']);
 
-  it( 'should be created',()=>{
-    let result = service.createIcsContent(bw2023Input, ["_VY8QaTOMaQ1XSofs1geY", "yAxcbfZ90uLN81etwDsFJ"]);
-    let resultEnd = result.slice(336)
-    let expectedEnd = bw2023Output.slice(336)
+    const resultFirst = result.slice(0, 172);
+    const expectedFirst = bw2023Output.slice(0, 172);
+    expect(resultFirst).toBe(expectedFirst);
+
+    const resultMiddle = result.slice(198, 319);
+    const expectedMiddle = bw2023Output.slice(198, 319);
+    expect(resultMiddle).toBe(expectedMiddle);
+
+    const resultEnd = result.slice(336);
+    const expectedEnd = bw2023Output.slice(336);
     expect(resultEnd).toBe(expectedEnd);
-  })
+  });
 });
 
 const bw2023Input = {
-  'Neujahrstag': {
+  Neujahrstag: {
     datum: '2023-01-01',
     hinweis: ''
   },
@@ -43,7 +42,6 @@ const bw2023Input = {
 };
 
 const bw2023Output =
-
   'BEGIN:VCALENDAR\r\n' +
   'VERSION:2.0\r\n' +
   'CALSCALE:GREGORIAN\r\n' +
@@ -62,6 +60,4 @@ const bw2023Output =
   'DTSTAMP:20230209T134200Z\r\n' +
   'DTSTART;VALUE=DATE:20230106\r\n' +
   'END:VEVENT\r\n' +
-  'END:VCALENDAR\r\n'
-;
-
+  'END:VCALENDAR\r\n';
