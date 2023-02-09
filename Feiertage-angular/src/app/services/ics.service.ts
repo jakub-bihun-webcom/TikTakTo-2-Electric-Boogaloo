@@ -20,13 +20,7 @@ export class IcsService {
         title: name
       };
     });
-
-    console.log(icsFormat);
-
     const icsContent = createEvents(icsFormat);
-
     this.icsDownloadContent = icsContent.value as string;
-
-    console.log(this.icsDownloadContent);
   }
 }
