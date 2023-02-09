@@ -8,8 +8,8 @@ import { FeiertagApiResponse } from './feiertage-api-response';
 export class IcsService {
   icsDownloadContent?: string;
 
-  createIcsContent(feiertageApiResponse: FeiertagApiResponse): void {
-    const icsFormat = Object.entries(feiertageApiResponse).map(entry => {
+  createIcsContent(feiertageApiResponse: FeiertagApiResponse, uid?: string[]): string {
+    const icsEvents = Object.entries(feiertageApiResponse).map((entry, index) => {
       const name = entry[0];
       const date = entry[1].datum;
       const splitDate = date.split('-');
@@ -17,10 +17,12 @@ export class IcsService {
       return {
         start: datum,
         end: datum,
-        title: name
+        title: name,
+        uid: uid?.[index],
       };
     });
-    const icsContent = createEvents(icsFormat);
+    const icsContent = createEvents(icsEvents);
     this.icsDownloadContent = icsContent.value as string;
+    return this.icsDownloadContent
   }
 }
