@@ -2,9 +2,6 @@ body {
   --primary: #405aa3; /* Pokemon Blau */
 }
 
-.searchComponent {
-}
-
 .error {
   background-color: #f44336;
   color: white;
@@ -57,7 +54,7 @@ body {
   margin-left: 290px;
 }
 
-.PokemonImg {
+.pokemonImg {
   position: fixed;
   height: 180px;
   width: 180px;
@@ -67,6 +64,6 @@ body {
   margin-left: 100px;
 }
 
-.PokemonImg:hover {
+.pokemonImg:hover {
   filter: drop-shadow(0 0 5px rgb(56, 138, 216));
 }

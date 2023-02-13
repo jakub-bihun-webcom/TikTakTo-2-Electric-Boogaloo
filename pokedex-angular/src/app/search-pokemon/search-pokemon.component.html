@@ -12,11 +12,11 @@
     <button class="searchButton" id="searchButton" (click)="getValue(searchID)" type="button">Search Pokémon</button>
   </div>
   <ng-container *ngIf="pokemon$ | async as pokemon">
-    <img class="PokemonImg" src="{{ pokemon.sprites.front_default }}" alt="Image of {{ pokemon.name }}" />
+    <img class="pokemonImg" src="{{ pokemon.sprites.front_default }}" alt="Image of {{ pokemon.name }}" />
     <p class="pokemonNameOutput">{{ pokemon.name | titlecase }}</p>
   </ng-container>
-  <div *ngIf="msgBox" class="error">
-    {{ msgBox }}
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
     <button (click)="clearError()">X</button>
   </div>
 </div>

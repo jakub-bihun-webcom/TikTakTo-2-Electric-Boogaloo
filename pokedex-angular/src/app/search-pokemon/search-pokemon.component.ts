@@ -9,16 +9,12 @@ import { Pokemon } from '../pokemon-api';
   styleUrls: ['./search-pokemon.component.css']
 })
 export class SearchPokemonComponent {
-  searchID: number | undefined = undefined;
-  msgBox: string = '';
+  searchID?: number;
+  errorMessage: string = '';
 
   pokemon$?: Observable<Pokemon>;
 
   constructor(private pokemonAPIRequestService: PokemonAPIRequestService) {}
-
-  displayMessage() {
-    console.log('test');
-  }
 
   getValue(searchID: number | undefined) {
     if (searchID === undefined) {
@@ -45,10 +41,10 @@ export class SearchPokemonComponent {
   }
 
   private displayError(error: string) {
-    this.msgBox = error;
+    this.errorMessage = error;
   }
 
   clearError() {
-    this.msgBox = '';
+    this.errorMessage = '';
   }
 }
