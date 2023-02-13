@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import iziToast from 'izitoast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService {
 
-  constructor() { }
   handleError(error: any): void{
-    console.log("fehler" + error)
+    iziToast.error({title: "Falsche Eingabe", message: error})
   }
 }

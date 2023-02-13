@@ -29,13 +29,13 @@ export class AppComponent {
   onYearChange(value: string) {
     const valueToNumber = parseInt(value)
     try {
-      isNaN(valueToNumber)
       valueToNumber < 1900;
       valueToNumber > 2100;
     }
     catch (e){
-      this.errorHandlerService.handleError(e)
+      this.errorHandlerService.handleError("Bitte ein Jahr zwischen 1900 und 2100 auswählen!")
     }
+
     if (value === '') {
       value = '2023';
     }
