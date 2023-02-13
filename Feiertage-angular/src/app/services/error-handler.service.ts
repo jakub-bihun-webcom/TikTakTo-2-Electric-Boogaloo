@@ -5,8 +5,7 @@ import iziToast from 'izitoast';
   providedIn: 'root'
 })
 export class ErrorHandlerService {
-
-  handleError(error: any): void{
-    iziToast.error({title: "Falsche Eingabe", message: error})
+  handleError(error: any): void {
+    iziToast.error({ title: 'Falsche Eingabe', message: error });
   }
 }
