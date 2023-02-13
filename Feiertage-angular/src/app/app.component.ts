@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FeiertagTableEntry } from './feiertage';
 import { bundeslaender } from './services/bundeslaender';
+import { ErrorHandlerService } from './services/error-handler.service';
 import { FeiertageService } from './services/feiertage.service';
 import { IcsService } from './services/ics.service';
 
@@ -16,7 +17,7 @@ export class AppComponent {
   yearValue = '2023';
   objUrl?: string;
 
-  constructor(private feiertageService: FeiertageService, private generateIcsService: IcsService) {}
+  constructor(private feiertageService: FeiertageService, private generateIcsService: IcsService, private errorHandlerService: ErrorHandlerService) {}
 
   bundeslaender = bundeslaender;
 
@@ -26,6 +27,15 @@ export class AppComponent {
   }
 
   onYearChange(value: string) {
+    const valueToNumber = parseInt(value)
+    try {
+      isNaN(valueToNumber)
+      valueToNumber < 1900;
+      valueToNumber > 2100;
+    }
+    catch (e){
+      this.errorHandlerService.handleError(e)
+    }
     if (value === '') {
       value = '2023';
     }
