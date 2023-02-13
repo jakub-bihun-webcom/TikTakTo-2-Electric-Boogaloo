@@ -17,7 +17,11 @@ export class AppComponent {
   yearValue = '2023';
   objUrl?: string;
 
-  constructor(private feiertageService: FeiertageService, private generateIcsService: IcsService, private errorHandlerService: ErrorHandlerService) {}
+  constructor(
+    private feiertageService: FeiertageService,
+    private generateIcsService: IcsService,
+    private errorHandlerService: ErrorHandlerService
+  ) {}
 
   bundeslaender = bundeslaender;
 
@@ -27,15 +31,6 @@ export class AppComponent {
   }
 
   onYearChange(value: string) {
-    const valueToNumber = parseInt(value)
-    try {
-      valueToNumber < 1900;
-      valueToNumber > 2100;
-    }
-    catch (e){
-      this.errorHandlerService.handleError("Bitte ein Jahr zwischen 1900 und 2100 auswählen!")
-    }
-
     if (value === '') {
       value = '2023';
     }
@@ -43,7 +38,12 @@ export class AppComponent {
   }
 
   getFeiertage() {
-    this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
+    const valueToNumber = parseInt(this.yearValue);
+    if (valueToNumber < 1900 || valueToNumber > 2100 || isNaN(valueToNumber)) {
+      this.errorHandlerService.handleError('Bitte ein Jahr zwischen 1900 und 2100 auswählen!');
+    } else {
+      this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
+    }
   }
 
   downloadFile() {
