@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  background-color: #f30a07;
+  height: 70px;
+}
+
+.logo {
+  margin-top: 10px;
+  height: 50px;
+  margin-left: 20px;
+  background-color: white;
+  border-radius: 9px 9px 9px;
+}
+
+.headerOptions {
+  width: 1000px;
+  margin-left: 200px;
+  margin-top: 20px;
+  padding-top: 7px;
+  margin-bottom: 18px;
+  border-radius: 4px 4px 4px;
+  background-color: white;
+}
+
+.headerOption {
+  margin-left: 130px;
+  margin-right: 130px;
+}
+
+.headerOption:hover {
+  color: #e9110f;
+  cursor: pointer;
+}
+
+.loginButton {
+  margin-top: 20px;
+  padding-top: 7px;
+  margin-bottom: 18px;
+  margin-left: 380px;
+  border-radius: 4px 4px 4px 4px;
+  background-color: white;
+}
+
+.loginLabel {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.loginLabel:hover {
+  color: #e9110f;
+  cursor: pointer;
+}
