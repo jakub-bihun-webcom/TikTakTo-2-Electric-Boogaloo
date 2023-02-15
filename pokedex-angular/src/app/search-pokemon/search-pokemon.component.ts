@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { PokemonAPIRequestService } from '../services/apiRequests/pokemon-apirequest.service';
+import { Observable } from 'rxjs';
+import { Pokemon } from '../pokemon-api';
 
 @Component({
   selector: 'app-search-pokemon',
@@ -6,16 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-pokemon.component.css']
 })
 export class SearchPokemonComponent {
-  searchID: number = 0;
-  msgBox: string = '';
+  searchID?: number;
+  errorMessage: string = '';
 
-  displayMessage() {
-    console.log('test');
-  }
+  pokemon$?: Observable<Pokemon>;
 
-  getValue(searchID: number) {
+  constructor(private pokemonAPIRequestService: PokemonAPIRequestService) {}
+
+  getValue(searchID: number | undefined) {
+    if (searchID === undefined) {
+      return;
+    }
     if (this.validateInput(searchID)) {
-      console.log(searchID);
+      this.pokemon$ = this.pokemonAPIRequestService.fetchPokemon(searchID);
     } else {
       throw new Error('Your Input is not valid');
     }
@@ -23,17 +29,22 @@ export class SearchPokemonComponent {
 
   private validateInput(searchID: number) {
     if (isNaN(searchID)) {
-      let error2 = 'Input has to be a number';
+      this.displayError('Input has to be a number');
       throw new Error('Input has to be a number');
     } else if (searchID >= 701 || searchID <= 0) {
-      let error3 = 'Only numbers between 1 and 700 are being accepted';
+      this.displayError('Only numbers between 1 and 700 are being accepted');
       throw new Error('Only numbers between 1 and 700 are being accepted');
     } else {
+      this.clearError();
       return true;
     }
   }
 
-  // async getAPI() {
-  //   const response = httpClient.get(`https://pokeapi.co/api/v2/pokemon/${this.searchID}`);
-  // }
+  private displayError(error: string) {
+    this.errorMessage = error;
+  }
+
+  clearError() {
+    this.errorMessage = '';
+  }
 }
