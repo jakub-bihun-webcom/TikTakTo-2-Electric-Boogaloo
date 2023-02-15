@@ -41,6 +41,7 @@ export class AppComponent {
     const valueToNumber = parseInt(this.yearValue);
     if (valueToNumber < 1900 || valueToNumber > 2100 || isNaN(valueToNumber)) {
       this.errorHandlerService.handleError('Bitte ein Jahr zwischen 1900 und 2100 auswählen!');
+      this.feiertage$ = undefined;
     } else {
       this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
     }
