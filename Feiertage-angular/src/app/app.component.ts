@@ -11,9 +11,9 @@ import { IcsService } from './services/ics.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  feiertage$?: Observable<FeiertagTableEntry[]> = undefined;
+  feiertage$?: Observable<FeiertagTableEntry[]>;
   bundeslandValue = 'BW';
-  yearValue = '2023';
+  inputYear = '2023';
   objUrl?: string;
 
   constructor(private feiertageService: FeiertageService, private generateIcsService: IcsService) {}
@@ -29,16 +29,16 @@ export class AppComponent {
     if (value === '') {
       value = '2023';
     }
-    this.yearValue = value;
+    this.inputYear = value;
   }
 
   getFeiertage() {
-    const valueToNumber = parseInt(this.yearValue);
-    if (valueToNumber < 1900 || valueToNumber > 2100 || isNaN(valueToNumber)) {
+    const yearAsNumber = parseInt(this.inputYear);
+    if (yearAsNumber < 1900 || yearAsNumber > 2100 || isNaN(yearAsNumber)) {
       this.feiertage$ = undefined;
       throw new Error('Bitte ein Jahr zwischen 1900 und 2100 auswählen!');
     } else {
-      this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
+      this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.inputYear);
     }
   }
 
