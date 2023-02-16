@@ -33,7 +33,13 @@ export class AppComponent {
   }
 
   getFeiertage() {
-    this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
+    const valueToNumber = parseInt(this.yearValue);
+    if (valueToNumber < 1900 || valueToNumber > 2100 || isNaN(valueToNumber)) {
+      this.feiertage$ = undefined;
+      throw new Error('Bitte ein Jahr zwischen 1900 und 2100 auswählen!');
+    } else {
+      this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
+    }
   }
 
   downloadFile() {
