@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FeiertagTableEntry } from './feiertage';
 import { bundeslaender } from './services/bundeslaender';
-import { ErrorHandlerService } from './services/error-handler.service';
 import { FeiertageService } from './services/feiertage.service';
 import { IcsService } from './services/ics.service';
 
@@ -19,8 +18,7 @@ export class AppComponent {
 
   constructor(
     private feiertageService: FeiertageService,
-    private generateIcsService: IcsService,
-    private errorHandlerService: ErrorHandlerService
+    private generateIcsService: IcsService
   ) {}
 
   bundeslaender = bundeslaender;
@@ -40,8 +38,8 @@ export class AppComponent {
   getFeiertage() {
     const valueToNumber = parseInt(this.yearValue);
     if (valueToNumber < 1900 || valueToNumber > 2100 || isNaN(valueToNumber)) {
-      this.errorHandlerService.handleError('Bitte ein Jahr zwischen 1900 und 2100 auswählen!');
       this.feiertage$ = undefined;
+      throw new Error('Bitte ein Jahr zwischen 1900 und 2100 auswählen!');
     } else {
       this.feiertage$ = this.feiertageService.getFeiertage(this.bundeslandValue, this.yearValue);
     }
