@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-home-screen',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-home-screen.component.scss']
 })
 export class UserHomeScreenComponent {
+  constructor(private router: Router) {}
 
+  goToUserCashOut() {
+    this.router.navigate(['/user-cashout']);
+  }
 }
