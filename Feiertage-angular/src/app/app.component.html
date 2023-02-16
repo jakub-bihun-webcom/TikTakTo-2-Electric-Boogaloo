@@ -1,24 +1,27 @@
 <div>
   <app-header></app-header>
+
   <div class="input">
     <div class="inputBundesland">
       <label>Bundesland: </label>
       <select class="inputBundeslandMenu" #laender (change)="onBundeslandChange(laender.value)">
-        <option *ngFor="let bundesland of bundeslaender" value="{{ bundesland.value }}">{{ bundesland.key }}</option>
+        <option *ngFor="let bundesland of bundeslaender" value="{{ bundesland.value }}">{{ bundesland.name }}</option>
       </select>
     </div>
+
     <div class="inputYearClass">
       <label>Jahr: </label>
-      <input class="inputJahr" #year (change)="onYearChange(year.value)" value="2023" />
+      <input class="inputJahr" #year (input)="onYearChange(year.value)" [value]="yearValue" />
     </div>
+
     <button class="inputButton" (click)="this.getFeiertage()" type="button">Feiertage anzeigen</button>
   </div>
 
   <ng-container *ngIf="this.feiertage$ | async as feiertage">
-    <div class="tableBundesland" *ngFor="let feiertag of feiertage">
-      <div class="feiertagName">{{ feiertag.name }}</div>
-      <div class="feiertagDatum">{{ feiertag.date }}</div>
-      <div class="feiertagWochentag">{{ feiertag.weekday }}</div>
-    </div>
+    <app-display-content [feiertage]="feiertage"></app-display-content>
   </ng-container>
+
+  <div *ngIf="this.feiertage$">
+    <a (click)="this.downloadFile()" href="{{ this.objUrl }}" download="Feiertage.ics">Download as ICS</a>
+  </div>
 </div>
