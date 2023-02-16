@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './pay-field.component.html',
   styleUrls: ['./pay-field.component.css']
 })
-export class PayFieldComponent {
-
-}
+export class PayFieldComponent {}

@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './input-field.component.html',
   styleUrls: ['./input-field.component.css']
 })
-export class InputFieldComponent {
-
-}
+export class InputFieldComponent {}

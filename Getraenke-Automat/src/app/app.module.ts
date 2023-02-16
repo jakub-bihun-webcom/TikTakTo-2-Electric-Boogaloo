@@ -9,18 +9,9 @@ import { OutputFieldComponent } from './output-field/output-field.component';
 import { PayFieldComponent } from './pay-field/pay-field.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GetraenkeListeComponent,
-    InputFieldComponent,
-    OutputFieldComponent,
-    PayFieldComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, GetraenkeListeComponent, InputFieldComponent, OutputFieldComponent, PayFieldComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
