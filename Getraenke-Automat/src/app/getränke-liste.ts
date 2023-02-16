@@ -1,6 +1,6 @@
-import { Getraenk } from './getraenk';
+import { Getränk } from './getränk';
 
-export const getraenkeListe: Getraenk[] = [
+export const getränkeListe: Getränk[] = [
   { name: 'Cola', price: 2 },
   { name: 'Fanta', price: 2.5 },
   { name: 'Sprite', price: 1.5 },
