@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserCostumeAmountComponent } from './user-costume-amount.component';
+import { UserCustomAmountComponent } from './user-custom-amount.component';
 
 describe('UserCostumeAmountComponent', () => {
-  let component: UserCostumeAmountComponent;
-  let fixture: ComponentFixture<UserCostumeAmountComponent>;
+  let component: UserCustomAmountComponent;
+  let fixture: ComponentFixture<UserCustomAmountComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserCostumeAmountComponent]
+      declarations: [UserCustomAmountComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(UserCostumeAmountComponent);
+    fixture = TestBed.createComponent(UserCustomAmountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

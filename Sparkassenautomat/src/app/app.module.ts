@@ -8,7 +8,7 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { UserHomeScreenComponent } from './user-home-screen/user-home-screen.component';
 import { UserCashoutComponent } from './user-cashout/user-cashout.component';
 import { RouterOutlet } from '@angular/router';
-import { UserCostumeAmountComponent } from './user-cashout/user-custom-amount/user-costume-amount.component';
+import { UserCustomAmountComponent } from './user-cashout/user-custom-amount/user-custom-amount.component';
 import { UserCashOutMessageComponent } from './user-cashout/user-cash-out-message/user-cash-out-message.component';
 import { FormsModule } from '@angular/forms';
 
@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
     LoginScreenComponent,
     UserHomeScreenComponent,
     UserCashoutComponent,
-    UserCostumeAmountComponent,
+    UserCustomAmountComponent,
     UserCashOutMessageComponent
   ],
   imports: [BrowserModule, AppRoutingModule, RouterOutlet, RouterOutlet, RouterOutlet, FormsModule],

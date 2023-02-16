@@ -2,7 +2,7 @@
   <div class="leftSide">
     <a>➔ Betrag:</a>
     <div class="amountInputContainer">
-      <input id="costumeAmount" [(ngModel)]="costumeAmount" class="amountInput" type="text" />
+      <input id="costumeAmount" (keyup.enter)="useCostumeAmount()" [(ngModel)]="costumeAmount" class="amountInput" type="text" />
     </div>
     <a (click)="useCostumeAmount()">• Bestätigen</a>
   </div>
