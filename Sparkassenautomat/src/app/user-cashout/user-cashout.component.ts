@@ -15,9 +15,13 @@ export class UserCashoutComponent {
   }
 
   handleInput(amount: number) {
-    console.log('Dein neues Saldo beträgt: ' + this.handleUserAccountMoneyService.handleUserAccountMoney(amount) + '€');
-    console.log(
-      'Im Automaten befinden sich nun noch ' + this.handleUserAccountMoneyService.getATMAccountMoney(amount) + '€'
-    );
+    if (amount === undefined) {
+      throw new Error('Something went wrong');
+    } else {
+      this.navigatePage(this.handleUserAccountMoneyService.handleUserAccountMoney(amount));
+    }
+  }
+  navigatePage(data: any) {
+    this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
   }
 }
