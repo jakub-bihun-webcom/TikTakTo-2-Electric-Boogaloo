@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class UserCashOutMessageComponent {
   Text: String | undefined;
 
-  private displayText(error: string) {
-    this.Text = error;
+  private displayText(outputText: string) {
+    this.Text = outputText;
   }
 }

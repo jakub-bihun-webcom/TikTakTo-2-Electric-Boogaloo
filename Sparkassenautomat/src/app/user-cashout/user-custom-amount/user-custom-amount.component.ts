@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HandleUserAccountMoneyService } from '../services/handle-user-account-money.service';
 import { Router } from '@angular/router';
+import { UserCashOutMessageComponent } from '../user-cash-out-message/user-cash-out-message.component';
 
 @Component({
   selector: 'app-user-costume-amount',
@@ -11,7 +12,11 @@ export class UserCustomAmountComponent {
   costumeAmount?: number;
   errorMessage: string = '';
 
-  constructor(private handleUserAccountMoneyService: HandleUserAccountMoneyService, private router: Router) {}
+  constructor(
+    private handleUserAccountMoneyService: HandleUserAccountMoneyService,
+    private router: Router,
+    private userCashOutMessage: UserCashOutMessageComponent
+  ) {}
 
   useCostumeAmount() {
     if (this.costumeAmount === undefined) {
