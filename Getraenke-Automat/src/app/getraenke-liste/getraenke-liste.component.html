@@ -1,1 +1,4 @@
-<p>getraenke-liste works!</p>
+<li *ngFor="let getraenk of getraenke">
+  <span class="getraenkeName">{{getraenk.name}}</span>
+  <span class="getraenkePreis">{{getraenk.price}}</span>
+</li>
