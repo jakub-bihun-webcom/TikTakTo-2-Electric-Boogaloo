@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HandleUserAccountMoneyService } from '../services/handle-user-account-money.service';
 import { Router } from '@angular/router';
-import { UserCashOutMessageComponent } from '../user-cash-out-message/user-cash-out-message.component';
 
 @Component({
   selector: 'app-user-costume-amount',
@@ -12,11 +11,7 @@ export class UserCustomAmountComponent {
   costumeAmount?: number;
   errorMessage: string = '';
 
-  constructor(
-    private handleUserAccountMoneyService: HandleUserAccountMoneyService,
-    private router: Router,
-    private userCashOutMessage: UserCashOutMessageComponent
-  ) {}
+  constructor(private handleUserAccountMoneyService: HandleUserAccountMoneyService, private router: Router) {}
 
   useCostumeAmount() {
     if (this.costumeAmount === undefined) {
@@ -26,18 +21,7 @@ export class UserCustomAmountComponent {
       this.displayError('Es hat ein Problem mit der Validierung ihrer Eingabe gegeben');
       throw new Error('Problem with validateUserInput()');
     } else {
-      this.navigatePage();
-      console.log(
-        'Dein neues Saldo beträgt: ' +
-          this.handleUserAccountMoneyService.handleUserAccountMoney(this.costumeAmount) +
-          '€'
-      );
-      this.navigatePage();
-      console.log(
-        'Im Automaten befinden sich nun noch ' +
-          this.handleUserAccountMoneyService.getATMAccountMoney(this.costumeAmount) +
-          '€'
-      );
+      this.navigatePage(this.handleUserAccountMoneyService.handleUserAccountMoney(this.costumeAmount));
     }
   }
 
@@ -54,8 +38,8 @@ export class UserCustomAmountComponent {
     }
   }
 
-  navigatePage() {
-    this.router.navigate(['/user-cash-out-message']);
+  navigatePage(data: any) {
+    this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
   }
 
   private displayError(error: string) {

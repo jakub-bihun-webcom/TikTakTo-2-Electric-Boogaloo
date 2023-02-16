@@ -1,6 +1,7 @@
 <div>
-  <a>Folgende Aktionen wurden durchgeführt:</a>
-    <div *ngIf="Text" class="error">
+  <a class="headline">Folgende Aktionen wurden durchgeführt:</a>
+    <div *ngIf="Text" class="outputText">
       {{ Text }}
     </div>
+  <a class="backToMenu" (click)="goToUserHomeScreen()">Zurück zum Hauptmenü •</a>
 </div>

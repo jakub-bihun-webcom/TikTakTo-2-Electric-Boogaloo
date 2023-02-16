@@ -13,3 +13,29 @@
   padding-bottom: 30px;
   padding-top: 30px;
 }
+
+.headline {
+  margin-top: 30px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.outputText {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  margin-top: 250px;
+}
+
+.backToMenu {
+  margin-right:10px;
+  display: flex;
+  margin-top: 300px;
+  justify-content: end;
+  font-size: 20px;
+}
+
+.backToMenu:hover {
+  cursor: pointer;
+}

@@ -8,11 +8,11 @@ export class HandleUserAccountMoneyService {
   private userAccountMoney: number = 3600;
   constructor() {}
 
-  handleUserAccountMoney(amount: number): number {
+  handleUserAccountMoney(amount: number) {
     return (this.userAccountMoney -= amount);
   }
 
-  getATMAccountMoney(amount: number): number {
+  getATMAccountMoney(amount: number) {
     return (this.ATMAccountMoney -= amount);
   }
 }
