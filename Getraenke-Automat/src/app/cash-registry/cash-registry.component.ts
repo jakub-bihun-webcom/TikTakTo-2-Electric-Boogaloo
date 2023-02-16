@@ -8,9 +8,10 @@ import { CashRegisterService } from '../services/cash-register.service';
 })
 export class CashRegistryComponent {
   registry: number = 100;
+  inputMoney?: number;
+  priceBeverage?: number;
 
   constructor(private cashRegisterService: CashRegisterService) {}
 
-  change = this.cashRegisterService.calculateChange(inputMoney, priceBeverage)
-
+  change = this.cashRegisterService.calculateChange(this.inputMoney as number, this.priceBeverage as number, this.registry)
 }
