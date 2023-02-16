@@ -7,9 +7,10 @@ import { BeverageListComponent } from './beverage-list/beverage-list.component';
 import { InputFieldComponent } from './input-field/input-field.component';
 import { OutputFieldComponent } from './output-field/output-field.component';
 import { PayFieldComponent } from './pay-field/pay-field.component';
+import { CashRegistryComponent } from './cash-registry/cash-registry.component';
 
 @NgModule({
-  declarations: [AppComponent, BeverageListComponent, InputFieldComponent, OutputFieldComponent, PayFieldComponent],
+  declarations: [AppComponent, BeverageListComponent, InputFieldComponent, OutputFieldComponent, PayFieldComponent, CashRegistryComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
