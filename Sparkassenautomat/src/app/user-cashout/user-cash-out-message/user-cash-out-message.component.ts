@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './user-cash-out-message.component.html',
   styleUrls: ['./user-cash-out-message.component.scss']
 })
-export class UserCashOutMessageComponent {}
+export class UserCashOutMessageComponent {
+  Text: String | undefined;
+
+  private displayText(error: string) {
+    this.Text = error;
+  }
+}
