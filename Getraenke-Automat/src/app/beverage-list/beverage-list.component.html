@@ -1,4 +1,6 @@
-<li class="getränkeListe" *ngFor="let beverage of beverages">
-  <span class="getraenkeName">{{beverage.name}}</span>
-  <span class="getraenkePreis">{{beverage.price}}</span>
-</li>
+<div class="beverageInfo">
+  <li class="beverageList" *ngFor="let beverage of beverages">
+    <span class="beverageName">{{ beverage.name }}</span>
+    <span class="beveragePrice">{{ beverage.price }}€</span>
+  </li>
+</div>

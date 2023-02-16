@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './output-field.component.html',
   styleUrls: ['./output-field.component.css']
 })
-export class OutputFieldComponent {}
+export class OutputFieldComponent {
+  outputText:string = "Willkommen zum super tollen Getränkeautomaten"
+}
