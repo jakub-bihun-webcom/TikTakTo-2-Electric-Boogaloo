@@ -8,9 +8,8 @@ describe('UserCashOutMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserCashOutMessageComponent ]
-    })
-    .compileComponents();
+      declarations: [UserCashOutMessageComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserCashOutMessageComponent);
     component = fixture.componentInstance;

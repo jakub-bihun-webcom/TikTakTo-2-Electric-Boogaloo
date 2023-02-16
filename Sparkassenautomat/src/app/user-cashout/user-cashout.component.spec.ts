@@ -8,9 +8,8 @@ describe('UserCashoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserCashoutComponent ]
-    })
-    .compileComponents();
+      declarations: [UserCashoutComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserCashoutComponent);
     component = fixture.componentInstance;

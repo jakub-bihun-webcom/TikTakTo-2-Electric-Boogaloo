@@ -17,13 +17,18 @@
   flex-direction: column;
   align-items: end;
 }
-.leftSide a, .rightSide a {
+.leftSide a,
+.rightSide a {
   align-items: start;
   margin-top: 70px;
-  margin-bottom:70px;
+  margin-bottom: 70px;
 }
 
 .leftSide {
   margin-left: 10px;
-  margin-right: auto ;
+  margin-right: auto;
+}
+
+a:hover {
+  cursor: pointer;
 }
