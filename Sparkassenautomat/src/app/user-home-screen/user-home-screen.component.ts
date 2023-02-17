@@ -12,4 +12,8 @@ export class UserHomeScreenComponent {
   goToUserCashOut() {
     this.router.navigate(['/user-cashout']);
   }
+
+  goToLoginScreen() {
+    this.router.navigate(['/login-screen']);
+  }
 }
