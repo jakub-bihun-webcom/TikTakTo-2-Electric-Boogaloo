@@ -14,8 +14,8 @@ export class LoginScreenComponent {
   ) {}
 
   users = [
-    { id: '1234', pin: '5678', userAccountMoney: 2300000 },
-    { id: '2345', pin: '2342', userAccountMoney: 93131 },
+    { id: '1234', pin: '5678', userAccountMoney: 13642 },
+    { id: '2345', pin: '2342', userAccountMoney: 6890 },
   ];
   currentUserMoney?: number;
   pinInput?: string;
