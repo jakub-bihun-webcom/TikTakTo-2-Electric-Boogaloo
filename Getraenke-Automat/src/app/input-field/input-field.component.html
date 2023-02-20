@@ -1,2 +1,3 @@
-<input class="inputField" #input (input)="onInputChange(input.value)">
+<input class="inputField" #input (input)="onInputChange(input.value)" value="{{inputField}}">
 <button class="enterButton" (click)="this.getInput()" type="button">ENTER</button>
+<button class="cancelButton" (click)="this.cancelButton()" type="button">CANCEL</button>
