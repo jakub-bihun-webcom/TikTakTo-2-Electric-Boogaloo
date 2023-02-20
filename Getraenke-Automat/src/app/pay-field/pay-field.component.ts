@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./pay-field.component.css']
 })
 export class PayFieldComponent {
+
+  constructor() { }
   paidAmount: number = 0;
 
   moneyInput(input:number){
@@ -14,5 +16,9 @@ export class PayFieldComponent {
 
   cancelMoneyInput(){
     this.paidAmount = 0
+  }
+
+  confirmMoney(){
+
   }
 }
