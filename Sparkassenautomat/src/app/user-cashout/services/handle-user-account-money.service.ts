@@ -5,14 +5,24 @@ import { Injectable } from '@angular/core';
 })
 export class HandleUserAccountMoneyService {
   private ATMAccountMoney: number = 10000;
-  private userAccountMoney: number = 3600;
+  private userAccountMoney?: number;
+
   constructor() {}
 
   handleUserAccountMoney(amount: number) {
-    return (this.userAccountMoney -= amount);
+    if (this.userAccountMoney === undefined) {
+      throw new Error('User account money not set');
+    }
+    this.userAccountMoney -= amount;
+    return this.userAccountMoney;
+  }
+
+  setUserAccountMoney(amount: number) {
+    this.userAccountMoney = amount;
   }
 
   getATMAccountMoney(amount: number) {
-    return (this.ATMAccountMoney -= amount);
+    this.ATMAccountMoney -= amount;
+    return this.ATMAccountMoney;
   }
 }

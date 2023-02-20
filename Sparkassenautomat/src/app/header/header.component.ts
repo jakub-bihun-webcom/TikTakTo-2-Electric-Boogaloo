@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(private router: Router) {}
 
-  goToUserHomeScreen() {
-    this.router.navigate(['/user-home-screen']);
+  goToLoginScreen() {
+    this.router.navigate(['/login-screen']);
   }
 }
