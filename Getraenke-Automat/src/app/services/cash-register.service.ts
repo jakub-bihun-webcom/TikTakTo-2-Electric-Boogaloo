@@ -16,4 +16,8 @@ export class CashRegisterService {
     }
     return change;
   }
+
+  calculateRegistryChange(price: number, registry: number): number {
+    return registry + price;
+  }
 }
