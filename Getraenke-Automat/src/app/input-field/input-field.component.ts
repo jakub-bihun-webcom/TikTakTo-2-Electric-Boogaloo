@@ -8,22 +8,21 @@ import { VerifyInputService } from '../services/verify-input.service';
 })
 export class InputFieldComponent {
   chosenID?: number;
-  inputField: any = " ";
+  inputField: any = '';
 
   constructor(private verifyInputService: VerifyInputService) {}
 
-  onInputChange(input: string){
-    this.inputField = input
+  onInputChange(input: string) {
+    this.inputField = input;
   }
 
-  getInput(){
-    this.verifyInputService.formatChecker(this.inputField)
-    this.chosenID = parseInt(this.inputField)
+  getInput() {
+    this.verifyInputService.formatChecker(this.inputField);
+    this.chosenID = parseInt(this.inputField);
   }
 
-  cancelButton(){
+  cancelButton() {
     this.chosenID = undefined;
-    this.inputField = " ";
+    this.inputField = '';
   }
-
 }
