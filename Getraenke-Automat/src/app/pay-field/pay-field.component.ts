@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InputFieldComponent } from '../input-field/input-field.component';
 
 @Component({
   selector: 'app-pay-field',
@@ -6,9 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./pay-field.component.css']
 })
 export class PayFieldComponent {
-
-  constructor() { }
   paidAmount: number = 0;
+
+  constructor(private inputFieldComponent: InputFieldComponent) { }
 
   moneyInput(input:number){
     this.paidAmount = this.paidAmount + input;
@@ -19,6 +20,9 @@ export class PayFieldComponent {
   }
 
   confirmMoney(){
+    if (this.inputFieldComponent.chosenID === undefined){
+      return
+    }
 
   }
 }
