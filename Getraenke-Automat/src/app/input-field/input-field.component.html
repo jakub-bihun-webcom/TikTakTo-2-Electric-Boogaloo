@@ -1,1 +1,2 @@
-<p>input-field works!</p>
+<input class="inputField" #input (input)="onInputChange(input.value)">
+<button class="enterButton" (click)="this.getInput()" type="button">ENTER</button>
