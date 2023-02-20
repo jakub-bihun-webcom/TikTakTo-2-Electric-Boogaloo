@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PayFieldComponent } from '../pay-field/pay-field.component';
 import { VerifyInputService } from '../services/verify-input.service';
 
 @Component({
@@ -36,7 +35,6 @@ export class InputFieldComponent {
       console.log("bestellung")
     }
 
-    console.log(this.chosenID)
   }
 
   cancelButton() {
