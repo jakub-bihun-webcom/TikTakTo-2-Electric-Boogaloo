@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class VerifyInputService {
-  constructor() {}
-  formatChecker(input: any) {
+  validID(input: any) {
     const parsedInput = parseInt(input);
     if (isNaN(parsedInput)) {
       throw new Error("Keine Zahl");

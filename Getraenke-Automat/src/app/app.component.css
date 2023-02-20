@@ -8,9 +8,9 @@
   grid-template-areas:
     '. Header Header Header .'
     '. GetränkInfos . outputField .'
-    '. GetränkInfos . payField .'
-    '. GetränkInfos . payField .'
+    '. GetränkInfos . . .'
     '. GetränkInfos . inputField .'
+    '. GetränkInfos . . .'
     '. . . . .';
 }
 

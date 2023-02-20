@@ -12,7 +12,7 @@ import { CashRegistryComponent } from './cash-registry/cash-registry.component';
 @NgModule({
   declarations: [AppComponent, BeverageListComponent, InputFieldComponent, OutputFieldComponent, PayFieldComponent, CashRegistryComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [InputFieldComponent],
+  providers: [InputFieldComponent, CashRegistryComponent, PayFieldComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
