@@ -21,15 +21,12 @@ export class HandleUserAccountMoneyService {
     this.userAccountMoney = amount;
   }
 
-  getATMAccountMoney(amount: number) {
-    if (this.ATMAccountMoney >= amount) {
-      this.ATMAccountMoney -= amount;
+  getATMAccountMoney (amount: number) {
+    if (this.ATMAccountMoney <= amount) {
+      return false
     } else {
-      throw new Error('ATM has insufficient funds');
+      this.ATMAccountMoney -= amount
+      return true
     }
-    if (this.ATMAccountMoney === 0) {
-    }
-    return this.ATMAccountMoney;
   }
-
 }
