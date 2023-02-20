@@ -32,7 +32,10 @@ export class UserCustomAmountComponent {
     } else if (costumeAmount % 5 !== 0) {
       this.displayError('Der Betrag muss in Scheinen ausgegeben werden können');
       throw new Error('The user input is not divisible by five');
-    } else {
+    } else if (costumeAmount >= 5000) {
+      this.displayError('Die maximale Abhebesumme beträgt 5000€')
+      throw new Error ('exceeded maximum')
+    } else{
       this.clearError();
       return true;
     }
