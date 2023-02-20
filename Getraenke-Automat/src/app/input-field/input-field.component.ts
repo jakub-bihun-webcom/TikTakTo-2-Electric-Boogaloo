@@ -41,9 +41,9 @@ export class InputFieldComponent {
       const change = this.cashRegisterService.calculateChange(this.paidAmount, price, this.registry);
       console.log(change + ' change');
       const beverageName = this.beverageOrderService.getBeverageName(this.chosenID);
-      console.log(beverageName)
-      this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry)
-      console.log(this.registry + " new registry amount")
+      console.log(beverageName);
+      this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
+      console.log(this.registry + ' new registry amount');
     }
   }
 
