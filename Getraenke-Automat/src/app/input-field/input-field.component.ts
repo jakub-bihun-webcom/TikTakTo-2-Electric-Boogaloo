@@ -18,6 +18,6 @@ export class InputFieldComponent {
 
   getInput(){
     this.verifyInputService.formatChecker(this.input)
-    this.input = parseInt(this.input)
+    this.chosenID = parseInt(this.input)
   }
 }

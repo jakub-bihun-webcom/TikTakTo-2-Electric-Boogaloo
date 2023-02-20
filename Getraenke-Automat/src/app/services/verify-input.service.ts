@@ -11,7 +11,7 @@ export class VerifyInputService {
       throw new Error("Keine Zahl");
     }
     if (parsedInput > 5) {
-      throw new Error();
+      throw new Error("Zahl keine gültige Getränke-ID");
     }
   }
 }
