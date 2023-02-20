@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./output-field.component.css']
 })
 export class OutputFieldComponent {
-  outputText:string = "Willkommen zum super tollen Getränkeautomaten"
+  outputText: string = 'Willkommen zum super tollen Getränkeautomaten';
 }

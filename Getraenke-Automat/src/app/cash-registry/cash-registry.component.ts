@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-cash-registry',
   templateUrl: './cash-registry.component.html',

@@ -4,17 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CashRegisterService {
-
-  constructor() { }
+  constructor() {}
   // Rückgeld berechnen
-  calculateChange(inputMoney: number, priceBeverage: number, registry: number): number{
+  calculateChange(inputMoney: number, priceBeverage: number, registry: number): number {
     const change = inputMoney - priceBeverage;
-    if (change > registry){
-      throw new Error("Nicht genug Wechselgeld!")
+    if (change < 0) {
+      throw new Error('Nich genug Geld eingeworfen!');
     }
-    return change
-  }
-
-  giveChange(change: number){
+    if (change > registry) {
+      throw new Error('Nicht genug Wechselgeld!');
+    }
+    return change;
   }
 }
