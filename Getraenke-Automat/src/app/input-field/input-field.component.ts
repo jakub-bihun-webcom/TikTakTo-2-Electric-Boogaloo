@@ -48,6 +48,9 @@ export class InputFieldComponent {
       console.log(this.registry + ' new registry amount');
       this.beverageOutputService.setOrder(change, this.chosenID)
     }
+    this.inputField = '';
+    this.paidAmount = 0;
+
   }
 
   cancelButton() {
