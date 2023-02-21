@@ -9,7 +9,7 @@
   <button class="payField" (click)="this.moneyInput(0.05)" type="button">0,05€</button>
 </div>
 <p class="outputBox">{{ paidAmount }}€</p>
-<button class="cancelButton" (click)="this.cancelMoneyInput()" type="button">CANCEL</button>
+<button class="cancelButton" (click)="this.cancelMoneyInput()" type="button">Return Money</button>
 
 <div>
   <input class="inputField" #input (input)="onInputChange(input.value)" value="{{ inputField }}" />

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BeverageOrderService } from '../services/beverage-order.service';
+import { BeverageOutputService } from '../services/beverage-output.service';
 import { CashRegisterService } from '../services/cash-register.service';
 import { VerifyInputService } from '../services/verify-input.service';
 
@@ -17,7 +18,8 @@ export class InputFieldComponent {
   constructor(
     private verifyInputService: VerifyInputService,
     private cashRegisterService: CashRegisterService,
-    private beverageOrderService: BeverageOrderService
+    private beverageOrderService: BeverageOrderService,
+    private beverageOutputService: BeverageOutputService
   ) {}
 
   moneyInput(input: number) {
@@ -44,6 +46,7 @@ export class InputFieldComponent {
       console.log(beverageName);
       this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
       console.log(this.registry + ' new registry amount');
+      this.beverageOutputService.setOrder(change, this.chosenID)
     }
   }
 
