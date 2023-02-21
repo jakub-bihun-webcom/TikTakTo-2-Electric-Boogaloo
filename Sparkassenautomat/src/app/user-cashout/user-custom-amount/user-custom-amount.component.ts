@@ -36,6 +36,7 @@ export class UserCustomAmountComponent {
       this.displayError('Die maximale Abhebesumme beträgt 5000€')
       throw new Error ('exceeded maximum')
     } else if (!this.handleUserAccountMoneyService.getATMAccountMoney(costumeAmount)){
+      this.displayError('Der Automat muss aufgefüllt werden!')
       throw new Error ('ATMAccountMoney exeeded')}
       else {
       this.clearError();

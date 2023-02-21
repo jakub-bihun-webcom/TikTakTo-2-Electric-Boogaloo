@@ -8,15 +8,14 @@ import { HandleUserAccountMoneyService } from '../user-cashout/services/handle-u
   styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent {
-  constructor(
-    private router: Router,
-    private handleUserAccountMoneyService: HandleUserAccountMoneyService
-  ) {}
+  constructor(private router: Router, private handleUserAccountMoneyService: HandleUserAccountMoneyService) {}
 
   users = [
-    { id: '1234', pin: '5678', userAccountMoney: 2300000 },
-    { id: '2345', pin: '2342', userAccountMoney: 11111 },
+    { id: '1234', pin: '5678', userAccountMoney: 2300000, isAdmin: false },
+    { id: '2345', pin: '2342', userAccountMoney: 11111, isAdmin: false },
+    { id: '0000', pin: '1802349', userAccountMoney: 0, isAdmin: true }
   ];
+
   currentUserMoney?: number;
   pinInput?: string;
   idInput?: string;
@@ -31,7 +30,7 @@ export class LoginScreenComponent {
       console.log(this.currentUserMoney);
     } else {
       this.displayError('Bitte überprüfen sie ihre anmelde Daten');
-      throw new Error('Input Validation ERROR')
+      throw new Error('Input Validation ERROR');
     }
   }
 
