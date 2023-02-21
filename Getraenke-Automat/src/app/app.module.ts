@@ -11,7 +11,15 @@ import { CashRegistryComponent } from './cash-registry/cash-registry.component';
 import { OutputCostumerComponent } from './output-costumer/output-costumer.component';
 
 @NgModule({
-  declarations: [AppComponent, BeverageListComponent, InputFieldComponent, OutputFieldComponent, CashRegistryComponent, OutputCostumerComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    BeverageListComponent,
+    InputFieldComponent,
+    OutputFieldComponent,
+    CashRegistryComponent,
+    OutputCostumerComponent,
+    HeaderComponent
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]

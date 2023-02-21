@@ -29,7 +29,6 @@ export class InputFieldComponent {
   }
 
   cancelMoneyInput() {
-
     this.paidAmount = 0;
   }
 
@@ -49,11 +48,10 @@ export class InputFieldComponent {
       console.log(beverageName);
       this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
       console.log(this.registry + ' new registry amount');
-      this.beverageOutputService.setOrder(change, this.chosenID)
+      this.beverageOutputService.setOrder(change, this.chosenID);
     }
     this.inputField = '';
     this.paidAmount = 0;
-
   }
 
   cancelButton() {
