@@ -1,10 +1,11 @@
 .beverageInfo {
-  background-color: #dddddd;
+  background-color: white;
 }
 
 .beverageList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
   padding: 10px;
 }
 

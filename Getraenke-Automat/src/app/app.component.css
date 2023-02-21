@@ -8,10 +8,11 @@
   grid-template-areas:
     '. Header Header Header .'
     '. GetränkInfos . outputField .'
-    '. GetränkInfos . . .'
     '. GetränkInfos . inputField .'
     '. GetränkInfos . . .'
-    '. . . . .';
+    '. GetränkInfos . . .'
+    '. . outputCostumer . .';
+  background-color: #dddddd;
 }
 
 .GetränkInfos {
@@ -24,10 +25,6 @@
 
 .Header {
   grid-area: Header;
-}
-
-.payField {
-  grid-area: payField;
 }
 
 .inputField {
