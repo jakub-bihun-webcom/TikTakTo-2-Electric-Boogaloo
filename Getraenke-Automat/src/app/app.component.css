@@ -9,8 +9,8 @@
     '. Header . . .'
     '. GetränkInfos . outputField .'
     '. GetränkInfos . inputField .'
-    '. GetränkInfos . outputCostumer .'
-    '. GetränkInfos . . .'
+    '. . . outputCostumer .'
+    '. . . . .'
     '. . . . .';
   background-color: #dddddd;
 }
@@ -29,4 +29,8 @@
 
 .inputField {
   grid-area: inputField;
+}
+
+.outputCostumer{
+  grid-area: outputCostumer;
 }
