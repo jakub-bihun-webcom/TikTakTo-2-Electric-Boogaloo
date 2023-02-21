@@ -21,6 +21,7 @@ export class UserCashoutComponent {
       this.navigatePage(this.handleUserAccountMoneyService.handleUserAccountMoney(amount));
     }
   }
+
   navigatePage(data: any) {
     this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
   }
