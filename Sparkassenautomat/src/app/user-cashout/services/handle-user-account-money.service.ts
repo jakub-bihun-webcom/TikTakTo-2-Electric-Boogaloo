@@ -23,11 +23,10 @@ export class HandleUserAccountMoneyService {
 
   getATMAccountMoney (amount: number) {
     if (this.ATMAccountMoney+1 <= amount) {
-      console.log(this.ATMAccountMoney)
-      return false
+      return [0, this.ATMAccountMoney]
     } else {
       this.ATMAccountMoney -= amount
-      return true
+      return [1]
     }
   }
 }
