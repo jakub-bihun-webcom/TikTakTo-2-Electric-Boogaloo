@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { BeverageOrderService } from '../services/beverage-order.service';
+import { Component, OnInit } from '@angular/core';
+import { beverageList } from '../beverage-list';
 import { BeverageOutputService } from '../services/beverage-output.service';
+
 
 @Component({
   selector: 'app-output-costumer',
@@ -8,20 +9,21 @@ import { BeverageOutputService } from '../services/beverage-output.service';
   styleUrls: ['./output-costumer.component.css']
 })
 export class OutputCostumerComponent {
-  change?: number;
   beverageName?: string;
+  change?: number;
 
   constructor(private beverageOutputService: BeverageOutputService) {}
 
-  getOrder(){
-    this.change = this.beverageOutputService.change;
-    if (this.change === undefined){
-      console.log("Error kein change")
-    }
-    this.beverageName = this.beverageOutputService.beverageName;
-    if (this.beverageName == undefined){
-      console.log('Error kein Name')
-    }
+  ngOnInit(){
+    this.beverageOutputService.orderOutput.subscribe((order) => {
+      this.getOrder(order.beverageName, order.change)
+    })
+
+  }
+
+  getOrder(beverageName: string, change: number){
+    this.change = change;
+    this.beverageName = beverageName
   }
 
 }

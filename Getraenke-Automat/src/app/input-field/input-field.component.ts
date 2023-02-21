@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BeverageOrderService } from '../services/beverage-order.service';
 import { BeverageOutputService } from '../services/beverage-output.service';
 import { CashRegisterService } from '../services/cash-register.service';
+import { ReturnMoneyService } from '../services/return-money.service';
 import { VerifyInputService } from '../services/verify-input.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class InputFieldComponent {
     private verifyInputService: VerifyInputService,
     private cashRegisterService: CashRegisterService,
     private beverageOrderService: BeverageOrderService,
-    private beverageOutputService: BeverageOutputService
+    private beverageOutputService: BeverageOutputService,
+    private returnMoneyService: ReturnMoneyService
   ) {}
 
   moneyInput(input: number) {
@@ -27,6 +29,7 @@ export class InputFieldComponent {
   }
 
   cancelMoneyInput() {
+
     this.paidAmount = 0;
   }
 
