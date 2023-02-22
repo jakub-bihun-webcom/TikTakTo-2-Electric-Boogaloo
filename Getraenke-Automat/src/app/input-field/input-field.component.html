@@ -10,18 +10,18 @@
     <button class="payField" (click)="this.moneyInput(0.05)" type="button">0,05€</button>
   </div>
   <div class="paidAmount">
-    <p class="outputBox">{{ paidAmount }}€</p>
+    <p class="paidAmountDisplay">{{ paidAmount }}€</p>
   </div>
   <div class="returnMoney">
-    <button class="cancelButton" (click)="this.cancelMoneyInput()" type="button">Return Money</button>
+    <button class="inputButton" (click)="this.cancelMoneyInput()" type="button">Geld zurück</button>
   </div>
   <div class="inputID">
     <input class="inputField" #input (input)="onInputChange(input.value)" value="{{ inputField }}" />
   </div>
   <div class="cancelId">
-    <button class="cancelButton" (click)="this.cancelButton()" type="button">CANCEL</button>
+    <button class="inputButton" (click)="this.cancelButton()" type="button">CANCEL</button>
   </div>
   <div class="enterButton">
-    <button (click)="this.getInput()" type="button">ENTER</button>
+    <button class="inputButton"(click)="this.getInput()" type="button">ENTER</button>
   </div>
 </div>
