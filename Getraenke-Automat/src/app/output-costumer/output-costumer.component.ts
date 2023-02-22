@@ -30,7 +30,7 @@ export class OutputCostumerComponent {
     this.change = value;
   }
 
-  resetOutput(){
+  resetOutput() {
     this.change = 0;
     this.beverageName = undefined;
   }
