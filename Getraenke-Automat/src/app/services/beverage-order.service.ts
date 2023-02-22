@@ -14,4 +14,9 @@ export class BeverageOrderService {
     const name = beverageList.filter(x => x.id === inputID).map(x => x.name);
     return name[0];
   }
+
+  checkAvailibity(inputID: number): boolean{
+    const avaibility = beverageList.filter(x => x.id === inputID).map(x => x.quantity)
+    return avaibility[0] > 0;
+  }
 }

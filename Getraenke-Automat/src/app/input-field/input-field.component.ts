@@ -38,6 +38,10 @@ export class InputFieldComponent {
   getInput() {
     this.verifyInputService.validID(this.inputField);
     this.chosenID = parseInt(this.inputField);
+    const available = this.beverageOrderService.checkAvailibity(this.chosenID)
+    if (!available){
+      throw new Error('ausverkauft')
+    }
 
     if (this.paidAmount > 0) {
       const price = this.beverageOrderService.getBeveragePrice(this.chosenID);
