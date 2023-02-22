@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BeverageOutputService } from '../services/beverage-output.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class OutputCostumerComponent {
       this.getOrder(order.beverageName, order.change);
     });
     this.beverageOutputService.canceledMoney.subscribe((value: number) => {
-      this.canceldMoneyOutput(value);
+      this.canceledMoneyOutput(value);
     });
   }
 
@@ -26,7 +26,12 @@ export class OutputCostumerComponent {
     this.beverageName = beverageName;
   }
 
-  canceldMoneyOutput(value: number) {
+  canceledMoneyOutput(value: number) {
     this.change = value;
+  }
+
+  resetOutput(){
+    this.change = 0;
+    this.beverageName = undefined;
   }
 }

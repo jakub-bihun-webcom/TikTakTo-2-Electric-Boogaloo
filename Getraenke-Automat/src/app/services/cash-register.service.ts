@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CashRegisterService {
   constructor() {}
-  // Rückgeld berechnen
+
   calculateChange(inputMoney: number, priceBeverage: number, registry: number): number {
     const change = inputMoney - priceBeverage;
     if (change < 0) {

@@ -7,5 +7,8 @@ import { beverageList } from '../beverage-list';
   styleUrls: ['./beverage-list.component.css']
 })
 export class BeverageListComponent {
+  constructor() {}
+
+  // this.bever
   beverages = beverageList;
 }
