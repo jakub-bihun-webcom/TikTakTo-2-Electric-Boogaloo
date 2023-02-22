@@ -10,6 +10,7 @@ export class BeverageOutputService {
     change: 0,
     beverageName: ''
   });
+  canceledMoney = new BehaviorSubject<number>(0);
 
   constructor(private beverageOrderService: BeverageOrderService) {}
 
@@ -23,5 +24,9 @@ export class BeverageOutputService {
       change: change,
       beverageName: name
     });
+  }
+
+  returnMoney(value: number) {
+    this.canceledMoney.next(value);
   }
 }

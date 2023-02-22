@@ -29,6 +29,7 @@ export class InputFieldComponent {
   }
 
   cancelMoneyInput() {
+    this.beverageOutputService.returnMoney(this.paidAmount)
     this.paidAmount = 0;
   }
 

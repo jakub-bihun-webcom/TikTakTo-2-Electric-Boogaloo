@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { beverageList } from '../beverage-list';
 import { BeverageOutputService } from '../services/beverage-output.service';
 
 @Component({
@@ -17,10 +16,17 @@ export class OutputCostumerComponent {
     this.beverageOutputService.orderOutput.subscribe(order => {
       this.getOrder(order.beverageName, order.change);
     });
+    this.beverageOutputService.canceledMoney.subscribe((value: number) => {
+      this.canceldMoneyOutput(value);
+    });
   }
 
   getOrder(beverageName: string, change: number) {
     this.change = change;
     this.beverageName = beverageName;
+  }
+
+  canceldMoneyOutput(value: number) {
+    this.change = value;
   }
 }
