@@ -1,5 +1,34 @@
+.container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'moneyInput moneyInput'
+    'paidAmount returnMoney'
+    'inputID cancelId'
+    '. enterButton';
+}
+
 .payField {
   background-color: white;
   border-radius: 50%;
   border: 2px solid #4caf50;
+}
+
+.paidAmount {
+  grid-area: paidAmount;
+}
+.returnMoney {
+  grid-area: returnMoney;
+}
+.inputID {
+  grid-area: inputID;
+}
+.cancelId {
+  grid-area: cancelId;
+}
+.enterButton {
+  grid-area: enterButton;
 }
