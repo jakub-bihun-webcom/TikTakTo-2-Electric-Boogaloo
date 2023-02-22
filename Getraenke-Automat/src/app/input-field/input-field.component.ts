@@ -11,7 +11,7 @@ import { VerifyInputService } from '../services/verify-input.service';
 })
 export class InputFieldComponent {
   chosenID?: number;
-  inputField: any = '';
+  inputField: string = '';
   registry: number = 100;
   paidAmount: number = 0;
 
@@ -42,11 +42,8 @@ export class InputFieldComponent {
     if (this.paidAmount > 0) {
       const price = this.beverageOrderService.getBeveragePrice(this.chosenID);
       const change = this.cashRegisterService.calculateChange(this.paidAmount, price, this.registry);
-      console.log(change + ' change');
-      const beverageName = this.beverageOrderService.getBeverageName(this.chosenID);
-      console.log(beverageName);
+
       this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
-      console.log(this.registry + ' new registry amount');
       this.beverageOutputService.setOrder(change, this.chosenID);
     }
     this.inputField = '';

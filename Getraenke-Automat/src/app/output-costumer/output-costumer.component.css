@@ -1,7 +1,7 @@
 .beverageOutput {
   border: 3px solid #000;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-colums: 1fr 1fr 1fr;
   grid-template-areas: 'outputBeverage outputChange takeOutput';
 }
 

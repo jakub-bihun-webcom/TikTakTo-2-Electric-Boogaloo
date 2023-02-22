@@ -7,7 +7,7 @@ import { BeverageOutputService } from '../services/beverage-output.service';
   styleUrls: ['./output-costumer.component.css']
 })
 export class OutputCostumerComponent {
-  beverageName?: string;
+  beverageName: string = 'leer';
   change?: number;
 
   constructor(private beverageOutputService: BeverageOutputService) {}
@@ -32,6 +32,6 @@ export class OutputCostumerComponent {
 
   resetOutput() {
     this.change = 0;
-    this.beverageName = undefined;
+    this.beverageName = 'leer';
   }
 }
