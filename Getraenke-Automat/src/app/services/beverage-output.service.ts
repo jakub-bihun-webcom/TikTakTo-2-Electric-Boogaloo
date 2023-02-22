@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class BeverageOutputService {
   orderOutput = new BehaviorSubject<{ change: number; beverageName: string }>({
     change: 0,
-    beverageName: ''
+    beverageName: 'leer'
   });
   canceledMoney = new BehaviorSubject<number>(0);
 

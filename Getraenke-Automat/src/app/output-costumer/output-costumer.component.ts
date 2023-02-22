@@ -7,7 +7,7 @@ import { BeverageOutputService } from '../services/beverage-output.service';
   styleUrls: ['./output-costumer.component.css']
 })
 export class OutputCostumerComponent {
-  beverageName: string = 'leer';
+  beverageName?: string;
   change?: number;
 
   constructor(private beverageOutputService: BeverageOutputService) {}
