@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { beverageList } from '../beverage-list';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class VerifyInputService {
     if (isNaN(parsedInput)) {
       throw new Error('Keine Zahl');
     }
-    if (parsedInput > 5) {
+    if (parsedInput > beverageList.length) {
       throw new Error('Zahl keine gültige Getränke-ID');
     }
   }
