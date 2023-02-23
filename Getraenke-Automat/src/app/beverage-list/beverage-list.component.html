@@ -1,8 +1,20 @@
 <div class="beverageInfo">
-  <li class="beverageList" *ngFor="let beverage of beverages">
-    <span class="beverageID">{{ beverage.id }}</span>
-    <span class="beverageName">{{ beverage.name }}</span>
-    <span class="beveragePrice">{{ beverage.price }}€</span>
-    <span class="beveragePrice">{{ beverage.quantity }}</span>
-  </li>
+  <table class="beverageTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Getränk</th>
+        <th>Preis</th>
+        <th>Menge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="beverageList" *ngFor="let beverage of beverages">
+        <td class="beverageID">{{ beverage.id }}</td>
+        <td class="beverageName">{{ beverage.name }}</td>
+        <td class="beveragePrice">{{ beverage.price }}€</td>
+        <td class="beveragePrice">{{ beverage.quantity }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
