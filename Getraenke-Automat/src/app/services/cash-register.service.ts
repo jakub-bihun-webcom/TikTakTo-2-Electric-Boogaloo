@@ -5,12 +5,12 @@ import { CostumerMessageService } from './costumer-message.service';
   providedIn: 'root'
 })
 export class CashRegisterService {
-  constructor( private costumerMessageService: CostumerMessageService) {}
+  constructor(private costumerMessageService: CostumerMessageService) {}
 
   calculateChange(inputMoney: number, priceBeverage: number, registry: number): number {
     const change = inputMoney - priceBeverage;
     if (change < 0) {
-      const errorMsg = 'Nicht genug Geld eingeworfen'
+      const errorMsg = 'Nicht genug Geld eingeworfen';
       // this.costumerMessageService.setCostumerMessage(errorMsg)
       throw new Error(errorMsg);
     }

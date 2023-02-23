@@ -9,16 +9,15 @@ import { CostumerMessageService } from '../services/costumer-message.service';
 export class OutputFieldComponent {
   outputText: string = 'Willkommen zum super tollen Getränkeautomaten';
 
-  constructor(private costumerMessageService: CostumerMessageService) {
-  }
+  constructor(private costumerMessageService: CostumerMessageService) {}
 
-  ngOnit(){
+  ngOnit() {
     this.costumerMessageService.costumerMessage.subscribe((text: string) => {
-      this.updateMessage(text)
-    })
+      this.updateMessage(text);
+    });
   }
 
-  updateMessage(text: string){
+  updateMessage(text: string) {
     this.outputText = text;
   }
 }
