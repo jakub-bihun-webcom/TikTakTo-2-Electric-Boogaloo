@@ -17,22 +17,6 @@
   border: 2px solid #4caf50;
 }
 
-.paidAmount {
-  grid-area: paidAmount;
-}
-.returnMoney {
-  grid-area: returnMoney;
-}
-.inputID {
-  grid-area: inputID;
-}
-.cancelId {
-  grid-area: cancelId;
-}
-.enterButton {
-  grid-area: enterButton;
-}
-
 .inputButton {
   width: 100%;
   height: 100%;
@@ -47,8 +31,24 @@
 .inputField {
   text-align: right;
   font-size: 20px;
-  background-color: #ababab;
+  background-color: #c4c4c4;
   width: 90%;
   height: 80%;
   border-radius: 5px;
+}
+
+.paidAmount {
+  grid-area: paidAmount;
+}
+.returnMoney {
+  grid-area: returnMoney;
+}
+.inputID {
+  grid-area: inputID;
+}
+.cancelId {
+  grid-area: cancelId;
+}
+.enterButton {
+  grid-area: enterButton;
 }

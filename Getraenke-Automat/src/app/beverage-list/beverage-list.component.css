@@ -1,10 +1,15 @@
 .beverageTable {
   width: 100%;
   background-color: white;
+  border-collapse: collapse;
 }
 
 thead {
   color: white;
   width: 100%;
   background: #000;
+}
+
+tr {
+  border-bottom: 1pt solid black;
 }
