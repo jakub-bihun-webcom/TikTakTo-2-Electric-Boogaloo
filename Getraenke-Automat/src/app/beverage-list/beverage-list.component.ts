@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Beverage } from '../beverage';
 import { beverageList } from '../beverage-list';
+import { UpdateBeverageQuantityService } from '../services/update-beverage-quantity.service';
 
 @Component({
   selector: 'app-getraenke-liste',
@@ -8,4 +10,16 @@ import { beverageList } from '../beverage-list';
 })
 export class BeverageListComponent {
   beverages = beverageList;
+
+  constructor(private updateBeverageQuantity: UpdateBeverageQuantityService) {}
+
+  ngOnit() {
+    this.updateBeverageQuantity.updatedBeverageList.subscribe(update => {
+      this.updateList(update);
+    });
+  }
+
+  updateList(updatedList: Beverage[]) {
+    this.beverages = updatedList;
+  }
 }

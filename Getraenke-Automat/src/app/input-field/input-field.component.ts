@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BeverageOrderService } from '../services/beverage-order.service';
 import { BeverageOutputService } from '../services/beverage-output.service';
 import { CashRegisterService } from '../services/cash-register.service';
+import { UpdateBeverageQuantityService } from '../services/update-beverage-quantity.service';
 import { VerifyInputService } from '../services/verify-input.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class InputFieldComponent {
     private verifyInputService: VerifyInputService,
     private cashRegisterService: CashRegisterService,
     private beverageOrderService: BeverageOrderService,
-    private beverageOutputService: BeverageOutputService
+    private beverageOutputService: BeverageOutputService,
+    private updateBeverageQuantity: UpdateBeverageQuantityService
   ) {}
 
   moneyInput(input: number) {
@@ -49,6 +51,7 @@ export class InputFieldComponent {
 
       this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
       this.beverageOutputService.setOrder(change, this.chosenID);
+      this.updateBeverageQuantity.updateQuantity(this.chosenID)
     }
     this.inputField = '';
     this.paidAmount = 0;
