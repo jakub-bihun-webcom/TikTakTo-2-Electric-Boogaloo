@@ -7,6 +7,10 @@ import { beverageList } from '../beverage-list';
   providedIn: 'root'
 })
 export class UpdateBeverageQuantityService {
+  updatedBeverageList: Beverage[] = beverageList
+
+  updateQuatity(id: number){
+    this.updatedBeverageList = beverageList.map(beverage => {
   // updatedBeverageList: Beverage[] = beverageList
   updatedBeverageList = new BehaviorSubject<Beverage[]>(beverageList)
 
@@ -16,6 +20,7 @@ export class UpdateBeverageQuantityService {
         return {...beverage, quantity: beverage.quantity - 1}
       }
       return beverage
+    })
     }))
     console.log(this.updatedBeverageList)
   }

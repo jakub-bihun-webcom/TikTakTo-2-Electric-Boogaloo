@@ -51,7 +51,7 @@ export class InputFieldComponent {
 
       this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
       this.beverageOutputService.setOrder(change, this.chosenID);
-      this.updateBeverageQuantity.updateQuantity(this.chosenID)
+      this.updateBeverageQuantity.updateQuatity(this.chosenID)
     }
     this.inputField = '';
     this.paidAmount = 0;
