@@ -11,11 +11,13 @@ export class CashRegisterService {
     const change = inputMoney - priceBeverage;
     if (change < 0) {
       const errorMsg = 'Nicht genug Geld eingeworfen';
-      // this.costumerMessageService.setCostumerMessage(errorMsg)
+      this.costumerMessageService.setCostumerMessage(errorMsg)
       throw new Error(errorMsg);
     }
     if (change > registry) {
-      throw new Error('Nicht genug Wechselgeld!');
+      const errorMsg = 'Nicht genug Wechselgeld im Automaten';
+      this.costumerMessageService.setCostumerMessage(errorMsg)
+      throw new Error(errorMsg);
     }
     return change;
   }

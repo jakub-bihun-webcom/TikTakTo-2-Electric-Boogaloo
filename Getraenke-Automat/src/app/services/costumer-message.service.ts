@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CostumerMessageService {
-  costumerMessage = new BehaviorSubject<string>('');
+  costumerMessage = new BehaviorSubject<string>('Willkommen beim besten Getränke Automaten');
 
   setCostumerMessage(text: string) {
     this.costumerMessage.next(text);

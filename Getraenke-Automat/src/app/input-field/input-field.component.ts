@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BeverageOrderService } from '../services/beverage-order.service';
 import { BeverageOutputService } from '../services/beverage-output.service';
 import { CashRegisterService } from '../services/cash-register.service';
+import { CostumerMessageService } from '../services/costumer-message.service';
 import { UpdateBeverageQuantityService } from '../services/update-beverage-quantity.service';
 import { VerifyInputService } from '../services/verify-input.service';
 
@@ -21,7 +22,8 @@ export class InputFieldComponent {
     private cashRegisterService: CashRegisterService,
     private beverageOrderService: BeverageOrderService,
     private beverageOutputService: BeverageOutputService,
-    private updateBeverageQuantity: UpdateBeverageQuantityService
+    private updateBeverageQuantity: UpdateBeverageQuantityService,
+    private costumerMessageService: CostumerMessageService
   ) {}
 
   moneyInput(input: number) {
@@ -42,7 +44,9 @@ export class InputFieldComponent {
     this.chosenID = parseInt(this.inputField);
     const available = this.beverageOrderService.checkAvailibity(this.chosenID);
     if (!available) {
-      throw new Error('ausverkauft');
+      const errorMsg = 'Das Getränk ist leider ausverkauft'
+      this.costumerMessageService.setCostumerMessage(errorMsg)
+      throw new Error(errorMsg);
     }
 
     if (this.paidAmount > 0) {
@@ -52,6 +56,8 @@ export class InputFieldComponent {
       this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
       this.beverageOutputService.setOrder(change, this.chosenID);
       this.updateBeverageQuantity.updateQuantity(this.chosenID);
+
+      this.costumerMessageService.setCostumerMessage('Vielen Dank für ihren Einkauf')
     }
     this.inputField = '';
     this.paidAmount = 0;

@@ -7,7 +7,7 @@ import { CostumerMessageService } from '../services/costumer-message.service';
   styleUrls: ['./output-field.component.css']
 })
 export class OutputFieldComponent {
-  outputText: string = 'Willkommen zum super tollen Getränkeautomaten';
+  outputText?: string;
 
   constructor(private costumerMessageService: CostumerMessageService) {}
 

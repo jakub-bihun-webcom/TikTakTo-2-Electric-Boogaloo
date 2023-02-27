@@ -20,6 +20,8 @@
 
 .outputField {
   grid-area: outputField;
+  background-color: #aaaaaa;
+
 }
 
 .Header {

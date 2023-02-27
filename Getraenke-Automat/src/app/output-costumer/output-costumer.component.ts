@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BeverageOutputService } from '../services/beverage-output.service';
+import { CostumerMessageService } from '../services/costumer-message.service';
 
 @Component({
   selector: 'app-output-costumer',
@@ -10,7 +11,7 @@ export class OutputCostumerComponent {
   beverageName?: string;
   change?: number;
 
-  constructor(private beverageOutputService: BeverageOutputService) {}
+  constructor(private beverageOutputService: BeverageOutputService, private costumerMessageService: CostumerMessageService) {}
 
   ngOnInit(): void {
     this.beverageOutputService.orderOutput.subscribe(order => {
@@ -33,5 +34,6 @@ export class OutputCostumerComponent {
   resetOutput() {
     this.change = 0;
     this.beverageName = 'leer';
+    this.costumerMessageService.setCostumerMessage('Willkommen beim besten Getränke Automaten')
   }
 }
