@@ -19,6 +19,5 @@ export class UpdateBeverageQuantityService {
       })
     );
     beverageList[id - 1].quantity -= 1;
-    console.log(this.updatedBeverageList);
   }
 }
