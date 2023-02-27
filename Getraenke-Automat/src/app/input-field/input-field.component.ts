@@ -42,7 +42,7 @@ export class InputFieldComponent {
   getInput() {
     this.verifyInputService.validID(this.inputField);
     this.chosenID = parseInt(this.inputField);
-    const available = this.beverageOrderService.checkAvailibity(this.chosenID);
+    const available = this.beverageOrderService.checkAvailability(this.chosenID);
     if (!available) {
       const errorMsg = 'Das Getränk ist leider ausverkauft';
       this.costumerMessageService.setCostumerMessage(errorMsg);
