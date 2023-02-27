@@ -8,7 +8,7 @@ import { UpdateBeverageQuantityService } from '../services/update-beverage-quant
   templateUrl: './beverage-list.component.html',
   styleUrls: ['./beverage-list.component.css']
 })
-export class BeverageListComponent{
+export class BeverageListComponent {
   beverages = beverageList;
 
   constructor(private updateBeverageQuantityService: UpdateBeverageQuantityService) {}

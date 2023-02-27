@@ -44,8 +44,8 @@ export class InputFieldComponent {
     this.chosenID = parseInt(this.inputField);
     const available = this.beverageOrderService.checkAvailibity(this.chosenID);
     if (!available) {
-      const errorMsg = 'Das Getränk ist leider ausverkauft'
-      this.costumerMessageService.setCostumerMessage(errorMsg)
+      const errorMsg = 'Das Getränk ist leider ausverkauft';
+      this.costumerMessageService.setCostumerMessage(errorMsg);
       throw new Error(errorMsg);
     }
 
@@ -57,7 +57,7 @@ export class InputFieldComponent {
       this.beverageOutputService.setOrder(change, this.chosenID);
       this.updateBeverageQuantity.updateQuantity(this.chosenID);
 
-      this.costumerMessageService.setCostumerMessage('Vielen Dank für ihren Einkauf')
+      this.costumerMessageService.setCostumerMessage('Vielen Dank für ihren Einkauf');
     }
     this.inputField = '';
     this.paidAmount = 0;
