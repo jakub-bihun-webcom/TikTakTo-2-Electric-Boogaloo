@@ -7,7 +7,7 @@ import { beverageList } from '../beverage-list';
   providedIn: 'root'
 })
 export class UpdateBeverageQuantityService {
-  // updatedBeverageList: Beverage[] = beverageList
+
   updatedBeverageList = new BehaviorSubject<Beverage[]>(beverageList);
 
   updateQuantity(id: number) {

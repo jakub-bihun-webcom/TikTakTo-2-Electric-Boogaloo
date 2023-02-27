@@ -11,7 +11,7 @@ export class OutputFieldComponent {
 
   constructor(private costumerMessageService: CostumerMessageService) {}
 
-  ngOnit() {
+  ngOnInit() {
     this.costumerMessageService.costumerMessage.subscribe((text: string) => {
       this.updateMessage(text);
     });

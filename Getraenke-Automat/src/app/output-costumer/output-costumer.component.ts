@@ -12,7 +12,7 @@ export class OutputCostumerComponent {
 
   constructor(private beverageOutputService: BeverageOutputService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.beverageOutputService.orderOutput.subscribe(order => {
       this.getOrder(order.beverageName, order.change);
     });
