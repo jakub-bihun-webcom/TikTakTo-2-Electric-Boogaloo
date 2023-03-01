@@ -58,6 +58,10 @@ export class InputFieldComponent {
       this.updateBeverageQuantity.updateQuantity(this.chosenID);
 
       this.costumerMessageService.setCostumerMessage('Vielen Dank für ihren Einkauf');
+    } else {
+      const errorMsg = 'Kein Geld eingeworfen';
+      this.costumerMessageService.setCostumerMessage(errorMsg);
+      throw new Error(errorMsg);
     }
     this.inputField = '';
     this.paidAmount = 0;

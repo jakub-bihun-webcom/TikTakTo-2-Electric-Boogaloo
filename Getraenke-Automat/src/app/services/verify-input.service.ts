@@ -11,11 +11,7 @@ export class VerifyInputService {
   validID(input: any) {
     const parsedInput = parseInt(input);
     const errorMsg = 'Keine gültige Getränke-ID';
-    if (isNaN(parsedInput)) {
-      this.costumerMessageService.setCostumerMessage(errorMsg);
-      throw new Error(errorMsg);
-    }
-    if (parsedInput > beverageList.length) {
+    if (isNaN(parsedInput) || parsedInput > beverageList.length) {
       this.costumerMessageService.setCostumerMessage(errorMsg);
       throw new Error(errorMsg);
     }
