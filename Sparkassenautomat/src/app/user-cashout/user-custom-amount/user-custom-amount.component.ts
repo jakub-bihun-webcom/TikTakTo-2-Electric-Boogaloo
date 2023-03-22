@@ -29,12 +29,15 @@ export class UserCustomAmountComponent {
     if (isNaN(costumeAmount)) {
       this.displayError('Der Betrag muss in Zahlen angegeben werden');
       throw new Error('The user input is not a number');
-    } else if (costumeAmount % 5 !== 0) {
+    }  if (costumeAmount % 5 !== 0) {
       this.displayError('Der Betrag muss in Scheinen ausgegeben werden können');
       throw new Error('The user input is not divisible by five');
-    } else if (costumeAmount >= 5001) {
+    }  if (costumeAmount >= 5001) {
       this.displayError('Die maximale Abhebesumme beträgt 5000€')
       throw new Error ('exceeded maximum')
+    }  if (costumeAmount <= -1) {
+      this.displayError('Bitte trage einen positiven Betrag ein')
+      throw new Error('Negative Numbers cant be processed')
     } else {
       const accountMoney = this.handleUserAccountMoneyService.getATMAccountMoney(costumeAmount);
       if (accountMoney[0] === 0) {
