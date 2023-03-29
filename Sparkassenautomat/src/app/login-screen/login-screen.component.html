@@ -1,0 +1,19 @@
+<div class="menuOptions">
+  <div class="leftSide">
+    <a>➔ Anmelde ID:</a>
+    <div class="amountInputContainer">
+      <input id="userIDInput" class="userIDInput" [(ngModel)]="idInput" type="text" placeholder=" ID" />
+      <input id="userPinInput" class="userPinInput" [(ngModel)]="pinInput" type="text" placeholder=" PIN" />
+    </div>
+    <a (click)="goToUserHomeScreen()" class="submitButton">• Bestätigen</a>
+  </div>
+  <div class="rightSide">
+    <a></a>
+    <a></a>
+    <a></a>
+  </div>
+</div>
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+  <button (click)="clearError()">X</button>
+</div>

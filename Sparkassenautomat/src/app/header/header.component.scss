@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f30a07;
+  height: 80px;
+}
+
+.logo {
+  margin-left: 30px;
+  width: 50px;
+  height: auto;
+  background-color: white;
+  border-radius: 9px 9px 9px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.loginButton {
+  margin-left: auto;
+  border-radius: 4px 4px 4px 4px;
+  background-color: white;
+  margin-right: 50px;
+}
+
+.loginLabel {
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.loginLabel:hover {
+  color: #e9110f;
+  cursor: pointer;
+}

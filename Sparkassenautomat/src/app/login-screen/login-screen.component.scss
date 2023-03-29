@@ -1,0 +1,82 @@
+.menuOptions {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftSide {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSide {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.leftSide a,
+.rightSide a {
+  align-items: start;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.leftSide {
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+}
+
+.userIDInput, .userPinInput {
+  width: 250px;
+  height: 40px;
+  font-size: 30px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #0e1419;
+  border-radius: 12px 12px 12px 12px;
+  padding-right: 40px;
+  margin-top: 25px;
+}
+
+.amountInputContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error {
+  background-color: #1e2022;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  font-size: 20px;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.error button {
+  color: white;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  width: 10px;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  cursor: pointer;
+}
