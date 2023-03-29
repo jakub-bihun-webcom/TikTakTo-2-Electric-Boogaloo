@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { CostumerMessageService } from '../services/costumer-message.service';
+
+@Component({
+  selector: 'app-output-field',
+  templateUrl: './output-field.component.html',
+  styleUrls: ['./output-field.component.css']
+})
+export class OutputFieldComponent {
+  outputText?: string;
+
+  constructor(private costumerMessageService: CostumerMessageService) {}
+
+  ngOnInit() {
+    this.costumerMessageService.costumerMessage.subscribe((text: string) => {
+      this.updateMessage(text);
+    });
+  }
+
+  updateMessage(text: string) {
+    this.outputText = text;
+  }
+}
