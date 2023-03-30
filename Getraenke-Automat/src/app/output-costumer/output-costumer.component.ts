@@ -8,8 +8,8 @@ import { CostumerMessageService } from '../services/costumer-message.service';
   styleUrls: ['./output-costumer.component.css']
 })
 export class OutputCostumerComponent {
-  beverageName?: string;
-  change?: number;
+  beverageName: string = 'leer';
+  change: number = 0;
 
   constructor(
     private beverageOutputService: BeverageOutputService,
@@ -26,12 +26,14 @@ export class OutputCostumerComponent {
   }
 
   getOrder(beverageName: string, change: number) {
-    this.change = change;
-    this.beverageName = beverageName;
+    this.change += change;
+    if (this.beverageName === 'leer') {
+      this.beverageName = beverageName;
+    } else this.beverageName = beverageName + ' ' + this.beverageName;
   }
 
   canceledMoneyOutput(value: number) {
-    this.change = value;
+    this.change += value;
   }
 
   resetOutput() {
