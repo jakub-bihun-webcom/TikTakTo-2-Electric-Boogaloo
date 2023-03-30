@@ -3,15 +3,15 @@ import { BeverageOutputService } from '../services/beverage-output.service';
 import { CostumerMessageService } from '../services/costumer-message.service';
 
 @Component({
-  selector: 'app-output-costumer',
-  templateUrl: './output-costumer.component.html',
-  styleUrls: ['./output-costumer.component.css']
+  selector: 'app-output-customer',
+  templateUrl: './output-customer.component.html',
+  styleUrls: ['./output-customer.component.css']
 })
 
 /**
  * Komponenten Klasse, welche die Getränkeausgabe und das Rückgeld regelt.
  */
-export class OutputCostumerComponent {
+export class OutputCustomerComponent {
   beverageName?: string;
   change: number = 0;
 
