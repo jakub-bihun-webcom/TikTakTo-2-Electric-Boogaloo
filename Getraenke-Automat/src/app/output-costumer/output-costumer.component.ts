@@ -8,7 +8,7 @@ import { CostumerMessageService } from '../services/costumer-message.service';
   styleUrls: ['./output-costumer.component.css']
 })
 export class OutputCostumerComponent {
-  beverageName: string = 'leer';
+  beverageName?: string;
   change: number = 0;
 
   constructor(
@@ -27,9 +27,11 @@ export class OutputCostumerComponent {
 
   getOrder(beverageName: string, change: number) {
     this.change += change;
-    if (this.beverageName === 'leer') {
+    if (this.beverageName === undefined) {
       this.beverageName = beverageName;
-    } else this.beverageName = beverageName + ' ' + this.beverageName;
+    } else {
+      this.beverageName = beverageName + ' ' + this.beverageName;
+    }
   }
 
   canceledMoneyOutput(value: number) {
@@ -38,7 +40,7 @@ export class OutputCostumerComponent {
 
   resetOutput() {
     this.change = 0;
-    this.beverageName = 'leer';
+    this.beverageName = '';
     this.costumerMessageService.setCostumerMessage('Willkommen beim besten Getränke Automaten');
   }
 }
