@@ -9,11 +9,18 @@ import { CostumerMessageService } from '../services/costumer-message.service';
 })
 
 /**
- * Komponenten Klasse, welche zwei Observables (Bestellungen) beobachtet und beim Eingehen einer
- * Bestellung das Getränk und oder das Rückgeld ausgibt.
+ * Repräsentiert die Ausgabe eines Getränkeautomaten. Beim Eingehen einer gültigen Bestellung,
+ * oder der Anforderung des Rückgelds wird die Ausgabe in dieser Komponente simuliert.
  */
 export class OutputCustomerComponent {
+  /**
+   * Repräsentiert das Ausgabefach für Getränke
+   */
   beverageName?: string;
+
+  /**
+   * Repräsentiert das Rückgeld
+   */
   change?: number;
 
   constructor(
@@ -26,21 +33,15 @@ export class OutputCustomerComponent {
       this.getOrder(order.beverageName, order.change);
     });
     this.beverageOutputService.canceledMoney.subscribe((value: number) => {
-      this.canceledMoneyOutput(value);
+      this.addChange(value);
     });
   }
 
   /**
-   * Fügt die Bestellung dem Ausgabefeld hinzu.
-   * @param {string} beverageName
-   * @param {number} change
+   * Fügt die Bestellung dem Rückgeld und dem Ausgabefach für Getränke hinzu.
    */
   getOrder(beverageName: string, change: number) {
-    if (this.change === undefined) {
-      this.change = change;
-    } else {
-      this.change = this.change + change;
-    }
+    this.addChange(change);
     if (this.beverageName === undefined) {
       this.beverageName = beverageName;
     } else {
@@ -49,10 +50,9 @@ export class OutputCustomerComponent {
   }
 
   /**
-   * Addiert das zurückgeforderte Geld zum aktuellen Rückgeld hinzu.
-   * @param {number} change
+   * Addiert change dem Rückgeld hinzu.
    */
-  canceledMoneyOutput(change: number) {
+  addChange(change: number) {
     if (this.change === undefined) {
       this.change = change;
     } else {
@@ -61,7 +61,7 @@ export class OutputCustomerComponent {
   }
 
   /**
-   * Setzt die Ausgabe Getränk, das Rückgeld und die customerMessage auf ihre Ursprungswerte zurück.
+   * Setzt das Ausgabefach für Getränke, das Rückgeld und die customerMessage auf ihre Ursprungswerte zurück.
    */
   resetOutput() {
     this.change = 0;
