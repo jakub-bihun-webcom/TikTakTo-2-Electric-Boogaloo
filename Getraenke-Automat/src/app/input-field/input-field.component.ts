@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BeverageOrderService } from '../services/beverage-order.service';
 import { BeverageOutputService } from '../services/beverage-output.service';
 import { CashRegisterService } from '../services/cash-register.service';
-import { CostumerMessageService } from '../services/costumer-message.service';
+import { CustomerMessageService } from '../services/customer-message.service';
 import { UpdateBeverageQuantityService } from '../services/update-beverage-quantity.service';
 import { VerifyInputService } from '../services/verify-input.service';
 
@@ -23,7 +23,7 @@ export class InputFieldComponent {
     private beverageOrderService: BeverageOrderService,
     private beverageOutputService: BeverageOutputService,
     private updateBeverageQuantity: UpdateBeverageQuantityService,
-    private costumerMessageService: CostumerMessageService
+    private customerMessageService: CustomerMessageService
   ) {}
 
   moneyInput(input: number) {
@@ -45,7 +45,7 @@ export class InputFieldComponent {
     const available = this.beverageOrderService.checkAvailability(this.chosenID);
     if (!available) {
       const errorMsg = 'Das Getränk ist leider ausverkauft';
-      this.costumerMessageService.setCostumerMessage(errorMsg);
+      this.customerMessageService.setCustomerMessage(errorMsg);
       throw new Error(errorMsg);
     }
 
@@ -57,10 +57,10 @@ export class InputFieldComponent {
       this.beverageOutputService.setOrder(change, this.chosenID);
       this.updateBeverageQuantity.updateQuantity(this.chosenID);
 
-      this.costumerMessageService.setCostumerMessage('Vielen Dank für ihren Einkauf');
+      this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
     } else {
       const errorMsg = 'Kein Geld eingeworfen';
-      this.costumerMessageService.setCostumerMessage(errorMsg);
+      this.customerMessageService.setCustomerMessage(errorMsg);
       throw new Error(errorMsg);
     }
     this.inputField = '';

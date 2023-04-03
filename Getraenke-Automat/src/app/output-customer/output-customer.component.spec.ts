@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OutputCustomerComponent } from './output-customer.component';
 
-describe('OutputCostumerComponent', () => {
+describe('OutputCustomerComponent', () => {
   let component: OutputCustomerComponent;
   let fixture: ComponentFixture<OutputCustomerComponent>;
 
