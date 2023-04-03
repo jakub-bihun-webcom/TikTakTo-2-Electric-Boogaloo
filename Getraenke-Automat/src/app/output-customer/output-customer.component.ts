@@ -9,7 +9,8 @@ import { CostumerMessageService } from '../services/costumer-message.service';
 })
 
 /**
- * Komponenten Klasse, welche die Getränkeausgabe und das Rückgeld regelt.
+ * Komponenten Klasse, welche zwei Observables (Bestellungen) beobachtet und beim Eingehen einer
+ * Bestellung das Getränk und oder das Rückgeld ausgibt.
  */
 export class OutputCustomerComponent {
   beverageName?: string;
@@ -29,10 +30,14 @@ export class OutputCustomerComponent {
     });
   }
 
-  // Fügt die Bestellung dem Ausgabefeld hinzu.
+  /**
+   * Fügt die Bestellung dem Ausgabefeld hinzu.
+   * @param {string} beverageName
+   * @param {number} change
+   */
   getOrder(beverageName: string, change: number) {
     if (this.change === undefined) {
-      this.change = change
+      this.change = change;
     } else {
       this.change = this.change + change;
     }
@@ -43,16 +48,21 @@ export class OutputCustomerComponent {
     }
   }
 
-  // Addiert das zurückgeforderte Geld zum aktuellen Rückgeld hinzu.
+  /**
+   * Addiert das zurückgeforderte Geld zum aktuellen Rückgeld hinzu.
+   * @param {number} change
+   */
   canceledMoneyOutput(change: number) {
     if (this.change === undefined) {
-      this.change = change
+      this.change = change;
     } else {
       this.change = this.change + change;
     }
   }
 
-  // Setzt die Ausgabe Getränk, das Rückgeld und die customerMessage auf ihre Ursprungswerte zurück
+  /**
+   * Setzt die Ausgabe Getränk, das Rückgeld und die customerMessage auf ihre Ursprungswerte zurück.
+   */
   resetOutput() {
     this.change = 0;
     this.beverageName = '';
