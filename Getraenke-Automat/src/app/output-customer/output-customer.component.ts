@@ -13,7 +13,7 @@ import { CostumerMessageService } from '../services/costumer-message.service';
  */
 export class OutputCustomerComponent {
   beverageName?: string;
-  change: number = 0;
+  change?: number;
 
   constructor(
     private beverageOutputService: BeverageOutputService,
@@ -31,7 +31,11 @@ export class OutputCustomerComponent {
 
   // Fügt die Bestellung dem Ausgabefeld hinzu.
   getOrder(beverageName: string, change: number) {
-    this.change += change;
+    if (this.change === undefined) {
+      this.change = change
+    } else {
+      this.change = this.change + change;
+    }
     if (this.beverageName === undefined) {
       this.beverageName = beverageName;
     } else {
@@ -40,8 +44,12 @@ export class OutputCustomerComponent {
   }
 
   // Addiert das zurückgeforderte Geld zum aktuellen Rückgeld hinzu.
-  canceledMoneyOutput(value: number) {
-    this.change += value;
+  canceledMoneyOutput(change: number) {
+    if (this.change === undefined) {
+      this.change = change
+    } else {
+      this.change = this.change + change;
+    }
   }
 
   // Setzt die Ausgabe Getränk, das Rückgeld und die customerMessage auf ihre Ursprungswerte zurück
