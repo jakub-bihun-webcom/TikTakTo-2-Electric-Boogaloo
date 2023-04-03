@@ -38,7 +38,7 @@ export class OutputCustomerComponent {
   }
 
   /**
-   * Fügt die Bestellung dem Rückgeld und dem Ausgabefach für Getränke hinzu.
+   * Aktualisiert den Stand des Ausgabefaches und des Rückgeldes.
    */
   getOrder(beverageName: string, change: number) {
     this.addChange(change);
