@@ -30,7 +30,7 @@ export class OutputCustomerComponent {
 
   ngOnInit(): void {
     this.beverageOutputService.orderOutput.subscribe(order => {
-      this.getOrder(order.beverageName, order.change);
+      this.updateOutputCompartment(order.beverageName, order.change);
     });
     this.beverageOutputService.canceledMoney.subscribe((value: number) => {
       this.addChange(value);
@@ -40,7 +40,7 @@ export class OutputCustomerComponent {
   /**
    * Aktualisiert den Stand des Ausgabefaches und des Rückgeldes.
    */
-  getOrder(beverageName: string, change: number) {
+  updateOutputCompartment(beverageName: string, change: number) {
     this.addChange(change);
     if (this.beverageName === undefined) {
       this.beverageName = beverageName;
