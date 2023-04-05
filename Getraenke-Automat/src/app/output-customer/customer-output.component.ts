@@ -38,7 +38,7 @@ export class CustomerOutputComponent {
   }
 
   /**
-   * Fügt die Bestellung dem Fach für Rückgeld und dem Fach für die Ausgabe für Getränke hinzu.
+   * Fügt die Bestellung dem Fach für Rückgeld und dem Fach für die Ausgabe der Getränke hinzu.
    */
   getOrder(beverageName: string, change: number) {
     this.addChange(change);
