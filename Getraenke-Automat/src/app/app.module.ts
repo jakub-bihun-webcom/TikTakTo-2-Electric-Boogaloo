@@ -6,7 +6,7 @@ import { BeverageListComponent } from './beverage-list/beverage-list.component';
 import { HeaderComponent } from './header/header.component';
 import { CustomerControlPanelComponent } from './input-field/customer-control-panel.component';
 import { OutputFieldComponent } from './output-field/output-field.component';
-import { OutputCustomerComponent } from './output-customer/output-customer.component';
+import { CustomerOutputComponent } from './output-customer/customer-output.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { OutputCustomerComponent } from './output-customer/output-customer.compo
     BeverageListComponent,
     CustomerControlPanelComponent,
     OutputFieldComponent,
-    OutputCustomerComponent,
+    CustomerOutputComponent,
     HeaderComponent
   ],
   imports: [BrowserModule, AppRoutingModule],

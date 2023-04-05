@@ -4,15 +4,15 @@ import { CustomerMessageService } from '../services/customer-message.service';
 
 @Component({
   selector: 'app-output-customer',
-  templateUrl: './output-customer.component.html',
-  styleUrls: ['./output-customer.component.css']
+  templateUrl: './customer-output.component.html',
+  styleUrls: ['./customer-output.component.css']
 })
 
 /**
  * Repräsentiert die Ausgabe eines Getränkeautomaten. Beim Eingehen einer gültigen Bestellung,
  * oder der Anforderung des Rückgelds wird die Ausgabe in dieser Komponente simuliert.
  */
-export class OutputCustomerComponent {
+export class CustomerOutputComponent {
   /**
    * Repräsentiert das Ausgabefach für Getränke
    */

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OutputCustomerComponent } from './output-customer.component';
+import { CustomerOutputComponent } from './customer-output.component';
 
 describe('OutputCustomerComponent', () => {
-  let component: OutputCustomerComponent;
-  let fixture: ComponentFixture<OutputCustomerComponent>;
+  let component: CustomerOutputComponent;
+  let fixture: ComponentFixture<CustomerOutputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OutputCustomerComponent]
+      declarations: [CustomerOutputComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OutputCustomerComponent);
+    fixture = TestBed.createComponent(CustomerOutputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
