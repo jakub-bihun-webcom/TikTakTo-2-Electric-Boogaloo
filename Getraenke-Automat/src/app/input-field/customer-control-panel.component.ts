@@ -8,10 +8,10 @@ import { VerifyInputService } from '../services/verify-input.service';
 
 @Component({
   selector: 'app-input-field',
-  templateUrl: './input-field.component.html',
-  styleUrls: ['./input-field.component.css']
+  templateUrl: './customer-control-panel.component.html',
+  styleUrls: ['./customer-control-panel.component.css']
 })
-export class InputFieldComponent {
+export class CustomerControlPanelComponent {
   chosenID?: number;
   inputField: string = '';
   registry: number = 100;
