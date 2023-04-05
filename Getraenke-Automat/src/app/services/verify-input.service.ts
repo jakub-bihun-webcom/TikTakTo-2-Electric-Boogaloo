@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { beverageList } from '../beverage-list';
-import { CostumerMessageService } from './costumer-message.service';
+import { CustomerMessageService } from './customer-message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VerifyInputService {
-  constructor(private costumerMessageService: CostumerMessageService) {}
+  constructor(private customerMessageService: CustomerMessageService) {}
 
   validID(input: any) {
     const parsedInput = parseInt(input);
     const errorMsg = 'Keine gültige Getränke-ID';
     if (isNaN(parsedInput) || parsedInput > beverageList.length) {
-      this.costumerMessageService.setCostumerMessage(errorMsg);
+      this.customerMessageService.setCustomerMessage(errorMsg);
       throw new Error(errorMsg);
     }
   }

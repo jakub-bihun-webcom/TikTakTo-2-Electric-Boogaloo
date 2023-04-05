@@ -10,7 +10,7 @@
     '. GetränkInfos . outputField .'
     '. GetränkInfos . inputField .'
     '. . . inputField .'
-    '. . . outputCostumer .'
+    '. . . outputCustomer .'
     '. . . . .';
 }
 
@@ -31,6 +31,6 @@
   grid-area: inputField;
 }
 
-.outputCostumer {
-  grid-area: outputCostumer;
+.outputCustomer {
+  grid-area: outputCustomer;
 }

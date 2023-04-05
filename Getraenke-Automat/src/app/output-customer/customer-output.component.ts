@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { BeverageOutputService } from '../services/beverage-output.service';
-import { CostumerMessageService } from '../services/costumer-message.service';
+import { CustomerMessageService } from '../services/customer-message.service';
 
 @Component({
   selector: 'app-output-customer',
-  templateUrl: './output-customer.component.html',
-  styleUrls: ['./output-customer.component.css']
+  templateUrl: './customer-output.component.html',
+  styleUrls: ['./customer-output.component.css']
 })
 
 /**
  * Repräsentiert die Ausgabe eines Getränkeautomaten. Beim Eingehen einer gültigen Bestellung,
  * oder der Anforderung des Rückgelds wird die Ausgabe in dieser Komponente simuliert.
  */
-export class OutputCustomerComponent {
+export class CustomerOutputComponent {
   /**
    * Repräsentiert das Ausgabefach für Getränke
    */
@@ -25,12 +25,12 @@ export class OutputCustomerComponent {
 
   constructor(
     private beverageOutputService: BeverageOutputService,
-    private costumerMessageService: CostumerMessageService
+    private customerMessageService: CustomerMessageService
   ) {}
 
   ngOnInit(): void {
     this.beverageOutputService.orderOutput.subscribe(order => {
-      this.updateOutputCompartment(order.beverageName, order.change);
+      this.updateOutputCompartments(order.beverageName, order.change);
     });
     this.beverageOutputService.canceledMoney.subscribe((value: number) => {
       this.addChange(value);
@@ -40,7 +40,7 @@ export class OutputCustomerComponent {
   /**
    * Aktualisiert den Stand des Ausgabefaches und des Rückgeldes.
    */
-  updateOutputCompartment(beverageName: string, change: number) {
+  updateOutputCompartments(beverageName: string, change: number) {
     this.addChange(change);
     if (this.beverageName === undefined) {
       this.beverageName = beverageName;
@@ -66,6 +66,6 @@ export class OutputCustomerComponent {
   resetOutput() {
     this.change = 0;
     this.beverageName = '';
-    this.costumerMessageService.setCostumerMessage('Willkommen beim besten Getränke Automaten');
+    this.customerMessageService.setCustomerMessage('Willkommen beim besten Getränke Automaten');
   }
 }

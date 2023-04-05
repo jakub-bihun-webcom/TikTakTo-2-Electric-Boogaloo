@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CostumerMessageService } from '../services/costumer-message.service';
+import { CustomerMessageService } from '../services/customer-message.service';
 
 @Component({
   selector: 'app-output-field',
@@ -9,10 +9,10 @@ import { CostumerMessageService } from '../services/costumer-message.service';
 export class OutputFieldComponent {
   outputText?: string;
 
-  constructor(private costumerMessageService: CostumerMessageService) {}
+  constructor(private customerMessageService: CustomerMessageService) {}
 
   ngOnInit() {
-    this.costumerMessageService.costumerMessage.subscribe((text: string) => {
+    this.customerMessageService.customerMessage.subscribe((text: string) => {
       this.updateMessage(text);
     });
   }
