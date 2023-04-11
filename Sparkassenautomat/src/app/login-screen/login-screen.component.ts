@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { subtractUserAccountMoney } from '../user-cashout/services/subtract-user-account-money.service';
+import { UserCashOutManager } from '../user-cashout/services/user-cash-out-manager.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -8,7 +8,7 @@ import { subtractUserAccountMoney } from '../user-cashout/services/subtract-user
   styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent {
-  constructor(private router: Router, private handleUserAccountMoneyService: subtractUserAccountMoney) {}
+  constructor(private router: Router, private handleUserAccountMoneyService: UserCashOutManager) {}
 
   readonly users = [
     { id: '1234', pin: '5678', userAccountMoney: 2300000, isAdmin: false },

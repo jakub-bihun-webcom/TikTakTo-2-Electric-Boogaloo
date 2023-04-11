@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { subtractUserAccountMoney } from './services/subtract-user-account-money.service';
+import { UserCashOutManager } from './services/user-cash-out-manager.service';
 
 @Component({
   selector: 'app-user-cashout',
@@ -8,7 +8,7 @@ import { subtractUserAccountMoney } from './services/subtract-user-account-money
   styleUrls: ['./user-cashout.component.scss']
 })
 export class UserCashoutComponent {
-  constructor(private router: Router, private handleUserAccountMoneyService: subtractUserAccountMoney) {}
+  constructor(private router: Router, private handleUserAccountMoneyService: UserCashOutManager) {}
 
   goToUserCustomAmount() {
     this.router.navigate(['/user-custom-amount']);

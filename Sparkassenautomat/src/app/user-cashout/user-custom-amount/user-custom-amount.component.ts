@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { subtractUserAccountMoney } from '../services/subtract-user-account-money.service';
+import { UserCashOutManager } from '../services/user-cash-out-manager.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class UserCustomAmountComponent {
   customAmount?: number;
   errorMessage: string = '';
 
-  constructor(private handleUserAccountMoneyService: subtractUserAccountMoney, private router: Router) {}
+  constructor(private handleUserAccountMoneyService: UserCashOutManager, private router: Router) {}
 
   useCustomAmount() {
     if (this.customAmount === undefined) {

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class subtractUserAccountMoney {
+export class UserCashOutManager {
   private ATMAccountMoney: number = 10000;
   private userAccountMoney?: number;
 
