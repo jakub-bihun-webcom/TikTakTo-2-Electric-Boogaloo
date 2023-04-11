@@ -2,14 +2,14 @@
   <div class="leftSide">
     <a>➔ Betrag:</a>
     <div class="amountInputContainer">
-      <input id="costumeAmount" (keyup.enter)="useCostumeAmount()" [(ngModel)]="costumeAmount" class="amountInput" type="text" />
+      <input
+        id="customAmount"
+        (keyup.enter)="useCustomAmount()"
+        [(ngModel)]="customAmount"
+        class="amountInput"
+        type="text" />
     </div>
-    <a (click)="useCostumeAmount()">• Bestätigen</a>
-  </div>
-  <div class="rightSide">
-    <a></a>
-    <a></a>
-    <a></a>
+    <a (click)="useCustomAmount()">• Bestätigen</a>
   </div>
 </div>
 <div *ngIf="errorMessage" class="error">

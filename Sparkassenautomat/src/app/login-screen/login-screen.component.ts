@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HandleUserAccountMoneyService } from '../user-cashout/services/handle-user-account-money.service';
+import { subtractUserAccountMoney } from '../user-cashout/services/subtract-user-account-money.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -8,9 +8,9 @@ import { HandleUserAccountMoneyService } from '../user-cashout/services/handle-u
   styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent {
-  constructor(private router: Router, private handleUserAccountMoneyService: HandleUserAccountMoneyService) {}
+  constructor(private router: Router, private handleUserAccountMoneyService: subtractUserAccountMoney) {}
 
-  users = [
+  readonly users = [
     { id: '1234', pin: '5678', userAccountMoney: 2300000, isAdmin: false },
     { id: '1', pin: '1', userAccountMoney: 11111, isAdmin: false },
     { id: '0000', pin: '1802349', userAccountMoney: 0, isAdmin: true }
@@ -27,7 +27,6 @@ export class LoginScreenComponent {
       this.currentUserMoney = user.userAccountMoney;
       this.handleUserAccountMoneyService.setUserAccountMoney(user.userAccountMoney);
       this.router.navigate(['/user-home-screen']);
-      console.log(this.currentUserMoney);
     } else {
       this.displayError('Bitte überprüfen sie ihre anmelde Daten');
       throw new Error('Input Validation ERROR');

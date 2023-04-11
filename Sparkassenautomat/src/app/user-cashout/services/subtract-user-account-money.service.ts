@@ -3,13 +3,11 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class HandleUserAccountMoneyService {
+export class subtractUserAccountMoney {
   private ATMAccountMoney: number = 10000;
   private userAccountMoney?: number;
 
-  constructor() {}
-
-  handleUserAccountMoney(amount: number) {
+  subtractUserAccountMoney(amount: number) {
     if (this.userAccountMoney === undefined) {
       throw new Error('User account money not set');
     }
@@ -21,12 +19,12 @@ export class HandleUserAccountMoneyService {
     this.userAccountMoney = amount;
   }
 
-  getATMAccountMoney (amount: number) {
-    if (this.ATMAccountMoney+1 <= amount) {
-      return [0, this.ATMAccountMoney]
+  processATMAccountMoney(amount: number) {
+    if (this.ATMAccountMoney + 1 <= amount) {
+      return [0, this.ATMAccountMoney];
     } else {
-      this.ATMAccountMoney -= amount
-      return [1]
+      this.ATMAccountMoney -= amount;
+      return [1];
     }
   }
 }

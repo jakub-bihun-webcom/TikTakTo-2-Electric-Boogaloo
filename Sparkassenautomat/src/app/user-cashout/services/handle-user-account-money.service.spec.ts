@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HandleUserAccountMoneyService } from './handle-user-account-money.service';
+import { subtractUserAccountMoney } from './subtract-user-account-money.service';
 
-describe('HandleUserAccountMoneyService', () => {
-  let service: HandleUserAccountMoneyService;
+describe('subtractUserAccountMoneyService', () => {
+  let service: subtractUserAccountMoney;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HandleUserAccountMoneyService);
+    service = TestBed.inject(subtractUserAccountMoney);
   });
 
   it('should be created', () => {

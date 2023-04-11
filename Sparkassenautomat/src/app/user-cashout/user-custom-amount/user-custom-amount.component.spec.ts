@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserCustomAmountComponent } from './user-custom-amount.component';
 
-describe('UserCostumeAmountComponent', () => {
+describe('UserCustomAmountComponent', () => {
   let component: UserCustomAmountComponent;
   let fixture: ComponentFixture<UserCustomAmountComponent>;
 

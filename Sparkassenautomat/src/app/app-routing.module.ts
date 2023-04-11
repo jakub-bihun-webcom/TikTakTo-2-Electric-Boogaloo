@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'user-cashout', component: UserCashoutComponent },
   { path: 'login-screen', component: LoginScreenComponent },
   { path: 'user-home-screen', component: UserHomeScreenComponent },
-  { path: 'user-costume-amount', component: UserCustomAmountComponent },
+  { path: 'user-custom-amount', component: UserCustomAmountComponent },
   { path: 'user-cash-out-message', component: UserCashOutMessageComponent }
 ];
 
