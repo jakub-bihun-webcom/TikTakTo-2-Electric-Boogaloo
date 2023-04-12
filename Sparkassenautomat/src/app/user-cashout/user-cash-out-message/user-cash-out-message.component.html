@@ -1,7 +1,5 @@
-<div>
-  <a class="headline">Folgende Aktionen wurden durchgeführt:</a>
-    <div *ngIf="Text" class="outputText">
-      {{ Text }}
-    </div>
-  <a class="backToMenu" (click)="goToUserHomeScreen()">Zurück zum Hauptmenü •</a>
+<a class="headline">Folgende Aktionen wurden durchgeführt:</a>
+<div *ngIf="text" class="outputText">
+  {{ text }}
 </div>
+<a class="backToMenu" (click)="goToUserHomeScreen()">Zurück zum Hauptmenü •</a>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HandleUserAccountMoneyService } from './services/handle-user-account-money.service';
+import { UserCashOutManager } from './services/user-cash-out-manager.service';
 
 @Component({
   selector: 'app-user-cashout',
@@ -8,18 +8,17 @@ import { HandleUserAccountMoneyService } from './services/handle-user-account-mo
   styleUrls: ['./user-cashout.component.scss']
 })
 export class UserCashoutComponent {
-  constructor(private router: Router, private handleUserAccountMoneyService: HandleUserAccountMoneyService) {}
+  constructor(private router: Router, private handleUserAccountMoneyService: UserCashOutManager) {}
 
-  goToUserCostumeAmount() {
-    this.router.navigate(['/user-costume-amount']);
+  goToUserCustomAmount() {
+    this.router.navigate(['/user-custom-amount']);
   }
 
   handleInput(amount: number) {
     if (amount === undefined) {
-      throw new Error('Something went wrong');
-    } else {
-      this.navigatePage(this.handleUserAccountMoneyService.handleUserAccountMoney(amount));
+      throw new Error('The given variable is not defined');
     }
+    this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(amount));
   }
 
   navigatePage(data: any) {

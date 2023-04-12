@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HandleUserAccountMoneyService } from '../services/handle-user-account-money.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-cash-out-message.component.scss']
 })
 export class UserCashOutMessageComponent implements OnInit {
-  constructor(private handleUserAccountMoneyService: HandleUserAccountMoneyService, private router: Router) {}
-  Text: string | undefined;
+  constructor(private router: Router) {}
+  text: string | undefined;
 
   ngOnInit() {
     this.receiveMesssageInput();
   }
 
-  receiveMesssageInput() {
+  private receiveMesssageInput() {
     const customAmount = history.state.myData;
     console.log(customAmount);
     this.displayText('Dein neues Saldo beträgt: ' + customAmount + '€');
@@ -26,6 +25,6 @@ export class UserCashOutMessageComponent implements OnInit {
   }
 
   private displayText(outputText: string) {
-    this.Text = outputText;
+    this.text = outputText;
   }
 }
