@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { BeverageOrderService } from '../services/beverage-order.service';
 import { BeverageOutputService } from '../services/beverage-output.service';
-import { CashRegisterService } from '../services/cash-register.service';
-import { CustomerMessageService } from '../services/customer-message.service';
 import { HandleOrderService } from '../services/handle-order.service';
-import { UpdateBeverageQuantityService } from '../services/update-beverage-quantity.service';
-import { VerifyInputService } from '../services/verify-input.service';
 
 @Component({
   selector: 'app-input-field',
@@ -14,40 +9,47 @@ import { VerifyInputService } from '../services/verify-input.service';
 })
 
 /**
- * Repräsentiert die Eingabe de
+ * Repräsentiert die Eingabe des Getränkefaches, sowie das Einwerfen des Geldes.
  */
 export class CustomerControlPanelComponent {
   chosenID?: number;
   inputField: string = '';
   paidAmount: number = 0;
 
-  constructor(
-    private verifyInputService: VerifyInputService,
-    private cashRegisterService: CashRegisterService,
-    private beverageOrderService: BeverageOrderService,
-    private beverageOutputService: BeverageOutputService,
-    private updateBeverageQuantity: UpdateBeverageQuantityService,
-    private customerMessageService: CustomerMessageService,
-    private handleOrderService: HandleOrderService
-  ) {}
+  constructor(private beverageOutputService: BeverageOutputService, private handleOrderService: HandleOrderService) {}
 
-  moneyInput(input: number) {
+  /**
+   * Aktualisiert den aktuellen bezahlten Betrag.
+   */
+  updateMoneyInput(input: number) {
     this.paidAmount += input;
   }
 
+  /**
+   * Leitet den bisher eingeschmissenen Betrag an die Ausgabe weiter und setzt die Anzeige des Geldes zurück.
+   */
   cancelMoneyInput() {
     this.beverageOutputService.returnMoney(this.paidAmount);
     this.paidAmount = 0;
   }
 
+  /**
+   * Aktualisiert den eingegeben String.
+   */
   onInputChange(input: string) {
     this.inputField = input;
   }
 
+  /**
+   * Übergibt die eingegebenen Daten, zur Verifizierung in einen extra Service.
+   */
   placeOrder() {
-    this.handleOrderService.getInput(this.paidAmount, this.inputField)
+    this.handleOrderService.getInput(this.paidAmount, this.inputField);
   }
 
+  /**
+   * Setzt den eingegebenen Input auf die Ursprungswerte zurück.
+   */
   cancelButton() {
     this.chosenID = undefined;
     this.inputField = '';
