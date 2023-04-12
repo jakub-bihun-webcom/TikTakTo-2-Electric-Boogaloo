@@ -12,7 +12,6 @@ import { HandleOrderService } from '../services/handle-order.service';
  * Repräsentiert die Eingabe des Getränkefaches, sowie das Einwerfen des Geldes.
  */
 export class CustomerControlPanelComponent {
-  chosenID?: number;
   inputField: string = '';
   paidAmount: number = 0;
 
@@ -44,14 +43,15 @@ export class CustomerControlPanelComponent {
    * Übergibt die eingegebenen Daten, zur Verifizierung in einen extra Service.
    */
   placeOrder() {
-    this.handleOrderService.getInput(this.paidAmount, this.inputField);
+    this.handleOrderService.verifyOrder(this.paidAmount, this.inputField);
+    this.inputField = '';
+    this.paidAmount = 0;
   }
 
   /**
    * Setzt den eingegebenen Input auf die Ursprungswerte zurück.
    */
   cancelButton() {
-    this.chosenID = undefined;
     this.inputField = '';
   }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { VerifyInputService } from './verify-input.service';
 import { BeverageOrderService } from './beverage-order.service';
 import { BeverageOutputService } from './beverage-output.service';
@@ -11,9 +10,6 @@ import { UpdateBeverageQuantityService } from './update-beverage-quantity.servic
   providedIn: 'root'
 })
 export class HandleOrderService {
-
-  resetMoneyInput = new BehaviorSubject<number>(0);
-  resetInputID = new BehaviorSubject<string>('')
   constructor(
     private verifyInputService: VerifyInputService,
     private beverageOrderService: BeverageOrderService,
@@ -23,33 +19,47 @@ export class HandleOrderService {
     private updateBeverageQuantity: UpdateBeverageQuantityService
   ) {}
 
+  /**
+   * Repräsentiert die Kasse des Getränkeautomaten.
+   */
   registry: number = 100;
 
-  getInput(paidAmount: number, inputField: string) {
+  /**
+   * Überprüft, ob gültige Eingabewerte eingegeben wurden.
+   */
+  verifyOrder(paidAmount: number, inputField: string) {
     this.verifyInputService.validID(inputField);
-    const chosenID = parseInt(inputField);
-    const available = this.beverageOrderService.checkAvailability(chosenID);
+    const beverageCompartment = parseInt(inputField);
+    const available = this.beverageOrderService.checkAvailability(beverageCompartment);
     if (!available) {
       const errorMsg = 'Das Getränk ist leider ausverkauft';
       this.customerMessageService.setCustomerMessage(errorMsg);
       throw new Error(errorMsg);
     }
-
     if (paidAmount > 0) {
-      const price = this.beverageOrderService.getBeveragePrice(chosenID);
-      const change = this.cashRegisterService.calculateChange(paidAmount, price, this.registry);
-
-      this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
-      this.beverageOutputService.setOrder(change, chosenID);
-      this.updateBeverageQuantity.updateQuantity(chosenID);
-
-      this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
+      this.updateRegistry(paidAmount, beverageCompartment)
     } else {
-      const errorMsg = 'Kein Geld eingeworfen';
-      this.customerMessageService.setCustomerMessage(errorMsg);
-      throw new Error(errorMsg);
+      this.customerMessageService.setCustomerMessage('Kein Geld eingeworfen');
     }
-    // this.inputField = '';
-    // this.paidAmount = 0;
+  }
+
+  /**
+   * Überprüft, ob genug Geld eingeworfen wurde und aktualisiert die Kasse.
+   */
+  updateRegistry(paidAmount: number, beverageCompartment: number){
+    const price = this.beverageOrderService.getBeveragePrice(beverageCompartment);
+    const change = this.cashRegisterService.calculateChange(paidAmount, price, this.registry);
+    this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
+    this.setOrder(beverageCompartment, change)
+  }
+
+  /**
+   * Leitet die gültige Bestellung an die Ausgabe weiter.
+   */
+  setOrder(beverageCompartment: number, change: number){
+    this.beverageOutputService.setOrder(change, beverageCompartment);
+    this.updateBeverageQuantity.updateQuantity(beverageCompartment);
+
+    this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
   }
 }
