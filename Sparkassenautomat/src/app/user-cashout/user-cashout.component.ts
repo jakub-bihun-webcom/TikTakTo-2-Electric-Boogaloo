@@ -8,7 +8,7 @@ import { UserCashOutManager } from './services/user-cash-out-manager.service';
   styleUrls: ['./user-cashout.component.scss']
 })
 export class UserCashoutComponent {
-  constructor(private router: Router, private handleUserAccountMoneyService: UserCashOutManager) {}
+  constructor(private router: Router, private userCashOutManagerService: UserCashOutManager) {}
 
   goToUserCustomAmount() {
     this.router.navigate(['/user-custom-amount']);
@@ -18,7 +18,7 @@ export class UserCashoutComponent {
     if (amount === undefined) {
       throw new Error('The given variable is not defined');
     }
-    this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(amount));
+    this.navigatePage(this.userCashOutManagerService.subtractUserAccountMoney(amount));
   }
 
   navigatePage(data: any) {

@@ -17,11 +17,10 @@ export class UserCustomAmountComponent {
     if (this.customAmount === undefined) {
       this.displayError('Bitte tragen sie ihren Betrag in das Feld ein');
       throw new Error('Input field is empty');
-    } else if (!this.validateUserInput(this.customAmount)) {
-      this.displayError('Es hat ein Problem mit der Validierung ihrer Eingabe gegeben');
-      throw new Error('Problem with validateUserInput()');
-    } else {
+    } else if (this.validateUserInput(this.customAmount)) {
       this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(this.customAmount));
+    } else {
+      throw new Error('Something went wrong with validation')
     }
   }
 

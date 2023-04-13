@@ -16,7 +16,6 @@ export class LoginScreenComponent {
     { id: '0000', pin: '1802349', userAccountMoney: 0, isAdmin: true }
   ];
 
-  currentUserMoney?: number;
   pinInput?: string;
   idInput?: string;
   errorMessage: string = '';
@@ -24,7 +23,6 @@ export class LoginScreenComponent {
   goToUserHomeScreen() {
     const user = this.users.find(u => u.id === this.idInput);
     if (user && user.pin === this.pinInput) {
-      this.currentUserMoney = user.userAccountMoney;
       this.handleUserAccountMoneyService.setUserAccountMoney(user.userAccountMoney);
       this.router.navigate(['/user-home-screen']);
     } else {
