@@ -22,7 +22,7 @@ export class HandleOrderService {
   /**
    * Repräsentiert die Kasse des Getränkeautomaten.
    */
-  registry: number = 100;
+  cashRegister: number = 100;
 
   /**
    * Überprüft, ob gültige Eingabewerte eingegeben wurden.
@@ -42,7 +42,7 @@ export class HandleOrderService {
       throw new Error(errorMsg);
     }
     if (paidAmount > 0) {
-      this.updateRegistry(paidAmount, beverageCompartment)
+      this.updateCashRegistry(paidAmount, beverageCompartment)
     } else {
       this.customerMessageService.setCustomerMessage('Kein Geld eingeworfen');
     }
@@ -51,10 +51,10 @@ export class HandleOrderService {
   /**
    * Überprüft, ob genug Geld eingeworfen wurde und aktualisiert die Kasse.
    */
-  updateRegistry(paidAmount: number, beverageCompartment: number){
+  updateCashRegistry(paidAmount: number, beverageCompartment: number){
     const price = this.beverageOrderService.getBeveragePrice(beverageCompartment);
-    const change = this.cashRegisterService.calculateChange(paidAmount, price, this.registry);
-    this.registry = this.cashRegisterService.calculateRegistryChange(price, this.registry);
+    const change = this.cashRegisterService.calculateChange(paidAmount, price, this.cashRegister);
+    this.cashRegister = this.cashRegisterService.calculateCashRegistryChange(price, this.cashRegister);
     this.setOrder(beverageCompartment, change)
   }
 
