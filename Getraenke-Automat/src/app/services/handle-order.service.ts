@@ -28,7 +28,12 @@ export class HandleOrderService {
    * Überprüft, ob gültige Eingabewerte eingegeben wurden.
    */
   verifyOrder(paidAmount: number, inputField: string) {
-    this.verifyInputService.validID(inputField);
+    const isValidId = this.verifyInputService.validID(inputField);
+    if (!isValidId){
+      const errorMsg = 'Keine gültige Getränke-ID'
+        this.customerMessageService.setCustomerMessage(errorMsg);
+        throw new Error(errorMsg);
+    }
     const beverageCompartment = parseInt(inputField);
     const available = this.beverageOrderService.checkAvailability(beverageCompartment);
     if (!available) {

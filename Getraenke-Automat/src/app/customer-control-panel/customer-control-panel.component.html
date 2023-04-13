@@ -13,15 +13,15 @@
     <p class="paidAmountDisplay">{{ paidAmount }}€</p>
   </div>
   <div class="returnMoney">
-    <button class="inputButton" (click)="this.cancelMoneyInput()" type="button">Geld zurück</button>
+    <button class="controlPanelButton" (click)="this.cancelMoneyInput()" type="button">Geld zurück</button>
   </div>
   <div class="inputID">
     <input class="inputField" #input (input)="onInputChange(input.value)" value="{{ inputField }}" />
   </div>
   <div class="cancelId">
-    <button class="inputButton" (click)="this.cancelButton()" type="button">CANCEL</button>
+    <button class="controlPanelButton" (click)="this.cancelButton()" type="button">CANCEL</button>
   </div>
   <div class="enterButton">
-    <button class="inputButton" (click)="this.placeOrder()" type="button">ENTER</button>
+    <button class="controlPanelButton" (click)="this.placeOrder()" type="button">ENTER</button>
   </div>
 </div>
