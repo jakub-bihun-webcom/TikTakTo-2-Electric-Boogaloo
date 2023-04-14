@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OutputFieldComponent } from './output-field.component';
+import { MessageDisplayComponent } from './message-display.component';
 
 describe('OutputFieldComponent', () => {
-  let component: OutputFieldComponent;
-  let fixture: ComponentFixture<OutputFieldComponent>;
+  let component: MessageDisplayComponent;
+  let fixture: ComponentFixture<MessageDisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OutputFieldComponent]
+      declarations: [MessageDisplayComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OutputFieldComponent);
+    fixture = TestBed.createComponent(MessageDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
