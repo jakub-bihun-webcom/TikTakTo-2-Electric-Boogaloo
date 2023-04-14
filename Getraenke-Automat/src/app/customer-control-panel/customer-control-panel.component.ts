@@ -20,7 +20,7 @@ export class CustomerControlPanelComponent {
   /**
    * Aktualisiert den aktuellen bezahlten Betrag.
    */
-  updateMoneyInput(input: number) {
+  onMoneyPaid(input: number) {
     this.paidAmount += input;
   }
 

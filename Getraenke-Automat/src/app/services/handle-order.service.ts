@@ -4,7 +4,7 @@ import { BeverageOrderService } from './beverage-order.service';
 import { BeverageOutputService } from './beverage-output.service';
 import { CashRegisterService } from './cash-register.service';
 import { CustomerMessageService } from './customer-message.service';
-import { UpdateBeverageQuantityService } from './update-beverage-quantity.service';
+import { BeverageQuantityHandlerService } from './beverage-quantity-handler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class HandleOrderService {
     private customerMessageService: CustomerMessageService,
     private cashRegisterService: CashRegisterService,
     private beverageOutputService: BeverageOutputService,
-    private updateBeverageQuantity: UpdateBeverageQuantityService
+    private beverageQuantityHandlerService: BeverageQuantityHandlerService
   ) {}
 
   /**
@@ -63,7 +63,7 @@ export class HandleOrderService {
    */
   setOrder(beverageCompartment: number, change: number){
     this.beverageOutputService.setOrder(change, beverageCompartment);
-    this.updateBeverageQuantity.updateQuantity(beverageCompartment);
+    this.beverageQuantityHandlerService.updateQuantity(beverageCompartment);
 
     this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
   }

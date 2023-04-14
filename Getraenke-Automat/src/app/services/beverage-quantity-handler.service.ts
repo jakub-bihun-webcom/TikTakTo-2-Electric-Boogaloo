@@ -6,7 +6,7 @@ import { beverageList } from '../beverage-list';
 @Injectable({
   providedIn: 'root'
 })
-export class UpdateBeverageQuantityService {
+export class BeverageQuantityHandlerService {
   updatedBeverageList = new BehaviorSubject<Beverage[]>(beverageList);
 
   updateQuantity(id: number) {

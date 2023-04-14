@@ -43,10 +43,10 @@
 .returnMoney {
   grid-area: returnMoney;
 }
-.inputID {
+.inputTextField {
   grid-area: inputID;
 }
-.cancelId {
+.cancelInput {
   grid-area: cancelId;
 }
 .enterButton {
