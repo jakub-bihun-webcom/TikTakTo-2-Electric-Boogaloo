@@ -4,7 +4,7 @@ import { beverageList } from '../beverage-list';
 import { UpdateBeverageQuantityService } from '../services/update-beverage-quantity.service';
 
 @Component({
-  selector: 'app-getraenke-liste',
+  selector: 'app-beverage-list',
   templateUrl: './beverage-list.component.html',
   styleUrls: ['./beverage-list.component.css']
 })
