@@ -27,7 +27,7 @@ export class CustomerControlPanelComponent {
   /**
    * Leitet den bisher eingeschmissenen Betrag an die Ausgabe weiter und setzt die Anzeige des Geldes zurück.
    */
-  cancelMoneyInput() {
+  returnPaidMoney() {
     this.beverageOutputService.returnMoney(this.paidAmount);
     this.paidAmount = 0;
   }

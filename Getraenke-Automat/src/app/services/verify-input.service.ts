@@ -7,8 +7,8 @@ import { beverageList } from '../beverage-list';
 export class VerifyInputService {
   constructor() {}
 
-  validID(input: any) {
-    const parsedInput = parseInt(input);
+  validID(compartmentID: any) {
+    const parsedInput = parseInt(compartmentID);
     return !(isNaN(parsedInput) || parsedInput > beverageList.length)
   }
 }

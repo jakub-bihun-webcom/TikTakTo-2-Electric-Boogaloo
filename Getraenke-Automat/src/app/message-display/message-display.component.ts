@@ -7,7 +7,7 @@ import { CustomerMessageService } from '../services/customer-message.service';
   styleUrls: ['./message-display.component.css']
 })
 export class MessageDisplayComponent {
-  outputMessage?: string;
+  customerMessage?: string;
 
   constructor(private customerMessageService: CustomerMessageService) {}
 
@@ -18,6 +18,6 @@ export class MessageDisplayComponent {
   }
 
   updateMessage(text: string) {
-    this.outputMessage = text;
+    this.customerMessage = text;
   }
 }

@@ -13,7 +13,7 @@
     <p class="paidAmountDisplay">{{ paidAmount }}€</p>
   </div>
   <div class="requestChange">
-    <button class="controlPanelButton" (click)="this.cancelMoneyInput()" type="button">Geld zurück</button>
+    <button class="controlPanelButton" (click)="this.returnPaidMoney()" type="button">Geld zurück</button>
   </div>
   <div class="textFieldCompartmentID">
     <input class="textField" #input (input)="onInputChange(input.value)" value="{{ compartmentID }}" />

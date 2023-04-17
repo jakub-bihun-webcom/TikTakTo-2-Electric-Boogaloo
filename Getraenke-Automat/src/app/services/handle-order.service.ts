@@ -27,14 +27,14 @@ export class HandleOrderService {
   /**
    * Überprüft, ob gültige Eingabewerte eingegeben wurden.
    */
-  verifyOrder(paidAmount: number, inputField: string) {
-    const isValidId = this.verifyInputService.validID(inputField);
+  verifyOrder(paidAmount: number, compartmentID: string) {
+    const isValidId = this.verifyInputService.validID(compartmentID);
     if (!isValidId){
       const errorMsg = 'Keine gültige Getränke-ID'
         this.customerMessageService.setCustomerMessage(errorMsg);
         throw new Error(errorMsg);
     }
-    const beverageCompartment = parseInt(inputField);
+    const beverageCompartment = parseInt(compartmentID);
     const available = this.beverageOrderService.checkAvailability(beverageCompartment);
     if (!available) {
       const errorMsg = 'Das Getränk ist leider ausverkauft';
