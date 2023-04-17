@@ -20,8 +20,8 @@ export class CustomerControlPanelComponent {
   /**
    * Aktualisiert den aktuellen bezahlten Betrag.
    */
-  onMoneyPaid(input: number) {
-    this.paidAmount += input;
+  onMoneyPaid(money: number) {
+    this.paidAmount += money;
   }
 
   /**
@@ -51,7 +51,7 @@ export class CustomerControlPanelComponent {
   /**
    * Setzt den eingegebenen Input auf die Ursprungswerte zurück.
    */
-  cancelButton() {
+  resetCompartmentID() {
     this.inputField = '';
   }
 }
