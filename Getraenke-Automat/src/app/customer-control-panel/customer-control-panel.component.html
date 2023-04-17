@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="moneyInput">
+    <button class="payField" (click)="this.updateMoneyInput(10)" type="button">10€</button>
+    <button class="payField" (click)="this.updateMoneyInput(5)" type="button">5€</button>
+    <button class="payField" (click)="this.updateMoneyInput(2)" type="button">2€</button>
+    <button class="payField" (click)="this.updateMoneyInput(1)" type="button">1€</button>
+    <button class="payField" (click)="this.updateMoneyInput(0.5)" type="button">0,50€</button>
+    <button class="payField" (click)="this.updateMoneyInput(0.2)" type="button">0,20€</button>
+    <button class="payField" (click)="this.updateMoneyInput(0.1)" type="button">0,10€</button>
+    <button class="payField" (click)="this.updateMoneyInput(0.05)" type="button">0,05€</button>
+  </div>
+  <div class="paidAmount">
+    <p class="paidAmountDisplay">{{ paidAmount }}€</p>
+  </div>
+  <div class="returnMoney">
+    <button class="controlPanelButton" (click)="this.cancelMoneyInput()" type="button">Geld zurück</button>
+  </div>
+  <div class="inputID">
+    <input class="inputField" #input (input)="onInputChange(input.value)" value="{{ inputField }}" />
+  </div>
+  <div class="cancelId">
+    <button class="controlPanelButton" (click)="this.cancelButton()" type="button">CANCEL</button>
+  </div>
+  <div class="enterButton">
+    <button class="controlPanelButton" (click)="this.placeOrder()" type="button">ENTER</button>
+  </div>
+</div>
