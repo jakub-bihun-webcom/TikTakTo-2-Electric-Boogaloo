@@ -12,7 +12,7 @@ import { HandleOrderService } from '../services/handle-order.service';
  * Repräsentiert die Eingabe des Getränkefaches, sowie das Einwerfen des Geldes.
  */
 export class CustomerControlPanelComponent {
-  inputField: string = '';
+  compartmentID: string = '';
   paidAmount: number = 0;
 
   constructor(private beverageOutputService: BeverageOutputService, private handleOrderService: HandleOrderService) {}
@@ -35,16 +35,16 @@ export class CustomerControlPanelComponent {
   /**
    * Aktualisiert den eingegeben String.
    */
-  onInputChange(input: string) {
-    this.inputField = input;
+  onInputChange(compartmentID: string) {
+    this.compartmentID = compartmentID;
   }
 
   /**
    * Übergibt die eingegebenen Daten, zur Verifizierung in einen extra Service.
    */
   placeOrder() {
-    this.handleOrderService.verifyOrder(this.paidAmount, this.inputField);
-    this.inputField = '';
+    this.handleOrderService.verifyOrder(this.paidAmount, this.compartmentID);
+    this.compartmentID = '';
     this.paidAmount = 0;
   }
 
@@ -52,6 +52,6 @@ export class CustomerControlPanelComponent {
    * Setzt den eingegebenen Input auf die Ursprungswerte zurück.
    */
   resetCompartmentID() {
-    this.inputField = '';
+    this.compartmentID = '';
   }
 }
