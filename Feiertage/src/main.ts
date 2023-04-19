@@ -7,7 +7,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <main class="container">
     <h1>Feiertage</h1>
     <div class ="chooseField">
-    <div class="inputField">
+    <div class="text-field">
       <label  for="inputField">Bundesland: </label>
         <select id = "bundeslandAuswahl" name = "auswahl">
 

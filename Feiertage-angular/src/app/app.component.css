@@ -8,7 +8,7 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-.controlPanelButton {
+.control-panel-button {
   align-items: center;
   appearance: none;
   background-color: #fff;

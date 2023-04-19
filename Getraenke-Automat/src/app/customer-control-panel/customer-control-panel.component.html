@@ -1,27 +1,27 @@
 <div class="container">
-  <div class="moneyInput">
-    <button class="payField" (click)="this.onMoneyPaid(10)" type="button">10€</button>
-    <button class="payField" (click)="this.onMoneyPaid(5)" type="button">5€</button>
-    <button class="payField" (click)="this.onMoneyPaid(2)" type="button">2€</button>
-    <button class="payField" (click)="this.onMoneyPaid(1)" type="button">1€</button>
-    <button class="payField" (click)="this.onMoneyPaid(0.5)" type="button">0,50€</button>
-    <button class="payField" (click)="this.onMoneyPaid(0.2)" type="button">0,20€</button>
-    <button class="payField" (click)="this.onMoneyPaid(0.1)" type="button">0,10€</button>
-    <button class="payField" (click)="this.onMoneyPaid(0.05)" type="button">0,05€</button>
+  <div class="money-input">
+    <button class="pay-field" (click)="this.onMoneyPaid(10)" type="button">10€</button>
+    <button class="pay-field" (click)="this.onMoneyPaid(5)" type="button">5€</button>
+    <button class="pay-field" (click)="this.onMoneyPaid(2)" type="button">2€</button>
+    <button class="pay-field" (click)="this.onMoneyPaid(1)" type="button">1€</button>
+    <button class="pay-field" (click)="this.onMoneyPaid(0.5)" type="button">0,50€</button>
+    <button class="pay-field" (click)="this.onMoneyPaid(0.2)" type="button">0,20€</button>
+    <button class="pay-field" (click)="this.onMoneyPaid(0.1)" type="button">0,10€</button>
+    <button class="pay-field" (click)="this.onMoneyPaid(0.05)" type="button">0,05€</button>
   </div>
-  <div class="paidAmount">
-    <p class="paidAmountDisplay">{{ paidAmount }}€</p>
+  <div class="paid-amount">
+    <p class="paid-amount-display">{{ paidAmount }}€</p>
   </div>
-  <div class="requestChange">
-    <button class="controlPanelButton" (click)="this.returnPaidMoney()" type="button">Geld zurück</button>
+  <div class="request-change">
+    <button class="control-panel-button" (click)="this.returnPaidMoney()" type="button">Geld zurück</button>
   </div>
-  <div class="textFieldCompartmentID">
-    <input class="textField" #input (input)="onInputChange(input.value)" value="{{ compartmentID }}" />
+  <div class="text-field-compartment-id">
+    <input class="text-field" #input (input)="onInputChange(input.value)" value="{{ compartmentID }}" />
   </div>
-  <div class="cancelCompartmentID">
-    <button class="controlPanelButton" (click)="this.resetCompartmentID()" type="button">CANCEL</button>
+  <div class="cancel-compartment-id">
+    <button class="control-panel-button" (click)="this.resetCompartmentID()" type="button">CANCEL</button>
   </div>
-  <div class="enterButton">
-    <button class="controlPanelButton" (click)="this.placeOrder()" type="button">ENTER</button>
+  <div class="enter-button">
+    <button class="control-panel-button" (click)="this.placeOrder()" type="button">ENTER</button>
   </div>
 </div>

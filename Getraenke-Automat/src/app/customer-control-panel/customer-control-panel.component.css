@@ -11,24 +11,24 @@
     '. enterButton';
 }
 
-.payField {
+.pay-field {
   background-color: white;
   border-radius: 50%;
   border: 2px solid #4caf50;
 }
 
-.controlPanelButton {
+.control-panel-button {
   width: 100%;
   height: 100%;
 }
 
-.paidAmountDisplay {
+.paid-amount-display {
   font-size: 20px;
   padding-right: 10px;
   text-align: right;
 }
 
-.textField {
+.text-field {
   text-align: right;
   font-size: 20px;
   background-color: #c4c4c4;
@@ -37,18 +37,18 @@
   border-radius: 5px;
 }
 
-.paidAmount {
+.paid-amount {
   grid-area: paidAmount;
 }
-.requestChange {
+.request-change {
   grid-area: requestChange;
 }
-.textFieldCompartmentID {
+.text-field-compartment-id {
   grid-area: textFieldCompartmentID;
 }
-.cancelCompartmentID {
+.cancel-compartment-id {
   grid-area: cancelCompartmentID;
 }
-.enterButton {
+.enter-button {
   grid-area: enterButton;
 }
