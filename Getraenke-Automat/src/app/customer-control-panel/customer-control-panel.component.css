@@ -7,7 +7,7 @@
   grid-template-areas:
     'moneyInput moneyInput'
     'paid-amount request-change'
-    'text-field-compartmen-id cancel-compartment-id'
+    'text-field-compartment-id cancel-compartment-id'
     '. enter-button';
 }
 
@@ -44,7 +44,7 @@
   grid-area: request-change;
 }
 .text-field-compartment-id {
-  grid-area: text-field-compartmen-id;
+  grid-area: text-field-compartment-id;
 }
 .cancel-compartment-id {
   grid-area: cancel-compartment-id;
