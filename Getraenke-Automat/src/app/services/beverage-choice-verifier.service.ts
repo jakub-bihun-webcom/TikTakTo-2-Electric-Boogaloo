@@ -4,7 +4,7 @@ import { beverageList } from '../beverage-list';
 @Injectable({
   providedIn: 'root'
 })
-export class TextFieldVerifierService {
+export class BeverageChoiceVerifierService {
   constructor() {}
 
   validID(compartmentID: string): boolean {
