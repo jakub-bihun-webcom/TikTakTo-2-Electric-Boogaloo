@@ -10,14 +10,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
     <img src="/International_Pokémon_logo.svg.png" class="logo" alt="Pokemon logo" />
   </a>
   <h1>Pokedex</h1>
-  <div class="text-field">
+  <div class="inputField">
     <label for="inputField">Pokemon ID: </label>
     <input id="input" type="text" />
     <button class="searchButton" id="searchButton" type="button">Suche</button>
   </div>
   <div class="Output">
     <img id="myImage" hidden src="" class="animatedImage" alt="" />
-    <p class="display-message" id="msg" disabled></p>
+    <p class="outputBox" id="msg" disabled></p>
   </div>
   <div class="box">
     <a class="button" id="popupButton" href="#popup1">Pokemon Liste</a>

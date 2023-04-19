@@ -22,13 +22,13 @@ body {
   margin-bottom: 20px;
 }
 
-.text-field {
+.inputField {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.text-field label {
+.inputField label {
   width: 100%;
   margin-right: 10px;
 }
@@ -44,7 +44,7 @@ body {
   margin-bottom: 20px;
 }
 
-.display-message {
+.outputBox {
   font-size: larger;
 
   text-align: start;
