@@ -16,7 +16,7 @@
     <button class="control-panel-button" (click)="this.returnPaidMoney()" type="button">Geld zurück</button>
   </div>
   <div class="text-field-compartment-id">
-    <input class="text-field" #input (input)="onInputChange(input.value)" value="{{ compartmentID }}" />
+    <input class="text-field" #input (input)="onTextFieldChange(input.value)" value="{{ compartmentID }}" />
   </div>
   <div class="cancel-compartment-id">
     <button class="control-panel-button" (click)="this.resetCompartmentID()" type="button">CANCEL</button>

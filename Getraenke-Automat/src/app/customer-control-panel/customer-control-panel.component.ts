@@ -35,7 +35,7 @@ export class CustomerControlPanelComponent {
   /**
    * Aktualisiert den eingegeben String.
    */
-  onInputChange(compartmentID: string) {
+  onTextFieldChange(compartmentID: string) {
     this.compartmentID = compartmentID;
   }
 
