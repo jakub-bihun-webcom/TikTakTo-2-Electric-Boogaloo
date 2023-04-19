@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VerifyInputService } from './verify-input.service';
+import { TextFieldVerifierService } from './text-field-verifier.service';
 
 describe('VerifyInputService', () => {
-  let service: VerifyInputService;
+  let service: TextFieldVerifierService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(VerifyInputService);
+    service = TestBed.inject(TextFieldVerifierService);
   });
 
   it('should be created', () => {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { VerifyInputService } from './verify-input.service';
+import { TextFieldVerifierService } from './text-field-verifier.service';
 import { BeverageOrderService } from './beverage-order.service';
 import { BeverageOutputService } from './beverage-output.service';
 import { CashRegisterService } from './cash-register.service';
@@ -11,7 +11,7 @@ import { BeverageQuantityService } from './beverage-quantity.service';
 })
 export class HandleOrderService {
   constructor(
-    private verifyInputService: VerifyInputService,
+    private textFieldVerifierService: TextFieldVerifierService,
     private beverageOrderService: BeverageOrderService,
     private customerMessageService: CustomerMessageService,
     private cashRegisterService: CashRegisterService,
@@ -28,7 +28,7 @@ export class HandleOrderService {
    * Überprüft, ob gültige Eingabewerte eingegeben wurden.
    */
   verifyOrder(paidAmount: number, compartmentID: string) {
-    const isValidId = this.verifyInputService.validID(compartmentID);
+    const isValidId = this.textFieldVerifierService.validID(compartmentID);
     if (!isValidId){
       const errorMsg = 'Keine gültige Getränke-ID'
         this.customerMessageService.setCustomerMessage(errorMsg);
