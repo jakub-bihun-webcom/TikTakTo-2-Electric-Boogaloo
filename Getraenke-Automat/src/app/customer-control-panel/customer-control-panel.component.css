@@ -6,9 +6,9 @@
   gap: 0 0;
   grid-template-areas:
     'moneyInput moneyInput'
-    'paidAmount requestChange'
-    'textFieldCompartmentID cancelCompartmentID'
-    '. enterButton';
+    'paid-amount request-change'
+    'text-field-compartmen-id cancel-compartment-id'
+    '. enter-button';
 }
 
 .pay-field {
@@ -38,17 +38,17 @@
 }
 
 .paid-amount {
-  grid-area: paidAmount;
+  grid-area: paid-amount;
 }
 .request-change {
-  grid-area: requestChange;
+  grid-area: request-change;
 }
 .text-field-compartment-id {
-  grid-area: textFieldCompartmentID;
+  grid-area: text-field-compartmen-id;
 }
 .cancel-compartment-id {
-  grid-area: cancelCompartmentID;
+  grid-area: cancel-compartment-id;
 }
 .enter-button {
-  grid-area: enterButton;
+  grid-area: enter-button;
 }
