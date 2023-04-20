@@ -43,9 +43,10 @@ export class CustomerControlPanelComponent {
    * Übergibt die eingegebenen Daten, zur Verifizierung in einen extra Service.
    */
   placeOrder() {
-    this.handleOrderService.verifyOrder(this.paidAmount, this.compartmentID);
-    this.compartmentID = '';
-    this.paidAmount = 0;
+    if (this.handleOrderService.verifyOrder(this.paidAmount, this.compartmentID)) {
+      this.compartmentID = '';
+      this.paidAmount = 0;
+    }
   }
 
   /**
