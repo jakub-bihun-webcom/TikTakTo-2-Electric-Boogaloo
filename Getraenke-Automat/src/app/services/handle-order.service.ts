@@ -27,7 +27,7 @@ export class HandleOrderService {
   /**
    * Überprüft, ob gültige Eingabewerte eingegeben wurden.
    */
-  verifyOrder(paidAmount: number, compartmentID: string): boolean {
+  isOrderValid(paidAmount: number, compartmentID: string): boolean {
     const isValidID = this.beverageChoiceVerifierService.isValidID(compartmentID);
     if (!isValidID) {
       this.customerMessageService.setCustomerMessage('Keine gültige Getränke-ID');
