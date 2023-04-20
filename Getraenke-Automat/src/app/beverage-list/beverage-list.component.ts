@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Beverage } from '../beverage';
 import { beverageList } from '../beverage-list';
-import { UpdateBeverageQuantityService } from '../services/update-beverage-quantity.service';
+import { BeverageQuantityService } from '../services/beverage-quantity.service';
 
 @Component({
-  selector: 'app-getraenke-liste',
+  selector: 'app-beverage-list',
   templateUrl: './beverage-list.component.html',
   styleUrls: ['./beverage-list.component.css']
 })
 export class BeverageListComponent {
   beverages = beverageList;
 
-  constructor(private updateBeverageQuantityService: UpdateBeverageQuantityService) {}
+  constructor(private beverageQuantityService: BeverageQuantityService) {}
 
   ngOnInit(): void {
-    this.updateBeverageQuantityService.updatedBeverageList.subscribe(list => {
+    this.beverageQuantityService.updatedBeverageList.subscribe(list => {
       this.updateList(list);
     });
   }

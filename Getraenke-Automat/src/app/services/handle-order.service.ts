@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { VerifyInputService } from './verify-input.service';
+import { BeverageChoiceVerifierService } from './beverage-choice-verifier.service';
 import { BeverageOrderService } from './beverage-order.service';
 import { BeverageOutputService } from './beverage-output.service';
 import { CashRegisterService } from './cash-register.service';
 import { CustomerMessageService } from './customer-message.service';
-import { UpdateBeverageQuantityService } from './update-beverage-quantity.service';
+import { BeverageQuantityService } from './beverage-quantity.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HandleOrderService {
   constructor(
-    private verifyInputService: VerifyInputService,
+    private beverageChoiceVerifierService: BeverageChoiceVerifierService,
     private beverageOrderService: BeverageOrderService,
     private customerMessageService: CustomerMessageService,
     private cashRegisterService: CashRegisterService,
     private beverageOutputService: BeverageOutputService,
-    private updateBeverageQuantity: UpdateBeverageQuantityService
+    private beverageQuantityService: BeverageQuantityService
   ) {}
 
   /**
@@ -27,14 +27,14 @@ export class HandleOrderService {
   /**
    * Überprüft, ob gültige Eingabewerte eingegeben wurden.
    */
-  verifyOrder(paidAmount: number, inputField: string) {
-    const isValidId = this.verifyInputService.validID(inputField);
-    if (!isValidId){
+  verifyOrder(paidAmount: number, compartmentID: string) {
+    const isValidID = this.beverageChoiceVerifierService.validID(compartmentID);
+    if (!isValidID){
       const errorMsg = 'Keine gültige Getränke-ID'
         this.customerMessageService.setCustomerMessage(errorMsg);
         throw new Error(errorMsg);
     }
-    const beverageCompartment = parseInt(inputField);
+    const beverageCompartment = parseInt(compartmentID);
     const available = this.beverageOrderService.checkAvailability(beverageCompartment);
     if (!available) {
       const errorMsg = 'Das Getränk ist leider ausverkauft';
@@ -63,7 +63,7 @@ export class HandleOrderService {
    */
   setOrder(beverageCompartment: number, change: number){
     this.beverageOutputService.setOrder(change, beverageCompartment);
-    this.updateBeverageQuantity.updateQuantity(beverageCompartment);
+    this.beverageQuantityService.updateQuantity(beverageCompartment);
 
     this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
   }

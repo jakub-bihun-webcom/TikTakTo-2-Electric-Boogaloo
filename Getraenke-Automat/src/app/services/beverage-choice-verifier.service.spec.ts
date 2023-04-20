@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VerifyInputService } from './verify-input.service';
+import { BeverageChoiceVerifierService } from './beverage-choice-verifier.service';
 
 describe('VerifyInputService', () => {
-  let service: VerifyInputService;
+  let service: BeverageChoiceVerifierService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(VerifyInputService);
+    service = TestBed.inject(BeverageChoiceVerifierService);
   });
 
   it('should be created', () => {
