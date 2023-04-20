@@ -9,6 +9,6 @@ export class BeverageChoiceVerifierService {
 
   isValidID(compartmentID: string): boolean {
     const parsedInput = parseInt(compartmentID);
-    return !(isNaN(parsedInput) || parsedInput > beverageList.length)
+    return !(isNaN(parsedInput) || parsedInput > beverageList.length);
   }
 }
