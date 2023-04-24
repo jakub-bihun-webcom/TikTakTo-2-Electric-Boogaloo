@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BeverageOutputService } from '../services/beverage-output.service';
+import { CashRegisterService } from '../services/cash-register.service';
 import { HandleOrderService } from '../services/handle-order.service';
 
 @Component({
@@ -15,14 +16,18 @@ export class CustomerControlPanelComponent {
   compartmentID: string = '';
   paidAmount: number = 0;
 
-  constructor(private beverageOutputService: BeverageOutputService, private handleOrderService: HandleOrderService) {}
+  constructor(
+    private beverageOutputService: BeverageOutputService,
+    private handleOrderService: HandleOrderService,
+    private cashRegisterService: CashRegisterService
+  ) {}
 
   /**
    * Aktualisiert den aktuellen bezahlten Betrag.
    */
   onMoneyPaid(money: number) {
     this.paidAmount += money;
-    this.paidAmount = Math.round(this.paidAmount * 500)/ 500;
+    this.paidAmount = this.cashRegisterService.roundingMoneyToFiveCents(this.paidAmount);
   }
 
   /**

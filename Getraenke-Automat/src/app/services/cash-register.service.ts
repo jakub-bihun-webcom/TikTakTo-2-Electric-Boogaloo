@@ -25,4 +25,8 @@ export class CashRegisterService {
   calculateCashRegistryChange(price: number, cashRegister: number): number {
     return cashRegister + price;
   }
+
+  roundingMoneyToFiveCents(money: number): number {
+    return Math.round(money * 500) / 500;
+  }
 }
