@@ -22,7 +22,7 @@ export class CustomerControlPanelComponent {
    */
   onMoneyPaid(money: number) {
     this.paidAmount += money;
-    this.paidAmount = (Math.round(this.paidAmount * 500)/ 500);
+    this.paidAmount = Math.round(this.paidAmount * 500)/ 500;
   }
 
   /**

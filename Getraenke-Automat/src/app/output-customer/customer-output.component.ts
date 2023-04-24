@@ -56,7 +56,8 @@ export class CustomerOutputComponent {
     if (this.change === undefined) {
       this.change = change;
     } else {
-      this.change = this.change + change;
+      this.change += change;
+      this.change = Math.round(this.change * 500)/ 500;
     }
   }
 
