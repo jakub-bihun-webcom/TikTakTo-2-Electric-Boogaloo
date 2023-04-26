@@ -59,7 +59,7 @@ export class CustomerOutputComponent {
       this.change = change;
     } else {
       this.change += change;
-      this.change = this.cashRegisterService.roundingMoneyToFiveCents(this.change);
+      this.change = this.cashRegisterService.roundMoneyToFiveCents(this.change);
     }
   }
 

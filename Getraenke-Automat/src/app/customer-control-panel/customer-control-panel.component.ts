@@ -27,7 +27,7 @@ export class CustomerControlPanelComponent {
    */
   onMoneyPaid(money: number) {
     this.paidAmount += money;
-    this.paidAmount = this.cashRegisterService.roundingMoneyToFiveCents(this.paidAmount);
+    this.paidAmount = this.cashRegisterService.roundMoneyToFiveCents(this.paidAmount);
   }
 
   /**

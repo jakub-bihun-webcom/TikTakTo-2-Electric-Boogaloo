@@ -26,7 +26,7 @@ export class CashRegisterService {
     return cashRegister + price;
   }
 
-  roundingMoneyToFiveCents(money: number): number {
+  roundMoneyToFiveCents(money: number): number {
     return Math.round(money * 500) / 500;
   }
 }
