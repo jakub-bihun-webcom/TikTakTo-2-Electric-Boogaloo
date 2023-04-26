@@ -19,7 +19,7 @@ export class BeverageOutputService {
     this.setOrderOutput(name, change);
   }
 
-  setOrderOutput(name: string, change: number) {
+  private setOrderOutput(name: string, change: number) {
     this.orderOutput.next({
       change: change,
       beverageName: name
