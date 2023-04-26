@@ -27,41 +27,41 @@ export class HandleOrderService {
   /**
    * Überprüft, ob gültige Eingabewerte eingegeben wurden.
    */
-  verifyOrder(paidAmount: number, compartmentID: string) {
-    const isValidID = this.beverageChoiceVerifierService.validID(compartmentID);
-    if (!isValidID){
-      const errorMsg = 'Keine gültige Getränke-ID'
-        this.customerMessageService.setCustomerMessage(errorMsg);
-        throw new Error(errorMsg);
+  isOrderValid(paidAmount: number, compartmentID: string): boolean {
+    const isValidID = this.beverageChoiceVerifierService.isValidID(compartmentID);
+    if (!isValidID) {
+      this.customerMessageService.setCustomerMessage('Keine gültige Getränke-ID');
+      return false;
     }
     const beverageCompartment = parseInt(compartmentID);
     const available = this.beverageOrderService.checkAvailability(beverageCompartment);
     if (!available) {
-      const errorMsg = 'Das Getränk ist leider ausverkauft';
-      this.customerMessageService.setCustomerMessage(errorMsg);
-      throw new Error(errorMsg);
+      this.customerMessageService.setCustomerMessage('Das Getränk ist leider ausverkauft');
+      return false;
     }
-    if (paidAmount > 0) {
-      this.updateCashRegistry(paidAmount, beverageCompartment)
-    } else {
+    if (paidAmount === 0) {
       this.customerMessageService.setCustomerMessage('Kein Geld eingeworfen');
+      return false;
+    } else {
+      this.updateCashRegistry(paidAmount, beverageCompartment);
+      return true;
     }
   }
 
   /**
    * Überprüft, ob genug Geld eingeworfen wurde und aktualisiert die Kasse.
    */
-  updateCashRegistry(paidAmount: number, beverageCompartment: number){
+  updateCashRegistry(paidAmount: number, beverageCompartment: number) {
     const price = this.beverageOrderService.getBeveragePrice(beverageCompartment);
     const change = this.cashRegisterService.calculateChange(paidAmount, price, this.cashRegister);
     this.cashRegister = this.cashRegisterService.calculateCashRegistryChange(price, this.cashRegister);
-    this.setOrder(beverageCompartment, change)
+    this.setOrder(beverageCompartment, change);
   }
 
   /**
    * Leitet die gültige Bestellung an die Ausgabe weiter.
    */
-  setOrder(beverageCompartment: number, change: number){
+  setOrder(beverageCompartment: number, change: number) {
     this.beverageOutputService.setOrder(change, beverageCompartment);
     this.beverageQuantityService.updateQuantity(beverageCompartment);
 
