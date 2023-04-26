@@ -6,13 +6,11 @@ import { beverageList } from '../beverage-list';
 })
 export class BeverageOrderService {
   getBeveragePrice(inputID: number): number {
-    const price = beverageList.filter(beverage => beverage.id === inputID).map(beverage => beverage.price);
-    return price[0];
+    return beverageList.filter(beverage => beverage.id === inputID).map(beverage => beverage.price)[0];
   }
 
   getBeverageName(inputID: number): string {
-    const name = beverageList.filter(beverage => beverage.id === inputID).map(beverage => beverage.name);
-    return name[0];
+    return beverageList.filter(beverage => beverage.id === inputID).map(beverage => beverage.name)[0];
   }
 
   checkAvailability(inputID: number): boolean {
