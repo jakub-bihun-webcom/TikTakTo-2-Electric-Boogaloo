@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserCashOutManager } from '../services/user-cash-out-manager.service';
+import { UserCashOutManager } from '../services/user-cashout-manager.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -53,7 +53,7 @@ export class UserCustomAmountComponent {
   }
 
   navigatePage(data: any) {
-    this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
+    this.router.navigate(['/user-cashout-message'], { state: { myData: data } });
   }
 
   private displayError(error: string) {

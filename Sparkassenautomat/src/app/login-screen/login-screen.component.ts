@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserCashOutManager } from '../user-cashout/services/user-cash-out-manager.service';
+import { UserCashOutManager } from '../user-cashout/services/user-cashout-manager.service';
 
 @Component({
   selector: 'app-login-screen',

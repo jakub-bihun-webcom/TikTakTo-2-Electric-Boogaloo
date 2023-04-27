@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserCashOutMessageComponent } from './user-cash-out-message.component';
+import { UserCashoutMessageComponent } from './user-cashout-message.component';
 
 describe('UserCashOutMessageComponent', () => {
-  let component: UserCashOutMessageComponent;
-  let fixture: ComponentFixture<UserCashOutMessageComponent>;
+  let component: UserCashoutMessageComponent;
+  let fixture: ComponentFixture<UserCashoutMessageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserCashOutMessageComponent]
+      declarations: [UserCashoutMessageComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(UserCashOutMessageComponent);
+    fixture = TestBed.createComponent(UserCashoutMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
