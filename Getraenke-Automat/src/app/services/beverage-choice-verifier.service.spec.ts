@@ -10,7 +10,7 @@ describe('VerifyInputService', () => {
     service = TestBed.inject(BeverageChoiceVerifierService);
   });
 
-  it('should be created', () => {
+  it('should check if valid BeverageCompartment ID', () => {
     expect(service.isValidID('1')).toBeTruthy();
     expect(service.isValidID('5')).toBeTruthy();
     expect(service.isValidID('12')).toBeFalsy();
