@@ -28,7 +28,7 @@ export class LoginScreenComponent {
       this.handleUserAccountMoneyService.setUserAccountMoney(user.userAccountMoney);
       this.router.navigate(['/user-home-screen']);
     } else {
-      this.displayError('Bitte überprüfen sie ihre anmelde Daten');
+      this.displayError('Bitte überprüfen sie ihre Anmeldedaten');
       throw new Error('Input Validation ERROR');
     }
   }
