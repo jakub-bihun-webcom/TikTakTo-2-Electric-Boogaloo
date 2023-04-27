@@ -11,6 +11,10 @@ describe('VerifyInputService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(service.isValidID('1')).toBeTruthy();
+    expect(service.isValidID('5')).toBeTruthy();
+    expect(service.isValidID('12')).toBeFalsy();
+    expect(service.isValidID('wrongID')).toBeFalsy();
+    expect(service.isValidID('string')).toBeFalsy();
   });
 });
