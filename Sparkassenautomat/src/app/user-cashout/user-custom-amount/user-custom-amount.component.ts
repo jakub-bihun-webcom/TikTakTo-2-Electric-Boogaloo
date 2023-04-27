@@ -41,9 +41,9 @@ export class UserCustomAmountComponent {
       this.displayError('Bitte trage einen positiven Betrag ein');
       throw new Error('Negative Numbers cant be processed');
     } else {
-      const accountMoney = this.handleUserAccountMoneyService.processATMAccountMoney(customAmount);
-      if (accountMoney[0] === 0) {
-        this.displayError('Es befinden sich nur noch ' + accountMoney[1] + '€ im Automaten.');
+      const ATMHasEnoughMoney = this.handleUserAccountMoneyService.processATMAccountMoney(customAmount);
+      if (!ATMHasEnoughMoney) {
+        this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');
         throw new Error('ATMAccountMoney exceeded');
       } else {
         this.clearError();

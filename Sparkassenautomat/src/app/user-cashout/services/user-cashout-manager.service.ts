@@ -19,12 +19,12 @@ export class UserCashOutManager {
     this.userAccountMoney = amount;
   }
 
-  processATMAccountMoney(amount: number) {
+  processATMAccountMoney(amount: number): boolean {
     if (this.ATMAccountMoney + 1 <= amount) {
-      return [0, this.ATMAccountMoney];
+      return false;
     } else {
       this.ATMAccountMoney -= amount;
-      return [1];
+      return true;
     }
   }
 }
