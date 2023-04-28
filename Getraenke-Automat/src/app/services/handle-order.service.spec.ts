@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VerifyInputService } from './verify-input.service';
+import { HandleOrderService } from './handle-order.service';
 
-describe('VerifyInputService', () => {
-  let service: VerifyInputService;
+describe('HandleOrderService', () => {
+  let service: HandleOrderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(VerifyInputService);
+    service = TestBed.inject(HandleOrderService);
   });
 
   it('should be created', () => {

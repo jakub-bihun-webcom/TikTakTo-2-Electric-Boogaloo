@@ -7,14 +7,14 @@ import { CustomerMessageService } from './customer-message.service';
 export class CashRegisterService {
   constructor(private customerMessageService: CustomerMessageService) {}
 
-  calculateChange(inputMoney: number, priceBeverage: number, registry: number): number {
+  calculateChange(inputMoney: number, priceBeverage: number, cashRegister: number): number {
     const change = inputMoney - priceBeverage;
     if (change < 0) {
       const errorMsg = 'Nicht genug Geld eingeworfen';
       this.customerMessageService.setCustomerMessage(errorMsg);
       throw new Error(errorMsg);
     }
-    if (change > registry) {
+    if (change > cashRegister) {
       const errorMsg = 'Nicht genug Wechselgeld im Automaten';
       this.customerMessageService.setCustomerMessage(errorMsg);
       throw new Error(errorMsg);
@@ -22,7 +22,11 @@ export class CashRegisterService {
     return change;
   }
 
-  calculateRegistryChange(price: number, registry: number): number {
-    return registry + price;
+  calculateCashRegistryChange(price: number, cashRegister: number): number {
+    return cashRegister + price;
+  }
+
+  roundMoneyToFiveCents(money: number): number {
+    return Math.round(money * 500) / 500;
   }
 }

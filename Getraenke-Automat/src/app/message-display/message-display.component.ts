@@ -3,11 +3,11 @@ import { CustomerMessageService } from '../services/customer-message.service';
 
 @Component({
   selector: 'app-output-field',
-  templateUrl: './output-field.component.html',
-  styleUrls: ['./output-field.component.css']
+  templateUrl: './message-display.component.html',
+  styleUrls: ['./message-display.component.css']
 })
-export class OutputFieldComponent {
-  outputText?: string;
+export class MessageDisplayComponent {
+  customerMessage?: string;
 
   constructor(private customerMessageService: CustomerMessageService) {}
 
@@ -18,6 +18,6 @@ export class OutputFieldComponent {
   }
 
   updateMessage(text: string) {
-    this.outputText = text;
+    this.customerMessage = text;
   }
 }

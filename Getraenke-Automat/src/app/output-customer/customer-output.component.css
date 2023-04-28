@@ -1,20 +1,20 @@
-.beverageOutput {
+.output-customer {
   border: 3px solid #000;
   display: grid;
-  grid-template-areas: 'outputBeverage outputChange takeOutput';
+  grid-template-areas: 'output-beverage output-change take-output';
 }
 
-.outputBeverage {
+.output-beverage {
   padding: 3px;
-  grid-area: outputBeverage;
+  grid-area: output-beverage;
 }
 
-.outputChange {
+.output-change {
   padding: 3px;
-  grid-area: outputChange;
+  grid-area: output-change;
 }
 
-.takeOutput {
+.take-output {
   padding: 3px;
-  grid-area: takeOutput;
+  grid-area: take-output;
 }

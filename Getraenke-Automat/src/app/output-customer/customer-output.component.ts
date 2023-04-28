@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BeverageOutputService } from '../services/beverage-output.service';
+import { CashRegisterService } from '../services/cash-register.service';
 import { CustomerMessageService } from '../services/customer-message.service';
 
 @Component({
@@ -25,7 +26,8 @@ export class CustomerOutputComponent {
 
   constructor(
     private beverageOutputService: BeverageOutputService,
-    private customerMessageService: CustomerMessageService
+    private customerMessageService: CustomerMessageService,
+    private cashRegisterService: CashRegisterService
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +58,8 @@ export class CustomerOutputComponent {
     if (this.change === undefined) {
       this.change = change;
     } else {
-      this.change = this.change + change;
+      this.change += change;
+      this.change = this.cashRegisterService.roundMoneyToFiveCents(this.change);
     }
   }
 
