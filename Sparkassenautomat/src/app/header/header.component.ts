@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(private router: Router) {}
 
+  /**
+   * Navigiert um Login Screen
+   */
   goToLoginScreen() {
     this.router.navigate(['/login-screen']);
   }
