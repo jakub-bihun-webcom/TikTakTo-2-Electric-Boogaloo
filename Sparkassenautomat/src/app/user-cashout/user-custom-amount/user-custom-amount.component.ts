@@ -53,8 +53,8 @@ export class UserCustomAmountComponent {
       throw new Error('exceeded maximum');
     }
     if (customAmount <= -1) {
-      this.displayError('Bitte tragen Sie einen positiven Betrag ein');
-      throw new Error('Negative numbers can\'t be processed');
+      this.displayError('Bitte trage Sie einen positiven Betrag ein');
+      throw new Error('Negative numbers cant be processed');
     } else {
       const accountMoney = this.handleUserAccountMoneyService.processATMAccountMoney(customAmount);
       if (accountMoney[0] === 0) {
