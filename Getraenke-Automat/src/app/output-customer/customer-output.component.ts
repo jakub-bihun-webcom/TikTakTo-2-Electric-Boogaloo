@@ -18,7 +18,6 @@ export class CustomerOutputComponent {
   constructor(
     protected beverageOutputService: BeverageOutputService,
     private customerMessageService: CustomerMessageService,
-    private cashRegisterService: CashRegisterService
   ) {}
 
   /**
