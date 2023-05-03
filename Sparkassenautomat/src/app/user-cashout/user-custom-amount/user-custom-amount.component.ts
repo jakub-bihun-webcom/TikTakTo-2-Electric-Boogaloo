@@ -20,7 +20,7 @@ export class UserCustomAmountComponent {
     } else if (this.validateUserInput(this.customAmount)) {
       this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(this.customAmount));
     } else {
-      throw new Error('Something went wrong with validation')
+      throw new Error('Something went wrong with validation');
     }
   }
 
@@ -41,14 +41,13 @@ export class UserCustomAmountComponent {
       this.displayError('Bitte trage einen positiven Betrag ein');
       throw new Error('Negative Numbers cant be processed');
     } else {
-      const ATMHasEnoughMoney = this.handleUserAccountMoneyService.processATMAccountMoney(customAmount);
-      if (!ATMHasEnoughMoney) {
-        this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');
-        throw new Error('ATMAccountMoney exceeded');
-      } else {
+      const ATMHasEnoughMoney = this.handleUserAccountMoneyService.checkIfWithdrawalIsPossible(customAmount);
+      if (ATMHasEnoughMoney) {
         this.clearError();
         return true;
       }
+      this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');
+      throw new Error('ATMAccountMoney exceeded');
     }
   }
 
