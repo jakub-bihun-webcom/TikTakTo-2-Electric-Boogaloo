@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { BeverageOutputService } from '../services/beverage-output.service';
-import { CashRegisterService } from '../services/cash-register.service';
 import { CustomerMessageService } from '../services/customer-message.service';
 
 @Component({
