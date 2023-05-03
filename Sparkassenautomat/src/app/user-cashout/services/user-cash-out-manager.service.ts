@@ -21,10 +21,6 @@ export class UserCashOutManager {
     return this.userAccountMoney;
   }
 
-  /**
-   * Setzt den Kontostand des Benutzers.
-   * @param amount Der zu setzende Kontostand.
-   */
   setUserAccountMoney(amount: number) {
     this.userAccountMoney = amount;
   }

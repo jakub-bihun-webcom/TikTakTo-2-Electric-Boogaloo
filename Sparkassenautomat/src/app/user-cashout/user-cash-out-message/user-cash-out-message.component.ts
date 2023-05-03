@@ -27,10 +27,6 @@ export class UserCashoutMessageComponent implements OnInit {
     this.router.navigate(['/user-home-screen']);
   }
 
-  /**
-   * Zeigt den übergebenen Text an.
-   * @param outputText Der anzuzeigende Text.
-   */
   private displayText(outputText: string) {
     this.text = outputText;
   }

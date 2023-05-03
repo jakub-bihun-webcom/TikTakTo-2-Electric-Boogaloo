@@ -34,6 +34,7 @@ export class UserCustomAmountComponent {
    * Validiert die Benutzereingabe auf Korrektheit
    * @param customAmount Der eingegebene benutzerdefinierte Betrag
    * @returns true, wenn die Eingabe korrekt ist
+   * @returns false, wenn die eingabe nicht korrekt ist
    * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
    *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
    *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
@@ -52,7 +53,7 @@ export class UserCustomAmountComponent {
       throw new Error('exceeded maximum');
     }
     if (customAmount <= -1) {
-      this.displayError('Bitte trage Sie einen positiven Betrag ein');
+      this.displayError('Bitte tragen Sie einen positiven Betrag ein');
       throw new Error('Negative numbers cant be processed');
     } else {
       const accountMoney = this.handleUserAccountMoneyService.processATMAccountMoney(customAmount);

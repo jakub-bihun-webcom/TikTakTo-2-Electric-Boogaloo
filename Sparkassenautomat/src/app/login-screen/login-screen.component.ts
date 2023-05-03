@@ -39,11 +39,6 @@ export class LoginScreenComponent {
     }
   }
 
-  /**
-   * Zeigt die Fehlermeldung im DOM an
-   * @param error String mit Fehlermeldung
-   * @private
-   */
   private displayError(error: string) {
     this.errorMessage = error;
   }
