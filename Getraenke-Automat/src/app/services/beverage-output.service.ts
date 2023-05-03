@@ -11,7 +11,6 @@ export class BeverageOutputService {
     change: 0,
     beverageName: ''
   });
-  canceledMoney = new BehaviorSubject<number>(0);
 
   constructor(
     private beverageOrderService: BeverageOrderService,
@@ -44,7 +43,7 @@ export class BeverageOutputService {
     });
   }
 
-  addChange(change: number): number {
+  private addChange(change: number): number {
     const money = change + this.orderOutput.getValue().change
     return this.cashRegisterService.roundMoneyToFiveCents(money)
   }

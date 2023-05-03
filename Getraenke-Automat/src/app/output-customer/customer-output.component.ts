@@ -13,11 +13,18 @@ import { CustomerMessageService } from '../services/customer-message.service';
  * oder der Anforderung des Rückgelds wird die Ausgabe in dieser Komponente simuliert.
  */
 export class CustomerOutputComponent {
+  beverage: string = '';
+  change?: number;
 
   constructor(
-    protected beverageOutputService: BeverageOutputService,
-    private customerMessageService: CustomerMessageService,
-  ) {}
+    private beverageOutputService: BeverageOutputService,
+    private customerMessageService: CustomerMessageService
+  ) {
+    this.beverageOutputService.orderOutput.subscribe(output => {
+      this.beverage = output.beverageName;
+      this.change = output.change;
+    });
+  }
 
   /**
    * Setzt das Ausgabefach für Getränke, das Rückgeld und die customerMessage auf ihre Ursprungswerte zurück.
