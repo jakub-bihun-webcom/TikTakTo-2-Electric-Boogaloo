@@ -29,4 +29,11 @@ export class BeverageOutputService {
   returnMoney(value: number) {
     this.canceledMoney.next(value);
   }
+
+  resetOrderOutputState() {
+    this.orderOutput.next({
+      change: 0,
+      beverageName: ''
+    });
+  }
 }

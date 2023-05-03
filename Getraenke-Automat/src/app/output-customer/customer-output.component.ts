@@ -69,6 +69,7 @@ export class CustomerOutputComponent {
   resetOutput() {
     this.change = 0;
     this.beverageName = '';
+    this.beverageOutputService.resetOrderOutputState();
     this.customerMessageService.setCustomerMessage('Willkommen beim besten Getränke Automaten');
   }
 }
