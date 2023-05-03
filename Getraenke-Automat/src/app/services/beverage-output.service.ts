@@ -31,7 +31,7 @@ export class BeverageOutputService {
 
   returnMoney(value: number) {
     this.orderOutput.next({
-      change: value,
+      change: value + this.orderOutput.getValue().change,
       beverageName: this.orderOutput.getValue().beverageName
     })
   }
