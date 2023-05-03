@@ -7,7 +7,6 @@ export class UserCashOutManager {
   private ATMAccountMoney: number = 10000;
   private userAccountMoney?: number;
 
-
   /**
    * Zieht einen bestimmten Betrag vom Benutzerkonto ab.
    * @param amount Der abzuziehende Betrag
@@ -30,10 +29,10 @@ export class UserCashOutManager {
     this.userAccountMoney = amount;
   }
 
-/**
- * Verarbeitet den Betrag auf dem ATM-Konto.
- * @param amount Der zu verarbeitende Betrag.
- */
+  /**
+   * Verarbeitet den Betrag auf dem ATM-Konto.
+   * @param amount Der zu verarbeitende Betrag.
+   */
   processATMAccountMoney(amount: number) {
     if (this.ATMAccountMoney + 1 <= amount) {
       return [0, this.ATMAccountMoney];

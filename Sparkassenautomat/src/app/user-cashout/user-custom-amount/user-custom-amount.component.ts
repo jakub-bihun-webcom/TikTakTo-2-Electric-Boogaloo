@@ -13,7 +13,6 @@ export class UserCustomAmountComponent {
 
   constructor(private handleUserAccountMoneyService: UserCashOutManager, private router: Router) {}
 
-
   /**
    * Verwendet den benutzerdefinierten Betrag
    * Überprüft die Eingabe und navigiert zur Benachrichtigungsseite
@@ -66,7 +65,6 @@ export class UserCustomAmountComponent {
       }
     }
   }
-
 
   navigatePage(data: any) {
     this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
