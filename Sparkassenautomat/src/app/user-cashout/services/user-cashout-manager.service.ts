@@ -23,7 +23,11 @@ export class UserCashOutManager {
     if (this.ATMAccountMoney + 1 <= amount) {
       return false;
     }
-    this.ATMAccountMoney -= amount;
+    this.withdraw(amount);
     return true;
+  }
+
+  withdraw(amount: number) {
+    this.ATMAccountMoney -= amount
   }
 }
