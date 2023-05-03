@@ -23,9 +23,6 @@ export class UserCashoutMessageComponent implements OnInit {
     this.displayText('Dein neues Saldo beträgt: ' + customAmount + '€');
   }
 
-  /**
-   * Navigiert zum Hauptmenü.
-   */
   goToUserHomeScreen() {
     this.router.navigate(['/user-home-screen']);
   }

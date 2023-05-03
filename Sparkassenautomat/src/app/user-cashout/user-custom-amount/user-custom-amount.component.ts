@@ -13,18 +13,32 @@ export class UserCustomAmountComponent {
 
   constructor(private handleUserAccountMoneyService: UserCashOutManager, private router: Router) {}
 
+
+  /**
+   * Verwendet den benutzerdefinierten Betrag
+   * Überprüft die Eingabe und navigiert zur Benachrichtigungsseite
+   * @throws Error, wenn das Eingabefeld leer ist, die Validierung fehlschlägt oder der Betrag ungültig ist
+   */
   useCustomAmount() {
     if (this.customAmount === undefined) {
-      this.displayError('Bitte tragen sie ihren Betrag in das Feld ein');
+      this.displayError('Bitte tragen Sie Ihren Betrag in das Feld ein');
       throw new Error('Input field is empty');
     } else if (!this.validateUserInput(this.customAmount)) {
-      this.displayError('Es hat ein Problem mit der Validierung ihrer Eingabe gegeben');
+      this.displayError('Es ist ein Problem bei der Validierung Ihrer Eingabe aufgetreten');
       throw new Error('Problem with validateUserInput()');
     } else {
       this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(this.customAmount));
     }
   }
 
+  /**
+   * Validiert die Benutzereingabe auf Korrektheit
+   * @param customAmount Der eingegebene benutzerdefinierte Betrag
+   * @returns true, wenn die Eingabe korrekt ist
+   * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
+   *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
+   *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
+   */
   private validateUserInput(customAmount: number) {
     if (isNaN(customAmount)) {
       this.displayError('Der Betrag muss in Zahlen angegeben werden');
@@ -39,8 +53,8 @@ export class UserCustomAmountComponent {
       throw new Error('exceeded maximum');
     }
     if (customAmount <= -1) {
-      this.displayError('Bitte trage einen positiven Betrag ein');
-      throw new Error('Negative Numbers cant be processed');
+      this.displayError('Bitte tragen Sie einen positiven Betrag ein');
+      throw new Error('Negative numbers can\'t be processed');
     } else {
       const accountMoney = this.handleUserAccountMoneyService.processATMAccountMoney(customAmount);
       if (accountMoney[0] === 0) {
@@ -52,6 +66,7 @@ export class UserCustomAmountComponent {
       }
     }
   }
+
 
   navigatePage(data: any) {
     this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
