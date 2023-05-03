@@ -3,7 +3,7 @@ import { beverageList } from '../beverage-list';
 
 import { BeverageOrderService } from './beverage-order.service';
 
-fdescribe('BeverageOrderService', () => {
+describe('BeverageOrderService', () => {
   let service: BeverageOrderService;
   const safeBeverageList = beverageList;
 
