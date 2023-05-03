@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CustomerOutputComponent } from '../output-customer/customer-output.component';
 import { BeverageOrderService } from './beverage-order.service';
 import { BehaviorSubject } from 'rxjs';
+import { CashRegisterService } from './cash-register.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class BeverageOutputService {
 
   constructor(
     private beverageOrderService: BeverageOrderService,
+    private cashRegisterService: CashRegisterService
   ) {}
 
   setOrder(change: number, beverageID: number) {
@@ -24,14 +25,14 @@ export class BeverageOutputService {
 
   setOrderOutput(name: string, change: number) {
     this.orderOutput.next({
-      change: change + this.orderOutput.getValue().change,
+      change: this.addChange(change),
       beverageName: this.orderOutput.getValue().beverageName + ' ' + name
     });
   }
 
-  returnMoney(value: number) {
+  returnMoney(change: number) {
     this.orderOutput.next({
-      change: value + this.orderOutput.getValue().change,
+      change: this.addChange(change),
       beverageName: this.orderOutput.getValue().beverageName
     })
   }
@@ -41,5 +42,10 @@ export class BeverageOutputService {
       change: 0,
       beverageName: ''
     });
+  }
+
+  addChange(change: number): number {
+    const money = change + this.orderOutput.getValue().change
+    return this.cashRegisterService.roundMoneyToFiveCents(money)
   }
 }
