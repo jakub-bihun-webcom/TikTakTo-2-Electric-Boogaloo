@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { beverageList } from '../beverage-list';
 import { BeverageOutputService } from './beverage-output.service';
 
-fdescribe('BeverageOutputService', () => {
+describe('BeverageOutputService', () => {
   let service: BeverageOutputService;
   const safeBeverageList = beverageList;
 
