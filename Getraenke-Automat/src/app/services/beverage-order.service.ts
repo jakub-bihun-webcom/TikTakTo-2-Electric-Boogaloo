@@ -5,18 +5,16 @@ import { beverageList } from '../beverage-list';
   providedIn: 'root'
 })
 export class BeverageOrderService {
-  getBeveragePrice(inputID: number) {
-    const price = beverageList.filter(x => x.id === inputID).map(x => x.price);
-    return price[0];
+  getBeveragePrice(compartmentID: number): number {
+    return beverageList.filter(beverage => beverage.id === compartmentID).map(beverage => beverage.price)[0];
   }
 
-  getBeverageName(inputID: number) {
-    const name = beverageList.filter(x => x.id === inputID).map(x => x.name);
-    return name[0];
+  getBeverageName(compartmentID: number): string {
+    return beverageList.filter(beverage => beverage.id === compartmentID).map(beverage => beverage.name)[0];
   }
 
-  checkAvailability(inputID: number): boolean {
-    const availability = beverageList.filter(x => x.id === inputID).map(x => x.quantity);
+  checkAvailability(compartmentID: number): boolean {
+    const availability = beverageList.filter(beverage => beverage.id === compartmentID).map(beverage => beverage.quantity);
     return availability[0] > 0;
   }
 }

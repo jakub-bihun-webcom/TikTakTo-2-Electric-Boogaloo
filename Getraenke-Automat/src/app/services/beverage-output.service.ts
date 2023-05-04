@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BeverageOrderService } from './beverage-order.service';
 import { BehaviorSubject } from 'rxjs';
+import { CashRegisterService } from './cash-register.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,11 @@ export class BeverageOutputService {
     change: 0,
     beverageName: ''
   });
-  canceledMoney = new BehaviorSubject<number>(0);
 
-  constructor(private beverageOrderService: BeverageOrderService) {}
+  constructor(
+    private beverageOrderService: BeverageOrderService,
+    private cashRegisterService: CashRegisterService
+  ) {}
 
   setOrder(change: number, beverageID: number) {
     const name = this.beverageOrderService.getBeverageName(beverageID);
@@ -21,12 +24,27 @@ export class BeverageOutputService {
 
   setOrderOutput(name: string, change: number) {
     this.orderOutput.next({
-      change: change,
-      beverageName: name
+      change: this.addChange(change),
+      beverageName: this.orderOutput.getValue().beverageName + ' ' + name
     });
   }
 
-  returnMoney(value: number) {
-    this.canceledMoney.next(value);
+  returnMoney(change: number) {
+    this.orderOutput.next({
+      change: this.addChange(change),
+      beverageName: this.orderOutput.getValue().beverageName
+    })
+  }
+
+  resetOrderOutputState() {
+    this.orderOutput.next({
+      change: 0,
+      beverageName: ''
+    });
+  }
+
+  private addChange(change: number): number {
+    const money = change + this.orderOutput.getValue().change
+    return this.cashRegisterService.roundMoneyToFiveCents(money)
   }
 }

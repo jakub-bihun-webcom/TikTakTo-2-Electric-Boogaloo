@@ -1,11 +1,11 @@
 <div class="output-customer">
   <div class="output-beverage">
     <p>Ausgabe Getränk</p>
-    <p>{{ beverageName }}</p>
+    <p>{{ this.beverage }}</p>
   </div>
   <div class="output-change">
     <p>Rückgeld</p>
-    <p>{{ change }} €</p>
+    <p>{{ this.change }} €</p>
   </div>
   <button class="take-output" (click)="this.resetOutput()" type="button">NEHMEN</button>
 </div>
