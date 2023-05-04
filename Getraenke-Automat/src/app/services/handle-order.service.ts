@@ -54,7 +54,7 @@ export class HandleOrderService {
   updateCashRegistry(paidAmount: number, beverageCompartment: number) {
     const price = this.beverageOrderService.getBeveragePrice(beverageCompartment);
     const change = this.cashRegisterService.calculateChange(paidAmount, price, this.cashRegister);
-    this.cashRegister = this.cashRegisterService.calculateCashRegistryChange(price, this.cashRegister);
+    this.cashRegister = this.cashRegisterService.calculateCashRegisterChange(price, this.cashRegister);
     this.setOrder(beverageCompartment, change);
   }
 

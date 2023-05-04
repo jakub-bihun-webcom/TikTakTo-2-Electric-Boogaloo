@@ -22,7 +22,7 @@ export class CashRegisterService {
     return change;
   }
 
-  calculateCashRegistryChange(price: number, cashRegister: number): number {
+  calculateCashRegisterChange(price: number, cashRegister: number): number {
     return cashRegister + price;
   }
 
