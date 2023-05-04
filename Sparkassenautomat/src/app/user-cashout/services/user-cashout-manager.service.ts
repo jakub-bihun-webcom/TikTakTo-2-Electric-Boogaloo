@@ -40,6 +40,6 @@ export class UserCashOutManager {
    * @param amount die abzuhebende Summe
    */
   withdraw(amount: number) {
-    this.ATMAccountMoney -= amount
+    this.ATMAccountMoney -= amount;
   }
 }

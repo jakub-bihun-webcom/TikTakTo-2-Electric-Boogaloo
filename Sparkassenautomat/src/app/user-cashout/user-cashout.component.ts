@@ -30,7 +30,7 @@ export class UserCashoutComponent {
    * Navigiert zur Benachrichtigungsseite und übermittelt das aktualisierte Saldo des Users
    * @param data Die zu übermittelnden Daten.
    */
-  navigatePage(data: any) {
+  private navigatePage(data: any) {
     this.router.navigate(['/user-cashout-message'], { state: { myData: data } });
   }
 }

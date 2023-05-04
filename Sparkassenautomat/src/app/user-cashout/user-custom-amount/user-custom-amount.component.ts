@@ -33,12 +33,11 @@ export class UserCustomAmountComponent {
    * Validiert die Benutzereingabe auf Korrektheit
    * @param customAmount Der eingegebene benutzerdefinierte Betrag
    * @returns true, wenn die Eingabe korrekt ist
-   * @returns false, wenn die eingabe nicht korrekt ist
    * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
    *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
    *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
    */
-  private validateUserInput(customAmount: number) {
+  private validateUserInput(customAmount: number): boolean {
     if (isNaN(customAmount)) {
       this.displayError('Der Betrag muss in Zahlen angegeben werden');
       throw new Error('The user input is not a number');
@@ -58,7 +57,7 @@ export class UserCustomAmountComponent {
       const ATMHasEnoughMoney = this.handleUserAccountMoneyService.checkIfWithdrawalIsPossible(customAmount);
       if (ATMHasEnoughMoney) {
         this.clearError();
-        this.handleUserAccountMoneyService.withdraw(customAmount)
+        this.handleUserAccountMoneyService.withdraw(customAmount);
         return true;
       }
       this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');

@@ -17,8 +17,6 @@ export class LoginScreenComponent {
     { id: '0000', pin: '1802349', userAccountMoney: 0, isAdmin: true }
   ];
 
-  currentUserMoney?: number;
-
   pinInput?: string;
   idInput?: string;
 
