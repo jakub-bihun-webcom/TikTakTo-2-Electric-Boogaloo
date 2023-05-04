@@ -19,13 +19,9 @@ export class BeverageOutputService {
 
   setOrder(change: number, beverageID: number) {
     const name = this.beverageOrderService.getBeverageName(beverageID);
-    this.setOrderOutput(name, change);
-  }
-
-  setOrderOutput(name: string, change: number) {
     this.orderOutput.next({
       change: this.addChange(change),
-      beverageName: this.orderOutput.getValue().beverageName + ' ' + name
+      beverageName:  name + ' ' + this.orderOutput.getValue().beverageName
     });
   }
 
