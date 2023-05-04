@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserCashOutManager {
-  private ATMAccountMoney: number = 10000;
+  private ATMAccountMoney: number = 1000;
   private userAccountMoney?: number;
 
   /**
@@ -26,15 +26,20 @@ export class UserCashOutManager {
   }
 
   /**
-   * Verarbeitet den Betrag auf dem ATM-Konto.
-   * @param amount Der zu verarbeitende Betrag.
+   * Checkt, ob genug Geld im Automaten ist um das angefragte Geld abzuheben
+   * @param amount das abzuhebende Geld
+   * @returns true, wenn genug Geld vorhanden ist
+   * @returns false, wenn nicht genug geld vorhanden ist
    */
-  processATMAccountMoney(amount: number) {
-    if (this.ATMAccountMoney + 1 <= amount) {
-      return [0, this.ATMAccountMoney];
-    } else {
-      this.ATMAccountMoney -= amount;
-      return [1];
-    }
+  checkIfWithdrawalIsPossible(amount: number): boolean {
+    return this.ATMAccountMoney + 1 > amount;
+  }
+
+  /**
+   * Zieht das Geld um die abzuhebende Summe vom Automatengeld ab
+   * @param amount die abzuhebende Summe
+   */
+  withdraw(amount: number) {
+    this.ATMAccountMoney -= amount
   }
 }

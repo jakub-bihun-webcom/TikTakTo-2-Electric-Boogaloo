@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserCashOutManager } from '../services/user-cash-out-manager.service';
+import { UserCashOutManager } from '../services/user-cashout-manager.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,11 +22,10 @@ export class UserCustomAmountComponent {
     if (this.customAmount === undefined) {
       this.displayError('Bitte tragen Sie Ihren Betrag in das Feld ein');
       throw new Error('Input field is empty');
-    } else if (!this.validateUserInput(this.customAmount)) {
-      this.displayError('Es ist ein Problem bei der Validierung Ihrer Eingabe aufgetreten');
-      throw new Error('Problem with validateUserInput()');
-    } else {
+    } else if (this.validateUserInput(this.customAmount)) {
       this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(this.customAmount));
+    } else {
+      throw new Error('Something went wrong with validation');
     }
   }
 
@@ -56,19 +55,19 @@ export class UserCustomAmountComponent {
       this.displayError('Bitte tragen Sie einen positiven Betrag ein');
       throw new Error('Negative numbers cant be processed');
     } else {
-      const accountMoney = this.handleUserAccountMoneyService.processATMAccountMoney(customAmount);
-      if (accountMoney[0] === 0) {
-        this.displayError('Es befinden sich nur noch ' + accountMoney[1] + '€ im Automaten.');
-        throw new Error('ATMAccountMoney exceeded');
-      } else {
+      const ATMHasEnoughMoney = this.handleUserAccountMoneyService.checkIfWithdrawalIsPossible(customAmount);
+      if (ATMHasEnoughMoney) {
         this.clearError();
+        this.handleUserAccountMoneyService.withdraw(customAmount)
         return true;
       }
+      this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');
+      throw new Error('ATMAccountMoney exceeded');
     }
   }
 
   navigatePage(data: any) {
-    this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
+    this.router.navigate(['/user-cashout-message'], { state: { myData: data } });
   }
 
   private displayError(error: string) {

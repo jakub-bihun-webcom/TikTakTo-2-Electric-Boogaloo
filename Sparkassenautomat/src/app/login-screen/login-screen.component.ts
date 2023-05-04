@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserCashOutManager } from '../user-cashout/services/user-cash-out-manager.service';
+import { UserCashOutManager } from '../user-cashout/services/user-cashout-manager.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -30,7 +30,6 @@ export class LoginScreenComponent {
   goToUserHomeScreen() {
     const user = this.users.find(u => u.id === this.idInput);
     if (user && user.pin === this.pinInput) {
-      this.currentUserMoney = user.userAccountMoney;
       this.handleUserAccountMoneyService.setUserAccountMoney(user.userAccountMoney);
       this.router.navigate(['/user-home-screen']);
     } else {

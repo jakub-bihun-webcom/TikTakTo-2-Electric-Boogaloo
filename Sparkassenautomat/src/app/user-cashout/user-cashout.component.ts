@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserCashOutManager } from './services/user-cash-out-manager.service';
+import { UserCashOutManager } from './services/user-cashout-manager.service';
 
 @Component({
   selector: 'app-user-cashout',
@@ -8,7 +8,7 @@ import { UserCashOutManager } from './services/user-cash-out-manager.service';
   styleUrls: ['./user-cashout.component.scss']
 })
 export class UserCashoutComponent {
-  constructor(private router: Router, private handleUserAccountMoneyService: UserCashOutManager) {}
+  constructor(private router: Router, private userCashOutManager: UserCashOutManager) {}
 
   goToUserCustomAmount() {
     this.router.navigate(['/user-custom-amount']);
@@ -23,14 +23,14 @@ export class UserCashoutComponent {
     if (amount === undefined) {
       throw new Error('The given variable is not defined');
     }
-    this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(amount));
+    this.navigatePage(this.userCashOutManager.subtractUserAccountMoney(amount));
   }
 
   /**
    * Navigiert zur Benachrichtigungsseite und übermittelt das aktualisierte Saldo des Users
    * @param data Die zu übermittelnden Daten.
    */
-  private navigatePage(data: any) {
-    this.router.navigate(['/user-cash-out-message'], { state: { myData: data } });
+  navigatePage(data: any) {
+    this.router.navigate(['/user-cashout-message'], { state: { myData: data } });
   }
 }

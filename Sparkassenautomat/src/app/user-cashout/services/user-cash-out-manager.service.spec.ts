@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserCashOutManager } from './user-cash-out-manager.service';
+import { UserCashOutManager } from './user-cashout-manager.service';
 
 describe('subtractUserAccountMoneyService', () => {
   let service: UserCashOutManager;
