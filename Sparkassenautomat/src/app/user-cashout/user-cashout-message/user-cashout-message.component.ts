@@ -14,6 +14,9 @@ export class UserCashoutMessageComponent implements OnInit {
     this.receiveMesssageInput();
   }
 
+  /**
+   * Empfängt den Betrag von der vorherigen Komponente und zeigt ihn als Saldo an.
+   */
   private receiveMesssageInput() {
     const customAmount = history.state.myData;
     console.log(customAmount);

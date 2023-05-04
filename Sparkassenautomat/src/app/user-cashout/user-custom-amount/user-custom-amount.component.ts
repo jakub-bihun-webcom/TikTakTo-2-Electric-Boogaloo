@@ -13,9 +13,14 @@ export class UserCustomAmountComponent {
 
   constructor(private handleUserAccountMoneyService: UserCashOutManager, private router: Router) {}
 
+  /**
+   * Verwendet den benutzerdefinierten Betrag
+   * Überprüft die Eingabe und navigiert zur Benachrichtigungsseite
+   * @throws Error, wenn das Eingabefeld leer ist, die Validierung fehlschlägt oder der Betrag ungültig ist
+   */
   useCustomAmount() {
     if (this.customAmount === undefined) {
-      this.displayError('Bitte tragen sie ihren Betrag in das Feld ein');
+      this.displayError('Bitte tragen Sie Ihren Betrag in das Feld ein');
       throw new Error('Input field is empty');
     } else if (this.validateUserInput(this.customAmount)) {
       this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(this.customAmount));
@@ -24,7 +29,15 @@ export class UserCustomAmountComponent {
     }
   }
 
-  private validateUserInput(customAmount: number) {
+  /**
+   * Validiert die Benutzereingabe auf Korrektheit
+   * @param customAmount Der eingegebene benutzerdefinierte Betrag
+   * @returns true, wenn die Eingabe korrekt ist
+   * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
+   *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
+   *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
+   */
+  private validateUserInput(customAmount: number): boolean {
     if (isNaN(customAmount)) {
       this.displayError('Der Betrag muss in Zahlen angegeben werden');
       throw new Error('The user input is not a number');
@@ -38,13 +51,13 @@ export class UserCustomAmountComponent {
       throw new Error('exceeded maximum');
     }
     if (customAmount <= -1) {
-      this.displayError('Bitte trage einen positiven Betrag ein');
-      throw new Error('Negative Numbers cant be processed');
+      this.displayError('Bitte tragen Sie einen positiven Betrag ein');
+      throw new Error('Negative numbers cant be processed');
     } else {
       const ATMHasEnoughMoney = this.handleUserAccountMoneyService.checkIfWithdrawalIsPossible(customAmount);
       if (ATMHasEnoughMoney) {
         this.clearError();
-        this.handleUserAccountMoneyService.withdraw(customAmount)
+        this.handleUserAccountMoneyService.withdraw(customAmount);
         return true;
       }
       this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');

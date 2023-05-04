@@ -14,6 +14,11 @@ export class UserCashoutComponent {
     this.router.navigate(['/user-custom-amount']);
   }
 
+  /**
+   * Behandelt die Eingabe des Benutzers und navigiert zur Benachrichtigungsseite
+   * @param amount Der eingegebene Betrag.
+   * @throws Error, wenn die gegebene Variable nicht definiert ist
+   */
   handleInput(amount: number) {
     if (amount === undefined) {
       throw new Error('The given variable is not defined');
@@ -21,7 +26,11 @@ export class UserCashoutComponent {
     this.navigatePage(this.userCashOutManager.subtractUserAccountMoney(amount));
   }
 
-  navigatePage(data: any) {
+  /**
+   * Navigiert zur Benachrichtigungsseite und übermittelt das aktualisierte Saldo des Users
+   * @param data Die zu übermittelnden Daten.
+   */
+  private navigatePage(data: any) {
     this.router.navigate(['/user-cashout-message'], { state: { myData: data } });
   }
 }

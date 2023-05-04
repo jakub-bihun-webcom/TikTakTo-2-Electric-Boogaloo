@@ -9,8 +9,8 @@ import { UserHomeScreenComponent } from './user-home-screen/user-home-screen.com
 import { UserCashoutComponent } from './user-cashout/user-cashout.component';
 import { RouterOutlet } from '@angular/router';
 import { UserCustomAmountComponent } from './user-cashout/user-custom-amount/user-custom-amount.component';
-import { FormsModule } from '@angular/forms';
 import { UserCashoutMessageComponent } from './user-cashout/user-cashout-message/user-cashout-message.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
