@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserCashOutManager {
-  private ATMAccountMoney: number = 10000;
+  private ATMAccountMoney: number = 1000;
   private userAccountMoney?: number;
 
   subtractUserAccountMoney(amount: number) {
@@ -19,12 +19,11 @@ export class UserCashOutManager {
     this.userAccountMoney = amount;
   }
 
-  processATMAccountMoney(amount: number) {
-    if (this.ATMAccountMoney + 1 <= amount) {
-      return [0, this.ATMAccountMoney];
-    } else {
-      this.ATMAccountMoney -= amount;
-      return [1];
-    }
+  checkIfWithdrawalIsPossible(amount: number): boolean {
+    return this.ATMAccountMoney + 1 > amount;
+  }
+
+  withdraw(amount: number) {
+    this.ATMAccountMoney -= amount
   }
 }

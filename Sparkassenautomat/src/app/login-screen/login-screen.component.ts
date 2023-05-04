@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserCashOutManager } from '../user-cashout/services/user-cash-out-manager.service';
+import { UserCashOutManager } from '../user-cashout/services/user-cashout-manager.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -16,7 +16,6 @@ export class LoginScreenComponent {
     { id: '0000', pin: '1802349', userAccountMoney: 0, isAdmin: true }
   ];
 
-  currentUserMoney?: number;
   pinInput?: string;
   idInput?: string;
   errorMessage: string = '';
@@ -24,17 +23,12 @@ export class LoginScreenComponent {
   goToUserHomeScreen() {
     const user = this.users.find(u => u.id === this.idInput);
     if (user && user.pin === this.pinInput) {
-      this.currentUserMoney = user.userAccountMoney;
       this.handleUserAccountMoneyService.setUserAccountMoney(user.userAccountMoney);
       this.router.navigate(['/user-home-screen']);
     } else {
-      this.displayError('Bitte überprüfen sie ihre anmelde Daten');
+      this.errorMessage = 'Bitte überprüfen sie ihre Anmeldedaten';
       throw new Error('Input Validation ERROR');
     }
-  }
-
-  private displayError(error: string) {
-    this.errorMessage = error;
   }
 
   clearError() {

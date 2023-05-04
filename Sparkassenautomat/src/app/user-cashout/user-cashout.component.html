@@ -2,11 +2,11 @@
   <div class="leftSide">
     <a (click)="handleInput(10)">• 10€</a>
     <a (click)="handleInput(50)">• 50€</a>
-    <a (click)="handleInput(200)">• 200€</a>
+    <a (click)="goToUserCustomAmount()">Eigener Betrag •</a>
   </div>
   <div class="rightSide">
     <a (click)="handleInput(20)">20€ •</a>
     <a (click)="handleInput(100)">100€ •</a>
-    <a (click)="goToUserCustomAmount()">Eigener Betrag •</a>
+    <a routerLink="/user-home-screen">• zurück</a>
   </div>
 </div>
