@@ -31,11 +31,14 @@ describe('BeverageOrderService', () => {
     expect(service.getBeveragePrice(2)).toEqual(2.5);
     expect(service.getBeveragePrice(3)).toEqual(1.5);
     expect(service.getBeveragePrice(4)).toEqual(1);
+    expect(service.getBeveragePrice(5)).toEqual(3);
   });
 
   it('should get Beverage Name', () => {
     expect(service.getBeverageName(1)).toEqual('Cola');
     expect(service.getBeverageName(2)).toEqual('Fanta');
+    expect(service.getBeverageName(3)).toEqual('Sprite');
+    expect(service.getBeverageName(4)).toEqual('Wasser');
     expect(service.getBeverageName(5)).toEqual('Bier');
   });
 

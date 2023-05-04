@@ -25,5 +25,7 @@ describe('CashRegisterService', () => {
   it('should round the Money to the next five cents', () => {
     expect(service.roundMoneyToFiveCents(1.4999999)).toEqual(1.5);
     expect(service.roundMoneyToFiveCents(2.199999)).toEqual(2.2);
+    expect(service.roundMoneyToFiveCents(2.0000002)).toEqual(2);
+    expect(service.roundMoneyToFiveCents(2.100032222)).toEqual(2.1);
   });
 });

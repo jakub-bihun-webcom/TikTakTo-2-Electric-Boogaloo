@@ -47,5 +47,7 @@ describe('BeverageOutputService', () => {
     expect(service.orderOutput.getValue().change).toEqual(3.8);
     service.returnMoney(9.95);
     expect(service.orderOutput.getValue().change).toEqual(13.75);
+    service.resetOrderOutputState();
+    expect(service.orderOutput.getValue().change).toEqual(0);
   });
 });

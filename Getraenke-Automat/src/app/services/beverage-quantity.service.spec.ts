@@ -26,5 +26,7 @@ describe('BeverageQuantityService', () => {
     expect(beverageList[1].quantity).toEqual(3);
     service.updateQuantity(1);
     expect(beverageList[0].quantity).toEqual(1);
+    service.updateQuantity(1);
+    expect(beverageList[0].quantity).toEqual(0);
   });
 });
