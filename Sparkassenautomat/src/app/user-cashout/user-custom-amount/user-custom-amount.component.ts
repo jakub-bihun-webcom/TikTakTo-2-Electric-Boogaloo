@@ -44,6 +44,7 @@ export class UserCustomAmountComponent {
       const ATMHasEnoughMoney = this.handleUserAccountMoneyService.checkIfWithdrawalIsPossible(customAmount);
       if (ATMHasEnoughMoney) {
         this.clearError();
+        this.handleUserAccountMoneyService.withdraw(customAmount)
         return true;
       }
       this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');
