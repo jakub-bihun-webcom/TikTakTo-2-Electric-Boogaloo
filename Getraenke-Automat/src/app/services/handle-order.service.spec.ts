@@ -4,7 +4,6 @@ import { HandleOrderService } from './handle-order.service';
 
 describe('HandleOrderService', () => {
   let service: HandleOrderService;
-
   const safeBeverageList = beverageList;
 
   beforeEach(() => {

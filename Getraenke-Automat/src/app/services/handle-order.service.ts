@@ -51,7 +51,7 @@ export class HandleOrderService {
   /**
    * Überprüft, ob genug Geld eingeworfen wurde und aktualisiert die Kasse.
    */
-  updateCashRegistry(paidAmount: number, beverageCompartment: number) {
+  private updateCashRegistry(paidAmount: number, beverageCompartment: number) {
     const price = this.beverageOrderService.getBeveragePrice(beverageCompartment);
     const change = this.cashRegisterService.calculateChange(paidAmount, price, this.cashRegister);
     this.cashRegister = this.cashRegisterService.calculateCashRegisterChange(price, this.cashRegister);
@@ -61,7 +61,7 @@ export class HandleOrderService {
   /**
    * Leitet die gültige Bestellung an die Ausgabe weiter.
    */
-  setOrder(beverageCompartment: number, change: number) {
+  private setOrder(beverageCompartment: number, change: number) {
     this.beverageOutputService.setOrder(change, beverageCompartment);
     this.beverageQuantityService.updateQuantity(beverageCompartment);
 
