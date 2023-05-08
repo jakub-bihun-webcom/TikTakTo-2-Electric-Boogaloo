@@ -25,7 +25,7 @@ describe('BeverageOutputService', () => {
     beverageList[4] = safeBeverageList[4];
   });
 
-  it('should set the order for Beverage Output', () => {
+  it('should set the order for beverage output', () => {
     service.setOrder(3, 1);
     expect(service.orderOutput.getValue().change).toEqual(3);
     expect(service.orderOutput.getValue().beverageName).toEqual('Cola ');
@@ -40,7 +40,7 @@ describe('BeverageOutputService', () => {
     expect(service.orderOutput.getValue().beverageName).toEqual('');
   });
 
-  it('should add the return Money to the Output', () => {
+  it('should add the return money to the output', () => {
     service.returnMoney(2);
     expect(service.orderOutput.getValue().change).toEqual(2);
     service.returnMoney(1.8);

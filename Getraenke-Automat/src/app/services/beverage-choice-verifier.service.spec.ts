@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { BeverageChoiceVerifierService } from './beverage-choice-verifier.service';
 
-fdescribe('VerifyInputService', () => {
+describe('VerifyInputService', () => {
   let service: BeverageChoiceVerifierService;
 
   beforeEach(() => {
