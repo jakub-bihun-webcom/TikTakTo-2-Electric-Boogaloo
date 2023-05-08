@@ -16,13 +16,13 @@ describe('CashRegisterService', () => {
     expect(service.calculateChange(2, 2, 2)).toEqual(0);
   });
 
-  it('should change the CahsRegister amount', () => {
+  it('should change the cash register amount', () => {
     expect(service.calculateCashRegisterChange(2, 20)).toEqual(22);
     expect(service.calculateCashRegisterChange(2.5, 5)).toEqual(7.5);
     expect(service.calculateCashRegisterChange(1.5, 3.5)).toEqual(5);
   });
 
-  it('should round the Money to the next five cents', () => {
+  it('should round the money to the next five cents', () => {
     expect(service.roundMoneyToFiveCents(1.4999999)).toEqual(1.5);
     expect(service.roundMoneyToFiveCents(2.199999)).toEqual(2.2);
     expect(service.roundMoneyToFiveCents(2.0000002)).toEqual(2);
