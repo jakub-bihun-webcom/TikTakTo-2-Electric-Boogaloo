@@ -25,16 +25,25 @@ describe('BeverageOutputService', () => {
     beverageList[4] = safeBeverageList[4];
   });
 
-  it('should set the order for beverage output', () => {
+  it('should handle a single order correctly', () => {
     service.setOrder(3, 1);
     expect(service.orderOutput.getValue().change).toEqual(3);
     expect(service.orderOutput.getValue().beverageName).toEqual('Cola ');
-    service.setOrder(1.5, 2);
-    expect(service.orderOutput.getValue().change).toEqual(4.5);
-    expect(service.orderOutput.getValue().beverageName).toEqual('Fanta Cola ');
-    service.setOrder(11, 4);
-    expect(service.orderOutput.getValue().change).toEqual(15.5);
-    expect(service.orderOutput.getValue().beverageName).toEqual('Wasser Fanta Cola ');
+    service.resetOrderOutputState();
+    service.setOrder(2.5, 2);
+    expect(service.orderOutput.getValue().change).toEqual(2.5);
+    expect(service.orderOutput.getValue().beverageName).toEqual('Fanta ');
+    service.resetOrderOutputState();
+    expect(service.orderOutput.getValue().change).toEqual(0);
+    expect(service.orderOutput.getValue().beverageName).toEqual('');
+  });
+
+  it('should handle multiple orders correctly', () => {
+    service.setOrder(3, 1);
+    service.setOrder(2.5, 5);
+    service.setOrder(1, 2);
+    expect(service.orderOutput.getValue().change).toEqual(6.5);
+    expect(service.orderOutput.getValue().beverageName).toEqual('Fanta Bier Cola ');
     service.resetOrderOutputState();
     expect(service.orderOutput.getValue().change).toEqual(0);
     expect(service.orderOutput.getValue().beverageName).toEqual('');
