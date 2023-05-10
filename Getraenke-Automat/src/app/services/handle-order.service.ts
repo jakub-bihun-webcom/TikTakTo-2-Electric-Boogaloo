@@ -31,6 +31,7 @@ export class HandleOrderService {
     const isValidID = this.beverageChoiceVerifierService.isValidID(compartmentID);
     if (!isValidID) {
       this.customerMessageService.setCustomerMessage('Keine gültige Getränke-ID');
+
       return false;
     }
     const beverageCompartment = parseInt(compartmentID);
@@ -65,6 +66,6 @@ export class HandleOrderService {
     this.beverageOutputService.setOrder(change, beverageCompartment);
     this.beverageQuantityService.updateQuantity(beverageCompartment);
 
-    this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
+    this.customerMessageService.setCustomerMessage('Bitte Bestellvorgang starten');
   }
 }
