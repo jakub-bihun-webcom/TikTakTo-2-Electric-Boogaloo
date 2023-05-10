@@ -22,6 +22,3 @@ export class DisplayMessage {
     return this.customerMessage;
   }
 }
-
-let display = new DisplayMessage('hallo', 0);
-display.setMessage('');
