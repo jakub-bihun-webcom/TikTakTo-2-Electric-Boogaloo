@@ -1,6 +1,6 @@
-import { Beverage } from '../beverage';
+import { BeverageInterface } from './beverage-interface';
 
 export interface Compartment {
   price: number;
-  beverages: Beverage[];
+  beverages: BeverageInterface[];
 }
