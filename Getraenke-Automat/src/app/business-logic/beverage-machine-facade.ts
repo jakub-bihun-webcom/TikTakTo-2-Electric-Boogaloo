@@ -31,7 +31,10 @@ export class BeverageMachineFacade {
     return this.displayMessage.getPaidAmountMessage();
   }
 
-  order(compartmentId: number): void {}
+  order(compartmentId: number): void {
+    const paidAmount = this.cashRegister.getPaidAmount()
+
+  }
 
   getChange(): number {
     return 0;

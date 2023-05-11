@@ -1,4 +1,5 @@
 import { BeverageMachineFacade } from './beverage-machine-facade';
+import { bier, cola, wasser } from './beverage-storage';
 import { Refills } from './refills';
 import { Beverage } from '../beverage';
 
@@ -11,15 +12,15 @@ describe('BeverageMachineFacade', () => {
     const refills: Refills = new Map();
     refills.set(1, {
       price: 1,
-      beverages: [] // TODO: 3x Wasser
+      beverages: [wasser, wasser, wasser] // TODO: 3x Wasser
     });
     refills.set(2, {
       price: 2,
-      beverages: [] // TODO: 5x Cola
+      beverages: [cola, cola, cola, cola, cola] // TODO: 5x Cola
     });
     refills.set(3, {
       price: 2.5,
-      beverages: [] // TODO: 10x Bier
+      beverages: [bier,bier,bier,bier,bier,bier,bier,bier,bier,bier] // TODO: 10x Bier
     });
     refills.set(4, {
       price: 3,

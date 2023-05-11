@@ -1,6 +1,12 @@
 export interface Beverage {
-  id: number;
   name: string;
-  price: number;
-  quantity: number;
 }
+//
+// export class Beverage {
+//   public beverage: Beverage
+//   constructor(name: string) {
+//     this.beverage = {
+//       name: name
+//     }
+//   }
+// }
