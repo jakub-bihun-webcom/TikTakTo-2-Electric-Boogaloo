@@ -1,8 +1,6 @@
-import { CustomerControlPanelComponent } from '../customer-control-panel/customer-control-panel.component';
-import { MessageDisplayComponent } from '../message-display/message-display.component';
-import { BeverageOutputService } from '../services/beverage-output.service';
-import { CashRegisterService } from '../services/cash-register.service';
-import { CustomerMessageService } from '../services/customer-message.service';
+import { CashRegister } from '../classes/cash-register';
+import { DisplayMessage } from '../classes/display-message';
+import { NumberPad } from '../classes/number-pad';
 import { Refills } from './refills';
 import { Beverage } from '../beverage';
 
@@ -10,40 +8,40 @@ import { Beverage } from '../beverage';
  * Simuliert die Interaktion mit einem Getränkeautomaten.
  */
 export class BeverageMachineFacade {
-  constructor(
-    private cashRegisterService: CashRegisterService,
-    private customerControlPanelComponent: CustomerControlPanelComponent,
-    private beverageOutputService: BeverageOutputService,
-    private messageDisplayComponent: MessageDisplayComponent,
-    private customerMessageService: CustomerMessageService
-  ) {}
+  public numberPad: NumberPad;
+  public displayMessage: DisplayMessage;
+  public cashRegister: CashRegister;
+  constructor() {
+    this.numberPad = new NumberPad();
+    this.displayMessage = new DisplayMessage();
+    this.cashRegister = new CashRegister();
+  }
 
   fillUp(refills: Refills): void {}
 
   insertMoney(money: number): void {
-    this.customerControlPanelComponent.onMoneyPaid(money);
-    console.log(this.customerControlPanelComponent)
+    this.cashRegister.recieveMoney(money);
+    const paidAmount = this.cashRegister.getPaidAmount();
+    this.displayMessage.setPaidAmountMessage(paidAmount);
   }
 
   readInsertedMoney(): string {
-    return this.customerControlPanelComponent.paidAmountMessage
+    const insertedMoney = this.cashRegister.getPaidAmount();
+    this.displayMessage.setPaidAmountMessage(insertedMoney);
+    return this.displayMessage.getPaidAmountMessage();
   }
 
-  order(compartmentId: number): void {
-    this.customerControlPanelComponent.compartmentID = compartmentId.toString();
-    this.customerControlPanelComponent.placeOrder();
-  }
+  order(compartmentId: number): void {}
 
   getChange(): number {
-    return this.beverageOutputService.orderOutput.getValue().change;
+    return 0;
   }
 
-  cancelOrder(): void {
-    this.customerControlPanelComponent.resetCompartmentID();
-  }
+  cancelOrder(): void {}
 
   readDisplay(): string {
-    return this.customerMessageService.customerMessage.getValue()
+    // this.displayMessage.setMessage('Bitte Bestellvorgang starten');
+    return this.displayMessage.getCustomerMessage();
   }
 
   takeBeverages(): Beverage[] {
