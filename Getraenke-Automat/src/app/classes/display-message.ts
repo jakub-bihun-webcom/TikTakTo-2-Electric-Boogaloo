@@ -24,4 +24,8 @@ export class DisplayMessage {
   getPaidAmountMessage(): string {
     return this.paidAmountMessage;
   }
+
+  setStandardMessage(): void {
+    this.customerMessage = 'Bitte Bestellvorgang starten';
+  }
 }

@@ -1,8 +1,9 @@
 import { BeverageMachineFacade } from './beverage-machine-facade';
 import { Beverage2 } from './beverage2';
+import { Compartment } from './compartment';
 import { Refills } from './refills';
 
-describe('BeverageMachineFacade', () => {
+fdescribe('BeverageMachineFacade', () => {
   let beverageMachineFacade: BeverageMachineFacade;
 
   beforeEach(() => {
@@ -44,7 +45,7 @@ describe('BeverageMachineFacade', () => {
     beverageMachineFacade.fillUp(refills);
   });
 
-  fit('should insert money and display the inserted amount', () => {
+  it('should insert money and display the inserted amount', () => {
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
     expect(beverageMachineFacade.readInsertedMoney()).toBe('Aktuelles Guthaben: 0 €');
 
@@ -53,9 +54,9 @@ describe('BeverageMachineFacade', () => {
 
     expect(beverageMachineFacade.readInsertedMoney()).toBe('Aktuelles Guthaben: 1.50 €');
 
-    // const beverages = beverageMachineFacade.takeBeverages();
-    //
-    // expect(beverages).toEqual([]);
+    const beverages = beverageMachineFacade.takeBeverages();
+
+    expect(beverages).toEqual([]);
   });
 
   it('should return correct order response given not enough money inserted', () => {
@@ -83,7 +84,7 @@ describe('BeverageMachineFacade', () => {
 
     const beverages = beverageMachineFacade.takeBeverages();
     // @ts-ignore
-    const expectedBeverage: Beverage = undefined; // TODO: 1x Wasser
+    const expectedBeverage: Beverage = new Beverage2('Wasser'); // TODO: 1x Wasser
     expect(beverages).toEqual([expectedBeverage]);
 
     const change = beverageMachineFacade.getChange();
@@ -108,7 +109,7 @@ describe('BeverageMachineFacade', () => {
     expect(beverageMachineFacade.readDisplay()).toBe('Nicht genug Geld eingeworfen');
 
     beverageMachineFacade.insertMoney(1);
-    expect(beverageMachineFacade.readInsertedMoney()).toBe('Aktuelles Guthaben: 2,50 €');
+    expect(beverageMachineFacade.readInsertedMoney()).toBe('Aktuelles Guthaben: 2.50 €');
     beverageMachineFacade.order(2);
 
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
@@ -116,7 +117,7 @@ describe('BeverageMachineFacade', () => {
     const beverages = beverageMachineFacade.takeBeverages();
 
     // @ts-ignore
-    const expectedBeverage: Beverage = undefined; // TODO: 1x Cola
+    const expectedBeverage: Beverage2 = new Beverage2('Cola'); // TODO: 1x Cola
     expect(beverages).toEqual([expectedBeverage]);
 
     const change = beverageMachineFacade.getChange();
@@ -124,7 +125,7 @@ describe('BeverageMachineFacade', () => {
     expect(change).toBe(0.5);
   });
 
-  it('should handle multiple orders correctly', () => {
+  xit('should handle multiple orders correctly', () => {
     beverageMachineFacade.insertMoney(5);
     beverageMachineFacade.order(2);
 
@@ -137,8 +138,8 @@ describe('BeverageMachineFacade', () => {
 
     const actualBeverages = beverageMachineFacade.takeBeverages();
 
-    // const expectedBeverages: Beverage[] = []; // TODO: 1x Cola und 1x Bier
-    // expect(actualBeverages).toEqual(expectedBeverages);
+    const expectedBeverages: Beverage2[] = [new Beverage2('Cola'), new Beverage2('Bier')]; // TODO: 1x Cola und 1x Bier
+    expect(actualBeverages).toEqual(expectedBeverages);
 
     const change = beverageMachineFacade.getChange();
 

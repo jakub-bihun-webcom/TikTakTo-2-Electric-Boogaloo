@@ -13,4 +13,12 @@ export class CashRegister {
   getCashRegister(): number {
     return this.cashRegister;
   }
+
+  updateCashRegister(money: number) {
+    this.cashRegister += money;
+  }
+
+  resetPaidAmount(): void{
+    this.paidAmount = 0
+  }
 }
