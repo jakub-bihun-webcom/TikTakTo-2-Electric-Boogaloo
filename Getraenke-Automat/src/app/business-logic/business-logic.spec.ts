@@ -1,43 +1,39 @@
-import { BeverageInterface } from './beverage-interface';
 import { BeverageMachineFacade } from './beverage-machine-facade';
 import { Beverage2 } from './beverage2';
 import { Refills } from './refills';
 
 describe('BeverageMachineFacade', () => {
   let beverageMachineFacade: BeverageMachineFacade;
-  let beverage: Beverage2;
 
   beforeEach(() => {
     beverageMachineFacade = new BeverageMachineFacade();
-    beverage = new Beverage2();
 
     const refills: Refills = new Map();
     refills.set(1, {
       price: 1,
-      beverages: [beverage.newBeverage('Wasser'), beverage.newBeverage('Wasser'), beverage.newBeverage('Wasser')]
+      beverages: [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')]
     });
     refills.set(2, {
       price: 2,
       beverages: [
-        beverage.newBeverage('Cola'),
-        beverage.newBeverage('Cola'),
-        beverage.newBeverage('Cola'),
-        beverage.newBeverage('Cola'),
-        beverage.newBeverage('Cola')
+        new Beverage2('Cola'),
+        new Beverage2('Cola'),
+        new Beverage2('Cola'),
+        new Beverage2('Cola'),
+        new Beverage2('Cola')
       ]
     });
     refills.set(3, {
       price: 2.5,
       beverages: [
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier'),
-        beverage.newBeverage('Bier')
+        new Beverage2('Bier'),
+        new Beverage2('Bier'),
+        new Beverage2('Bier'),
+        new Beverage2('Bier'),
+        new Beverage2('Bier'),
+        new Beverage2('Bier'),
+        new Beverage2('Bier'),
+        new Beverage2('Bier')
       ]
     });
     refills.set(4, {

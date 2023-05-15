@@ -1,15 +1,8 @@
-import { BeverageInterface } from './beverage-interface';
-
 export class Beverage2 {
-  public beverage: BeverageInterface = {
+  public beverage = {
     name: ''
   };
-  constructor() {}
-
-  newBeverage(name: string){
-    this.beverage = {
-      name: name
-    }
-    return this.beverage
+  constructor(beverageName: string) {
+    this.beverage = { name: beverageName };
   }
 }

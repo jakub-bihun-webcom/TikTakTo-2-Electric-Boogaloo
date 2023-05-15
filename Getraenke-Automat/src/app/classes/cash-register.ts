@@ -2,7 +2,7 @@ export class CashRegister {
   private paidAmount: number = 0;
   private cashRegister: number = 100;
 
-  recieveMoney(money: number): void {
+  receiveMoney(money: number): void {
     this.paidAmount += money;
   }
 

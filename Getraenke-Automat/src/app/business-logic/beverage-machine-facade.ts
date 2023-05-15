@@ -1,7 +1,6 @@
 import { CashRegister } from '../classes/cash-register';
 import { DisplayMessage } from '../classes/display-message';
 import { NumberPad } from '../classes/number-pad';
-import { Beverage2 } from './beverage2';
 import { Refills } from './refills';
 import { Beverage } from '../beverage';
 
@@ -9,12 +8,10 @@ import { Beverage } from '../beverage';
  * Simuliert die Interaktion mit einem Getränkeautomaten.
  */
 export class BeverageMachineFacade {
-  public beverage: Beverage2;
   public numberPad: NumberPad;
   public displayMessage: DisplayMessage;
   public cashRegister: CashRegister;
   constructor() {
-    this.beverage = new Beverage2();
     this.numberPad = new NumberPad();
     this.displayMessage = new DisplayMessage();
     this.cashRegister = new CashRegister();
@@ -23,7 +20,7 @@ export class BeverageMachineFacade {
   fillUp(refills: Refills): void {}
 
   insertMoney(money: number): void {
-    this.cashRegister.recieveMoney(money);
+    this.cashRegister.receiveMoney(money);
     const paidAmount = this.cashRegister.getPaidAmount();
     this.displayMessage.setPaidAmountMessage(paidAmount);
   }
@@ -39,12 +36,12 @@ export class BeverageMachineFacade {
   }
 
   getChange(): number {
+    const paidAmount = this.cashRegister.getPaidAmount();
+
     return 0;
   }
 
-  cancelOrder(): void {
-
-  }
+  cancelOrder(): void {}
 
   readDisplay(): string {
     // this.displayMessage.setMessage('Bitte Bestellvorgang starten');
