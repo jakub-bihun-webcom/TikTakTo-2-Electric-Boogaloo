@@ -1,3 +1,5 @@
 import { Compartment } from './compartment';
 
-export type Refills = Map<number, Compartment>;
+export type CompartmentId = number;
+
+export type Refills = Map<CompartmentId, Compartment>;
