@@ -1,6 +1,5 @@
 import { BeverageMachineFacade } from './beverage-machine-facade';
 import { Beverage2 } from './beverage2';
-import { Compartment } from './compartment';
 import { Refills } from './refills';
 
 fdescribe('BeverageMachineFacade', () => {
@@ -116,7 +115,6 @@ fdescribe('BeverageMachineFacade', () => {
 
     const beverages = beverageMachineFacade.takeBeverages();
 
-    // @ts-ignore
     const expectedBeverage: Beverage2 = new Beverage2('Cola'); // TODO: 1x Cola
     expect(beverages).toEqual([expectedBeverage]);
 
@@ -138,7 +136,7 @@ fdescribe('BeverageMachineFacade', () => {
 
     const actualBeverages = beverageMachineFacade.takeBeverages();
 
-    const expectedBeverages: Beverage2[] = [new Beverage2('Cola'), new Beverage2('Bier')]; // TODO: 1x Cola und 1x Bier
+    const expectedBeverages: Beverage2[] = [new Beverage2('Cola'), new Beverage2('Bier')];
     expect(actualBeverages).toEqual(expectedBeverages);
 
     const change = beverageMachineFacade.getChange();

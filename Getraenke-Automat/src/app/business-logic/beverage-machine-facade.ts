@@ -1,6 +1,5 @@
 import { CashRegister } from '../classes/cash-register';
 import { DisplayMessage } from '../classes/display-message';
-import { NumberPad } from '../classes/number-pad';
 import { OutputStorage } from '../classes/output-storage';
 import { Beverage2 } from './beverage2';
 import { Compartment } from './compartment';
@@ -10,7 +9,6 @@ import { Refills } from './refills';
  * Simuliert die Interaktion mit einem Getränkeautomaten.
  */
 export class BeverageMachineFacade {
-  public numberPad: NumberPad;
   public displayMessage: DisplayMessage;
   public cashRegister: CashRegister;
   public outputStorage: OutputStorage;
@@ -18,7 +16,6 @@ export class BeverageMachineFacade {
   private compartments: Compartment[] = [];
 
   constructor() {
-    this.numberPad = new NumberPad();
     this.displayMessage = new DisplayMessage();
     this.cashRegister = new CashRegister();
     this.outputStorage = new OutputStorage();
