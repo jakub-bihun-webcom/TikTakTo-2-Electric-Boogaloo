@@ -16,7 +16,7 @@ import { HandleOrderService } from '../services/handle-order.service';
 export class CustomerControlPanelComponent {
   compartmentID: string = '';
   paidAmount: number = 0;
-  paidAmountMessage: string = `Aktuelles Guthaben: ${this.paidAmount} €`
+  paidAmountMessage: string = `Aktuelles Guthaben: ${this.paidAmount} €`;
 
   constructor(
     private beverageOutputService: BeverageOutputService,
@@ -31,7 +31,7 @@ export class CustomerControlPanelComponent {
   onMoneyPaid(money: number) {
     this.paidAmount += money;
     this.paidAmount = this.cashRegisterService.roundMoneyToFiveCents(this.paidAmount);
-    this.paidAmountMessage = `Aktuelles Guthaben: ${this.paidAmount} €`
+    this.paidAmountMessage = `Aktuelles Guthaben: ${this.paidAmount} €`;
     // this.customerMessageService.setCustomerMessage(`Aktuelles Guthaben: ${this.paidAmount} €`)
   }
 
@@ -41,7 +41,7 @@ export class CustomerControlPanelComponent {
   returnPaidMoney() {
     this.beverageOutputService.returnMoney(this.paidAmount);
     this.paidAmount = 0;
-    this.paidAmountMessage = `Aktuelles Guthaben: ${this.paidAmount} €`
+    this.paidAmountMessage = `Aktuelles Guthaben: ${this.paidAmount} €`;
   }
 
   /**
@@ -58,7 +58,7 @@ export class CustomerControlPanelComponent {
     if (this.handleOrderService.isOrderValid(this.paidAmount, this.compartmentID)) {
       this.compartmentID = '';
       this.paidAmount = 0;
-      this.paidAmountMessage = `Aktuelles Guthaben: ${this.paidAmount} €`
+      this.paidAmountMessage = `Aktuelles Guthaben: ${this.paidAmount} €`;
     }
   }
 

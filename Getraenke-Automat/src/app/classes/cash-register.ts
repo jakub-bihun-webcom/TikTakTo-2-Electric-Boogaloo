@@ -18,7 +18,7 @@ export class CashRegister {
     this.cashRegister += money;
   }
 
-  resetPaidAmount(): void{
-    this.paidAmount = 0
+  resetPaidAmount(): void {
+    this.paidAmount = 0;
   }
 }

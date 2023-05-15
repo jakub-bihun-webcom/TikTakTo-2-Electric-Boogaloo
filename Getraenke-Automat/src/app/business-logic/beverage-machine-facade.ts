@@ -12,7 +12,6 @@ export class BeverageMachineFacade {
   public displayMessage: DisplayMessage;
   public cashRegister: CashRegister;
   public outputStorage: OutputStorage;
-
   private compartments: Compartment[] = [];
 
   constructor() {
