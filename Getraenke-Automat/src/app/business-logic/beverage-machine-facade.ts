@@ -50,7 +50,7 @@ export class BeverageMachineFacade {
       this.displayMessage.setMessage('Getränk nicht verfügbar');
       return;
     }
-    // this.cashRegister.resetPaidAmount()
+    this.cashRegister.resetPaidAmount()
     const orderedBeverage: Beverage2 = this.compartments[compartmentId - 1].beverages.shift() as Beverage2;
     this.outputStorage.addBeverage(orderedBeverage);
     this.outputStorage.addChange(paidAmount - price);
