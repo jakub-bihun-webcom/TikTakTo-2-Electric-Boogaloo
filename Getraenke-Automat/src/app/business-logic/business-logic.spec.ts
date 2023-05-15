@@ -1,5 +1,5 @@
 import { BeverageMachineFacade } from './beverage-machine-facade';
-import { Beverage2 } from './beverage2';
+import { Beverage2 } from '../classes/beverage2';
 import { Refills } from './refills';
 
 fdescribe('BeverageMachineFacade', () => {

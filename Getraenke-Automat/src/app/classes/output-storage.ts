@@ -1,4 +1,4 @@
-import { Beverage2 } from '../business-logic/beverage2';
+import { Beverage2 } from './beverage2';
 
 export class OutputStorage {
   public change: number = 0;

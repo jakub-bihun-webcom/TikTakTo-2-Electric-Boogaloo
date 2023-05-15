@@ -1,4 +1,4 @@
-import { Compartment } from './compartment';
+import { Compartment } from '../classes/compartment';
 
 export type CompartmentId = number;
 

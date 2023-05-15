@@ -1,8 +1,8 @@
 import { CashRegister } from '../classes/cash-register';
 import { DisplayMessage } from '../classes/display-message';
 import { OutputStorage } from '../classes/output-storage';
-import { Beverage2 } from './beverage2';
-import { Compartment } from './compartment';
+import { Beverage2 } from '../classes/beverage2';
+import { Compartment } from '../classes/compartment';
 import { Refills } from './refills';
 
 /**
