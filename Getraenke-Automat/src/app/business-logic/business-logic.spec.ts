@@ -11,10 +11,12 @@ fdescribe('BeverageMachineFacade', () => {
     const refills: Refills = new Map();
     refills.set(1, {
       price: 1,
+      name: 'Wasser',
       beverages: [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')]
     });
     refills.set(2, {
       price: 2,
+      name: 'Cola',
       beverages: [
         new Beverage2('Cola'),
         new Beverage2('Cola'),
@@ -25,6 +27,7 @@ fdescribe('BeverageMachineFacade', () => {
     });
     refills.set(3, {
       price: 2.5,
+      name: 'Bier',
       beverages: [
         new Beverage2('Bier'),
         new Beverage2('Bier'),
@@ -38,6 +41,7 @@ fdescribe('BeverageMachineFacade', () => {
     });
     refills.set(4, {
       price: 3,
+      name: 'leer',
       beverages: [] // Fach soll leer bleiben
     });
 
