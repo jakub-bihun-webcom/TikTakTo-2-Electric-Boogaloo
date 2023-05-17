@@ -9,7 +9,7 @@ import { beverageList } from '../beverage-list';
 export class BeverageQuantityService {
   updatedBeverageList = new BehaviorSubject<Beverage[]>(beverageList);
 
-  updateQuantity(id: number) {
+  reduceQuantityByOne(id: number) {
     this.updatedBeverageList.next(
       beverageList.map(beverage => {
         if (beverage.id === id) {

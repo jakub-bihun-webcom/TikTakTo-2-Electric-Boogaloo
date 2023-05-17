@@ -20,13 +20,13 @@ describe('BeverageQuantityService', () => {
   });
 
   it('should reduce the quantity of beverages by one', () => {
-    service.updateQuantity(1);
-    service.updateQuantity(2);
+    service.reduceQuantityByOne(1);
+    service.reduceQuantityByOne(2);
     expect(beverageList[0].quantity).toEqual(2);
     expect(beverageList[1].quantity).toEqual(3);
-    service.updateQuantity(1);
+    service.reduceQuantityByOne(1);
     expect(beverageList[0].quantity).toEqual(1);
-    service.updateQuantity(1);
+    service.reduceQuantityByOne(1);
     expect(beverageList[0].quantity).toEqual(0);
   });
 });

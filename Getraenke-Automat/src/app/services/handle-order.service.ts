@@ -63,7 +63,7 @@ export class HandleOrderService {
    */
   private setOrder(beverageCompartment: number, change: number) {
     this.beverageOutputService.setOrder(change, beverageCompartment);
-    this.beverageQuantityService.updateQuantity(beverageCompartment);
+    this.beverageQuantityService.reduceQuantityByOne(beverageCompartment);
 
     this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
   }
