@@ -47,4 +47,11 @@ describe('BeverageOrderService', () => {
     expect(service.checkAvailability(3)).toBeFalsy();
     expect(service.checkAvailability(4)).toBeFalsy();
   });
+  
+  it('should not work for wrong ID', () => {
+    expect(service.getBeveragePrice(6)).toBeUndefined();
+    expect(service.getBeveragePrice(7)).toBeUndefined();
+    expect(service.getBeverageName(6)).toBeUndefined();
+    expect(service.checkAvailability(10)).toBeFalsy()
+  });
 });
