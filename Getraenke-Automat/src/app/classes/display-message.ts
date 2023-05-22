@@ -1,6 +1,6 @@
 export class DisplayMessage {
   private customerMessage: string = 'Bitte Bestellvorgang starten';
-  private paidAmountMessage: string = '';
+  private paidAmountMessage: string = 'Aktuelles Guthaben: 0 €';
 
   /**
    * Aktualisiert den angezeigten Text.

@@ -27,15 +27,12 @@ export class BeverageMachineFacade {
   }
 
   insertMoney(money: number): void {
-    this.displayMessage.setStandardMessage();
     this.cashRegister.receiveMoney(money);
     const paidAmount = this.cashRegister.getPaidAmount();
     this.displayMessage.setPaidAmountMessage(paidAmount);
   }
 
   readInsertedMoney(): string {
-    const insertedMoney = this.cashRegister.getPaidAmount();
-    this.displayMessage.setPaidAmountMessage(insertedMoney);
     return this.displayMessage.getPaidAmountMessage();
   }
 
@@ -51,6 +48,8 @@ export class BeverageMachineFacade {
       return;
     }
     this.cashRegister.resetPaidAmount();
+    this.displayMessage.setPaidAmountMessage(0);
+    this.displayMessage.setStandardMessage();
     const orderedBeverage: Beverage2 = this.compartments[compartmentId - 1].beverages.shift() as Beverage2;
     this.outputStorage.addBeverage(orderedBeverage);
     this.outputStorage.addChange(paidAmount - price);
