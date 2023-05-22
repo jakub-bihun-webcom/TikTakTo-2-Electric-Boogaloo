@@ -127,13 +127,13 @@ fdescribe('BeverageMachineFacade', () => {
     expect(change).toBe(0.5);
   });
 
-  xit('should handle multiple orders correctly', () => {
+  it('should handle multiple orders correctly', () => {
     beverageMachineFacade.insertMoney(5);
     beverageMachineFacade.order(2);
 
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
 
-    beverageMachineFacade.insertMoney(1);
+    beverageMachineFacade.insertMoney(3);
     beverageMachineFacade.order(3);
 
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
@@ -145,7 +145,7 @@ fdescribe('BeverageMachineFacade', () => {
 
     const change = beverageMachineFacade.getChange();
 
-    expect(change).toBe(1.5);
+    expect(change).toBe(3.5);
 
     expect(beverageMachineFacade.readInsertedMoney()).toBe('Aktuelles Guthaben: 0 €');
   });
