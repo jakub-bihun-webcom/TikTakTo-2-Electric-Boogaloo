@@ -25,9 +25,10 @@ export class HandleOrderService {
   cashRegister: number = 100;
 
   /**
-   * Überprüft, ob gültige Eingabewerte eingegeben wurden.
+   * Überprüft, ob gültige Eingabewerte eingegeben wurden und informiert den Kunden sollte die Bestellung nicht gültig sein.
+   * Bei einer gültigen Bestellung wird die Bestellung weiter vorangetrieben.
    */
-  isOrderValid(paidAmount: number, compartmentID: string): boolean {
+  handleOrder(paidAmount: number, compartmentID: string): boolean {
     const isValidID = this.beverageChoiceVerifierService.isValidID(compartmentID);
     if (!isValidID) {
       this.customerMessageService.setCustomerMessage('Keine gültige Getränke-ID');

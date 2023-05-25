@@ -26,16 +26,16 @@ describe('HandleOrderService', () => {
   });
 
   it('should check if order is valid', () => {
-    expect(service.isOrderValid(5, '5')).toBeTrue();
-    expect(service.isOrderValid(3, '2')).toBeTrue();
-    expect(service.isOrderValid(6, '1')).toBeTrue();
-    expect(service.isOrderValid(3, '5')).toBeTrue();
+    expect(service.handleOrder(5, '5')).toBeTrue();
+    expect(service.handleOrder(3, '2')).toBeTrue();
+    expect(service.handleOrder(6, '1')).toBeTrue();
+    expect(service.handleOrder(3, '5')).toBeTrue();
   });
 
   it('should check if order is invalid', () => {
-    expect(service.isOrderValid(1, 'wrongID')).toBeFalse();
-    expect(service.isOrderValid(3, 'a')).toBeFalse()
-    expect(service.isOrderValid(4, '4')).toBeFalse()
-    expect(service.isOrderValid(0, '2')).toBeFalse();
+    expect(service.handleOrder(1, 'wrongID')).toBeFalse();
+    expect(service.handleOrder(3, 'a')).toBeFalse()
+    expect(service.handleOrder(4, '4')).toBeFalse()
+    expect(service.handleOrder(0, '2')).toBeFalse();
   });
 });
