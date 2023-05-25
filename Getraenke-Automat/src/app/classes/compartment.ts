@@ -9,7 +9,7 @@ export class Compartment {
   public name: string;
   public beverages: Beverage2[];
 
-  constructor(price: number, beverages: Beverage2[], name: string) {
+  constructor(price: number, name: string, beverages: Beverage2[]) {
     this.price = price;
     this.beverages = beverages;
     this.name = name;

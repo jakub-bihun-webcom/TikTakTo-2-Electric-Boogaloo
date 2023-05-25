@@ -1,3 +1,4 @@
+import { Compartment } from '../classes/compartment';
 import { BeverageMachineFacade } from './beverage-machine-facade';
 import { Beverage2 } from '../classes/beverage2';
 import { Refills } from './refills';
@@ -9,26 +10,23 @@ fdescribe('BeverageMachineFacade', () => {
     beverageMachineFacade = new BeverageMachineFacade();
 
     const refills: Refills = new Map();
-    refills.set(1, {
-      price: 1,
-      name: 'Wasser',
-      beverages: [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')]
-    });
-    refills.set(2, {
-      price: 2,
-      name: 'Cola',
-      beverages: [
+    refills.set(
+      1,
+      new Compartment(1, 'Wasser', [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')])
+    );
+    refills.set(
+      2,
+      new Compartment(2, 'Cola', [
         new Beverage2('Cola'),
         new Beverage2('Cola'),
         new Beverage2('Cola'),
         new Beverage2('Cola'),
         new Beverage2('Cola')
-      ]
-    });
-    refills.set(3, {
-      price: 2.5,
-      name: 'Bier',
-      beverages: [
+      ])
+    );
+    refills.set(
+      3,
+      new Compartment(2.5, 'Bier', [
         new Beverage2('Bier'),
         new Beverage2('Bier'),
         new Beverage2('Bier'),
@@ -37,13 +35,9 @@ fdescribe('BeverageMachineFacade', () => {
         new Beverage2('Bier'),
         new Beverage2('Bier'),
         new Beverage2('Bier')
-      ]
-    });
-    refills.set(4, {
-      price: 3,
-      name: 'leer',
-      beverages: [] // Fach soll leer bleiben
-    });
+      ])
+    );
+    refills.set(4, new Compartment(3, 'leer', []));
 
     beverageMachineFacade.fillUp(refills);
   });
