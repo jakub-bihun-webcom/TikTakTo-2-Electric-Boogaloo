@@ -26,7 +26,7 @@ describe('BeverageOrderService', () => {
     beverageList[4] = safeBeverageList[4];
   });
 
-  it('should get beverage Price', () => {
+  it('should get beverage price', () => {
     expect(service.getBeveragePrice(1)).toEqual(2);
     expect(service.getBeveragePrice(2)).toEqual(2.5);
     expect(service.getBeveragePrice(3)).toEqual(1.5);
@@ -34,7 +34,7 @@ describe('BeverageOrderService', () => {
     expect(service.getBeveragePrice(5)).toEqual(3);
   });
 
-  it('should get beverage Name', () => {
+  it('should get beverage name', () => {
     expect(service.getBeverageName(1)).toEqual('Cola');
     expect(service.getBeverageName(2)).toEqual('Fanta');
     expect(service.getBeverageName(3)).toEqual('Sprite');
@@ -47,7 +47,7 @@ describe('BeverageOrderService', () => {
     expect(service.checkAvailability(3)).toBeFalsy();
     expect(service.checkAvailability(4)).toBeFalsy();
   });
-  
+
   it('should not work for wrong ID', () => {
     expect(service.getBeveragePrice(6)).toBeUndefined();
     expect(service.getBeveragePrice(7)).toBeUndefined();
