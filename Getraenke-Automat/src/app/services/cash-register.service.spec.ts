@@ -28,4 +28,9 @@ describe('CashRegisterService', () => {
     expect(service.roundMoneyToFiveCents(2.0000002)).toEqual(2);
     expect(service.roundMoneyToFiveCents(2.100032222)).toEqual(2.1);
   });
+
+  it('should not give money back', ()=>{
+    expect(() => service.calculateChange(1, 2, 10)).toThrowError()
+    expect(() => service.calculateChange(3, 4, 0)).toThrowError()
+  })
 });
