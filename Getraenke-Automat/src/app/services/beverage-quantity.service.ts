@@ -13,6 +13,9 @@ export class BeverageQuantityService {
     this.updatedBeverageList.next(
       beverageList.map(beverage => {
         if (beverage.id === id) {
+          if (beverage.quantity === 0){
+            throw new Error('Getränk ist ausverkauft')
+          }
           return { ...beverage, quantity: beverage.quantity - 1 };
         }
         return beverage;
