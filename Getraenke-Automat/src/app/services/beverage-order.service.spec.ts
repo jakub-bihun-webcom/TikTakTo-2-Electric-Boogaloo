@@ -43,15 +43,15 @@ describe('BeverageOrderService', () => {
   });
 
   it('should check for beverage availability', () => {
-    expect(service.checkAvailability(1)).toBeTruthy();
-    expect(service.checkAvailability(3)).toBeFalsy();
-    expect(service.checkAvailability(4)).toBeFalsy();
+    expect(service.checkAvailability(1)).toBeTrue();
+    expect(service.checkAvailability(3)).toBeFalse();
+    expect(service.checkAvailability(4)).toBeFalse();
   });
 
   it('should not work for wrong ID', () => {
     expect(service.getBeveragePrice(6)).toBeUndefined();
     expect(service.getBeveragePrice(7)).toBeUndefined();
     expect(service.getBeverageName(6)).toBeUndefined();
-    expect(service.checkAvailability(10)).toBeFalsy()
+    expect(service.checkAvailability(10)).toBeFalse()
   });
 });

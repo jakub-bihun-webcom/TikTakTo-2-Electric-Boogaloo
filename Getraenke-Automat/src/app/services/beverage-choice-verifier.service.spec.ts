@@ -11,19 +11,19 @@ describe('VerifyInputService', () => {
   });
 
   it('should pass verification for valid compartment ID', () => {
-    expect(service.isValidID('1')).toBeTruthy();
-    expect(service.isValidID('2')).toBeTruthy();
-    expect(service.isValidID('5')).toBeTruthy();
+    expect(service.isValidID('1')).toBeTrue();
+    expect(service.isValidID('2')).toBeTrue();
+    expect(service.isValidID('5')).toBeTrue();
   });
 
   it('should fail validation for not existing compartment ID', () => {
-    expect(service.isValidID('0')).toBeFalsy();
-    expect(service.isValidID('6')).toBeFalsy();
-    expect(service.isValidID('12')).toBeFalsy();
+    expect(service.isValidID('0')).toBeFalse();
+    expect(service.isValidID('6')).toBeFalse();
+    expect(service.isValidID('12')).toBeFalse();
   });
 
   it('should fail validation for non-number like inputs', () => {
-    expect(service.isValidID('wrongID')).toBeFalsy();
-    expect(service.isValidID('string')).toBeFalsy();
+    expect(service.isValidID('wrongID')).toBeFalse();
+    expect(service.isValidID('string')).toBeFalse();
   });
 });
