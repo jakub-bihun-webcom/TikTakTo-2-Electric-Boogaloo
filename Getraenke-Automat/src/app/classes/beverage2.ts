@@ -2,7 +2,7 @@
  * Die Klasse repräsentiert ein Getränk.
  */
 export class Beverage2 {
-  public beverage = {
+  private beverage = {
     name: ''
   };
   constructor(beverageName: string) {

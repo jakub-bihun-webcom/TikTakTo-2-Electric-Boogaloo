@@ -1,5 +1,5 @@
 import { CashRegister } from '../classes/cash-register';
-import { DisplayMessage } from '../classes/display-message';
+import { MessageDisplay } from '../classes/message-display';
 import { OutputStorage } from '../classes/output-storage';
 import { Beverage2 } from '../classes/beverage2';
 import { Compartment } from '../classes/compartment';
@@ -9,13 +9,13 @@ import { Refills } from './refills';
  * Simuliert die Interaktion mit einem Getränkeautomaten.
  */
 export class BeverageMachineFacade {
-  public displayMessage: DisplayMessage;
+  public displayMessage: MessageDisplay;
   public cashRegister: CashRegister;
   public outputStorage: OutputStorage;
   private compartments: Compartment[] = [];
 
   constructor() {
-    this.displayMessage = new DisplayMessage();
+    this.displayMessage = new MessageDisplay();
     this.cashRegister = new CashRegister();
     this.outputStorage = new OutputStorage();
   }
@@ -27,7 +27,7 @@ export class BeverageMachineFacade {
   }
 
   insertMoney(money: number): void {
-    this.cashRegister.receiveMoney(money);
+    this.cashRegister.updatePaidAmount(money);
     const paidAmount = this.cashRegister.getPaidAmount();
     this.displayMessage.setPaidAmountMessage(paidAmount);
   }
@@ -40,24 +40,24 @@ export class BeverageMachineFacade {
     const paidAmount = this.cashRegister.getPaidAmount();
     const price = this.compartments[compartmentId - 1].price;
     if (price > paidAmount) {
-      this.displayMessage.setMessage('Nicht genug Geld eingeworfen');
+      this.displayMessage.setCustomerMessage('Nicht genug Geld eingeworfen');
       return;
     }
     if (this.compartments[compartmentId - 1].beverages.length < 1) {
-      this.displayMessage.setMessage('Getränk nicht verfügbar');
+      this.displayMessage.setCustomerMessage('Getränk nicht verfügbar');
       return;
     }
     this.cashRegister.resetPaidAmount();
     this.cashRegister.updateCashRegister(paidAmount);
     this.displayMessage.setPaidAmountMessage(0);
-    this.displayMessage.setStandardMessage();
+    this.displayMessage.setStandardCustomerMessage();
     const orderedBeverage: Beverage2 = this.compartments[compartmentId - 1].beverages.shift() as Beverage2;
     this.outputStorage.addBeverage(orderedBeverage);
     this.outputStorage.addChange(paidAmount - price);
   }
 
   getChange(): number {
-    return this.outputStorage.takeChange();
+    return this.outputStorage.removeChange();
   }
 
   cancelOrder(): void {
@@ -71,6 +71,6 @@ export class BeverageMachineFacade {
   }
 
   takeBeverages(): Beverage2[] {
-    return this.outputStorage.takeBeverages();
+    return this.outputStorage.removeBeverages();
   }
 }

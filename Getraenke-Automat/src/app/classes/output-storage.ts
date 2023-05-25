@@ -21,7 +21,7 @@ export class OutputStorage {
   /**
    * Lässt den Kunden das Wechselgeld nehmen.
    */
-  takeChange(): number {
+  removeChange(): number {
     const changeStored = this.change;
     this.change = 0;
     return changeStored;
@@ -30,7 +30,7 @@ export class OutputStorage {
   /**
    * Lässt einem Kunden das Getränk aus dem Getränkefach nehmen.
    */
-  takeBeverages(): Beverage2[] {
+  removeBeverages(): Beverage2[] {
     const beveragesStored = this.beverages;
     this.beverages = [];
     return beveragesStored;

@@ -1,11 +1,11 @@
-export class DisplayMessage {
+export class MessageDisplay {
   private customerMessage: string = 'Bitte Bestellvorgang starten';
   private paidAmountMessage: string = 'Aktuelles Guthaben: 0 €';
 
   /**
    * Aktualisiert den angezeigten Text.
    */
-  setMessage(text: string) {
+  setCustomerMessage(text: string) {
     this.customerMessage = text;
   }
 
@@ -38,7 +38,7 @@ export class DisplayMessage {
   /**
    * Setzt die Kundennachricht auf den Standardwert.
    */
-  setStandardMessage(): void {
+  setStandardCustomerMessage(): void {
     this.customerMessage = 'Bitte Bestellvorgang starten';
   }
 }
