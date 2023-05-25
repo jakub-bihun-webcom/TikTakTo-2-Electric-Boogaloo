@@ -28,6 +28,12 @@ describe('BeverageQuantityService', () => {
     expect(beverageList[0].quantity).toEqual(1);
     service.reduceQuantityByOne(1);
     expect(beverageList[0].quantity).toEqual(0);
-    expect(() => service.reduceQuantityByOne(1)).toThrowError()
+  });
+
+  it('should throw an error if the beverage quantity is 0', () => {
+    service.reduceQuantityByOne(1);
+    service.reduceQuantityByOne(1);
+    service.reduceQuantityByOne(1);
+    expect(() => service.reduceQuantityByOne(1)).toThrowError();
   });
 });
