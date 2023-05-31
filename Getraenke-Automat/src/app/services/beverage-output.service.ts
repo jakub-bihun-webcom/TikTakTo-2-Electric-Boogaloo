@@ -12,20 +12,13 @@ export class BeverageOutputService {
     beverageName: ''
   });
 
-  constructor(
-    private beverageOrderService: BeverageOrderService,
-    private cashRegisterService: CashRegisterService
-  ) {}
+  constructor(private beverageOrderService: BeverageOrderService, private cashRegisterService: CashRegisterService) {}
 
   setOrder(change: number, beverageID: number) {
     const name = this.beverageOrderService.getBeverageName(beverageID);
-    this.setOrderOutput(name, change);
-  }
-
-  setOrderOutput(name: string, change: number) {
     this.orderOutput.next({
       change: this.addChange(change),
-      beverageName: this.orderOutput.getValue().beverageName + ' ' + name
+      beverageName: name + ' ' + this.orderOutput.getValue().beverageName
     });
   }
 
@@ -33,7 +26,7 @@ export class BeverageOutputService {
     this.orderOutput.next({
       change: this.addChange(change),
       beverageName: this.orderOutput.getValue().beverageName
-    })
+    });
   }
 
   resetOrderOutputState() {
@@ -44,7 +37,7 @@ export class BeverageOutputService {
   }
 
   private addChange(change: number): number {
-    const money = change + this.orderOutput.getValue().change
-    return this.cashRegisterService.roundMoneyToFiveCents(money)
+    const money = change + this.orderOutput.getValue().change;
+    return this.cashRegisterService.roundMoneyToFiveCents(money);
   }
 }

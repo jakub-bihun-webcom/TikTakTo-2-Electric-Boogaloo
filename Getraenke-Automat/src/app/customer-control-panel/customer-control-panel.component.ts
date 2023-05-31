@@ -49,7 +49,7 @@ export class CustomerControlPanelComponent {
    * Übergibt die eingegebenen Daten, zur Verifizierung in einen extra Service.
    */
   placeOrder() {
-    if (this.handleOrderService.isOrderValid(this.paidAmount, this.compartmentID)) {
+    if (this.handleOrderService.handleOrder(this.paidAmount, this.compartmentID)) {
       this.compartmentID = '';
       this.paidAmount = 0;
     }

@@ -5,16 +5,27 @@ import { beverageList } from '../beverage-list';
   providedIn: 'root'
 })
 export class BeverageOrderService {
-  getBeveragePrice(compartmentID: number): number {
+  /**
+   * Bei einer gültigen compartmentID wird der ausgewählte Getränkepreis zurückgegeben, bei einer ungültigen compartmentID wird undefined zurückgegeben.
+   */
+  getBeveragePrice(compartmentID: number): number | undefined {
     return beverageList.filter(beverage => beverage.id === compartmentID).map(beverage => beverage.price)[0];
   }
 
-  getBeverageName(compartmentID: number): string {
+  /**
+   * Bei einer gültigen compartmentID wird der ausgewählte Getränkename zurückgegeben, bei einer ungültigen compartmentID wird undefined zurückgegeben.
+   */
+  getBeverageName(compartmentID: number): string | undefined {
     return beverageList.filter(beverage => beverage.id === compartmentID).map(beverage => beverage.name)[0];
   }
 
+  /**
+   * Überprüft, ob das Getränk noch verfügbar ist.
+   */
   checkAvailability(compartmentID: number): boolean {
-    const availability = beverageList.filter(beverage => beverage.id === compartmentID).map(beverage => beverage.quantity);
+    const availability = beverageList
+      .filter(beverage => beverage.id === compartmentID)
+      .map(beverage => beverage.quantity);
     return availability[0] > 0;
   }
 }

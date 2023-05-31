@@ -25,9 +25,10 @@ export class HandleOrderService {
   cashRegister: number = 100;
 
   /**
-   * Überprüft, ob gültige Eingabewerte eingegeben wurden.
+   * Überprüft, ob gültige Eingabewerte eingegeben wurden und informiert den Kunden sollte die Bestellung nicht gültig sein.
+   * Bei einer gültigen Bestellung wird die Bestellung weiter vorangetrieben.
    */
-  isOrderValid(paidAmount: number, compartmentID: string): boolean {
+  handleOrder(paidAmount: number, compartmentID: string): boolean {
     const isValidID = this.beverageChoiceVerifierService.isValidID(compartmentID);
     if (!isValidID) {
       this.customerMessageService.setCustomerMessage('Keine gültige Getränke-ID');
@@ -51,19 +52,19 @@ export class HandleOrderService {
   /**
    * Überprüft, ob genug Geld eingeworfen wurde und aktualisiert die Kasse.
    */
-  updateCashRegistry(paidAmount: number, beverageCompartment: number) {
-    const price = this.beverageOrderService.getBeveragePrice(beverageCompartment);
+  private updateCashRegistry(paidAmount: number, beverageCompartment: number) {
+    const price = this.beverageOrderService.getBeveragePrice(beverageCompartment) as number;
     const change = this.cashRegisterService.calculateChange(paidAmount, price, this.cashRegister);
-    this.cashRegister = this.cashRegisterService.calculateCashRegistryChange(price, this.cashRegister);
+    this.cashRegister = this.cashRegisterService.calculateCashRegisterChange(price, this.cashRegister);
     this.setOrder(beverageCompartment, change);
   }
 
   /**
    * Leitet die gültige Bestellung an die Ausgabe weiter.
    */
-  setOrder(beverageCompartment: number, change: number) {
+  private setOrder(beverageCompartment: number, change: number) {
     this.beverageOutputService.setOrder(change, beverageCompartment);
-    this.beverageQuantityService.updateQuantity(beverageCompartment);
+    this.beverageQuantityService.reduceQuantityByOne(beverageCompartment);
 
     this.customerMessageService.setCustomerMessage('Vielen Dank für ihren Einkauf');
   }
