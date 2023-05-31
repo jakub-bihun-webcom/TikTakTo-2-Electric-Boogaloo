@@ -1,6 +1,7 @@
 import { CashRegister } from '../classes/cash-register';
 import { MessageDisplay } from '../classes/message-display';
-import { OutputStorage } from '../classes/output-storage';
+import { OutputChange } from '../classes/output-change';
+import { OutputBeverage } from '../classes/output-beverage';
 import { Beverage2 } from '../classes/beverage2';
 import { Compartment } from '../classes/compartment';
 import { Refills } from './refills';
@@ -11,13 +12,15 @@ import { Refills } from './refills';
 export class BeverageMachineFacade {
   public displayMessage: MessageDisplay;
   public cashRegister: CashRegister;
-  public outputStorage: OutputStorage;
+  public outputBeverage: OutputBeverage;
+  public outputChange: OutputChange;
   private compartments: Compartment[] = [];
 
   constructor() {
     this.displayMessage = new MessageDisplay();
     this.cashRegister = new CashRegister();
-    this.outputStorage = new OutputStorage();
+    this.outputBeverage = new OutputBeverage();
+    this.outputChange = new OutputChange();
   }
 
   fillUp(refills: Refills): void {
@@ -52,18 +55,18 @@ export class BeverageMachineFacade {
     this.displayMessage.setPaidAmountMessage(0);
     this.displayMessage.setStandardCustomerMessage();
     const orderedBeverage: Beverage2 = this.compartments[compartmentId - 1].beverages.shift() as Beverage2;
-    this.outputStorage.addBeverage(orderedBeverage);
-    this.outputStorage.addChange(paidAmount - price);
+    this.outputBeverage.addBeverage(orderedBeverage);
+    this.outputChange.addChange(paidAmount - price);
   }
 
   getChange(): number {
-    return this.outputStorage.removeChange();
+    return this.outputChange.removeChange();
   }
 
   cancelOrder(): void {
     const paidAmount = this.cashRegister.getPaidAmount();
     this.cashRegister.resetPaidAmount();
-    this.outputStorage.addChange(paidAmount);
+    this.outputChange.addChange(paidAmount);
   }
 
   readDisplay(): string {
@@ -71,6 +74,6 @@ export class BeverageMachineFacade {
   }
 
   takeBeverages(): Beverage2[] {
-    return this.outputStorage.removeBeverages();
+    return this.outputBeverage.removeBeverages();
   }
 }
