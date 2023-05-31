@@ -55,8 +55,7 @@ export class BeverageMachineFacade {
     this.cashRegister.updateCashRegister(paidAmount);
     this.displayMessage.setPaidAmountMessage(0);
     this.displayMessage.setStandardCustomerMessage();
-    const orderedBeverage: Beverage2 = compartment.beverages.shift() as Beverage2;
-    this.outputBeverage.addBeverage(orderedBeverage);
+    this.outputBeverage.addBeverage(compartment.getBeverage());
     this.outputChange.addChange(paidAmount - price);
   }
 

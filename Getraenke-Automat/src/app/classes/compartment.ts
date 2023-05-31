@@ -1,9 +1,5 @@
 import { Beverage2 } from './beverage2';
 
-/**
- * Die Klasse repräsentiert ein Getränkefach.
- * Ein Getränkefach besteht aus einem Namen, Preis und Getränken.
- */
 export class Compartment {
   private price: number;
   public ID: string;
@@ -25,5 +21,9 @@ export class Compartment {
 
   getPrice(): number {
     return this.price;
+  }
+
+  getBeverage(): Beverage2 {
+    return this.beverages.shift() as Beverage2
   }
 }
