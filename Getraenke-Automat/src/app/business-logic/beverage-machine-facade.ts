@@ -39,14 +39,15 @@ export class BeverageMachineFacade {
     return this.displayMessage.getPaidAmountMessage();
   }
 
-  order(compartmentId: number): void {
+  order(compartmentId: string): void {
     const paidAmount = this.cashRegister.getPaidAmount();
-    const price = this.compartments[compartmentId - 1].price;
+    const compartment = this.compartments.find(obj => obj.ID === compartmentId) as Compartment;
+    const price = compartment.getPrice();
     if (price > paidAmount) {
       this.displayMessage.setCustomerMessage('Nicht genug Geld eingeworfen');
       return;
     }
-    if (this.compartments[compartmentId - 1].beverages.length < 1) {
+    if (compartment.isEmpty()) {
       this.displayMessage.setCustomerMessage('Getränk nicht verfügbar');
       return;
     }
@@ -54,7 +55,7 @@ export class BeverageMachineFacade {
     this.cashRegister.updateCashRegister(paidAmount);
     this.displayMessage.setPaidAmountMessage(0);
     this.displayMessage.setStandardCustomerMessage();
-    const orderedBeverage: Beverage2 = this.compartments[compartmentId - 1].beverages.shift() as Beverage2;
+    const orderedBeverage: Beverage2 = compartment.beverages.shift() as Beverage2;
     this.outputBeverage.addBeverage(orderedBeverage);
     this.outputChange.addChange(paidAmount - price);
   }
