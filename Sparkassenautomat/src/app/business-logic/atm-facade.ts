@@ -1,17 +1,32 @@
+import { LoginService } from '../login-screen/login.service';
+
 /**
  * Simuliert die Interaktion mit einem Sparkassenautomaten.
  */
 export class AtmFacade {
+  /**
+   * Die Geldmenge, die im Automaten verfügbar ist.
+   */
+  private moneySupply: number = 0;
+  private loginService = new LoginService();
+  private errorMessage: string = '';
   constructor() {}
 
   /**
    * Setzt den vorhandenen Geldbetrag im Automaten auf den gegebenen Wert.
    */
   refill(money: number): void {
-    // setze ATMAccountMoney auf input und return
+    this.moneySupply = money;
   }
 
-  login(userId: string, password: string): void {}
+  login(userId: string, password: string): void {
+    try {
+      const user = this.loginService.login(userId, password);
+    } catch (e) {
+      // @ts-ignore
+      this.errorMessage = e.message;
+    }
+  }
 
   logout(): void {}
 
@@ -20,8 +35,7 @@ export class AtmFacade {
   }
 
   readErrorMessage(): string | undefined {
-    //return die Error Message variable, die der Globale Handler abfängt
-    return '';
+    return this.errorMessage;
   }
 
   withdraw(amount: number): void {}

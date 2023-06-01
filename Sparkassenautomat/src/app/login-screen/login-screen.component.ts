@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserCashOutManager } from '../user-cashout/services/user-cashout-manager.service';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -8,17 +9,14 @@ import { UserCashOutManager } from '../user-cashout/services/user-cashout-manage
   styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent {
-  constructor(private router: Router, private handleUserAccountMoneyService: UserCashOutManager) {}
+  constructor(
+    private router: Router,
+    private handleUserAccountMoneyService: UserCashOutManager,
+    private loginService: LoginService
+  ) {}
 
-  // Eine Liste von Benutzern mit ihren Eigenschaften
-  readonly users = [
-    { id: '1234', pin: '5678', userAccountMoney: 2300000, isAdmin: false },
-    { id: '1', pin: '1', userAccountMoney: 11111, isAdmin: false },
-    { id: '0000', pin: '1802349', userAccountMoney: 0, isAdmin: true }
-  ];
-
-  pinInput?: string;
-  idInput?: string;
+  pinInput: string = '';
+  idInput: string = '';
 
   errorMessage: string = '';
 
@@ -26,12 +24,15 @@ export class LoginScreenComponent {
    * Navigiert zur Benutzeroberfläche des eingeloggten Benutzers
    */
   goToUserHomeScreen() {
-    const user = this.users.find(u => u.id === this.idInput);
-    if (user && user.pin === this.pinInput) {
-      this.handleUserAccountMoneyService.setUserAccountMoney(user.userAccountMoney);
-      this.router.navigate(['/user-home-screen']);
-    } else {
-      this.displayError('Bitte überprüfen Sie Ihre Anmeldedaten');
+    try {
+      const user = this.loginService.login(this.idInput, this.pinInput);
+      if (user) {
+        this.handleUserAccountMoneyService.setUserAccountMoney(user.userAccountMoney);
+        this.router.navigate(['/user-home-screen']);
+      }
+    } catch (e) {
+      // @ts-ignore
+      this.displayError(e.message);
       throw new Error('Input Validation ERROR');
     }
   }
