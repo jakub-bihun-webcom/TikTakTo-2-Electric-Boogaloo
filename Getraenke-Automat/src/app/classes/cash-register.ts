@@ -1,17 +1,16 @@
+/**
+ * Die Klasse repräsentiert die Kasse des Getränkeautomaten.
+ */
 export class CashRegister {
   private paidAmount: number = 0;
   private cashRegister: number = 100;
 
-  receiveMoney(money: number): void {
+  updatePaidAmount(money: number): void {
     this.paidAmount += money;
   }
 
   getPaidAmount(): number {
     return this.paidAmount;
-  }
-
-  getCashRegister(): number {
-    return this.cashRegister;
   }
 
   updateCashRegister(money: number) {

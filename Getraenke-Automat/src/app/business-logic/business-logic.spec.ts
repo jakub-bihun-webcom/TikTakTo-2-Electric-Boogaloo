@@ -1,3 +1,4 @@
+import { Compartment } from '../classes/compartment';
 import { BeverageMachineFacade } from './beverage-machine-facade';
 import { Beverage2 } from '../classes/beverage2';
 import { Refills } from './refills';
@@ -9,26 +10,23 @@ fdescribe('BeverageMachineFacade', () => {
     beverageMachineFacade = new BeverageMachineFacade();
 
     const refills: Refills = new Map();
-    refills.set(1, {
-      price: 1,
-      name: 'Wasser',
-      beverages: [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')]
-    });
-    refills.set(2, {
-      price: 2,
-      name: 'Cola',
-      beverages: [
+    refills.set(
+      1,
+      new Compartment(1, '1', [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')])
+    );
+    refills.set(
+      2,
+      new Compartment(2, '2', [
         new Beverage2('Cola'),
         new Beverage2('Cola'),
         new Beverage2('Cola'),
         new Beverage2('Cola'),
         new Beverage2('Cola')
-      ]
-    });
-    refills.set(3, {
-      price: 2.5,
-      name: 'Bier',
-      beverages: [
+      ])
+    );
+    refills.set(
+      3,
+      new Compartment(2.5, '3', [
         new Beverage2('Bier'),
         new Beverage2('Bier'),
         new Beverage2('Bier'),
@@ -37,13 +35,9 @@ fdescribe('BeverageMachineFacade', () => {
         new Beverage2('Bier'),
         new Beverage2('Bier'),
         new Beverage2('Bier')
-      ]
-    });
-    refills.set(4, {
-      price: 3,
-      name: 'leer',
-      beverages: [] // Fach soll leer bleiben
-    });
+      ])
+    );
+    refills.set(4, new Compartment(3, '4', []));
 
     beverageMachineFacade.fillUp(refills);
   });
@@ -65,7 +59,7 @@ fdescribe('BeverageMachineFacade', () => {
   it('should return correct order response given not enough money inserted', () => {
     beverageMachineFacade.insertMoney(1);
     beverageMachineFacade.insertMoney(0.5);
-    beverageMachineFacade.order(2);
+    beverageMachineFacade.order('2');
 
     expect(beverageMachineFacade.readDisplay()).toBe('Nicht genug Geld eingeworfen');
   });
@@ -73,7 +67,7 @@ fdescribe('BeverageMachineFacade', () => {
   it('should return correct order response given enough money inserted and compartment is empty', () => {
     beverageMachineFacade.insertMoney(1);
     beverageMachineFacade.insertMoney(2);
-    beverageMachineFacade.order(4);
+    beverageMachineFacade.order('4');
 
     expect(beverageMachineFacade.readDisplay()).toBe('Getränk nicht verfügbar');
   });
@@ -82,7 +76,7 @@ fdescribe('BeverageMachineFacade', () => {
     beverageMachineFacade.insertMoney(1);
     beverageMachineFacade.insertMoney(0.5);
 
-    beverageMachineFacade.order(1);
+    beverageMachineFacade.order('1');
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
 
     const beverages = beverageMachineFacade.takeBeverages();
@@ -107,13 +101,13 @@ fdescribe('BeverageMachineFacade', () => {
   it('should finally accept order after enough money has been inserted', () => {
     beverageMachineFacade.insertMoney(1);
     beverageMachineFacade.insertMoney(0.5);
-    beverageMachineFacade.order(2);
+    beverageMachineFacade.order('2');
 
     expect(beverageMachineFacade.readDisplay()).toBe('Nicht genug Geld eingeworfen');
 
     beverageMachineFacade.insertMoney(1);
     expect(beverageMachineFacade.readInsertedMoney()).toBe('Aktuelles Guthaben: 2.50 €');
-    beverageMachineFacade.order(2);
+    beverageMachineFacade.order('2');
 
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
 
@@ -127,14 +121,14 @@ fdescribe('BeverageMachineFacade', () => {
     expect(change).toBe(0.5);
   });
 
-  xit('should handle multiple orders correctly', () => {
+  it('should handle multiple orders correctly', () => {
     beverageMachineFacade.insertMoney(5);
-    beverageMachineFacade.order(2);
+    beverageMachineFacade.order('2');
 
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
 
-    beverageMachineFacade.insertMoney(1);
-    beverageMachineFacade.order(3);
+    beverageMachineFacade.insertMoney(3);
+    beverageMachineFacade.order('3');
 
     expect(beverageMachineFacade.readDisplay()).toBe('Bitte Bestellvorgang starten');
 
@@ -145,7 +139,7 @@ fdescribe('BeverageMachineFacade', () => {
 
     const change = beverageMachineFacade.getChange();
 
-    expect(change).toBe(1.5);
+    expect(change).toBe(3.5);
 
     expect(beverageMachineFacade.readInsertedMoney()).toBe('Aktuelles Guthaben: 0 €');
   });

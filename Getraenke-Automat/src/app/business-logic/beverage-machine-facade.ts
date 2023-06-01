@@ -1,6 +1,7 @@
 import { CashRegister } from '../classes/cash-register';
-import { DisplayMessage } from '../classes/display-message';
-import { OutputStorage } from '../classes/output-storage';
+import { MessageDisplay } from '../classes/message-display';
+import { OutputChange } from '../classes/output-change';
+import { OutputBeverage } from '../classes/output-beverage';
 import { Beverage2 } from '../classes/beverage2';
 import { Compartment } from '../classes/compartment';
 import { Refills } from './refills';
@@ -9,15 +10,17 @@ import { Refills } from './refills';
  * Simuliert die Interaktion mit einem Getränkeautomaten.
  */
 export class BeverageMachineFacade {
-  public displayMessage: DisplayMessage;
+  public displayMessage: MessageDisplay;
   public cashRegister: CashRegister;
-  public outputStorage: OutputStorage;
+  public outputBeverage: OutputBeverage;
+  public outputChange: OutputChange;
   private compartments: Compartment[] = [];
 
   constructor() {
-    this.displayMessage = new DisplayMessage();
+    this.displayMessage = new MessageDisplay();
     this.cashRegister = new CashRegister();
-    this.outputStorage = new OutputStorage();
+    this.outputBeverage = new OutputBeverage();
+    this.outputChange = new OutputChange();
   }
 
   fillUp(refills: Refills): void {
@@ -27,43 +30,43 @@ export class BeverageMachineFacade {
   }
 
   insertMoney(money: number): void {
-    this.displayMessage.setStandardMessage();
-    this.cashRegister.receiveMoney(money);
+    this.cashRegister.updatePaidAmount(money);
     const paidAmount = this.cashRegister.getPaidAmount();
     this.displayMessage.setPaidAmountMessage(paidAmount);
   }
 
   readInsertedMoney(): string {
-    const insertedMoney = this.cashRegister.getPaidAmount();
-    this.displayMessage.setPaidAmountMessage(insertedMoney);
     return this.displayMessage.getPaidAmountMessage();
   }
 
-  order(compartmentId: number): void {
+  order(compartmentId: string): void {
     const paidAmount = this.cashRegister.getPaidAmount();
-    const price = this.compartments[compartmentId - 1].price;
+    const compartment = this.compartments.find(obj => obj.getID() === compartmentId) as Compartment;
+    const price = compartment.getPrice();
     if (price > paidAmount) {
-      this.displayMessage.setMessage('Nicht genug Geld eingeworfen');
+      this.displayMessage.setCustomerMessage('Nicht genug Geld eingeworfen');
       return;
     }
-    if (this.compartments[compartmentId - 1].beverages.length < 1) {
-      this.displayMessage.setMessage('Getränk nicht verfügbar');
+    if (compartment.isEmpty()) {
+      this.displayMessage.setCustomerMessage('Getränk nicht verfügbar');
       return;
     }
-    this.cashRegister.resetPaidAmount()
-    const orderedBeverage: Beverage2 = this.compartments[compartmentId - 1].beverages.shift() as Beverage2;
-    this.outputStorage.addBeverage(orderedBeverage);
-    this.outputStorage.addChange(paidAmount - price);
+    this.cashRegister.resetPaidAmount();
+    this.cashRegister.updateCashRegister(paidAmount);
+    this.displayMessage.setPaidAmountMessage(0);
+    this.displayMessage.setStandardCustomerMessage();
+    this.outputBeverage.addBeverage(compartment.getBeverage());
+    this.outputChange.addChange(paidAmount - price);
   }
 
   getChange(): number {
-    return this.outputStorage.takeChange();
+    return this.outputChange.removeChange();
   }
 
   cancelOrder(): void {
     const paidAmount = this.cashRegister.getPaidAmount();
     this.cashRegister.resetPaidAmount();
-    this.outputStorage.addChange(paidAmount);
+    this.outputChange.addChange(paidAmount);
   }
 
   readDisplay(): string {
@@ -71,6 +74,6 @@ export class BeverageMachineFacade {
   }
 
   takeBeverages(): Beverage2[] {
-    return this.outputStorage.takeBeverages();
+    return this.outputBeverage.removeBeverages();
   }
 }
