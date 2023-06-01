@@ -41,7 +41,7 @@ export class BeverageMachineFacade {
 
   order(compartmentId: string): void {
     const paidAmount = this.cashRegister.getPaidAmount();
-    const compartment = this.compartments.find(obj => obj.ID === compartmentId) as Compartment;
+    const compartment = this.compartments.find(obj => obj.getID() === compartmentId) as Compartment;
     const price = compartment.getPrice();
     if (price > paidAmount) {
       this.displayMessage.setCustomerMessage('Nicht genug Geld eingeworfen');

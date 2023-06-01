@@ -1,7 +1,7 @@
 import { Beverage2 } from './beverage2';
 
 /**
- * Die Klasse repräsentiert das Ausgabefach. Bestellte Getränke und das Rückgeld/Wechselgeld werden hier gespeichert.
+ * Die Klasse repräsentiert das Ausgabefach für Getränke. Bestellte Getränke werden hier gespeichert.
  */
 export class OutputBeverage {
   private beverages: Beverage2[] = [];
@@ -14,7 +14,7 @@ export class OutputBeverage {
   }
 
   /**
-   * Lässt einem Kunden das Getränk aus dem Getränkefach nehmen
+   * Gibt die Getränke-Objekte zurück und leert das Getränke-Array in dem Objekt.
    */
   removeBeverages(): Beverage2[] {
     const beveragesStored = this.beverages;

@@ -2,7 +2,7 @@ import { Beverage2 } from './beverage2';
 
 export class Compartment {
   private readonly price: number;
-  public ID: string;
+  private readonly ID: string;
   private beverages: Beverage2[];
 
   constructor(price: number, name: string, beverages: Beverage2[]) {
@@ -21,5 +21,9 @@ export class Compartment {
 
   getBeverage(): Beverage2 {
     return this.beverages.shift() as Beverage2
+  }
+
+  getID(): string {
+    return this.ID;
   }
 }

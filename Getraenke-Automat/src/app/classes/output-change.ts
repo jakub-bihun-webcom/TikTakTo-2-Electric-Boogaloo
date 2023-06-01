@@ -6,7 +6,7 @@ export class OutputChange {
   }
 
   /**
-   * Lässt den Kunden das Wechselgeld nehmen
+   * Gibt das gespeicherte Rückgeld aus.
    */
   removeChange(): number {
     const changeStored = this.change;
