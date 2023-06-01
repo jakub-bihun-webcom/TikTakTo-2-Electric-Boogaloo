@@ -20,7 +20,7 @@ export class Compartment {
   }
 
   getBeverage(): Beverage2 {
-    return this.beverages.shift() as Beverage2
+    return this.beverages.shift() as Beverage2;
   }
 
   getID(): string {
