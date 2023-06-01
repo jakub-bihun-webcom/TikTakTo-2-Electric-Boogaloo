@@ -4,6 +4,7 @@ describe('AtmFacade', () => {
   let atmFacade: AtmFacade;
 
   beforeEach(() => {
+    atmFacade = new AtmFacade();
     atmFacade.refill(15000);
   });
 
