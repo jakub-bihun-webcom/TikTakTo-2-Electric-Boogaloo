@@ -7,7 +7,9 @@ export class AtmFacade {
   /**
    * Setzt den vorhandenen Geldbetrag im Automaten auf den gegebenen Wert.
    */
-  refill(money: number): void {}
+  refill(money: number): void {
+    // setze ATMAccountMoney auf input und return
+  }
 
   login(userId: string, password: string): void {}
 
@@ -18,6 +20,7 @@ export class AtmFacade {
   }
 
   readErrorMessage(): string | undefined {
+    //return die Error Message variable, die der Globale Handler abfängt
     return '';
   }
 
