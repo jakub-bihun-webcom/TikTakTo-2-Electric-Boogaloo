@@ -10,10 +10,7 @@ fdescribe('BeverageMachineFacade', () => {
     beverageMachineFacade = new BeverageMachineFacade();
 
     const refills: Refills = new Map();
-    refills.set(
-      1,
-      new Compartment(1, 1, [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')])
-    );
+    refills.set(1, new Compartment(1, 1, [new Beverage2('Wasser'), new Beverage2('Wasser'), new Beverage2('Wasser')]));
     refills.set(
       2,
       new Compartment(2, 2, [
