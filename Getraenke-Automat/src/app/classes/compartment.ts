@@ -1,6 +1,10 @@
 import { Beverage2 } from './beverage2';
 
 export class Compartment {
+  /**
+   * Der Preis wird an den Compartments gespeichert und nicht an den Getränken, weil auch eine CompartmentID zum
+   * Bestellen ausgewählt wird und nicht ein Getränk.
+   */
   private readonly price: number;
   private readonly ID: number;
   private beverages: Beverage2[];
