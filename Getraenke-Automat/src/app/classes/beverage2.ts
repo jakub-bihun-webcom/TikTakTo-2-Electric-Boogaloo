@@ -1,6 +1,6 @@
 export class Beverage2 {
-  private beverage;
+  private name: string;
   constructor(beverageName: string) {
-    this.beverage = beverageName;
+    this.name = beverageName;
   }
 }
