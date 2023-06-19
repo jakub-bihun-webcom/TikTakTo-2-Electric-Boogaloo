@@ -15,7 +15,7 @@ describe('AtmFacade', () => {
   });
 
   it('should successfully login user', () => {
-    atmFacade.login('1', '0');
+    atmFacade.login('1', '1');
 
     expect(atmFacade.readErrorMessage()).toBeUndefined();
   });

@@ -9,7 +9,7 @@ export class AtmFacade {
    */
   private moneySupply: number = 0;
   private loginService = new LoginService();
-  private errorMessage: string = '';
+  private errorMessage: string | undefined;
   constructor() {}
 
   /**
