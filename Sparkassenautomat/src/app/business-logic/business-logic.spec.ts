@@ -27,8 +27,8 @@ describe('AtmFacade', () => {
     expect(atmFacade.readDisplay()).toBe('Bitte authentifizieren Sie sich');
   });
 
-  it('should should error message when withdrawing more than the maximum allowed amount', () => {
-    atmFacade.login('1', '0');
+  it('should show error message when withdrawing more than the maximum allowed amount', () => {
+    atmFacade.login('1', '1');
     atmFacade.withdrawCustomAmount(6000);
 
     expect(atmFacade.readErrorMessage()).toBe('Die maximale Abhebesumme beträgt 5000€');

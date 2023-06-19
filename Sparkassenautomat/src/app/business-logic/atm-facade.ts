@@ -1,4 +1,6 @@
 import { LoginService } from '../login-screen/login.service';
+import {UserAmountInputValidationService} from "../user-cashout/user-custom-amount/user-amount-input-validation.service";
+
 
 /**
  * Simuliert die Interaktion mit einem Sparkassenautomaten.
@@ -10,6 +12,9 @@ export class AtmFacade {
   private moneySupply: number = 0;
   private loginService = new LoginService();
   private errorMessage: string | undefined;
+
+  private UserAmountInputValidationService = new UserAmountInputValidationService();
+
   constructor() {}
 
   /**
@@ -40,7 +45,9 @@ export class AtmFacade {
 
   withdraw(amount: number): void {}
 
-  withdrawCustomAmount(customAmount: number): void {}
+  withdrawCustomAmount(customAmount: number): void {
+     this.UserAmountInputValidationService.validateUserInput(customAmount)
+  }
 
   getAccountBalance(): number {
     return 0;

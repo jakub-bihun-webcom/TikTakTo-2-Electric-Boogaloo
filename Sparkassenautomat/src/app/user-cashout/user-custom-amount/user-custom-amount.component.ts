@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserCashOutManager } from '../services/user-cashout-manager.service';
 import { Router } from '@angular/router';
+import { UserAmountInputValidationService } from './user-amount-input-validation.service';
 
 @Component({
   selector: 'app-user-custom-amount',
@@ -11,7 +12,7 @@ export class UserCustomAmountComponent {
   customAmount?: number;
   errorMessage: string = '';
 
-  constructor(private handleUserAccountMoneyService: UserCashOutManager, private router: Router) {}
+  constructor(private handleUserAccountMoneyService: UserCashOutManager,private UserInputValidation: UserAmountInputValidationService ,private router: Router) {}
 
   /**
    * Verwendet den benutzerdefinierten Betrag
@@ -22,7 +23,7 @@ export class UserCustomAmountComponent {
     if (this.customAmount === undefined) {
       this.displayError('Bitte tragen Sie Ihren Betrag in das Feld ein');
       throw new Error('Input field is empty');
-    } else if (this.validateUserInput(this.customAmount)) {
+    } else if (this.UserInputValidation.validateUserInput(this.customAmount)) {
       this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(this.customAmount));
     } else {
       throw new Error('Something went wrong with validation');
@@ -37,33 +38,7 @@ export class UserCustomAmountComponent {
    *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
    *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
    */
-  private validateUserInput(customAmount: number): boolean {
-    if (isNaN(customAmount)) {
-      this.displayError('Der Betrag muss in Zahlen angegeben werden');
-      throw new Error('The user input is not a number');
-    }
-    if (customAmount % 5 !== 0) {
-      this.displayError('Der Betrag muss in Scheinen ausgegeben werden können');
-      throw new Error('The user input is not divisible by five');
-    }
-    if (customAmount >= 5001) {
-      this.displayError('Die maximale Abhebesumme beträgt 5000€');
-      throw new Error('exceeded maximum');
-    }
-    if (customAmount <= -1) {
-      this.displayError('Bitte tragen Sie einen positiven Betrag ein');
-      throw new Error('Negative numbers cant be processed');
-    } else {
-      const ATMHasEnoughMoney = this.handleUserAccountMoneyService.checkIfWithdrawalIsPossible(customAmount);
-      if (ATMHasEnoughMoney) {
-        this.clearError();
-        this.handleUserAccountMoneyService.withdraw(customAmount);
-        return true;
-      }
-      this.displayError('Es befinden sich nicht mehr genug Geld im Automaten.');
-      throw new Error('ATMAccountMoney exceeded');
-    }
-  }
+
 
   navigatePage(data: any) {
     this.router.navigate(['/user-cashout-message'], { state: { myData: data } });
