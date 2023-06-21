@@ -1,29 +1,25 @@
 import { LoginService } from '../login-screen/login.service';
-import {UserAmountInputValidationService} from "../user-cashout/user-custom-amount/user-amount-input-validation.service";
-import {UserCashOutManager} from "../user-cashout/services/user-cashout-manager.service";
-import {ATM} from "./ATM";
-import {User} from "../login-screen/user";
-
+import { UserAmountInputValidationService } from '../user-cashout/user-custom-amount/user-amount-input-validation.service';
+import { UserCashOutManager } from '../user-cashout/services/user-cashout-manager.service';
+import { ATM } from './ATM';
+import { User } from '../login-screen/user';
 
 /**
  * Simuliert die Interaktion mit einem Sparkassenautomaten.
  */
 export class AtmFacade {
-
   private loginService = new LoginService();
   private errorMessage?: string;
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
   private atm: ATM = {
     moneySupply: 0, // TODO: Set to 1000
-    isLoggedIn: false,
-  }
+    isLoggedIn: false
+  };
 
   private user?: User;
 
   constructor() {}
-
-
 
   /**
    * Setzt den vorhandenen Geldbetrag im Automaten auf den gegebenen Wert.
@@ -40,7 +36,6 @@ export class AtmFacade {
       // @ts-ignore
       this.errorMessage = e.message;
     }
-    console.log('userACcountmoney:'+ this.user?.userAccountMoney);
   }
 
   logout(): void {
@@ -63,27 +58,28 @@ export class AtmFacade {
     if (this.user === undefined) {
       throw new Error('User is not logged in');
     }
-    if(this.atm.moneySupply <= amount) {
+    if (this.atm.moneySupply <= amount) {
       this.errorMessage = 'befindet sich nicht mehr genug Geld im Automaten';
     } else if (this.user.userAccountMoney <= amount) {
       this.errorMessage = 'Konto nicht ausreichend gedeckt';
     } else if (amount === 10 || amount === 20 || amount === 50 || amount === 100) {
       this.keepTrackOfUserMoney(amount);
-      this.logout();}
-    else {
+      this.logout();
+    } else {
       throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
   }
 
   withdrawCustomAmount(customAmount: number) {
     if (this.atm.moneySupply >= customAmount) {
-    try {
-      this.userAmountInputValidationService.validateUserInput(customAmount);
-      this.keepTrackOfUserMoney(customAmount);
-    } catch (e) {
-      // @ts-ignore
-      this.errorMessage = e.message;
-    }} else {
+      try {
+        this.userAmountInputValidationService.validateUserInput(customAmount);
+        this.keepTrackOfUserMoney(customAmount);
+      } catch (e) {
+        // @ts-ignore
+        this.errorMessage = e.message;
+      }
+    } else {
       this.errorMessage = 'Es befindet sich nicht mehr genug Geld im Automaten';
     }
   }
@@ -98,3 +94,5 @@ export class AtmFacade {
     this.user.userAccountMoney -= customAmount;
   }
 }
+
+//q: whats the command to user Prettier in the terminal?
