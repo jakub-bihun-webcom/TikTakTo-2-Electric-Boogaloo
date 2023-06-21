@@ -29,8 +29,8 @@ describe('CashRegisterService', () => {
     expect(service.roundMoneyToFiveCents(2.100032222)).toEqual(2.1);
   });
 
-  it('should throw error if not enough money was paid', ()=>{
-    expect(() => service.calculateChange(1, 2, 10)).toThrowError()
-    expect(() => service.calculateChange(3, 4, 0)).toThrowError()
-  })
+  it('should throw error if not enough money was paid', () => {
+    expect(() => service.calculateChange(1, 2, 10)).toThrowError();
+    expect(() => service.calculateChange(3, 4, 0)).toThrowError();
+  });
 });

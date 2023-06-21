@@ -13,7 +13,7 @@ export class AtmFacade {
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
   private atm: Atm = {
-    moneySupply: 0,
+    moneySupply: 0
   };
 
   private user?: User;
@@ -58,21 +58,23 @@ export class AtmFacade {
 
   withdraw(amount: number): void {
     this.failIfNoUserLoggedIn();
+
     if (!this.isWithdrawAmountValid(amount)) {
       throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
+
     if (this.atm.moneySupply <= amount) {
-      this.errorMessage = 'befindet sich nicht mehr genug Geld im Automaten';
+      this.errorMessage = 'Es befindet sich nicht mehr genug Geld im Automaten';
       return;
     }
-    // @ts-ignore
-    if (this.user.userAccountMoney <= amount) {
+
+    if (this.user!.userAccountMoney <= amount) {
       this.errorMessage = 'Konto nicht ausreichend gedeckt';
       return;
-    } else {
-      this.keepTrackOfUserMoney(amount);
-      this.logout();
     }
+
+    this.withdrawMoneyFromUserAccount(amount);
+    this.logout();
   }
 
   withdrawCustomAmount(customAmount: number) {
@@ -80,7 +82,7 @@ export class AtmFacade {
     if (this.atm.moneySupply >= customAmount) {
       try {
         this.userAmountInputValidationService.validateUserInput(customAmount);
-        this.keepTrackOfUserMoney(customAmount);
+        this.withdrawMoneyFromUserAccount(customAmount);
       } catch (e) {
         // @ts-ignore
         this.errorMessage = e.message;
@@ -91,16 +93,15 @@ export class AtmFacade {
   }
 
   getAccountBalance(): number {
-    // @ts-ignore
-    return this.user?.userAccountMoney;
+    this.failIfNoUserLoggedIn();
+    return this.user!.userAccountMoney;
   }
 
-  keepTrackOfUserMoney(customAmount: number): void {
-    // @ts-ignore
-    this.user.userAccountMoney -= customAmount;
+  private withdrawMoneyFromUserAccount(customAmount: number): void {
+    this.user!.userAccountMoney -= customAmount;
   }
 
-  isUserLoggedIn(): boolean {
+  private isUserLoggedIn(): boolean {
     return this.user !== undefined;
   }
 
@@ -109,6 +110,4 @@ export class AtmFacade {
       throw new Error('User is not logged in');
     }
   }
-
 }
-

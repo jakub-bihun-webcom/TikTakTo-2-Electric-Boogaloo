@@ -34,8 +34,8 @@ describe('HandleOrderService', () => {
 
   it('should check if order is invalid', () => {
     expect(service.handleOrder(1, 'wrongID')).toBeFalse();
-    expect(service.handleOrder(3, 'a')).toBeFalse()
-    expect(service.handleOrder(4, '4')).toBeFalse()
+    expect(service.handleOrder(3, 'a')).toBeFalse();
+    expect(service.handleOrder(4, '4')).toBeFalse();
     expect(service.handleOrder(0, '2')).toBeFalse();
   });
 });
