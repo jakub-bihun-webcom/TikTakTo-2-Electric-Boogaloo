@@ -18,6 +18,7 @@ export class AtmFacade {
 
   isLoggedIn: boolean = false;
 
+  private errorMessage: string = '';
   constructor() {}
 
   /**

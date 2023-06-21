@@ -9,10 +9,14 @@ import { beverageList } from '../beverage-list';
 export class BeverageQuantityService {
   updatedBeverageList = new BehaviorSubject<Beverage[]>(beverageList);
 
-  updateQuantity(id: number) {
+  reduceQuantityByOne(id: number) {
+    if (beverageList[id - 1].quantity === 0){
+      throw new Error('Getränk ist ausverkauft')
+    }
     this.updatedBeverageList.next(
       beverageList.map(beverage => {
         if (beverage.id === id) {
+
           return { ...beverage, quantity: beverage.quantity - 1 };
         }
         return beverage;
