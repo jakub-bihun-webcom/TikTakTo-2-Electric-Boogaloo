@@ -68,8 +68,8 @@ export class AtmFacade {
     } else if (this.user.userAccountMoney <= amount) {
       this.errorMessage = 'Konto nicht ausreichend gedeckt';
     } else if (amount === 10 || amount === 20 || amount === 50 || amount === 100) {
-      this.logout();
-    }
+      this.keepTrackOfUserMoney(amount);
+      this.logout();}
     else {
       throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
@@ -79,6 +79,7 @@ export class AtmFacade {
     if (this.atm.moneySupply >= customAmount) {
     try {
       this.userAmountInputValidationService.validateUserInput(customAmount);
+      this.keepTrackOfUserMoney(customAmount);
     } catch (e) {
       // @ts-ignore
       this.errorMessage = e.message;
@@ -89,6 +90,11 @@ export class AtmFacade {
 
   getAccountBalance(): number {
     // @ts-ignore
-    return this.user.userAccountMoney;
+    return this.user?.userAccountMoney;
+  }
+
+  keepTrackOfUserMoney(customAmount: number): void {
+    // @ts-ignore
+    this.user.userAccountMoney -= customAmount;
   }
 }

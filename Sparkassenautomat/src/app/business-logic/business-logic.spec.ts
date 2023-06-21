@@ -70,7 +70,6 @@ describe('AtmFacade', () => {
   });
 
   it('should show updated account balance after withdrawing', () => {
-    console.log('should show updated account balance after withdrawing');
     atmFacade.login('1', '1');
     atmFacade.withdraw(10);
 
@@ -80,7 +79,7 @@ describe('AtmFacade', () => {
     atmFacade.login('1', '1');
     const accountBalance = atmFacade.getAccountBalance();
 
-    expect(accountBalance).toBe(10.991);
+    expect(accountBalance).toBe(10991);
   });
 
   it('should show error message when withdrawing invalid custom amount', () => {
