@@ -1,7 +1,6 @@
 import { LoginService } from '../login-screen/login.service';
-import {UserAmountInputValidationService} from "../user-cashout/user-custom-amount/user-amount-input-validation.service";
-import {UserCashOutManager} from "../user-cashout/services/user-cashout-manager.service";
-
+import { UserAmountInputValidationService } from '../user-cashout/user-custom-amount/user-amount-input-validation.service';
+import { UserCashOutManager } from '../user-cashout/services/user-cashout-manager.service';
 
 /**
  * Simuliert die Interaktion mit einem Sparkassenautomaten.
@@ -12,13 +11,12 @@ export class AtmFacade {
    */
   private moneySupply: number = 0;
   private loginService = new LoginService();
-  private errorMessage: string | undefined;
+  private errorMessage: string = '';
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
 
   isLoggedIn: boolean = false;
 
-  private errorMessage: string = '';
   constructor() {}
 
   /**
@@ -64,11 +62,11 @@ export class AtmFacade {
 
   withdrawCustomAmount(customAmount: number) {
     try {
-     this.userAmountInputValidationService.validateUserInput(customAmount)
-  } catch (e) {
-    // @ts-ignore
-    this.errorMessage = e.message;
-  }
+      this.userAmountInputValidationService.validateUserInput(customAmount);
+    } catch (e) {
+      // @ts-ignore
+      this.errorMessage = e.message;
+    }
   }
 
   getAccountBalance(): number {
