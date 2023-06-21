@@ -95,4 +95,3 @@ export class AtmFacade {
   }
 }
 
-//q: whats the command to user Prettier in the terminal?
