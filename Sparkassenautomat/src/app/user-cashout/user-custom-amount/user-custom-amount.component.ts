@@ -12,7 +12,11 @@ export class UserCustomAmountComponent {
   customAmount?: number;
   errorMessage: string = '';
 
-  constructor(private handleUserAccountMoneyService: UserCashOutManager,private UserInputValidation: UserAmountInputValidationService ,private router: Router) {}
+  constructor(
+    private handleUserAccountMoneyService: UserCashOutManager,
+    private userAmountInputValidationService: UserAmountInputValidationService,
+    private router: Router
+  ) {}
 
   /**
    * Verwendet den benutzerdefinierten Betrag
@@ -23,22 +27,12 @@ export class UserCustomAmountComponent {
     if (this.customAmount === undefined) {
       this.displayError('Bitte tragen Sie Ihren Betrag in das Feld ein');
       throw new Error('Input field is empty');
-    } else if (this.UserInputValidation.validateUserInput(this.customAmount)) {
+    } else if (this.userAmountInputValidationService.validateUserInput(this.customAmount)) {
       this.navigatePage(this.handleUserAccountMoneyService.subtractUserAccountMoney(this.customAmount));
     } else {
       throw new Error('Something went wrong with validation');
     }
   }
-
-  /**
-   * Validiert die Benutzereingabe auf Korrektheit
-   * @param customAmount Der eingegebene benutzerdefinierte Betrag
-   * @returns true, wenn die Eingabe korrekt ist
-   * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
-   *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
-   *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
-   */
-
 
   navigatePage(data: any) {
     this.router.navigate(['/user-cashout-message'], { state: { myData: data } });

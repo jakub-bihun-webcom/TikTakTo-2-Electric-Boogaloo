@@ -13,7 +13,7 @@ export class AtmFacade {
    */
   private moneySupply: number = 0;
   private loginService = new LoginService();
-  private errorMessage: string | undefined;
+  private errorMessage: string = '';
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
 
@@ -69,11 +69,11 @@ export class AtmFacade {
 
   withdrawCustomAmount(customAmount: number) {
     try {
-     this.userAmountInputValidationService.validateUserInput(customAmount)
-  } catch (e) {
-    // @ts-ignore
-    this.errorMessage = e.message;
-  }
+      this.userAmountInputValidationService.validateUserInput(customAmount);
+    } catch (e) {
+      // @ts-ignore
+      this.errorMessage = e.message;
+    }
   }
 
   getAccountBalance(): number {

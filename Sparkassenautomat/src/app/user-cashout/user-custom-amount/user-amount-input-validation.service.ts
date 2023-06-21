@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { UserCashOutManager } from '../services/user-cashout-manager.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserAmountInputValidationService {
+  constructor(private userCashOutManager: UserCashOutManager) {}
 
-  constructor(private userCashOutManager: UserCashOutManager) { }
-
+  /**
+   * Validiert die Benutzereingabe auf Korrektheit
+   * @returns true, wenn die Eingabe korrekt ist
+   * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
+   *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
+   *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
+   */
   validateUserInput(customAmount: number): boolean {
     if (isNaN(customAmount)) {
       throw new Error('The user input is not a number');
@@ -29,5 +34,5 @@ export class UserAmountInputValidationService {
       }
       throw new Error('ATMAccountMoney exceeded');
     }
-    }
   }
+}
