@@ -2,41 +2,41 @@ import { LoginService } from '../login-screen/login.service';
 import {UserAmountInputValidationService} from "../user-cashout/user-custom-amount/user-amount-input-validation.service";
 import {UserCashOutManager} from "../user-cashout/services/user-cashout-manager.service";
 import {ATM} from "./ATM";
+import {User} from "../login-screen/user";
 
 
 /**
  * Simuliert die Interaktion mit einem Sparkassenautomaten.
  */
 export class AtmFacade {
-  /**
-   * Die Geldmenge, die im Automaten verfügbar ist.
-   */
-  private moneySupply: number = 0;
+
   private loginService = new LoginService();
-  private errorMessage: string = '';
+  private errorMessage?: string;
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
 
-  isLoggedIn: boolean = false;
-
-  ATM: ATM = {
-    moneySupply: this.moneySupply,
-    isLoggedIn: this.isLoggedIn,
+  private atm: ATM = {
+    moneySupply: 0, // TODO: Set to 1000
+    isLoggedIn: false,
   }
 
+  private user?: User;
+
   constructor() {}
+
+
 
   /**
    * Setzt den vorhandenen Geldbetrag im Automaten auf den gegebenen Wert.
    */
   refill(money: number): void {
-    this.moneySupply = money;
+    this.atm.moneySupply = money;
   }
 
   login(userId: string, password: string): void {
     try {
-      this.loginService.login(userId, password);
-      this.isLoggedIn = true;
+      this.user = this.loginService.login(userId, password);
+      this.atm.isLoggedIn = true;
     } catch (e) {
       // @ts-ignore
       this.errorMessage = e.message;
@@ -44,11 +44,11 @@ export class AtmFacade {
   }
 
   logout(): void {
-    this.isLoggedIn = false;
+    this.atm.isLoggedIn = false;
   }
 
   readDisplay(): string {
-    if (this.ATM.isLoggedIn) {
+    if (this.atm.isLoggedIn) {
       return 'Bitte wählen Sie einen Betrag aus';
     } else {
       return 'Bitte authentifizieren Sie sich';
@@ -60,19 +60,28 @@ export class AtmFacade {
   }
 
   withdraw(amount: number): void {
+    if (this.user === undefined) {
+      throw new Error('User is not logged in');
+    }
     if (amount === 10 || amount === 20 || amount === 50 || amount === 100) {
       this.logout();
-    } else {
+    } else if(this.user.userAccountMoney <= amount) {
+      this.errorMessage = 'befindet sich nicht mehr genug Geld im Automaten';
+    }
+      else {
       throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
   }
 
   withdrawCustomAmount(customAmount: number) {
+    if (this.atm.moneySupply >= customAmount) {
     try {
       this.userAmountInputValidationService.validateUserInput(customAmount);
     } catch (e) {
       // @ts-ignore
       this.errorMessage = e.message;
+    }} else {
+      this.errorMessage = 'Es befindet sich nicht mehr genug Geld im Automaten';
     }
   }
 
