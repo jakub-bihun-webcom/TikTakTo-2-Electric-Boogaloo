@@ -53,7 +53,11 @@ export class AtmFacade {
     return this.errorMessage;
   }
 
-  withdraw(amount: number): void {}
+  withdraw(amount: number): void {
+    if (amount !== 10 && amount !== 50 && amount !== 20 && amount !== 100) {
+      throw new Error('Der Betrag kann nicht ausgewählt werden');
+    }
+  }
 
   withdrawCustomAmount(customAmount: number) {
     try {

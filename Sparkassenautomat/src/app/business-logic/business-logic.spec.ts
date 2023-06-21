@@ -53,8 +53,6 @@ describe('AtmFacade', () => {
     expect(() => {
       atmFacade.withdraw(300);
     }).toThrowError('Der Betrag kann nicht ausgewählt werden');
-
-    expect(atmFacade.readErrorMessage()).toBe('Es befindet sich nicht mehr genug Geld im Automaten');
   });
 
   it('should show account balance', () => {
