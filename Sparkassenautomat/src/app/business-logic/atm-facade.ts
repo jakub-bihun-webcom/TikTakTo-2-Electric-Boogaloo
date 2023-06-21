@@ -16,6 +16,8 @@ export class AtmFacade {
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
 
+  isLoggedIn: boolean = false;
+
   constructor() {}
 
   /**
@@ -28,16 +30,23 @@ export class AtmFacade {
   login(userId: string, password: string): void {
     try {
       this.loginService.login(userId, password);
+      this.isLoggedIn = true;
     } catch (e) {
       // @ts-ignore
       this.errorMessage = e.message;
     }
   }
 
-  logout(): void {}
+  logout(): void {
+    this.isLoggedIn = false;
+  }
 
   readDisplay(): string {
-    return '';
+    if (this.isLoggedIn) {
+      return 'Bitte wählen Sie einen Betrag aus';
+    } else {
+      return 'Bitte authentifizieren Sie sich';
+    }
   }
 
   readErrorMessage(): string | undefined {
