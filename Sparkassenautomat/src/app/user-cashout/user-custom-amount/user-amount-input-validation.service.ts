@@ -14,7 +14,7 @@ export class UserAmountInputValidationService {
       throw new Error('The user input is not a number');
     }
     if (customAmount % 5 !== 0) {
-      throw new Error('The user input is not divisible by five');
+      throw new Error('Der Betrag muss in Scheinen ausgegeben werden können');
     }
     if (customAmount >= 5001) {
       throw new Error('Die maximale Abhebesumme beträgt 5000€');

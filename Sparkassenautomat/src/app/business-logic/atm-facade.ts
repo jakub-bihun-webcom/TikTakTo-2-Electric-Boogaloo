@@ -55,7 +55,7 @@ export class AtmFacade {
 
   withdraw(amount: number): void {
     if (amount === 10 || amount === 20 || amount === 50 || amount === 100) {
-      //ToDo: Implement
+      this.logout();
     } else {
       throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
