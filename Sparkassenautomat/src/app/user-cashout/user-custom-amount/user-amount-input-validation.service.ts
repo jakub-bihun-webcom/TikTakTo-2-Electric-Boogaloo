@@ -7,7 +7,7 @@ import { UserCashOutManager } from '../services/user-cashout-manager.service';
 })
 export class UserAmountInputValidationService {
 
-  constructor(public handleUserAccountMoneyService: UserCashOutManager) { }
+  constructor(private userCashOutManager: UserCashOutManager) { }
 
   validateUserInput(customAmount: number): boolean {
     if (isNaN(customAmount)) {
@@ -22,9 +22,9 @@ export class UserAmountInputValidationService {
     if (customAmount <= -1) {
       throw new Error('Negative numbers cant be processed');
     } else {
-      const ATMHasEnoughMoney = this.handleUserAccountMoneyService.checkIfWithdrawalIsPossible(customAmount);
+      const ATMHasEnoughMoney = this.userCashOutManager.checkIfWithdrawalIsPossible(customAmount);
       if (ATMHasEnoughMoney) {
-        this.handleUserAccountMoneyService.withdraw(customAmount);
+        this.userCashOutManager.withdraw(customAmount);
         return true;
       }
       throw new Error('ATMAccountMoney exceeded');

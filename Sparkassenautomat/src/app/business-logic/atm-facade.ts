@@ -1,5 +1,6 @@
 import { LoginService } from '../login-screen/login.service';
 import {UserAmountInputValidationService} from "../user-cashout/user-custom-amount/user-amount-input-validation.service";
+import {UserCashOutManager} from "../user-cashout/services/user-cashout-manager.service";
 
 
 /**
@@ -12,8 +13,8 @@ export class AtmFacade {
   private moneySupply: number = 0;
   private loginService = new LoginService();
   private errorMessage: string | undefined;
-
-  private UserAmountInputValidationService = new UserAmountInputValidationService();
+  private userCashOutManager = new UserCashOutManager();
+  private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
 
   constructor() {}
 
@@ -26,7 +27,7 @@ export class AtmFacade {
 
   login(userId: string, password: string): void {
     try {
-      const user = this.loginService.login(userId, password);
+      this.loginService.login(userId, password);
     } catch (e) {
       // @ts-ignore
       this.errorMessage = e.message;
@@ -45,8 +46,13 @@ export class AtmFacade {
 
   withdraw(amount: number): void {}
 
-  withdrawCustomAmount(customAmount: number): void {
-     this.UserAmountInputValidationService.validateUserInput(customAmount)
+  withdrawCustomAmount(customAmount: number) {
+    try {
+     this.userAmountInputValidationService.validateUserInput(customAmount)
+  } catch (e) {
+    // @ts-ignore
+    this.errorMessage = e.message;
+  }
   }
 
   getAccountBalance(): number {
