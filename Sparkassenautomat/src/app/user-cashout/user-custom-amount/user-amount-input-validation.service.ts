@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { UserCashOutManager } from '../services/user-cashout-manager.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserAmountInputValidationService {
-
-  constructor(private userCashOutManager: UserCashOutManager) { }
+  constructor(private userCashOutManager: UserCashOutManager) {}
 
   validateUserInput(customAmount: number): boolean {
     if (isNaN(customAmount)) {
@@ -29,5 +27,5 @@ export class UserAmountInputValidationService {
       }
       throw new Error('ATMAccountMoney exceeded');
     }
-    }
   }
+}

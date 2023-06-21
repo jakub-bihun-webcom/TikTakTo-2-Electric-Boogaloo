@@ -12,7 +12,11 @@ export class UserCustomAmountComponent {
   customAmount?: number;
   errorMessage: string = '';
 
-  constructor(private handleUserAccountMoneyService: UserCashOutManager,private UserInputValidation: UserAmountInputValidationService ,private router: Router) {}
+  constructor(
+    private handleUserAccountMoneyService: UserCashOutManager,
+    private UserInputValidation: UserAmountInputValidationService,
+    private router: Router
+  ) {}
 
   /**
    * Verwendet den benutzerdefinierten Betrag
@@ -32,13 +36,12 @@ export class UserCustomAmountComponent {
 
   /**
    * Validiert die Benutzereingabe auf Korrektheit
-   * @param customAmount Der eingegebene benutzerdefinierte Betrag
    * @returns true, wenn die Eingabe korrekt ist
    * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
    *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
    *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
+   * @param data
    */
-
 
   navigatePage(data: any) {
     this.router.navigate(['/user-cashout-message'], { state: { myData: data } });
