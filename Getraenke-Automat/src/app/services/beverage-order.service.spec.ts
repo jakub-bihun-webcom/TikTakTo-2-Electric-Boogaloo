@@ -52,6 +52,6 @@ describe('BeverageOrderService', () => {
     expect(service.getBeveragePrice(6)).toBeUndefined();
     expect(service.getBeveragePrice(7)).toBeUndefined();
     expect(service.getBeverageName(6)).toBeUndefined();
-    expect(service.checkAvailability(10)).toBeFalse()
+    expect(service.checkAvailability(10)).toBeFalse();
   });
 });

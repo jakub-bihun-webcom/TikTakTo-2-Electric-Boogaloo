@@ -79,7 +79,7 @@ describe('AtmFacade', () => {
     atmFacade.login('1', '1');
     const accountBalance = atmFacade.getAccountBalance();
 
-    expect(accountBalance).toBe(10.991);
+    expect(accountBalance).toBe(10991);
   });
 
   it('should show error message when withdrawing invalid custom amount', () => {

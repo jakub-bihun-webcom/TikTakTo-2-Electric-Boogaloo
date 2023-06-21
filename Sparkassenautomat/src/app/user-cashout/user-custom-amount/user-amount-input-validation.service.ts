@@ -12,14 +12,14 @@ export class UserAmountInputValidationService {
    * @returns true, wenn die Eingabe korrekt ist
    * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
    *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
-   *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
+   *         der Betrag den verbleibenden Betrag auf dem Atm-Konto überschreitet.
    */
   validateUserInput(customAmount: number): boolean {
     if (isNaN(customAmount)) {
       throw new Error('The user input is not a number');
     }
     if (customAmount % 5 !== 0) {
-      throw new Error('The user input is not divisible by five');
+      throw new Error('Der Betrag muss in Scheinen ausgegeben werden können');
     }
     if (customAmount >= 5001) {
       throw new Error('Die maximale Abhebesumme beträgt 5000€');
