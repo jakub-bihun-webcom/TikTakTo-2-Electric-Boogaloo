@@ -12,7 +12,7 @@ export class UserAmountInputValidationService {
    * @returns true, wenn die Eingabe korrekt ist
    * @throws Error, wenn die Eingabe keine Zahl ist, nicht durch fünf teilbar ist,
    *         den maximalen Betrag überschreitet, ein negativer Betrag ist oder
-   *         der Betrag den verbleibenden Betrag auf dem ATM-Konto überschreitet.
+   *         der Betrag den verbleibenden Betrag auf dem Atm-Konto überschreitet.
    */
   validateUserInput(customAmount: number): boolean {
     if (isNaN(customAmount)) {

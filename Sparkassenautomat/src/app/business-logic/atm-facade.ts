@@ -1,7 +1,7 @@
 import { LoginService } from '../login-screen/login.service';
 import { UserAmountInputValidationService } from '../user-cashout/user-custom-amount/user-amount-input-validation.service';
 import { UserCashOutManager } from '../user-cashout/services/user-cashout-manager.service';
-import { ATM } from './ATM';
+import { Atm } from './atm';
 import { User } from '../login-screen/user';
 
 /**
@@ -12,9 +12,8 @@ export class AtmFacade {
   private errorMessage?: string;
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
-  private atm: ATM = {
-    moneySupply: 0, // TODO: Set to 1000
-    isLoggedIn: false
+  private atm: Atm = {
+    moneySupply: 0,
   };
 
   private user?: User;
@@ -28,10 +27,13 @@ export class AtmFacade {
     this.atm.moneySupply = money;
   }
 
+  isWithdrawAmountValid(amount: number): boolean {
+    return amount === 10 || amount === 20 || amount === 50 || amount === 100;
+  }
+
   login(userId: string, password: string): void {
     try {
       this.user = this.loginService.login(userId, password);
-      this.atm.isLoggedIn = true;
     } catch (e) {
       // @ts-ignore
       this.errorMessage = e.message;
@@ -39,11 +41,11 @@ export class AtmFacade {
   }
 
   logout(): void {
-    this.atm.isLoggedIn = false;
+    this.user = undefined;
   }
 
   readDisplay(): string {
-    if (this.atm.isLoggedIn) {
+    if (this.user !== undefined) {
       return 'Bitte wählen Sie einen Betrag aus';
     } else {
       return 'Bitte authentifizieren Sie sich';
@@ -55,22 +57,26 @@ export class AtmFacade {
   }
 
   withdraw(amount: number): void {
-    if (this.user === undefined) {
-      throw new Error('User is not logged in');
+    this.failIfNoUserLoggedIn();
+    if (!this.isWithdrawAmountValid(amount)) {
+      throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
     if (this.atm.moneySupply <= amount) {
       this.errorMessage = 'befindet sich nicht mehr genug Geld im Automaten';
-    } else if (this.user.userAccountMoney <= amount) {
+      return;
+    }
+    // @ts-ignore
+    if (this.user.userAccountMoney <= amount) {
       this.errorMessage = 'Konto nicht ausreichend gedeckt';
-    } else if (amount === 10 || amount === 20 || amount === 50 || amount === 100) {
+      return;
+    } else {
       this.keepTrackOfUserMoney(amount);
       this.logout();
-    } else {
-      throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
   }
 
   withdrawCustomAmount(customAmount: number) {
+    this.failIfNoUserLoggedIn();
     if (this.atm.moneySupply >= customAmount) {
       try {
         this.userAmountInputValidationService.validateUserInput(customAmount);
@@ -93,5 +99,16 @@ export class AtmFacade {
     // @ts-ignore
     this.user.userAccountMoney -= customAmount;
   }
+
+  isUserLoggedIn(): boolean {
+    return this.user !== undefined;
+  }
+
+  failIfNoUserLoggedIn(): void {
+    if (!this.isUserLoggedIn()) {
+      throw new Error('User is not logged in');
+    }
+  }
+
 }
 

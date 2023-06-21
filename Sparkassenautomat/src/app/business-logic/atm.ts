@@ -1,10 +1,9 @@
 /**
  * Der aktuelle Zustand des Automaten.
  */
-export interface ATM {
+export interface Atm {
   /**
    * Der aktuelle Geldbetrag im Automaten
    */
   moneySupply: number;
-  isLoggedIn: boolean;
 }
