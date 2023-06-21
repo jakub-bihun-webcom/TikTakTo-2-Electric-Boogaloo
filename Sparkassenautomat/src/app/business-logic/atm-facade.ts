@@ -88,6 +88,7 @@ export class AtmFacade {
   }
 
   getAccountBalance(): number {
-    return 0;
+    // @ts-ignore
+    return this.user.userAccountMoney;
   }
 }
