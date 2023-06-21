@@ -14,7 +14,6 @@ export class AtmFacade {
   private errorMessage?: string;
   private userCashOutManager = new UserCashOutManager();
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
-
   private atm: ATM = {
     moneySupply: 0, // TODO: Set to 1000
     isLoggedIn: false,
@@ -41,6 +40,7 @@ export class AtmFacade {
       // @ts-ignore
       this.errorMessage = e.message;
     }
+    console.log('userACcountmoney:'+ this.user?.userAccountMoney);
   }
 
   logout(): void {
@@ -63,12 +63,14 @@ export class AtmFacade {
     if (this.user === undefined) {
       throw new Error('User is not logged in');
     }
-    if (amount === 10 || amount === 20 || amount === 50 || amount === 100) {
-      this.logout();
-    } else if(this.user.userAccountMoney <= amount) {
+    if(this.atm.moneySupply <= amount) {
       this.errorMessage = 'befindet sich nicht mehr genug Geld im Automaten';
+    } else if (this.user.userAccountMoney <= amount) {
+      this.errorMessage = 'Konto nicht ausreichend gedeckt';
+    } else if (amount === 10 || amount === 20 || amount === 50 || amount === 100) {
+      this.logout();
     }
-      else {
+    else {
       throw new Error('Der Betrag kann nicht ausgewählt werden');
     }
   }

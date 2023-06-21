@@ -70,6 +70,7 @@ describe('AtmFacade', () => {
   });
 
   it('should show updated account balance after withdrawing', () => {
+    console.log('should show updated account balance after withdrawing');
     atmFacade.login('1', '1');
     atmFacade.withdraw(10);
 
