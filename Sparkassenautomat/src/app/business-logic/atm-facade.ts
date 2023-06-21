@@ -1,6 +1,7 @@
 import { LoginService } from '../login-screen/login.service';
 import {UserAmountInputValidationService} from "../user-cashout/user-custom-amount/user-amount-input-validation.service";
 import {UserCashOutManager} from "../user-cashout/services/user-cashout-manager.service";
+import {ATM} from "./ATM";
 
 
 /**
@@ -17,6 +18,11 @@ export class AtmFacade {
   private userAmountInputValidationService = new UserAmountInputValidationService(this.userCashOutManager);
 
   isLoggedIn: boolean = false;
+
+  ATM: ATM = {
+    moneySupply: this.moneySupply,
+    isLoggedIn: this.isLoggedIn,
+  }
 
   constructor() {}
 
@@ -42,7 +48,7 @@ export class AtmFacade {
   }
 
   readDisplay(): string {
-    if (this.isLoggedIn) {
+    if (this.ATM.isLoggedIn) {
       return 'Bitte wählen Sie einen Betrag aus';
     } else {
       return 'Bitte authentifizieren Sie sich';
